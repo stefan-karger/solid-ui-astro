@@ -1,0 +1,22 @@
+---
+import { getCollection, render } from "astro:content"
+
+import RootLayout from "~/layouts/root-layout.astro"
+import { toRouteId } from "~/lib/docs"
+
+export async function getStaticPaths() {
+  const pages = await getCollection("docs")
+  return pages.map((page) => ({
+    params: { id: toRouteId(page.id) },
+    props: { page }
+  }))
+}
+
+const { page } = Astro.props
+const { Content } = await render(page)
+---
+
+<RootLayout title={page.data.title}>
+  <h1>{page.data.title}</h1>
+  <Content />
+</RootLayout>
