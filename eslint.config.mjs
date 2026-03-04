@@ -1,4 +1,5 @@
 import js from "@eslint/js"
+import astroParser from "astro-eslint-parser"
 import eslintConfigPrettier from "eslint-config-prettier/flat"
 import astro from "eslint-plugin-astro"
 import solidTypescript from "eslint-plugin-solid/configs/typescript"
@@ -7,7 +8,7 @@ import tseslint from "typescript-eslint"
 
 export default [
   {
-    ignores: ["dist/**", ".astro/**", "node_modules/**"]
+    ignores: ["dist/**", ".astro/**", ".references/**", "node_modules/**"]
   },
   {
     files: [
@@ -19,6 +20,17 @@ export default [
     languageOptions: {
       globals: globals.node
     }
+  },
+  {
+    files: ["**/*.astro"],
+    languageOptions: {
+      parser: astroParser,
+      parserOptions: {
+        parser: "@typescript-eslint/parser",
+        extraFileExtensions: [".astro"]
+      }
+    },
+    processor: "astro/client-side-ts"
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,

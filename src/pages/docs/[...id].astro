@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from "astro:content"
 
+import { mdxComponents } from "~/components/mdx-components"
 import RootLayout from "~/layouts/root-layout.astro"
 import { toRouteId } from "~/lib/docs"
 
@@ -18,5 +19,5 @@ const { Content } = await render(page)
 
 <RootLayout title={page.data.title}>
   <h1>{page.data.title}</h1>
-  <Content />
+  <Content components={mdxComponents} />
 </RootLayout>

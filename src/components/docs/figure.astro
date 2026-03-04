@@ -1,0 +1,11 @@
+---
+interface Props extends Record<string, unknown> {
+  class?: string
+}
+
+const { class: className, ...props } = Astro.props as Props
+---
+
+<figure class={className} {...props}>
+  <slot />
+</figure>

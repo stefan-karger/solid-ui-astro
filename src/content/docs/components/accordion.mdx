@@ -6,4 +6,32 @@ links:
   api: https://kobalte.dev/docs/core/components/accordion#api-reference
 ---
 
-Hello World!
+# HI
+
+Use `type="multiple"` to allow multiple items to be open at the same time.
+
+```bash
+npm install radix-ui
+```
+
+```tsx showLineNumbers
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+```
+
+```tsx showLineNumbers
+<Accordion type="single" collapsible defaultValue="item-1">
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Is it accessible?</AccordionTrigger>
+    <AccordionContent>
+      Yes. It adheres to the WAI-ARIA design pattern.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+<ComponentSource name="accordion" title="components/ui/accordion.tsx" />

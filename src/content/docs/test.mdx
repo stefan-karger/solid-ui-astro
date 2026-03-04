@@ -1,0 +1,59 @@
+---
+title: MDX Components Test
+description: Test page for verifying Markdown and MDX component mappings in Astro.
+---
+
+# Heading 1
+
+## Heading 2
+
+### Heading 3
+
+#### Heading 4
+
+##### Heading 5
+
+###### Heading 6
+
+This is a paragraph with a [local docs link](/docs/components/accordion), an [external link](https://astro.build), **strong text**, and `inline code`.
+
+---
+
+> This is a blockquote with `inline code` and **strong text**.
+
+## Lists
+
+- Unordered item one
+- Unordered item two
+  - Nested unordered item
+
+1. Ordered item one
+2. Ordered item two
+3. Ordered item three
+
+## Image
+
+![Astro logo](https://astro.build/assets/press/astro-icon-light-gradient.svg)
+
+## Code Blocks
+
+```bash
+npm install
+```
+
+```ts
+function greet(name: string) {
+  return `Hello, ${name}!`
+}
+
+console.log(greet("Astro"))
+```
+
+## Table (GitHub-style Markdown)
+
+| Component   | Markdown Input                 | Should Render As |
+| ----------- | ------------------------------ | ---------------- |
+| Heading     | `## Heading 2`                 | `h2`             |
+| Link        | `[Astro](https://astro.build)` | `a`              |
+| Inline code | `` `pnpm dev` ``               | `code`           |
+| Code block  | ` ```ts ... ``` `              | `pre` + `code`   |

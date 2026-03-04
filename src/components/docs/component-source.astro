@@ -1,0 +1,38 @@
+---
+import { CodeCollapsibleWrapper } from "~/components/code-collapsible-wrapper"
+import ComponentCode from "~/components/docs/component-code.astro"
+import { getComponentSourceCode, getComponentSourceLanguage } from "~/lib/component-source"
+import { highlightCode } from "~/lib/highlight-code"
+import { cn } from "~/lib/utils"
+
+interface Props {
+  name?: string
+  src?: string
+  title?: string
+  language?: string
+  collapsible?: boolean
+  class?: string
+  styleName?: string
+  maxLines?: number
+}
+
+const { name, src, title, language, collapsible = true, class: className, maxLines } = Astro.props
+
+const code = await getComponentSourceCode({ name, src, maxLines })
+const lang = getComponentSourceLanguage({ language, title, src })
+const highlightedCode = code ? await highlightCode(code, lang) : undefined
+---
+
+{
+  code && highlightedCode ? (
+    collapsible ? (
+      <CodeCollapsibleWrapper client:load class={className}>
+        <ComponentCode code={code} highlightedCode={highlightedCode} lang={lang} title={title} />
+      </CodeCollapsibleWrapper>
+    ) : (
+      <div class={cn("relative", className)}>
+        <ComponentCode code={code} highlightedCode={highlightedCode} lang={lang} title={title} />
+      </div>
+    )
+  ) : null
+}

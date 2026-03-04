@@ -1,0 +1,13 @@
+---
+import { cn } from "~/lib/utils"
+
+interface Props extends Record<string, unknown> {
+  class?: string
+}
+
+const { class: className, ...props } = Astro.props as Props
+---
+
+<blockquote class={cn("mt-6 border-l-2 pl-6 italic", className)} {...props}>
+  <slot />
+</blockquote>
