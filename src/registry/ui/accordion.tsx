@@ -1,8 +1,8 @@
 import * as AccordionPrimitive from "@kobalte/core/accordion"
 import type { PolymorphicProps } from "@kobalte/core/polymorphic"
-import { ChevronDown } from "lucide-solid"
 import { splitProps, type ComponentProps, type ValidComponent } from "solid-js"
 
+import { IconPlaceholder } from "~/components/icon-placeholder"
 import { cn } from "~/lib/utils"
 
 type AccordionProps<T extends ValidComponent = "div"> = PolymorphicProps<
@@ -58,9 +58,11 @@ const AccordionTrigger = <T extends ValidComponent = "button">(props: AccordionT
         {...others}
       >
         {local.children}
-        <ChevronDown
+        <IconPlaceholder
           class="cn-accordion-trigger-icon pointer-events-none shrink-0 duration-300 group-aria-expanded/accordion-trigger:rotate-180"
           data-slot="accordion-trigger-icon"
+          lucide="ChevronDownIcon"
+          tabler="IconChevronDown"
         />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
