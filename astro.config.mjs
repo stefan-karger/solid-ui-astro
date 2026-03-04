@@ -1,6 +1,7 @@
 import { fileURLToPath } from "node:url"
 
 import mdx from "@astrojs/mdx"
+import netlify from "@astrojs/netlify"
 import solidJs from "@astrojs/solid-js"
 import tailwindcss from "@tailwindcss/vite"
 import { defineConfig } from "astro/config"
@@ -30,5 +31,6 @@ export default defineConfig({
         "~": fileURLToPath(new URL("./src", import.meta.url))
       }
     }
-  }
+  },
+  adapter: netlify()
 })

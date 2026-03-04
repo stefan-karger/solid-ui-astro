@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # ai stuff
 .references
+
+# Local Netlify folder
+.netlify
