@@ -1,13 +1,13 @@
 ---
+import type { HTMLAttributes } from "astro/types"
+
 import { cn } from "~/lib/utils"
 
-interface Props extends Record<string, unknown> {
-  class?: string
-}
+type Props = HTMLAttributes<"p">
 
-const { class: className, ...props } = Astro.props as Props
+const { class: className, ...props } = Astro.props
 ---
 
-<p class={cn("leading-relaxed [&:not(:first-child)]:mt-6", className)} {...props}>
+<p class={cn("leading-relaxed not-first:mt-6", className)} {...props}>
   <slot />
 </p>

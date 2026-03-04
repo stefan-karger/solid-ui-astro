@@ -1,11 +1,11 @@
 ---
 import { CodeCollapsibleWrapper } from "~/components/code-collapsible-wrapper"
-import ComponentCode from "~/components/docs/component-code.astro"
+import ComponentCode from "~/components/component-code.astro"
 import { getComponentSourceCode, getComponentSourceLanguage } from "~/lib/component-source"
 import { highlightCode } from "~/lib/highlight-code"
 import { cn } from "~/lib/utils"
 
-interface Props {
+type Props = {
   name?: string
   src?: string
   title?: string

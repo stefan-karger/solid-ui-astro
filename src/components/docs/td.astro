@@ -1,16 +1,16 @@
 ---
+import type { HTMLAttributes } from "astro/types"
+
 import { cn } from "~/lib/utils"
 
-interface Props extends Record<string, unknown> {
-  class?: string
-}
+type Props = HTMLAttributes<"td">
 
-const { class: className, ...props } = Astro.props as Props
+const { class: className, ...props } = Astro.props
 ---
 
 <td
   class={cn(
-    "px-4 py-2 text-left whitespace-nowrap [&[align=center]]:text-center [&[align=right]]:text-right",
+    "px-4 py-2 text-left whitespace-nowrap [[align=center]]:text-center [[align=right]]:text-right",
     className
   )}
   {...props}

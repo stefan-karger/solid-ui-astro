@@ -1,8 +1,7 @@
-import { CheckIcon, CopyIcon, TerminalIcon } from "lucide-solid"
-import { createEffect, createMemo, createSignal, For, onMount } from "solid-js"
+import { TerminalIcon } from "lucide-solid"
+import { createMemo, createSignal, For, onMount } from "solid-js"
 
-import { copyToClipboardWithMeta } from "~/components/copy-button"
-import { Button } from "~/registry/ui/button"
+import { CopyButton } from "~/components/copy-button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/registry/ui/tabs"
 
 const STORAGE_KEY = "docs:package-manager"
@@ -14,17 +13,15 @@ function isPackageManager(value: string): value is PackageManager {
   return PACKAGE_MANAGERS.includes(value as PackageManager)
 }
 
-interface CodeBlockCommandProps {
-  class?: string
-  __npm__?: string
-  __yarn__?: string
-  __pnpm__?: string
-  __bun__?: string
+type CodeBlockCommandProps = {
+  __npm__: string
+  __yarn__: string
+  __pnpm__: string
+  __bun__: string
 }
 
 export function CodeBlockCommand(props: CodeBlockCommandProps) {
   const [selectedPackageManager, setSelectedPackageManager] = createSignal<PackageManager>("pnpm")
-  const [hasCopied, setHasCopied] = createSignal(false)
 
   const commands = createMemo(() => ({
     pnpm: props.__pnpm__,
@@ -35,36 +32,26 @@ export function CodeBlockCommand(props: CodeBlockCommandProps) {
 
   const selectedCommand = createMemo(() => commands()[selectedPackageManager()])
 
+  function setPackageManager(value: string) {
+    if (!isPackageManager(value)) return
+
+    setSelectedPackageManager(value)
+
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(STORAGE_KEY, value)
+    }
+  }
+
   onMount(() => {
     const stored = window.localStorage.getItem(STORAGE_KEY)
-    if (stored && isPackageManager(stored)) {
-      setSelectedPackageManager(stored)
-    }
-  })
-
-  createEffect(() => {
-    if (typeof window === "undefined") return
-    window.localStorage.setItem(STORAGE_KEY, selectedPackageManager())
-  })
-
-  createEffect(() => {
-    if (hasCopied()) {
-      const timer = setTimeout(() => setHasCopied(false), 2000)
-      return () => clearTimeout(timer)
+    if (stored) {
+      setPackageManager(stored)
     }
   })
 
   return (
     <div class="overflow-x-auto">
-      <Tabs
-        value={selectedPackageManager()}
-        class="gap-0"
-        onChange={(value) => {
-          if (isPackageManager(value)) {
-            setSelectedPackageManager(value)
-          }
-        }}
-      >
+      <Tabs value={selectedPackageManager()} class="gap-0" onChange={setPackageManager}>
         <div class="flex items-center gap-2 border-b border-border/50 px-3 py-1">
           <div class="flex size-4 items-center justify-center rounded-[1px] bg-foreground opacity-70">
             <TerminalIcon class="size-3 text-code" />
@@ -96,21 +83,7 @@ export function CodeBlockCommand(props: CodeBlockCommandProps) {
           </For>
         </div>
       </Tabs>
-      <Button
-        data-slot="copy-button"
-        size="icon"
-        variant="ghost"
-        class="absolute top-2 right-2 z-10 size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100"
-        onClick={() => {
-          const command = selectedCommand()
-          if (!command) return
-          copyToClipboardWithMeta(command)
-          setHasCopied(true)
-        }}
-      >
-        <span class="sr-only">Copy</span>
-        {hasCopied() ? <CheckIcon /> : <CopyIcon />}
-      </Button>
+      <CopyButton class="top-2" value={selectedCommand()} />
     </div>
   )
 }

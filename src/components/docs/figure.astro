@@ -1,9 +1,9 @@
 ---
-interface Props extends Record<string, unknown> {
-  class?: string
-}
+import type { HTMLAttributes } from "astro/types"
 
-const { class: className, ...props } = Astro.props as Props
+type Props = HTMLAttributes<"figure">
+
+const { class: className, ...props } = Astro.props
 ---
 
 <figure class={className} {...props}>

@@ -1,10 +1,11 @@
 ---
+import type { HTMLAttributes } from "astro/types"
+
 import { CodeBlockCommand } from "~/components/code-block-command"
 import { CopyButton } from "~/components/copy-button"
 import { cn } from "~/lib/utils"
 
-interface Props extends Record<string, unknown> {
-  class?: string
+type Props = HTMLAttributes<"code"> & {
   __raw__?: string
   __src__?: string
   __npm__?: string
@@ -22,34 +23,38 @@ const {
   __pnpm__: pnpm,
   __bun__: bun,
   ...props
-} = Astro.props as Props
+} = Astro.props
 
-const isCommandBlock = Boolean(npm && yarn && pnpm && bun)
+const commandProps =
+  npm && yarn && pnpm && bun
+    ? {
+        __npm__: npm,
+        __yarn__: yarn,
+        __pnpm__: pnpm,
+        __bun__: bun
+      }
+    : undefined
+
+const isCommandBlock = Boolean(commandProps)
 const hasRawCode = Boolean(code)
 const isInline = !hasRawCode && !isCommandBlock
-const blockCodeContent = !isInline && !isCommandBlock ? (await Astro.slots.render("default")).trim() : ""
+const blockCodeContent =
+  !isInline && !isCommandBlock ? (await Astro.slots.render("default")).trim() : ""
 ---
 
 {
   isInline ? (
     <code
       class={cn(
-        "relative rounded-md bg-muted px-[0.3rem] py-[0.2rem] font-mono text-[0.8rem] break-words outline-none",
+        "relative rounded-md bg-muted px-[0.3rem] py-[0.2rem] font-mono text-[0.8rem] wrap-break-word outline-none",
         className
       )}
       {...props}
     >
       <slot />
     </code>
-  ) : isCommandBlock ? (
-    <CodeBlockCommand
-      client:load
-      class={className}
-      __npm__={npm}
-      __yarn__={yarn}
-      __pnpm__={pnpm}
-      __bun__={bun}
-    />
+  ) : commandProps ? (
+    <CodeBlockCommand client:load {...commandProps} />
   ) : (
     <>
       {code && <CopyButton client:load value={code} src={src} />}
