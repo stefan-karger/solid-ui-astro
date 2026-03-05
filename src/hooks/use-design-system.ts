@@ -1,5 +1,10 @@
 import { createSignal, onMount, type Accessor } from "solid-js"
 
+import {
+  DEFAULT_ICON_LIBRARY,
+  DEFAULT_STYLE_NAME,
+  STYLE_CLASS_PREFIX
+} from "~/lib/design-system-defaults"
 import { iconLibraries, type IconLibraryName } from "~/registry/icon-libraries"
 import { STYLES, type Style } from "~/registry/styles"
 
@@ -11,14 +16,15 @@ type DesignSystemState = {
 }
 
 export function useDesignSystem(): DesignSystemState {
-  const [style, rawSetStyle] = createSignal<Style>(STYLES[0])
-  const [iconLibrary, rawSetIconLibrary] = createSignal<IconLibraryName>("lucide")
+  const defaultStyle = STYLES.find((entry) => entry.name === DEFAULT_STYLE_NAME) ?? STYLES[0]
+  const [style, rawSetStyle] = createSignal<Style>(defaultStyle)
+  const [iconLibrary, rawSetIconLibrary] = createSignal<IconLibraryName>(DEFAULT_ICON_LIBRARY)
 
   onMount(() => {
     const body = document.body
 
-    const styleClass = [...body.classList].find((cls) => cls.startsWith("style-"))
-    const styleName = styleClass?.replace("style-", "")
+    const styleClass = [...body.classList].find((cls) => cls.startsWith(STYLE_CLASS_PREFIX))
+    const styleName = styleClass?.replace(STYLE_CLASS_PREFIX, "")
     const initialStyle = STYLES.find((entry) => entry.name === styleName)
 
     if (initialStyle) {
@@ -37,11 +43,11 @@ export function useDesignSystem(): DesignSystemState {
 
     const body = document.body
     body.classList.forEach((cls) => {
-      if (cls.startsWith("style-")) {
+      if (cls.startsWith(STYLE_CLASS_PREFIX)) {
         body.classList.remove(cls)
       }
     })
-    body.classList.add(`style-${value.name}`)
+    body.classList.add(`${STYLE_CLASS_PREFIX}${value.name}`)
   }
 
   const setIconLibrary = (value: IconLibraryName) => {

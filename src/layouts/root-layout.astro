@@ -1,6 +1,12 @@
 ---
 import "~/styles/globals.css"
 
+import {
+  DEFAULT_ICON_LIBRARY,
+  DEFAULT_STYLE_NAME,
+  STYLE_CLASS_PREFIX
+} from "~/lib/design-system-defaults"
+
 type Props = {
   title?: string
 }
@@ -17,7 +23,7 @@ const { title = "Astro" } = Astro.props
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="style-nova" data-icon-library="lucide">
+  <body class=`${STYLE_CLASS_PREFIX}${DEFAULT_STYLE_NAME}` data-icon-library={DEFAULT_ICON_LIBRARY}>
     <div class="mx-auto w-[900px]">
       <slot />
     </div>
