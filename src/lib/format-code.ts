@@ -1,12 +1,29 @@
 import { readFile } from "node:fs/promises"
 import path from "node:path"
 
-import { DEFAULT_STYLE_NAME, STYLE_CLASS_PREFIX } from "~/lib/design-system-defaults"
+import prettier, { type Options as PrettierOptions } from "prettier"
+import { Project, ScriptKind } from "ts-morph"
+
+import {
+  DEFAULT_ICON_LIBRARY,
+  DEFAULT_STYLE_NAME,
+  STYLE_CLASS_PREFIX
+} from "~/lib/design-system-defaults"
+import { transformIcons } from "~/lib/transformers/transform-icons"
+import type { CodeTransformerConfig, FormatCodeTransformer } from "~/lib/transformers/types"
+import type { IconLibraryName } from "~/registry/icon-libraries"
 
 const STYLE_DIRECTORY = path.join(process.cwd(), "src/registry/styles")
+const FORMAT_CODE_FILE_PATH = path.join(process.cwd(), "component.tsx")
 
 type StyleMap = Record<string, string>
 const styleMapCache = new Map<string, Promise<StyleMap>>()
+let prettierConfigPromise: Promise<PrettierOptions | null> | undefined
+
+export type FormatCodeOptions = {
+  styleName?: string
+  iconLibrary?: IconLibraryName
+}
 
 function normalizeStyleName(styleName?: string) {
   const value = styleName?.trim() || DEFAULT_STYLE_NAME
@@ -174,11 +191,63 @@ function applyStyleMap(code: string, styleMap: StyleMap) {
   })
 }
 
-export async function formatCode(code: string, styleName?: string) {
+function buildTransformerConfig(iconLibrary?: IconLibraryName): CodeTransformerConfig {
+  return {
+    iconLibrary: iconLibrary ?? DEFAULT_ICON_LIBRARY
+  }
+}
+
+async function applyAdditionalTransformers(code: string, options: FormatCodeOptions) {
+  const config = buildTransformerConfig(options.iconLibrary)
+  const project = new Project({ compilerOptions: {} })
+  const sourceFile = project.createSourceFile("component.tsx", code, {
+    scriptKind: ScriptKind.TSX,
+    overwrite: true
+  })
+  const additionalTransformers: FormatCodeTransformer[] = [transformIcons]
+
+  for (const transformer of additionalTransformers) {
+    await transformer({
+      filename: "component.tsx",
+      raw: code,
+      sourceFile,
+      config
+    })
+  }
+
+  return sourceFile.getText()
+}
+
+async function getPrettierConfig() {
+  prettierConfigPromise ??= prettier.resolveConfig(FORMAT_CODE_FILE_PATH)
+  return prettierConfigPromise
+}
+
+async function applyPrettier(code: string) {
+  const prettierConfig = await getPrettierConfig()
+  return prettier.format(code, {
+    ...prettierConfig,
+    filepath: FORMAT_CODE_FILE_PATH
+  })
+}
+
+export async function formatCode(code: string, options: FormatCodeOptions = {}) {
   let formatted = rewriteRegistryImports(code)
   formatted = formatted.replaceAll("export default", "export")
 
-  const styleMap = await getStyleMap(styleName)
+  const styleMap = await getStyleMap(options.styleName)
+  formatted = applyStyleMap(formatted, styleMap)
 
-  return applyStyleMap(formatted, styleMap)
+  try {
+    formatted = await applyAdditionalTransformers(formatted, options)
+  } catch (error) {
+    console.error("Transform failed:", error)
+  }
+
+  try {
+    return await applyPrettier(formatted)
+  } catch (error) {
+    console.error("Prettier format failed:", error)
+    return formatted
+  }
 }

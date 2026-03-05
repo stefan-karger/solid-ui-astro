@@ -8,6 +8,7 @@ import { DEFAULT_STYLE_NAME } from "~/lib/design-system-defaults"
 import { formatCode } from "~/lib/format-code"
 import { highlightCode } from "~/lib/highlight-code"
 import { getRegistryItem } from "~/lib/registry"
+import type { IconLibraryName } from "~/registry/icon-libraries"
 import { cn } from "~/lib/utils"
 
 type Props = {
@@ -18,6 +19,7 @@ type Props = {
   collapsible?: boolean
   class?: string
   styleName?: string
+  iconLibrary?: IconLibraryName
   maxLines?: number
 }
 
@@ -29,6 +31,7 @@ const {
   collapsible = true,
   class: className,
   styleName,
+  iconLibrary,
   maxLines
 } = Astro.props
 
@@ -46,7 +49,10 @@ if (src) {
 
 if (code) {
   const resolvedStyleName = styleName ?? DEFAULT_STYLE_NAME
-  code = await formatCode(code, resolvedStyleName)
+  code = await formatCode(code, {
+    styleName: resolvedStyleName,
+    iconLibrary
+  })
   code = code.replaceAll("/* eslint-disable react/no-children-prop */\n", "")
   if (maxLines && maxLines > 0) {
     code = code.split("\n").slice(0, maxLines).join("\n")

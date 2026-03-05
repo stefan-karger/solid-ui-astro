@@ -1,27 +1,21 @@
 import type { PolymorphicProps } from "@kobalte/core"
-import {
-  Content,
-  List,
-  Root,
-  Trigger,
-  type TabsContentProps as TabsContentPrimitiveProps,
-  type TabsListProps as TabsListPrimitiveProps,
-  type TabsRootProps,
-  type TabsTriggerProps as TabsTriggerPrimitiveProps
-} from "@kobalte/core/tabs"
+import * as TabsPrimitive from "@kobalte/core/tabs"
 import { cva, type VariantProps } from "class-variance-authority"
 import { mergeProps, splitProps, type ComponentProps, type ValidComponent } from "solid-js"
 
 import { cn } from "~/lib/utils"
 
-type TabsProps<T extends ValidComponent = "div"> = PolymorphicProps<T, TabsRootProps<T>> &
+type TabsProps<T extends ValidComponent = "div"> = PolymorphicProps<
+  T,
+  TabsPrimitive.TabsRootProps<T>
+> &
   Pick<ComponentProps<T>, "class" | "children">
 
 const Tabs = <T extends ValidComponent = "div">(props: TabsProps<T>) => {
   const mergedProps = mergeProps({ orientation: "horizontal" }, props)
   const [local, others] = splitProps(mergedProps, ["class", "orientation"])
   return (
-    <Root
+    <TabsPrimitive.Root
       data-slot="tabs"
       data-orientation={local.orientation}
       orientation={local.orientation}
@@ -48,7 +42,7 @@ const tabsListVariants = cva(
 
 type TabsListProps<T extends ValidComponent = "div"> = PolymorphicProps<
   T,
-  TabsListPrimitiveProps<T>
+  TabsPrimitive.TabsListProps<T>
 > &
   VariantProps<typeof tabsListVariants> &
   Pick<ComponentProps<T>, "class" | "children">
@@ -56,7 +50,7 @@ type TabsListProps<T extends ValidComponent = "div"> = PolymorphicProps<
 const TabsList = <T extends ValidComponent = "div">(props: TabsListProps<T>) => {
   const [local, others] = splitProps(props as TabsListProps, ["variant", "class"])
   return (
-    <List
+    <TabsPrimitive.List
       class={cn(tabsListVariants({ variant: local.variant }), local.class)}
       data-slot="tabs-list"
       data-variant={local.variant}
@@ -67,14 +61,14 @@ const TabsList = <T extends ValidComponent = "div">(props: TabsListProps<T>) => 
 
 type TabTriggerProps<T extends ValidComponent = "button"> = PolymorphicProps<
   T,
-  TabsTriggerPrimitiveProps<T>
+  TabsPrimitive.TabsTriggerProps<T>
 > &
   Pick<ComponentProps<T>, "class" | "children">
 
 const TabsTrigger = <T extends ValidComponent = "button">(props: TabTriggerProps<T>) => {
   const [local, others] = splitProps(props as TabTriggerProps, ["class"])
   return (
-    <Trigger
+    <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
       class={cn(
         "cn-tabs-trigger relative inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center whitespace-nowrap text-foreground/60 transition-all group-data-[orientation=vertical]/tabs:w-full group-data-[orientation=vertical]/tabs:justify-start hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 dark:text-muted-foreground dark:hover:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
@@ -90,14 +84,14 @@ const TabsTrigger = <T extends ValidComponent = "button">(props: TabTriggerProps
 
 type TabsContentProps<T extends ValidComponent = "div"> = PolymorphicProps<
   T,
-  TabsContentPrimitiveProps<T>
+  TabsPrimitive.TabsContentProps<T>
 > &
   Pick<ComponentProps<T>, "class" | "children">
 
 const TabsContent = <T extends ValidComponent = "div">(props: TabsContentProps<T>) => {
   const [local, others] = splitProps(props as TabsContentProps, ["class"])
   return (
-    <Content
+    <TabsPrimitive.Content
       data-slot="tabs-content"
       class={cn("cn-tabs-content flex-1 outline-none", local.class)}
       {...others}
