@@ -1,0 +1,28 @@
+---
+import type { HTMLAttributes } from "astro/types"
+
+import { cn } from "~/lib/utils"
+
+type Props = HTMLAttributes<"button"> & {
+  value: string
+}
+
+const { class: className, value, ...props } = Astro.props
+---
+
+<button
+  type="button"
+  role="tab"
+  data-slot="tabs-trigger"
+  data-state="inactive"
+  data-value={value}
+  aria-selected="false"
+  tabindex="-1"
+  class={cn(
+    "rounded-none border-0 border-b-2 border-transparent bg-transparent px-0 pb-3 text-base text-muted-foreground shadow-none hover:text-primary focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 focus-visible:outline-ring data-[state=active]:border-primary data-[state=active]:text-foreground",
+    className
+  )}
+  {...props}
+>
+  <slot />
+</button>

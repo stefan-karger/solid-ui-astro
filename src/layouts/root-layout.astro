@@ -4,17 +4,26 @@ import "~/styles/globals.css"
 import {
   DEFAULT_ICON_LIBRARY,
   DEFAULT_STYLE_NAME,
+  STORAGE_KEYS,
   STYLE_CLASS_PREFIX
-} from "~/lib/design-system-defaults"
+} from "~/hooks/use-design-system"
+import { iconLibraries } from "~/registry/icon-libraries"
+import { STYLES } from "~/registry/styles"
 
 type Props = {
   title?: string
 }
 
 const { title = "Astro" } = Astro.props
+const styleNames = STYLES.map((entry) => entry.name)
+const iconLibraryNames = Object.keys(iconLibraries)
 ---
 
-<html lang="en">
+<html
+  lang="en"
+  class={`${STYLE_CLASS_PREFIX}${DEFAULT_STYLE_NAME}`}
+  data-icon-library={DEFAULT_ICON_LIBRARY}
+>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -22,8 +31,51 @@ const { title = "Astro" } = Astro.props
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <script
+      is:inline
+      define:vars={{
+        DEFAULT_STYLE_NAME,
+        DEFAULT_ICON_LIBRARY,
+        STYLE_CLASS_PREFIX,
+        STORAGE_KEYS,
+        styleNames,
+        iconLibraryNames
+      }}
+    >
+      ;(() => {
+        const root = document.documentElement
+        const validStyles = new Set(styleNames)
+        const validIconLibraries = new Set(iconLibraryNames)
+
+        let storedStyle = null
+        let storedIconLibrary = null
+
+        try {
+          storedStyle = window.localStorage.getItem(STORAGE_KEYS.style)
+          storedIconLibrary = window.localStorage.getItem(STORAGE_KEYS.iconLibrary)
+        } catch {
+          // don't do anything
+        }
+
+        const resolvedStyle =
+          storedStyle && validStyles.has(storedStyle) ? storedStyle : DEFAULT_STYLE_NAME
+        const resolvedIconLibrary =
+          storedIconLibrary && validIconLibraries.has(storedIconLibrary)
+            ? storedIconLibrary
+            : DEFAULT_ICON_LIBRARY
+
+        for (const className of [...root.classList]) {
+          if (className.startsWith(STYLE_CLASS_PREFIX)) {
+            root.classList.remove(className)
+          }
+        }
+
+        root.classList.add(`${STYLE_CLASS_PREFIX}${resolvedStyle}`)
+        root.dataset.iconLibrary = resolvedIconLibrary
+      })()
+    </script>
   </head>
-  <body class=`${STYLE_CLASS_PREFIX}${DEFAULT_STYLE_NAME}` data-icon-library={DEFAULT_ICON_LIBRARY}>
+  <body>
     <div class="mx-auto w-[900px]">
       <slot />
     </div>

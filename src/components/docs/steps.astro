@@ -1,0 +1,16 @@
+---
+import type { HTMLAttributes } from "astro/types"
+
+import { cn } from "~/lib/utils"
+
+type Props = HTMLAttributes<"div">
+
+const { class: className, ...props } = Astro.props
+---
+
+<div
+  class={cn("steps mb-12 [counter-reset:step] *:[h3]:first:mt-0! [&>h3]:step", className)}
+  {...props}
+>
+  <slot />
+</div>

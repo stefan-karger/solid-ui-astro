@@ -1,0 +1,79 @@
+---
+import type { HTMLAttributes } from "astro/types"
+
+import { ComponentPreviewRenderer } from "~/components/component-preview-renderer"
+import ComponentPreviewTabs from "~/components/component-preview-tabs.astro"
+import ComponentSource from "~/components/component-source.astro"
+import { Index } from "~/registry/__index__"
+
+type Props = HTMLAttributes<"div"> & {
+  name: string
+  styleName?: string
+  align?: "center" | "start" | "end"
+  hideCode?: boolean
+  type?: "block" | "component" | "example"
+  chromeLessOnMobile?: boolean
+}
+
+const {
+  name,
+  styleName,
+  type,
+  align = "center",
+  hideCode = false,
+  chromeLessOnMobile = false,
+  class: className,
+  ...props
+} = Astro.props
+
+const item = Index[name]
+
+const isPreviewableType = item
+  ? ["registry:block", "registry:component", "registry:example"].includes(item.type)
+  : false
+---
+
+{
+  !item ? (
+    <p class="mt-6 text-sm text-muted-foreground">
+      Component{" "}
+      <code class="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
+        {name}
+      </code>{" "}
+      not found in registry.
+    </p>
+  ) : !isPreviewableType ? (
+    <p class="mt-6 text-sm text-muted-foreground">
+      Component{" "}
+      <code class="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
+        {name}
+      </code>{" "}
+      cannot be previewed directly. Use a registry demo/example entry instead.
+    </p>
+  ) : (
+    <>
+      {type === "block" && (
+        <p class="mt-4 rounded-lg border border-dashed bg-muted/50 px-4 py-3 text-sm text-muted-foreground">
+          Block preview fallback is active. Proper block rendering still needs to be implemented
+          later. Reference:{" "}
+          <code class="rounded bg-muted px-1 py-0.5 font-mono text-xs">
+            .references/shadcn-ui/apps/v4/components/component-preview.tsx
+          </code>
+          .
+        </p>
+      )}
+      <ComponentPreviewTabs
+        class={className}
+        align={align}
+        hideCode={hideCode}
+        chromeLessOnMobile={chromeLessOnMobile}
+        {...props}
+      >
+        <ComponentPreviewRenderer slot="component" name={name} client:only="solid-js" />
+        {!hideCode && (
+          <ComponentSource slot="source" name={name} collapsible={false} styleName={styleName} />
+        )}
+      </ComponentPreviewTabs>
+    </>
+  )
+}

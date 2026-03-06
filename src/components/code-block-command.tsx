@@ -1,10 +1,9 @@
 import { TerminalIcon } from "lucide-solid"
-import { createMemo, createSignal, For, onMount } from "solid-js"
+import { createMemo, createSignal, For } from "solid-js"
 
 import { CopyButton } from "~/components/copy-button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/registry/ui/tabs"
 
-const STORAGE_KEY = "docs:package-manager"
 const PACKAGE_MANAGERS = ["pnpm", "npm", "yarn", "bun"] as const
 
 type PackageManager = (typeof PACKAGE_MANAGERS)[number]
@@ -32,26 +31,15 @@ export function CodeBlockCommand(props: CodeBlockCommandProps) {
 
   const selectedCommand = createMemo(() => commands()[selectedPackageManager()])
 
-  function setPackageManager(value: string) {
+  const handlePackageManagerChange = (value: string) => {
     if (!isPackageManager(value)) return
 
     setSelectedPackageManager(value)
-
-    if (typeof window !== "undefined") {
-      window.localStorage.setItem(STORAGE_KEY, value)
-    }
   }
-
-  onMount(() => {
-    const stored = window.localStorage.getItem(STORAGE_KEY)
-    if (stored) {
-      setPackageManager(stored)
-    }
-  })
 
   return (
     <div class="overflow-x-auto">
-      <Tabs value={selectedPackageManager()} class="gap-0" onChange={setPackageManager}>
+      <Tabs value={selectedPackageManager()} class="gap-0" onChange={handlePackageManagerChange}>
         <div class="flex items-center gap-2 border-b border-border/50 px-3 py-1">
           <div class="flex size-4 items-center justify-center rounded-[1px] bg-foreground opacity-70">
             <TerminalIcon class="size-3 text-code" />

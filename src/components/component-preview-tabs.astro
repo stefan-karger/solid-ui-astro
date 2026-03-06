@@ -1,0 +1,46 @@
+---
+import type { HTMLAttributes } from "astro/types"
+
+import { cn } from "~/lib/utils"
+
+type Props = HTMLAttributes<"div"> & {
+  align?: "center" | "start" | "end"
+  hideCode?: boolean
+  chromeLessOnMobile?: boolean
+}
+
+const {
+  class: className,
+  align = "center",
+  hideCode = false,
+  chromeLessOnMobile = false,
+  ...props
+} = Astro.props
+---
+
+<div
+  class={cn("group relative mt-4 mb-12 flex flex-col gap-2 rounded-lg border", className)}
+  {...props}
+>
+  <div data-slot="preview">
+    <div
+      data-align={align}
+      class={cn(
+        "preview flex w-full justify-center data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start",
+        chromeLessOnMobile ? "sm:p-10" : "h-[450px] p-10"
+      )}
+    >
+      <slot name="component" />
+    </div>
+    {
+      !hideCode && (
+        <div
+          data-slot="code"
+          class="overflow-hidden **:data-rehype-pretty-code-figure:m-0! **:data-rehype-pretty-code-figure:rounded-t-none **:data-rehype-pretty-code-figure:border-t [&_pre]:max-h-[400px]"
+        >
+          <slot name="source" />
+        </div>
+      )
+    }
+  </div>
+</div>

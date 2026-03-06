@@ -5,6 +5,7 @@ const docs = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    component: z.boolean().optional(),
     links: z
       .object({
         doc: z.string().optional(),

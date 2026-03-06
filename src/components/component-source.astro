@@ -4,12 +4,12 @@ import path from "node:path"
 
 import { CodeCollapsibleWrapper } from "~/components/code-collapsible-wrapper"
 import ComponentCode from "~/components/component-code.astro"
-import { DEFAULT_STYLE_NAME } from "~/lib/design-system-defaults"
+import { DEFAULT_STYLE_NAME } from "~/hooks/use-design-system"
 import { formatCode } from "~/lib/format-code"
 import { highlightCode } from "~/lib/highlight-code"
 import { getRegistryItem } from "~/lib/registry"
-import type { IconLibraryName } from "~/registry/icon-libraries"
 import { cn } from "~/lib/utils"
+import type { IconLibraryName } from "~/registry/icon-libraries"
 
 type Props = {
   name?: string
@@ -29,7 +29,7 @@ const {
   title,
   language,
   collapsible = true,
-  class: className,
+  class: classProp,
   styleName,
   iconLibrary,
   maxLines
@@ -66,11 +66,11 @@ const highlightedCode = code ? await highlightCode(code, lang) : undefined
 {
   code && highlightedCode ? (
     collapsible ? (
-      <CodeCollapsibleWrapper client:load class={className}>
+      <CodeCollapsibleWrapper client:load class={classProp}>
         <ComponentCode code={code} highlightedCode={highlightedCode} lang={lang} title={title} />
       </CodeCollapsibleWrapper>
     ) : (
-      <div class={cn("relative", className)}>
+      <div class={cn("relative", classProp)}>
         <ComponentCode code={code} highlightedCode={highlightedCode} lang={lang} title={title} />
       </div>
     )

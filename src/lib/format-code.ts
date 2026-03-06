@@ -8,7 +8,7 @@ import {
   DEFAULT_ICON_LIBRARY,
   DEFAULT_STYLE_NAME,
   STYLE_CLASS_PREFIX
-} from "~/lib/design-system-defaults"
+} from "~/hooks/use-design-system"
 import { transformIcons } from "~/lib/transformers/transform-icons"
 import type { CodeTransformerConfig, FormatCodeTransformer } from "~/lib/transformers/types"
 import type { IconLibraryName } from "~/registry/icon-libraries"

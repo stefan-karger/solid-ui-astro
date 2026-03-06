@@ -1,6 +1,8 @@
+import ComponentPreview from "~/components/component-preview.astro"
 import ComponentSource from "~/components/component-source.astro"
 import A from "~/components/docs/a.astro"
 import Blockquote from "~/components/docs/blockquote.astro"
+import CodeTabs from "~/components/docs/code-tabs.astro"
 import Code from "~/components/docs/code.astro"
 import Figcaption from "~/components/docs/figcaption.astro"
 import Figure from "~/components/docs/figure.astro"
@@ -16,8 +18,13 @@ import Li from "~/components/docs/li.astro"
 import Ol from "~/components/docs/ol.astro"
 import P from "~/components/docs/p.astro"
 import Pre from "~/components/docs/pre.astro"
+import Step from "~/components/docs/step.astro"
+import Steps from "~/components/docs/steps.astro"
 import Strong from "~/components/docs/strong.astro"
 import Table from "~/components/docs/table.astro"
+import TabsContent from "~/components/docs/tabs-content.astro"
+import TabsList from "~/components/docs/tabs-list.astro"
+import TabsTrigger from "~/components/docs/tabs-trigger.astro"
 import Td from "~/components/docs/td.astro"
 import Th from "~/components/docs/th.astro"
 import Tr from "~/components/docs/tr.astro"
@@ -47,5 +54,12 @@ export const mdxComponents = {
   figure: Figure,
   figcaption: Figcaption,
   code: Code,
+  CodeTabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+  Step,
+  Steps,
+  ComponentPreview,
   ComponentSource
 }
