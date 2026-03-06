@@ -1,11 +1,15 @@
 ---
 import "~/styles/globals.css"
 
+import SiteHeader from "~/components/site-header.astro"
 import {
+  DARK_THEME,
   DEFAULT_ICON_LIBRARY,
   DEFAULT_STYLE_NAME,
+  LIGHT_THEME,
   STORAGE_KEYS,
-  STYLE_CLASS_PREFIX
+  STYLE_CLASS_PREFIX,
+  THEME_DARK_CLASS
 } from "~/hooks/use-design-system"
 import { iconLibraries } from "~/registry/icon-libraries"
 import { STYLES } from "~/registry/styles"
@@ -37,6 +41,9 @@ const iconLibraryNames = Object.keys(iconLibraries)
         DEFAULT_STYLE_NAME,
         DEFAULT_ICON_LIBRARY,
         STYLE_CLASS_PREFIX,
+        LIGHT_THEME,
+        DARK_THEME,
+        THEME_DARK_CLASS,
         STORAGE_KEYS,
         styleNames,
         iconLibraryNames
@@ -46,13 +53,17 @@ const iconLibraryNames = Object.keys(iconLibraries)
         const root = document.documentElement
         const validStyles = new Set(styleNames)
         const validIconLibraries = new Set(iconLibraryNames)
+        const validThemes = new Set([LIGHT_THEME, DARK_THEME])
+        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
 
         let storedStyle = null
         let storedIconLibrary = null
+        let storedTheme = null
 
         try {
           storedStyle = window.localStorage.getItem(STORAGE_KEYS.style)
           storedIconLibrary = window.localStorage.getItem(STORAGE_KEYS.iconLibrary)
+          storedTheme = window.localStorage.getItem(STORAGE_KEYS.theme)
         } catch {
           // don't do anything
         }
@@ -63,6 +74,12 @@ const iconLibraryNames = Object.keys(iconLibraries)
           storedIconLibrary && validIconLibraries.has(storedIconLibrary)
             ? storedIconLibrary
             : DEFAULT_ICON_LIBRARY
+        const resolvedTheme =
+          storedTheme && validThemes.has(storedTheme)
+            ? storedTheme
+            : mediaQuery.matches
+              ? DARK_THEME
+              : LIGHT_THEME
 
         for (const className of [...root.classList]) {
           if (className.startsWith(STYLE_CLASS_PREFIX)) {
@@ -70,14 +87,19 @@ const iconLibraryNames = Object.keys(iconLibraries)
           }
         }
 
+        root.classList.toggle(THEME_DARK_CLASS, resolvedTheme === DARK_THEME)
+
         root.classList.add(`${STYLE_CLASS_PREFIX}${resolvedStyle}`)
         root.dataset.iconLibrary = resolvedIconLibrary
       })()
     </script>
   </head>
-  <body>
-    <div class="mx-auto w-[900px]">
-      <slot />
+  <body class="min-h-svh bg-background text-foreground" style="--header-height:3.5rem;">
+    <div class="relative flex min-h-svh flex-col">
+      <SiteHeader />
+      <main class="flex flex-1 flex-col">
+        <slot />
+      </main>
     </div>
   </body>
 </html>

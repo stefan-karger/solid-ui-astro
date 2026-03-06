@@ -1,23 +1,168 @@
 ---
 import { getCollection, render } from "astro:content"
 
+import DocsCopyPage from "~/components/docs-copy-page"
 import { mdxComponents } from "~/components/mdx-components"
+import DocsLayout from "~/layouts/docs-layout.astro"
 import RootLayout from "~/layouts/root-layout.astro"
-import { toRouteId } from "~/lib/docs"
+import {
+  getComponentNeighbors,
+  getNeighbors,
+  getSidebarData,
+  toDocsPath,
+  toRouteId
+} from "~/lib/docs"
 
 export async function getStaticPaths() {
   const pages = await getCollection("docs")
-  return pages.map((page) => ({
-    params: { id: toRouteId(page.id) },
-    props: { page }
-  }))
+
+  return pages.map((page) => {
+    const routeId = toRouteId(page.id)
+
+    return {
+      params: { id: routeId || undefined },
+      props: { page, routeId }
+    }
+  })
 }
 
-const { page } = Astro.props
-const { Content } = await render(page)
+const { page, routeId } = Astro.props
+const { Content, headings } = await render(page)
+
+const [sidebar, neighbors, componentNeighbors] = await Promise.all([
+  getSidebarData(),
+  getNeighbors(routeId),
+  page.data.component
+    ? getComponentNeighbors(routeId)
+    : Promise.resolve({ previous: null, next: null })
+])
+
+const pagePath = toDocsPath(routeId)
+const markdownHref = routeId ? `${pagePath}.md` : "/docs/index.md"
+
+const previousHref = neighbors.previous ? toDocsPath(toRouteId(neighbors.previous.id)) : null
+const nextHref = neighbors.next ? toDocsPath(toRouteId(neighbors.next.id)) : null
+
+const componentPreviousHref = componentNeighbors.previous
+  ? toDocsPath(toRouteId(componentNeighbors.previous.id))
+  : null
+
+const componentNextHref = componentNeighbors.next
+  ? toDocsPath(toRouteId(componentNeighbors.next.id))
+  : null
 ---
 
 <RootLayout title={page.data.title}>
-  <h1>{page.data.title}</h1>
-  <Content components={mdxComponents} />
+  <DocsLayout sidebar={sidebar} toc={headings} pathname={Astro.url.pathname}>
+    <article class="mx-auto flex w-full max-w-[40rem] min-w-0 flex-col gap-8 pb-12">
+      <header class="flex flex-col gap-2">
+        <div class="flex flex-col gap-2">
+          <div class="flex items-center justify-between md:items-start">
+            <h1 class="scroll-m-24 text-3xl font-semibold tracking-tight sm:text-3xl">
+              {page.data.title}
+            </h1>
+
+            <div class="docs-nav flex items-center gap-2">
+              <!-- <div class="hidden sm:block">
+                <DocsCopyPage
+                  client:only="solid-js"
+                  content={page.body}
+                  markdownHref={markdownHref}
+                />
+              </div> -->
+              <div class="ml-auto flex gap-2">
+                {
+                  previousHref && (
+                    <a
+                      href={previousHref}
+                      data-slot="button"
+                      class="group/button cn-button cn-button-variant-secondary cn-button-size-icon extend-touch-target inline-flex size-8 shrink-0 items-center justify-center whitespace-nowrap shadow-none transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 md:size-7 [&_svg]:pointer-events-none [&_svg]:shrink-0"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="M5 12l6 6" />
+                        <path d="M5 12l6-6" />
+                      </svg>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                  )
+                }
+
+                {
+                  nextHref && (
+                    <a
+                      href={nextHref}
+                      data-slot="button"
+                      class="group/button cn-button cn-button-variant-secondary cn-button-size-icon extend-touch-target inline-flex size-8 shrink-0 items-center justify-center whitespace-nowrap shadow-none transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 md:size-7 [&_svg]:pointer-events-none [&_svg]:shrink-0"
+                    >
+                      <span class="sr-only">Next</span>
+                      <svg
+                        aria-hidden="true"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="M13 18l6-6" />
+                        <path d="M13 6l6 6" />
+                      </svg>
+                    </a>
+                  )
+                }
+              </div>
+            </div>
+          </div>
+
+          <p
+            class="text-[1.05rem] text-muted-foreground sm:text-base sm:text-balance md:max-w-[80%]"
+          >
+            {page.data.description}
+          </p>
+        </div>
+      </header>
+
+      <div class="min-w-0 *:first:mt-0">
+        <Content components={mdxComponents} />
+      </div>
+
+      {
+        page.data.component && (componentPreviousHref || componentNextHref) && (
+          <footer class="mt-4 flex items-center gap-3 border-t pt-6">
+            {componentPreviousHref && (
+              <a
+                href={componentPreviousHref}
+                class="inline-flex items-center gap-2 rounded-md border bg-background px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+              >
+                <span aria-hidden="true">&larr;</span>
+                {componentNeighbors.previous?.data.title}
+              </a>
+            )}
+
+            {componentNextHref && (
+              <a
+                href={componentNextHref}
+                class="ml-auto inline-flex items-center gap-2 rounded-md border bg-background px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+              >
+                {componentNeighbors.next?.data.title}
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            )}
+          </footer>
+        )
+      }
+    </article>
+  </DocsLayout>
 </RootLayout>

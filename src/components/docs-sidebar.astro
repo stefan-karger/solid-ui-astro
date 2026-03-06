@@ -1,0 +1,55 @@
+---
+import type { SidebarLink } from "~/lib/docs"
+
+type Props = {
+  topLevel: SidebarLink[]
+  components: SidebarLink[]
+  pathname: string
+}
+
+const { topLevel, components, pathname } = Astro.props
+
+const normalizedPath = pathname.replace(/\/$/, "") || "/"
+
+function isSectionActive(href: string) {
+  if (href === "/docs") {
+    return normalizedPath === "/docs"
+  }
+
+  return normalizedPath === href || normalizedPath.startsWith(`${href}/`)
+}
+---
+
+<nav class="no-scrollbar sticky top-[calc(var(--header-height)+1rem)] max-h-[calc(100svh-var(--header-height)-2rem)] overflow-y-auto pr-4 pb-8">
+  <div class="space-y-7">
+    <section class="space-y-2">
+      <p class="px-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">Sections</p>
+      <div class="space-y-1">
+        {topLevel.map((item) => (
+          <a
+            href={item.href}
+            data-active={isSectionActive(item.href)}
+            class="block rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground data-[active=true]:bg-accent data-[active=true]:text-foreground"
+          >
+            {item.title}
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="space-y-2">
+      <p class="px-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">Components</p>
+      <div class="space-y-1">
+        {components.map((item) => (
+          <a
+            href={item.href}
+            data-active={normalizedPath === item.href}
+            class="block rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground data-[active=true]:bg-accent data-[active=true]:text-foreground"
+          >
+            {item.title}
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</nav>

@@ -1,0 +1,35 @@
+---
+import DocsSidebar from "~/components/docs-sidebar.astro"
+import DocsToc from "~/components/docs-toc.astro"
+import type { SidebarData } from "~/lib/docs"
+
+type TocItem = {
+  depth: number
+  slug: string
+  text: string
+}
+
+type Props = {
+  sidebar: SidebarData
+  toc: TocItem[]
+  pathname: string
+}
+
+const { sidebar, toc, pathname } = Astro.props
+---
+
+<div class="container-wrapper flex flex-1 px-2">
+  <div class="container grid w-full grid-cols-1 gap-x-8 py-6 lg:grid-cols-[220px_minmax(0,1fr)] xl:grid-cols-[220px_minmax(0,1fr)_220px]">
+    <aside class="hidden lg:block">
+      <DocsSidebar topLevel={sidebar.topLevel} components={sidebar.components} pathname={pathname} />
+    </aside>
+
+    <section class="min-w-0">
+      <slot />
+    </section>
+
+    <aside class="hidden xl:block">
+      <DocsToc items={toc} />
+    </aside>
+  </div>
+</div>

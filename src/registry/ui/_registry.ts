@@ -24,12 +24,56 @@ export const ui: Registry["items"] = [
     ]
   },
   {
+    name: "button-group",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core"],
+    files: [
+      {
+        path: "ui/button-group.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
     name: "collapsible",
     type: "registry:ui",
     dependencies: ["@kobalte/core"],
     files: [
       {
         path: "ui/collapsible.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
+    name: "dropdown-menu",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core"],
+    files: [
+      {
+        path: "ui/dropdown-menu.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
+    name: "navigation-menu",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core"],
+    files: [
+      {
+        path: "ui/navigation-menu.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
+    name: "popover",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core"],
+    files: [
+      {
+        path: "ui/popover.tsx",
         type: "registry:ui"
       }
     ]
@@ -52,6 +96,17 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "ui/tabs.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
+    name: "tooltip",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core"],
+    files: [
+      {
+        path: "ui/tooltip.tsx",
         type: "registry:ui"
       }
     ]

@@ -1,3 +1,4 @@
+import ComponentList from "~/components/component-list.astro"
 import ComponentPreview from "~/components/component-preview.astro"
 import ComponentSource from "~/components/component-source.astro"
 import A from "~/components/docs/a.astro"
@@ -61,5 +62,6 @@ export const mdxComponents = {
   Step,
   Steps,
   ComponentPreview,
+  ComponentList,
   ComponentSource
 }

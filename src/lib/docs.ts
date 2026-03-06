@@ -7,25 +7,46 @@ export type SidebarLink = {
   href: string
 }
 
-export type SidebarGroup = {
-  title: string
-  items: SidebarLink[]
-}
-
 export type SidebarData = {
   topLevel: SidebarLink[]
-  groups: SidebarGroup[]
+  components: SidebarLink[]
 }
 
 const DOC_EXTENSION_PATTERN = /\.mdx?$/
 
 export function toRouteId(id: string) {
-  return id.replace(DOC_EXTENSION_PATTERN, "")
+  const routeId = id.replace(DOC_EXTENSION_PATTERN, "")
+
+  if (routeId === "index") {
+    return ""
+  }
+
+  if (routeId.endsWith("/index")) {
+    return routeId.slice(0, -"/index".length)
+  }
+
+  return routeId
 }
 
 export async function getDocsPages(): Promise<DocsPage[]> {
-  const pages = await getCollection("docs")
-  return pages
+  return (await getCollection("docs")).sort((a, b) => {
+    const aRouteId = toRouteId(a.id)
+    const bRouteId = toRouteId(b.id)
+
+    if (aRouteId === "") {
+      return -1
+    }
+
+    if (bRouteId === "") {
+      return 1
+    }
+
+    return aRouteId.localeCompare(bRouteId)
+  })
+}
+
+export function toDocsPath(routeId: string) {
+  return routeId ? `/docs/${routeId}` : "/docs"
 }
 
 export async function getNeighbors(id: string) {
@@ -42,38 +63,59 @@ export async function getNeighbors(id: string) {
   }
 }
 
-function toPathname(id: string) {
-  return `/docs/${toRouteId(id)}`
+export async function getComponentNeighbors(id: string) {
+  const components = (await getDocsPages()).filter((page) => page.data.component)
+  const index = components.findIndex((page) => toRouteId(page.id) === id)
+
+  if (index === -1) {
+    return { previous: null, next: null }
+  }
+
+  return {
+    previous: components[index - 1] ?? null,
+    next: components[index + 1] ?? null
+  }
+}
+
+export async function getTopLevelSections(): Promise<SidebarLink[]> {
+  const pages = await getDocsPages()
+  const roots = pages
+    .filter((page) => !toRouteId(page.id).includes("/"))
+    .map((page) => ({
+      title: page.data.title,
+      href: toDocsPath(toRouteId(page.id))
+    }))
+    .sort((a, b) => {
+      if (a.href === "/docs") {
+        return -1
+      }
+
+      if (b.href === "/docs") {
+        return 1
+      }
+
+      return a.title.localeCompare(b.title)
+    })
+
+  return roots
+}
+
+export async function getComponentLinks(): Promise<SidebarLink[]> {
+  const pages = await getDocsPages()
+  return pages
+    .filter((page) => page.data.component)
+    .map((page) => ({
+      title: page.data.title,
+      href: toDocsPath(toRouteId(page.id))
+    }))
+    .sort((a, b) => a.title.localeCompare(b.title))
 }
 
 export async function getSidebarData(): Promise<SidebarData> {
-  const pages = await getDocsPages()
-  const roots = pages.filter((page) => !toRouteId(page.id).includes("/"))
-
-  const topLevel = roots.map((page) => ({
-    title: page.data.title,
-    href: toPathname(page.id)
-  }))
-
-  const groups = roots.map((root) => {
-    const segment = toRouteId(root.id)
-    const children = pages
-      .filter((page) => toRouteId(page.id).startsWith(`${segment}/`))
-      .map((page) => ({
-        title: page.data.title,
-        href: toPathname(page.id)
-      }))
-
-    const items = [{ title: root.data.title, href: toPathname(root.id) }, ...children]
-
-    return {
-      title: root.data.title,
-      items
-    }
-  })
+  const [topLevel, components] = await Promise.all([getTopLevelSections(), getComponentLinks()])
 
   return {
     topLevel,
-    groups
+    components
   }
 }
