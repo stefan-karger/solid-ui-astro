@@ -11,7 +11,11 @@ type Props = HTMLAttributes<"div">
 const { class: className, ...props } = Astro.props
 ---
 
-<div class={cn("relative mt-6 w-full", className)} data-slot="code-tabs" {...props}>
+<div
+  class={cn("relative mt-6 flex w-full flex-col gap-2 *:data-[slot=tabs-list]:gap-6", className)}
+  data-slot="code-tabs"
+  {...props}
+>
   <slot />
 </div>
 <script

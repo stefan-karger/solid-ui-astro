@@ -9,6 +9,7 @@ import { Index } from "~/registry/__index__"
 type Props = HTMLAttributes<"div"> & {
   name: string
   styleName?: string
+  previewClassName?: string
   align?: "center" | "start" | "end"
   hideCode?: boolean
   type?: "block" | "component" | "example"
@@ -18,6 +19,7 @@ type Props = HTMLAttributes<"div"> & {
 const {
   name,
   styleName,
+  previewClassName,
   type,
   align = "center",
   hideCode = false,
@@ -64,6 +66,7 @@ const isPreviewableType = item
       )}
       <ComponentPreviewTabs
         class={className}
+        previewClassName={previewClassName}
         align={align}
         hideCode={hideCode}
         chromeLessOnMobile={chromeLessOnMobile}
@@ -72,6 +75,15 @@ const isPreviewableType = item
         <ComponentPreviewRenderer slot="component" name={name} client:only="solid-js" />
         {!hideCode && (
           <ComponentSource slot="source" name={name} collapsible={false} styleName={styleName} />
+        )}
+        {!hideCode && (
+          <ComponentSource
+            slot="source-preview"
+            name={name}
+            collapsible={false}
+            styleName={styleName}
+            maxLines={3}
+          />
         )}
       </ComponentPreviewTabs>
     </>

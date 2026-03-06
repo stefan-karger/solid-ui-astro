@@ -9,7 +9,7 @@ links:
 
 <ComponentPreview
   name="accordion-demo"
-  class="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  previewClassName="*:data-[slot=accordion]:max-w-sm h-[300px]"
   align="start"
 />
 
@@ -18,7 +18,7 @@ links:
 <CodeTabs>
 
 <TabsList>
-  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="cli">Command</TabsTrigger>
   <TabsTrigger value="manual">Manual</TabsTrigger>
 </TabsList>
 
@@ -32,7 +32,7 @@ npx shadcn@latest add accordion
 
 <TabsContent value="manual">
 
-<Steps>
+<Steps class="mb-0 pt-2">
 
 <Step>Install the following dependencies:</Step>
 
