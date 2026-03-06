@@ -54,10 +54,10 @@ const blockCodeContent =
       <slot />
     </code>
   ) : commandProps ? (
-    <CodeBlockCommand client:load {...commandProps} />
+    <CodeBlockCommand client:only="solid-js" {...commandProps} />
   ) : (
     <>
-      {code && <CopyButton client:only="solid-js" value={code} src={src} />}
+      {code && <CopyButton client:load value={code} src={src} />}
       <code class={className} set:html={blockCodeContent} {...props} />
     </>
   )
