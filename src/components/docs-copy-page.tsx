@@ -2,13 +2,14 @@ import { IconCheck, IconChevronDown, IconCopy, IconMarkdown } from "@tabler/icon
 import { createEffect, createSignal, onCleanup, Show } from "solid-js"
 
 import { Button } from "~/registry/ui/button"
-import { ButtonGroup, ButtonGroupSeparator } from "~/registry/ui/button-group"
+import { ButtonGroup } from "~/registry/ui/button-group"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger
 } from "~/registry/ui/dropdown-menu"
+import { Separator } from "~/registry/ui/separator"
 
 type DocsCopyPageProps = {
   content: string
@@ -42,30 +43,32 @@ export default function DocsCopyPage(props: DocsCopyPageProps) {
   }
 
   return (
-    <>
+    <ButtonGroup class="group/buttons relative flex rounded-lg bg-secondary *:[[data-slot=button]]:focus-visible:relative *:[[data-slot=button]]:focus-visible:z-10">
       <Button
         variant="secondary"
         size="sm"
-        class="h-8 rounded-r-none shadow-none md:h-7 md:text-[0.8rem]"
         onClick={handleCopy}
+        class="h-8 shadow-none md:h-7 md:text-[0.8rem]"
       >
         <Show when={isCopied()} fallback={<IconCopy />}>
           <IconCheck />
         </Show>
         Copy Page
       </Button>
-
-      <DropdownMenu>
+      <Separator
+        orientation="vertical"
+        class="absolute top-1 right-8 z-0 h-6! bg-foreground/5! peer-focus-visible:opacity-0 sm:right-7 sm:h-5!"
+      />
+      <DropdownMenu placement="bottom-end">
         <DropdownMenuTrigger
-          as={Button}
+          as={Button<"button">}
           variant="secondary"
           size="icon-sm"
-          aria-label="Open page actions"
-          class="hidden rounded-l-none shadow-none sm:inline-flex md:size-7 md:text-[0.8rem]"
+          class="peer -ml-0.5 size-8 shadow-none md:size-7 md:text-[0.8rem]"
         >
           <IconChevronDown />
         </DropdownMenuTrigger>
-        <DropdownMenuContent class="rounded-lg shadow-none">
+        <DropdownMenuContent class="animate-none! rounded-lg shadow-none">
           <DropdownMenuItem
             as="a"
             href={props.markdownHref}
@@ -78,6 +81,6 @@ export default function DocsCopyPage(props: DocsCopyPageProps) {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-    </>
+    </ButtonGroup>
   )
 }
