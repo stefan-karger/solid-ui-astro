@@ -1,10 +1,10 @@
 import {
-  type Component,
-  type ComponentProps,
   createSignal,
   onMount,
   Show,
-  splitProps
+  splitProps,
+  type Component,
+  type ComponentProps
 } from "solid-js"
 import { Dynamic } from "solid-js/web"
 
@@ -19,10 +19,10 @@ function loadIconLibrary(libraryName: IconLibraryName) {
   if (!iconPromiseCaches.has(libraryName)) {
     const promise =
       libraryName === "lucide"
-        ? import("~/registry/icons/__lucide__")
-        : import("~/registry/icons/__tabler__")
+        ? import("~/registry/icons/__lucide__").then((mod) => mod.default)
+        : import("~/registry/icons/__tabler__").then((mod) => mod.default)
 
-    iconPromiseCaches.set(libraryName, promise as Promise<IconLibraryModule>)
+    iconPromiseCaches.set(libraryName, promise)
   }
 
   return iconPromiseCaches.get(libraryName)!
