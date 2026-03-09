@@ -12,6 +12,7 @@ import {
   toDocsPath,
   toRouteId
 } from "~/lib/docs"
+import { readMdx } from "~/lib/transformers/mdx"
 
 export async function getStaticPaths() {
   const pages = await getCollection("docs")
@@ -29,12 +30,13 @@ export async function getStaticPaths() {
 const { page, routeId } = Astro.props
 const { Content, headings } = await render(page)
 
-const [sidebar, neighbors, componentNeighbors] = await Promise.all([
+const [sidebar, neighbors, componentNeighbors, sourceContent] = await Promise.all([
   getSidebarData(),
   getNeighbors(routeId),
   page.data.component
     ? getComponentNeighbors(routeId)
-    : Promise.resolve({ previous: null, next: null })
+    : Promise.resolve({ previous: null, next: null }),
+  readMdx(page.id)
 ])
 
 const pagePath = toDocsPath(routeId)
@@ -66,7 +68,7 @@ const componentNextHref = componentNeighbors.next
               <div class="hidden sm:block">
                 <DocsCopyPage
                   client:only="solid-js"
-                  content={page.body}
+                  content={sourceContent}
                   markdownHref={markdownHref}
                 />
               </div>

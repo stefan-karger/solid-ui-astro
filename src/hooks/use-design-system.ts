@@ -1,5 +1,6 @@
 import { createSignal, onMount, type Accessor } from "solid-js"
 
+import { DEFAULT_ICON_LIBRARY, DEFAULT_STYLE_NAME, STYLE_CLASS_PREFIX } from "~/lib/design-system"
 import { iconLibraries, type IconLibraryName } from "~/registry/icon-libraries"
 import { STYLES, type Style } from "~/registry/styles"
 
@@ -8,9 +9,6 @@ export const DARK_THEME = "dark"
 export const THEME_DARK_CLASS = "dark"
 export type ThemeName = typeof LIGHT_THEME | typeof DARK_THEME
 
-export const DEFAULT_STYLE_NAME = "nova"
-export const DEFAULT_ICON_LIBRARY = "lucide"
-export const STYLE_CLASS_PREFIX = "style-"
 export const STORAGE_KEYS = {
   style: "docs:style",
   iconLibrary: "docs:icon-library",

@@ -2,15 +2,8 @@
 import "~/styles/globals.css"
 
 import SiteHeader from "~/components/site-header.astro"
-import {
-  DARK_THEME,
-  DEFAULT_ICON_LIBRARY,
-  DEFAULT_STYLE_NAME,
-  LIGHT_THEME,
-  STORAGE_KEYS,
-  STYLE_CLASS_PREFIX,
-  THEME_DARK_CLASS
-} from "~/hooks/use-design-system"
+import { DARK_THEME, LIGHT_THEME, STORAGE_KEYS, THEME_DARK_CLASS } from "~/hooks/use-design-system"
+import { DEFAULT_ICON_LIBRARY, DEFAULT_STYLE_NAME, STYLE_CLASS_PREFIX } from "~/lib/design-system"
 import { iconLibraries } from "~/registry/icon-libraries"
 import { STYLES } from "~/registry/styles"
 

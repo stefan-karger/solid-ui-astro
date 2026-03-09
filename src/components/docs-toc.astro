@@ -17,10 +17,12 @@ const toc = items.filter((item) => item.depth >= 2 && item.depth <= 4)
   toc.length > 0 && (
     <nav
       data-toc-root
-      class="no-scrollbar sticky top-[calc(var(--header-height)+1rem)] max-h-[calc(100svh-var(--header-height)-2rem)] overflow-y-auto pb-8"
+      class="sticky top-[calc(var(--header-height)+1rem)] no-scrollbar max-h-[calc(100svh-var(--header-height)-2rem)] overflow-y-auto pb-8"
       aria-label="Table of contents"
     >
-      <p class="mb-3 text-xs font-medium tracking-wide text-muted-foreground uppercase">On This Page</p>
+      <p class="mb-3 text-xs font-medium tracking-wide text-muted-foreground uppercase">
+        On This Page
+      </p>
       <ul class="space-y-1">
         {toc.map((item) => (
           <li>

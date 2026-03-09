@@ -16,14 +16,8 @@ export const transformers = [
 
         if (raw.startsWith("npx create-")) {
           node.properties["__npm__"] = raw
-          node.properties["__yarn__"] = raw.replace(
-            "npx create-",
-            "yarn create "
-          )
-          node.properties["__pnpm__"] = raw.replace(
-            "npx create-",
-            "pnpm create "
-          )
+          node.properties["__yarn__"] = raw.replace("npx create-", "yarn create ")
+          node.properties["__pnpm__"] = raw.replace("npx create-", "pnpm create ")
           node.properties["__bun__"] = raw.replace("npx", "bunx --bun")
         }
 
@@ -51,8 +45,8 @@ export const transformers = [
           node.properties["__bun__"] = raw.replace("npm run", "bun")
         }
       }
-    },
-  },
+    }
+  }
 ] as ShikiTransformer[]
 
 export async function highlightCode(code: string, language: string = "tsx") {
@@ -60,7 +54,7 @@ export async function highlightCode(code: string, language: string = "tsx") {
     lang: language,
     themes: {
       dark: "github-dark",
-      light: "github-light",
+      light: "github-light"
     },
     transformers: [
       {
@@ -73,9 +67,9 @@ export async function highlightCode(code: string, language: string = "tsx") {
         },
         line(node) {
           node.properties["data-line"] = ""
-        },
-      },
-    ],
+        }
+      }
+    ]
   })
   return html
 }

@@ -4,11 +4,7 @@ import path from "node:path"
 import prettier, { type Options as PrettierOptions } from "prettier"
 import { Project, ScriptKind } from "ts-morph"
 
-import {
-  DEFAULT_ICON_LIBRARY,
-  DEFAULT_STYLE_NAME,
-  STYLE_CLASS_PREFIX
-} from "~/hooks/use-design-system"
+import { DEFAULT_ICON_LIBRARY, DEFAULT_STYLE_NAME, STYLE_CLASS_PREFIX } from "~/lib/design-system"
 import { transformIcons } from "~/lib/transformers/transform-icons"
 import type { CodeTransformerConfig, FormatCodeTransformer } from "~/lib/transformers/types"
 import type { IconLibraryName } from "~/registry/icon-libraries"

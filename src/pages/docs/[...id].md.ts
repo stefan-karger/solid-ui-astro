@@ -1,6 +1,7 @@
 import { getCollection, type CollectionEntry } from "astro:content"
 
 import { toRouteId } from "~/lib/docs"
+import { readMdx, transformMdx } from "~/lib/transformers/mdx"
 
 export async function getStaticPaths() {
   const pages = await getCollection("docs")
@@ -18,7 +19,10 @@ export async function getStaticPaths() {
 type DocsPage = CollectionEntry<"docs">
 
 export async function GET({ props }: { props: { page: DocsPage } }) {
-  return new Response(props.page.body, {
+  const sourceContent = await readMdx(props.page.id)
+  const content = await transformMdx(sourceContent)
+
+  return new Response(content, {
     headers: {
       "Content-Type": "text/markdown; charset=utf-8"
     }
