@@ -1,4 +1,5 @@
 ---
+import CommandMenu from "~/components/command-menu"
 import GitHubLink from "~/components/github-link.astro"
 import { Icons } from "~/components/icons"
 import MobileNav from "~/components/mobile-nav"
@@ -23,7 +24,10 @@ const sidebar = await getSidebarData()
           components={sidebar.components}
           class="flex lg:hidden"
         />
-        <a href="/" class="hidden items-center gap-2 text-sm font-semibold tracking-tight lg:inline-flex">
+        <a
+          href="/"
+          class="hidden items-center gap-2 text-sm font-semibold tracking-tight lg:inline-flex"
+        >
           <Icons.logo class="size-5" />
           <span class="sr-only">{siteConfig.name}</span>
         </a>
@@ -41,7 +45,11 @@ const sidebar = await getSidebarData()
         </nav>
       </div>
 
-      <div class="flex items-center gap-2">
+      <div class="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
+        <div class="hidden w-full flex-1 md:flex md:w-auto md:flex-none">
+          <CommandMenu client:load navItems={siteConfig.navItems} components={sidebar.components} />
+        </div>
+        <Separator orientation="vertical" class="ml-2 hidden lg:block" />
         <GitHubLink />
         <Separator orientation="vertical" />
         <ModeToggle />
