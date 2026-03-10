@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "pnpm icons:build",
+    "prebuild": "pnpm icons:build && pnpm format:icons",
     "build": "astro build",
     "preview": "astro preview",
     "test": "vitest run",
@@ -17,7 +17,8 @@
     "check": "pnpm lint && pnpm format:check",
     "check:write": "pnpm lint:fix && pnpm format",
     "registry:build": "tsx ./src/scripts/build-registry.ts",
-    "icons:build": "tsx ./src/scripts/build-icons.ts"
+    "icons:build": "tsx ./src/scripts/build-icons.ts",
+    "format:icons": "prettier --write \"src/registry/icons/**/*.ts\""
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
