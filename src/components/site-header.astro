@@ -1,9 +1,13 @@
 ---
 import GitHubLink from "~/components/github-link.astro"
 import { Icons } from "~/components/icons"
+import MobileNav from "~/components/mobile-nav"
 import ModeToggle from "~/components/mode-toggle.astro"
+import { getSidebarData } from "~/lib/docs"
 import { siteConfig } from "~/lib/site"
 import { Separator } from "~/registry/ui/separator"
+
+const sidebar = await getSidebarData()
 ---
 
 <header class="sticky top-0 z-50 w-full bg-background">
@@ -12,11 +16,18 @@ import { Separator } from "~/registry/ui/separator"
       class="container flex h-(--header-height) items-center justify-between gap-4 **:data-[slot=separator]:h-4!"
     >
       <div class="flex min-w-0 items-center gap-5">
-        <a href="/" class="inline-flex items-center gap-2 text-sm font-semibold tracking-tight">
+        <MobileNav
+          client:load
+          menuItems={siteConfig.navItems}
+          topLevel={sidebar.topLevel}
+          components={sidebar.components}
+          class="flex lg:hidden"
+        />
+        <a href="/" class="hidden items-center gap-2 text-sm font-semibold tracking-tight lg:inline-flex">
           <Icons.logo class="size-5" />
           <span class="sr-only">{siteConfig.name}</span>
         </a>
-        <nav class="flex items-center gap-1">
+        <nav class="hidden items-center gap-1 lg:flex">
           {
             siteConfig.navItems.map((item) => (
               <a
