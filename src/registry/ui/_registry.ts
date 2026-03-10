@@ -35,6 +35,18 @@ export const ui: Registry["items"] = [
     ]
   },
   {
+    name: "command",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core"],
+    registryDependencies: ["dialog", "input-group"],
+    files: [
+      {
+        path: "ui/command.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
     name: "collapsible",
     type: "registry:ui",
     dependencies: ["@kobalte/core"],
@@ -46,12 +58,47 @@ export const ui: Registry["items"] = [
     ]
   },
   {
+    name: "dialog",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/dialog.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
     name: "dropdown-menu",
     type: "registry:ui",
     dependencies: ["@kobalte/core"],
     files: [
       {
         path: "ui/dropdown-menu.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
+    name: "input",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core"],
+    files: [
+      {
+        path: "ui/input.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
+    name: "input-group",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core"],
+    registryDependencies: ["button", "input", "textarea"],
+    files: [
+      {
+        path: "ui/input-group.tsx",
         type: "registry:ui"
       }
     ]
@@ -107,6 +154,17 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "ui/tooltip.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
+    name: "textarea",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core"],
+    files: [
+      {
+        path: "ui/textarea.tsx",
         type: "registry:ui"
       }
     ]

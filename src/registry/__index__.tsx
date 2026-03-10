@@ -46,6 +46,34 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "button-group": {
+    name: "button-group",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/ui/button-group.tsx")),
+    files: [{
+      path: "registry/ui/button-group.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "command": {
+    name: "command",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: ["dialog","input-group"],
+    component: lazy(() => import("~/registry/ui/command.tsx")),
+    files: [{
+      path: "registry/ui/command.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "collapsible": {
     name: "collapsible",
     description: "",
@@ -54,6 +82,90 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/ui/collapsible.tsx")),
     files: [{
       path: "registry/ui/collapsible.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "dialog": {
+    name: "dialog",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    component: lazy(() => import("~/registry/ui/dialog.tsx")),
+    files: [{
+      path: "registry/ui/dialog.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "dropdown-menu": {
+    name: "dropdown-menu",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/ui/dropdown-menu.tsx")),
+    files: [{
+      path: "registry/ui/dropdown-menu.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "input": {
+    name: "input",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/ui/input.tsx")),
+    files: [{
+      path: "registry/ui/input.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "input-group": {
+    name: "input-group",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: ["button","input","textarea"],
+    component: lazy(() => import("~/registry/ui/input-group.tsx")),
+    files: [{
+      path: "registry/ui/input-group.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "navigation-menu": {
+    name: "navigation-menu",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/ui/navigation-menu.tsx")),
+    files: [{
+      path: "registry/ui/navigation-menu.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "popover": {
+    name: "popover",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/ui/popover.tsx")),
+    files: [{
+      path: "registry/ui/popover.tsx",
       type: "registry:ui",
       target: ""
     }],
@@ -88,6 +200,34 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "tooltip": {
+    name: "tooltip",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/ui/tooltip.tsx")),
+    files: [{
+      path: "registry/ui/tooltip.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "textarea": {
+    name: "textarea",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/ui/textarea.tsx")),
+    files: [{
+      path: "registry/ui/textarea.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "accordion-demo": {
     name: "accordion-demo",
     description: "",
@@ -96,6 +236,76 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/examples/accordion-demo.tsx")),
     files: [{
       path: "registry/examples/accordion-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "command-demo": {
+    name: "command-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["command"],
+    component: lazy(() => import("~/registry/examples/command-demo.tsx")),
+    files: [{
+      path: "registry/examples/command-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "command-basic": {
+    name: "command-basic",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["command","button"],
+    component: lazy(() => import("~/registry/examples/command-basic.tsx")),
+    files: [{
+      path: "registry/examples/command-basic.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "command-shortcuts": {
+    name: "command-shortcuts",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["command","button"],
+    component: lazy(() => import("~/registry/examples/command-shortcuts.tsx")),
+    files: [{
+      path: "registry/examples/command-shortcuts.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "command-groups": {
+    name: "command-groups",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["command","button"],
+    component: lazy(() => import("~/registry/examples/command-groups.tsx")),
+    files: [{
+      path: "registry/examples/command-groups.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "command-scrollable": {
+    name: "command-scrollable",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["command","button"],
+    component: lazy(() => import("~/registry/examples/command-scrollable.tsx")),
+    files: [{
+      path: "registry/examples/command-scrollable.tsx",
       type: "registry:example",
       target: ""
     }],

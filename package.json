@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "pnpm icons:build && pnpm format:icons",
+    "prebuild": "pnpm icons:build && pnpm format:icons && pnpm registry:build",
     "build": "astro build",
     "preview": "astro preview",
     "test": "vitest run",
