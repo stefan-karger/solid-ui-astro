@@ -1,0 +1,1509 @@
+[
+  {
+    "primitive": "navigation-menu",
+    "complexityScore": 1,
+    "source": "zaidan",
+    "tasks": [
+      {
+        "id": "primitive.navigation-menu",
+        "type": "primitive",
+        "dependsOn": [],
+        "finished": false
+      },
+      {
+        "id": "docs.navigation-menu",
+        "type": "docs",
+        "dependsOn": ["primitive.navigation-menu"],
+        "finished": false
+      },
+      {
+        "id": "examples.navigation-menu",
+        "type": "examples",
+        "dependsOn": ["docs.navigation-menu"],
+        "finished": false,
+        "checklist": [{ "name": "navigation-menu-demo", "finished": false }]
+      }
+    ]
+  },
+  {
+    "primitive": "hover-card",
+    "complexityScore": 2,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.hover-card", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.hover-card",
+        "type": "docs",
+        "dependsOn": ["primitive.hover-card"],
+        "finished": false
+      },
+      {
+        "id": "examples.hover-card",
+        "type": "examples",
+        "dependsOn": ["docs.hover-card"],
+        "finished": false,
+        "checklist": [
+          { "name": "hover-card-demo", "finished": false },
+          { "name": "hover-card-sides", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "label",
+    "complexityScore": 2,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.label", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "docs.label", "type": "docs", "dependsOn": ["primitive.label"], "finished": false },
+      {
+        "id": "examples.label",
+        "type": "examples",
+        "dependsOn": ["docs.label"],
+        "finished": false,
+        "checklist": [
+          { "name": "label-demo", "finished": false },
+          { "name": "field-demo", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "aspect-ratio",
+    "complexityScore": 3,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.aspect-ratio", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.aspect-ratio",
+        "type": "docs",
+        "dependsOn": ["primitive.aspect-ratio"],
+        "finished": false
+      },
+      {
+        "id": "examples.aspect-ratio",
+        "type": "examples",
+        "dependsOn": ["docs.aspect-ratio"],
+        "finished": false,
+        "checklist": [
+          { "name": "aspect-ratio-demo", "finished": false },
+          { "name": "aspect-ratio-square", "finished": false },
+          { "name": "aspect-ratio-portrait", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "card",
+    "complexityScore": 3,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.card", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "docs.card", "type": "docs", "dependsOn": ["primitive.card"], "finished": false },
+      {
+        "id": "examples.card",
+        "type": "examples",
+        "dependsOn": ["docs.card"],
+        "finished": false,
+        "checklist": [
+          { "name": "card-demo", "finished": false },
+          { "name": "card-small", "finished": false },
+          { "name": "card-image", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "direction",
+    "complexityScore": 3,
+    "source": "shadcn-only",
+    "tasks": [
+      { "id": "primitive.direction", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.direction",
+        "type": "docs",
+        "dependsOn": ["primitive.direction"],
+        "finished": false
+      },
+      {
+        "id": "examples.direction",
+        "type": "examples",
+        "dependsOn": ["docs.direction"],
+        "finished": false,
+        "checklist": []
+      }
+    ]
+  },
+  {
+    "primitive": "progress",
+    "complexityScore": 3,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.progress", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.progress",
+        "type": "docs",
+        "dependsOn": ["primitive.progress"],
+        "finished": false
+      },
+      {
+        "id": "examples.progress",
+        "type": "examples",
+        "dependsOn": ["docs.progress"],
+        "finished": false,
+        "checklist": [
+          { "name": "progress-demo", "finished": false },
+          { "name": "progress-label", "finished": false },
+          { "name": "progress-controlled", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "resizable",
+    "complexityScore": 3,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.resizable", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.resizable",
+        "type": "docs",
+        "dependsOn": ["primitive.resizable"],
+        "finished": false
+      },
+      {
+        "id": "examples.resizable",
+        "type": "examples",
+        "dependsOn": ["docs.resizable"],
+        "finished": false,
+        "checklist": [
+          { "name": "resizable-demo", "finished": false },
+          { "name": "resizable-vertical", "finished": false },
+          { "name": "resizable-handle", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "table",
+    "complexityScore": 3,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.table", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "docs.table", "type": "docs", "dependsOn": ["primitive.table"], "finished": false },
+      {
+        "id": "examples.table",
+        "type": "examples",
+        "dependsOn": ["docs.table"],
+        "finished": false,
+        "checklist": [
+          { "name": "table-demo", "finished": false },
+          { "name": "table-footer", "finished": false },
+          { "name": "table-actions", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "collapsible",
+    "complexityScore": 4,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.collapsible", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.collapsible",
+        "type": "docs",
+        "dependsOn": ["primitive.collapsible"],
+        "finished": false
+      },
+      {
+        "id": "examples.collapsible",
+        "type": "examples",
+        "dependsOn": ["docs.collapsible"],
+        "finished": false,
+        "checklist": [
+          { "name": "collapsible-demo", "finished": false },
+          { "name": "collapsible-basic", "finished": false },
+          { "name": "collapsible-settings", "finished": false },
+          { "name": "collapsible-file-tree", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "drawer",
+    "complexityScore": 4,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.drawer", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.drawer",
+        "type": "docs",
+        "dependsOn": ["primitive.drawer"],
+        "finished": false
+      },
+      {
+        "id": "examples.drawer",
+        "type": "examples",
+        "dependsOn": ["docs.drawer"],
+        "finished": false,
+        "checklist": [
+          { "name": "drawer-demo", "finished": false },
+          { "name": "drawer-scrollable-content", "finished": false },
+          { "name": "drawer-sides", "finished": false },
+          { "name": "drawer-dialog", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "native-select",
+    "complexityScore": 4,
+    "source": "zaidan",
+    "tasks": [
+      {
+        "id": "primitive.native-select",
+        "type": "primitive",
+        "dependsOn": [],
+        "finished": false
+      },
+      {
+        "id": "docs.native-select",
+        "type": "docs",
+        "dependsOn": ["primitive.native-select"],
+        "finished": false
+      },
+      {
+        "id": "examples.native-select",
+        "type": "examples",
+        "dependsOn": ["docs.native-select"],
+        "finished": false,
+        "checklist": [
+          { "name": "native-select-demo", "finished": false },
+          { "name": "native-select-groups", "finished": false },
+          { "name": "native-select-disabled", "finished": false },
+          { "name": "native-select-invalid", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "popover",
+    "complexityScore": 4,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.popover", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.popover",
+        "type": "docs",
+        "dependsOn": ["primitive.popover"],
+        "finished": false
+      },
+      {
+        "id": "examples.popover",
+        "type": "examples",
+        "dependsOn": ["docs.popover"],
+        "finished": false,
+        "checklist": [
+          { "name": "popover-demo", "finished": false },
+          { "name": "popover-basic", "finished": false },
+          { "name": "popover-alignments", "finished": false },
+          { "name": "popover-form", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "separator",
+    "complexityScore": 4,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.separator", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.separator",
+        "type": "docs",
+        "dependsOn": ["primitive.separator"],
+        "finished": false
+      },
+      {
+        "id": "examples.separator",
+        "type": "examples",
+        "dependsOn": ["docs.separator"],
+        "finished": false,
+        "checklist": [
+          { "name": "separator-demo", "finished": false },
+          { "name": "separator-vertical", "finished": false },
+          { "name": "separator-menu", "finished": false },
+          { "name": "separator-list", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "tooltip",
+    "complexityScore": 4,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.tooltip", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.tooltip",
+        "type": "docs",
+        "dependsOn": ["primitive.tooltip"],
+        "finished": false
+      },
+      {
+        "id": "examples.tooltip",
+        "type": "examples",
+        "dependsOn": ["docs.tooltip"],
+        "finished": false,
+        "checklist": [
+          { "name": "tooltip-demo", "finished": false },
+          { "name": "tooltip-sides", "finished": false },
+          { "name": "tooltip-keyboard", "finished": false },
+          { "name": "tooltip-disabled", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "alert",
+    "complexityScore": 5,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.alert", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "docs.alert", "type": "docs", "dependsOn": ["primitive.alert"], "finished": false },
+      {
+        "id": "examples.alert",
+        "type": "examples",
+        "dependsOn": ["docs.alert"],
+        "finished": false,
+        "checklist": [
+          { "name": "alert-demo", "finished": false },
+          { "name": "alert-basic", "finished": false },
+          { "name": "alert-destructive", "finished": false },
+          { "name": "alert-action", "finished": false },
+          { "name": "alert-colors", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "kbd",
+    "complexityScore": 5,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.kbd", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "docs.kbd", "type": "docs", "dependsOn": ["primitive.kbd"], "finished": false },
+      {
+        "id": "examples.kbd",
+        "type": "examples",
+        "dependsOn": ["docs.kbd"],
+        "finished": false,
+        "checklist": [
+          { "name": "kbd-demo", "finished": false },
+          { "name": "kbd-group", "finished": false },
+          { "name": "kbd-button", "finished": false },
+          { "name": "kbd-tooltip", "finished": false },
+          { "name": "kbd-input-group", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "menubar",
+    "complexityScore": 5,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.menubar", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.menubar",
+        "type": "docs",
+        "dependsOn": ["primitive.menubar"],
+        "finished": false
+      },
+      {
+        "id": "examples.menubar",
+        "type": "examples",
+        "dependsOn": ["docs.menubar"],
+        "finished": false,
+        "checklist": [
+          { "name": "menubar-demo", "finished": false },
+          { "name": "menubar-checkbox", "finished": false },
+          { "name": "menubar-radio", "finished": false },
+          { "name": "menubar-submenu", "finished": false },
+          { "name": "menubar-icons", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "pagination",
+    "complexityScore": 5,
+    "source": "zaidan",
+    "tasks": [
+      {
+        "id": "primitive.pagination",
+        "type": "primitive",
+        "dependsOn": ["primitive.button"],
+        "finished": false
+      },
+      {
+        "id": "docs.pagination",
+        "type": "docs",
+        "dependsOn": ["primitive.pagination"],
+        "finished": false
+      },
+      {
+        "id": "examples.pagination",
+        "type": "examples",
+        "dependsOn": ["docs.pagination"],
+        "finished": false,
+        "checklist": [
+          { "name": "pagination-demo", "finished": false },
+          { "name": "pagination-simple", "finished": false },
+          { "name": "pagination-icons-only", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "scroll-area",
+    "complexityScore": 5,
+    "source": "shadcn-only",
+    "tasks": [
+      { "id": "primitive.scroll-area", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.scroll-area",
+        "type": "docs",
+        "dependsOn": ["primitive.scroll-area"],
+        "finished": false
+      },
+      {
+        "id": "examples.scroll-area",
+        "type": "examples",
+        "dependsOn": ["docs.scroll-area"],
+        "finished": false,
+        "checklist": [
+          { "name": "scroll-area-demo", "finished": false },
+          { "name": "scroll-area-horizontal-demo", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "sheet",
+    "complexityScore": 5,
+    "source": "zaidan",
+    "tasks": [
+      {
+        "id": "primitive.sheet",
+        "type": "primitive",
+        "dependsOn": ["primitive.button"],
+        "finished": false
+      },
+      { "id": "docs.sheet", "type": "docs", "dependsOn": ["primitive.sheet"], "finished": false },
+      {
+        "id": "examples.sheet",
+        "type": "examples",
+        "dependsOn": ["docs.sheet"],
+        "finished": false,
+        "checklist": [
+          { "name": "sheet-demo", "finished": false },
+          { "name": "sheet-side", "finished": false },
+          { "name": "sheet-no-close-button", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "tabs",
+    "complexityScore": 5,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.tabs", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "docs.tabs", "type": "docs", "dependsOn": ["primitive.tabs"], "finished": false },
+      {
+        "id": "examples.tabs",
+        "type": "examples",
+        "dependsOn": ["docs.tabs"],
+        "finished": false,
+        "checklist": [
+          { "name": "tabs-demo", "finished": false },
+          { "name": "tabs-line", "finished": false },
+          { "name": "tabs-vertical", "finished": false },
+          { "name": "tabs-disabled", "finished": false },
+          { "name": "tabs-icons", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "textarea",
+    "complexityScore": 5,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.textarea", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.textarea",
+        "type": "docs",
+        "dependsOn": ["primitive.textarea"],
+        "finished": false
+      },
+      {
+        "id": "examples.textarea",
+        "type": "examples",
+        "dependsOn": ["docs.textarea"],
+        "finished": false,
+        "checklist": [
+          { "name": "textarea-demo", "finished": false },
+          { "name": "textarea-field", "finished": false },
+          { "name": "textarea-disabled", "finished": false },
+          { "name": "textarea-invalid", "finished": false },
+          { "name": "textarea-button", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "toggle",
+    "complexityScore": 5,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.toggle", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.toggle",
+        "type": "docs",
+        "dependsOn": ["primitive.toggle"],
+        "finished": false
+      },
+      {
+        "id": "examples.toggle",
+        "type": "examples",
+        "dependsOn": ["docs.toggle"],
+        "finished": false,
+        "checklist": [
+          { "name": "toggle-demo", "finished": false },
+          { "name": "toggle-outline", "finished": false },
+          { "name": "toggle-text", "finished": false },
+          { "name": "toggle-sizes", "finished": false },
+          { "name": "toggle-disabled", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "accordion",
+    "complexityScore": 6,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.accordion", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.accordion",
+        "type": "docs",
+        "dependsOn": ["primitive.accordion"],
+        "finished": false
+      },
+      {
+        "id": "examples.accordion",
+        "type": "examples",
+        "dependsOn": ["docs.accordion"],
+        "finished": false,
+        "checklist": [
+          { "name": "accordion-demo", "finished": false },
+          { "name": "accordion-basic", "finished": false },
+          { "name": "accordion-multiple", "finished": false },
+          { "name": "accordion-disabled", "finished": false },
+          { "name": "accordion-borders", "finished": false },
+          { "name": "accordion-card", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "badge",
+    "complexityScore": 6,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.badge", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "docs.badge", "type": "docs", "dependsOn": ["primitive.badge"], "finished": false },
+      {
+        "id": "examples.badge",
+        "type": "examples",
+        "dependsOn": ["docs.badge"],
+        "finished": false,
+        "checklist": [
+          { "name": "badge-demo", "finished": false },
+          { "name": "badge-variants", "finished": false },
+          { "name": "badge-icon", "finished": false },
+          { "name": "badge-spinner", "finished": false },
+          { "name": "badge-link", "finished": false },
+          { "name": "badge-colors", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "breadcrumb",
+    "complexityScore": 6,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.breadcrumb", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.breadcrumb",
+        "type": "docs",
+        "dependsOn": ["primitive.breadcrumb"],
+        "finished": false
+      },
+      {
+        "id": "examples.breadcrumb",
+        "type": "examples",
+        "dependsOn": ["docs.breadcrumb"],
+        "finished": false,
+        "checklist": [
+          { "name": "breadcrumb-demo", "finished": false },
+          { "name": "breadcrumb-basic", "finished": false },
+          { "name": "breadcrumb-separator", "finished": false },
+          { "name": "breadcrumb-dropdown", "finished": false },
+          { "name": "breadcrumb-ellipsis", "finished": false },
+          { "name": "breadcrumb-link", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "empty",
+    "complexityScore": 6,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.empty", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "docs.empty", "type": "docs", "dependsOn": ["primitive.empty"], "finished": false },
+      {
+        "id": "examples.empty",
+        "type": "examples",
+        "dependsOn": ["docs.empty"],
+        "finished": false,
+        "checklist": [
+          { "name": "empty-demo", "finished": false },
+          { "name": "empty-outline", "finished": false },
+          { "name": "empty-background", "finished": false },
+          { "name": "empty-avatar", "finished": false },
+          { "name": "empty-avatar-group", "finished": false },
+          { "name": "empty-input-group", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "radio-group",
+    "complexityScore": 6,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.radio-group", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.radio-group",
+        "type": "docs",
+        "dependsOn": ["primitive.radio-group"],
+        "finished": false
+      },
+      {
+        "id": "examples.radio-group",
+        "type": "examples",
+        "dependsOn": ["docs.radio-group"],
+        "finished": false,
+        "checklist": [
+          { "name": "radio-group-demo", "finished": false },
+          { "name": "radio-group-description", "finished": false },
+          { "name": "radio-group-choice-card", "finished": false },
+          { "name": "radio-group-fieldset", "finished": false },
+          { "name": "radio-group-disabled", "finished": false },
+          { "name": "radio-group-invalid", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "select",
+    "complexityScore": 6,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.select", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.select",
+        "type": "docs",
+        "dependsOn": ["primitive.select"],
+        "finished": false
+      },
+      {
+        "id": "examples.select",
+        "type": "examples",
+        "dependsOn": ["docs.select"],
+        "finished": false,
+        "checklist": [
+          { "name": "select-demo", "finished": false },
+          { "name": "select-align-item", "finished": false },
+          { "name": "select-groups", "finished": false },
+          { "name": "select-scrollable", "finished": false },
+          { "name": "select-disabled", "finished": false },
+          { "name": "select-invalid", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "skeleton",
+    "complexityScore": 6,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.skeleton", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.skeleton",
+        "type": "docs",
+        "dependsOn": ["primitive.skeleton"],
+        "finished": false
+      },
+      {
+        "id": "examples.skeleton",
+        "type": "examples",
+        "dependsOn": ["docs.skeleton"],
+        "finished": false,
+        "checklist": [
+          { "name": "skeleton-demo", "finished": false },
+          { "name": "skeleton-avatar", "finished": false },
+          { "name": "skeleton-card", "finished": false },
+          { "name": "skeleton-text", "finished": false },
+          { "name": "skeleton-form", "finished": false },
+          { "name": "skeleton-table", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "slider",
+    "complexityScore": 6,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.slider", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.slider",
+        "type": "docs",
+        "dependsOn": ["primitive.slider"],
+        "finished": false
+      },
+      {
+        "id": "examples.slider",
+        "type": "examples",
+        "dependsOn": ["docs.slider"],
+        "finished": false,
+        "checklist": [
+          { "name": "slider-demo", "finished": false },
+          { "name": "slider-range", "finished": false },
+          { "name": "slider-multiple", "finished": false },
+          { "name": "slider-vertical", "finished": false },
+          { "name": "slider-controlled", "finished": false },
+          { "name": "slider-disabled", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "switch",
+    "complexityScore": 6,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.switch", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.switch",
+        "type": "docs",
+        "dependsOn": ["primitive.switch"],
+        "finished": false
+      },
+      {
+        "id": "examples.switch",
+        "type": "examples",
+        "dependsOn": ["docs.switch"],
+        "finished": false,
+        "checklist": [
+          { "name": "switch-demo", "finished": false },
+          { "name": "switch-description", "finished": false },
+          { "name": "switch-choice-card", "finished": false },
+          { "name": "switch-disabled", "finished": false },
+          { "name": "switch-invalid", "finished": false },
+          { "name": "switch-sizes", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "checkbox",
+    "complexityScore": 7,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.checkbox", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.checkbox",
+        "type": "docs",
+        "dependsOn": ["primitive.checkbox"],
+        "finished": false
+      },
+      {
+        "id": "examples.checkbox",
+        "type": "examples",
+        "dependsOn": ["docs.checkbox"],
+        "finished": false,
+        "checklist": [
+          { "name": "checkbox-demo", "finished": false },
+          { "name": "checkbox-invalid", "finished": false },
+          { "name": "checkbox-basic", "finished": false },
+          { "name": "checkbox-description", "finished": false },
+          { "name": "checkbox-disabled", "finished": false },
+          { "name": "checkbox-group", "finished": false },
+          { "name": "checkbox-table", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "dialog",
+    "complexityScore": 7,
+    "source": "zaidan",
+    "tasks": [
+      {
+        "id": "primitive.dialog",
+        "type": "primitive",
+        "dependsOn": ["primitive.button"],
+        "finished": false
+      },
+      {
+        "id": "docs.dialog",
+        "type": "docs",
+        "dependsOn": ["primitive.dialog"],
+        "finished": false
+      },
+      {
+        "id": "examples.dialog",
+        "type": "examples",
+        "dependsOn": ["docs.dialog"],
+        "finished": false,
+        "checklist": [
+          { "name": "dialog-demo", "finished": false },
+          { "name": "dialog-close-button", "finished": false },
+          { "name": "dialog-no-close-button", "finished": false },
+          { "name": "dialog-sticky-footer", "finished": false },
+          { "name": "dialog-scrollable-content", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "spinner",
+    "complexityScore": 7,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.spinner", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.spinner",
+        "type": "docs",
+        "dependsOn": ["primitive.spinner"],
+        "finished": false
+      },
+      {
+        "id": "examples.spinner",
+        "type": "examples",
+        "dependsOn": ["docs.spinner"],
+        "finished": false,
+        "checklist": [
+          { "name": "spinner-demo", "finished": false },
+          { "name": "spinner-custom", "finished": false },
+          { "name": "spinner-size", "finished": false },
+          { "name": "spinner-button", "finished": false },
+          { "name": "spinner-badge", "finished": false },
+          { "name": "spinner-input-group", "finished": false },
+          { "name": "spinner-empty", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "alert-dialog",
+    "complexityScore": 8,
+    "source": "zaidan",
+    "tasks": [
+      {
+        "id": "primitive.alert-dialog",
+        "type": "primitive",
+        "dependsOn": ["primitive.button"],
+        "finished": false
+      },
+      {
+        "id": "docs.alert-dialog",
+        "type": "docs",
+        "dependsOn": ["primitive.alert-dialog"],
+        "finished": false
+      },
+      {
+        "id": "examples.alert-dialog",
+        "type": "examples",
+        "dependsOn": ["docs.alert-dialog"],
+        "finished": false,
+        "checklist": [
+          { "name": "alert-dialog-demo", "finished": false },
+          { "name": "alert-dialog-basic", "finished": false },
+          { "name": "alert-dialog-small", "finished": false },
+          { "name": "alert-dialog-media", "finished": false },
+          { "name": "alert-dialog-small-media", "finished": false },
+          { "name": "alert-dialog-destructive", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "carousel",
+    "complexityScore": 8,
+    "source": "zaidan",
+    "tasks": [
+      {
+        "id": "primitive.carousel",
+        "type": "primitive",
+        "dependsOn": ["primitive.button"],
+        "finished": false
+      },
+      {
+        "id": "docs.carousel",
+        "type": "docs",
+        "dependsOn": ["primitive.carousel"],
+        "finished": false
+      },
+      {
+        "id": "examples.carousel",
+        "type": "examples",
+        "dependsOn": ["docs.carousel"],
+        "finished": false,
+        "checklist": [
+          { "name": "carousel-demo", "finished": false },
+          { "name": "carousel-size", "finished": false },
+          { "name": "carousel-spacing", "finished": false },
+          { "name": "carousel-orientation", "finished": false },
+          { "name": "carousel-api", "finished": false },
+          { "name": "carousel-plugin", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "avatar",
+    "complexityScore": 9,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.avatar", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.avatar",
+        "type": "docs",
+        "dependsOn": ["primitive.avatar"],
+        "finished": false
+      },
+      {
+        "id": "examples.avatar",
+        "type": "examples",
+        "dependsOn": ["docs.avatar"],
+        "finished": false,
+        "checklist": [
+          { "name": "avatar-demo", "finished": false },
+          { "name": "avatar-basic", "finished": false },
+          { "name": "avatar-badge", "finished": false },
+          { "name": "avatar-badge-icon", "finished": false },
+          { "name": "avatar-group", "finished": false },
+          { "name": "avatar-group-count", "finished": false },
+          { "name": "avatar-group-count-icon", "finished": false },
+          { "name": "avatar-size", "finished": false },
+          { "name": "avatar-dropdown", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "command",
+    "complexityScore": 9,
+    "source": "zaidan",
+    "tasks": [
+      {
+        "id": "primitive.command",
+        "type": "primitive",
+        "dependsOn": ["primitive.dialog", "primitive.input-group"],
+        "finished": false
+      },
+      {
+        "id": "docs.command",
+        "type": "docs",
+        "dependsOn": ["primitive.command"],
+        "finished": false
+      },
+      {
+        "id": "examples.command",
+        "type": "examples",
+        "dependsOn": ["docs.command"],
+        "finished": false,
+        "checklist": [
+          { "name": "command-demo", "finished": false },
+          { "name": "command-basic", "finished": false },
+          { "name": "command-shortcuts", "finished": false },
+          { "name": "command-groups", "finished": false },
+          { "name": "command-scrollable", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "context-menu",
+    "complexityScore": 9,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.context-menu", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.context-menu",
+        "type": "docs",
+        "dependsOn": ["primitive.context-menu"],
+        "finished": false
+      },
+      {
+        "id": "examples.context-menu",
+        "type": "examples",
+        "dependsOn": ["docs.context-menu"],
+        "finished": false,
+        "checklist": [
+          { "name": "context-menu-demo", "finished": false },
+          { "name": "context-menu-basic", "finished": false },
+          { "name": "context-menu-submenu", "finished": false },
+          { "name": "context-menu-shortcuts", "finished": false },
+          { "name": "context-menu-groups", "finished": false },
+          { "name": "context-menu-icons", "finished": false },
+          { "name": "context-menu-checkboxes", "finished": false },
+          { "name": "context-menu-radio", "finished": false },
+          { "name": "context-menu-destructive", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "input-otp",
+    "complexityScore": 9,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.input-otp", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.input-otp",
+        "type": "docs",
+        "dependsOn": ["primitive.input-otp"],
+        "finished": false
+      },
+      {
+        "id": "examples.input-otp",
+        "type": "examples",
+        "dependsOn": ["docs.input-otp"],
+        "finished": false,
+        "checklist": [
+          { "name": "input-otp-demo", "finished": false },
+          { "name": "input-otp-pattern", "finished": false },
+          { "name": "input-otp-separator", "finished": false },
+          { "name": "input-otp-disabled", "finished": false },
+          { "name": "input-otp-controlled", "finished": false },
+          { "name": "input-otp-invalid", "finished": false },
+          { "name": "input-otp-four-digits", "finished": false },
+          { "name": "input-otp-alphanumeric", "finished": false },
+          { "name": "input-otp-form", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "toggle-group",
+    "complexityScore": 9,
+    "source": "zaidan",
+    "tasks": [
+      {
+        "id": "primitive.toggle-group",
+        "type": "primitive",
+        "dependsOn": ["primitive.toggle"],
+        "finished": false
+      },
+      {
+        "id": "docs.toggle-group",
+        "type": "docs",
+        "dependsOn": ["primitive.toggle-group"],
+        "finished": false
+      },
+      {
+        "id": "examples.toggle-group",
+        "type": "examples",
+        "dependsOn": ["docs.toggle-group"],
+        "finished": false,
+        "checklist": [
+          { "name": "toggle-group-demo", "finished": false },
+          { "name": "toggle-group-outline", "finished": false },
+          { "name": "toggle-group-sizes", "finished": false },
+          { "name": "toggle-group-spacing", "finished": false },
+          { "name": "toggle-group-vertical", "finished": false },
+          { "name": "toggle-group-disabled", "finished": false },
+          { "name": "toggle-group-font-weight-selector", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "dropdown-menu",
+    "complexityScore": 12,
+    "source": "zaidan",
+    "tasks": [
+      {
+        "id": "primitive.dropdown-menu",
+        "type": "primitive",
+        "dependsOn": [],
+        "finished": false
+      },
+      {
+        "id": "docs.dropdown-menu",
+        "type": "docs",
+        "dependsOn": ["primitive.dropdown-menu"],
+        "finished": false
+      },
+      {
+        "id": "examples.dropdown-menu",
+        "type": "examples",
+        "dependsOn": ["docs.dropdown-menu"],
+        "finished": false,
+        "checklist": [
+          { "name": "dropdown-menu-demo", "finished": false },
+          { "name": "dropdown-menu-basic", "finished": false },
+          { "name": "dropdown-menu-submenu", "finished": false },
+          { "name": "dropdown-menu-shortcuts", "finished": false },
+          { "name": "dropdown-menu-icons", "finished": false },
+          { "name": "dropdown-menu-checkboxes", "finished": false },
+          { "name": "dropdown-menu-checkboxes-icons", "finished": false },
+          { "name": "dropdown-menu-radio-group", "finished": false },
+          { "name": "dropdown-menu-radio-icons", "finished": false },
+          { "name": "dropdown-menu-destructive", "finished": false },
+          { "name": "dropdown-menu-avatar", "finished": false },
+          { "name": "dropdown-menu-complex", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "item",
+    "complexityScore": 12,
+    "source": "zaidan",
+    "tasks": [
+      {
+        "id": "primitive.item",
+        "type": "primitive",
+        "dependsOn": ["primitive.separator"],
+        "finished": false
+      },
+      { "id": "docs.item", "type": "docs", "dependsOn": ["primitive.item"], "finished": false },
+      {
+        "id": "examples.item",
+        "type": "examples",
+        "dependsOn": ["docs.item"],
+        "finished": false,
+        "checklist": [
+          { "name": "item-demo", "finished": false },
+          { "name": "item-variant", "finished": false },
+          { "name": "item-size", "finished": false },
+          { "name": "item-icon", "finished": false },
+          { "name": "item-avatar", "finished": false },
+          { "name": "item-image", "finished": false },
+          { "name": "item-group", "finished": false },
+          { "name": "item-header", "finished": false },
+          { "name": "item-link", "finished": false },
+          { "name": "item-dropdown", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "button-group",
+    "complexityScore": 13,
+    "source": "zaidan",
+    "tasks": [
+      {
+        "id": "primitive.button-group",
+        "type": "primitive",
+        "dependsOn": ["primitive.separator"],
+        "finished": false
+      },
+      {
+        "id": "docs.button-group",
+        "type": "docs",
+        "dependsOn": ["primitive.button-group"],
+        "finished": false
+      },
+      {
+        "id": "examples.button-group",
+        "type": "examples",
+        "dependsOn": ["docs.button-group"],
+        "finished": false,
+        "checklist": [
+          { "name": "button-group-demo", "finished": false },
+          { "name": "button-group-orientation", "finished": false },
+          { "name": "button-group-size", "finished": false },
+          { "name": "button-group-nested", "finished": false },
+          { "name": "button-group-separator", "finished": false },
+          { "name": "button-group-split", "finished": false },
+          { "name": "button-group-input", "finished": false },
+          { "name": "button-group-input-group", "finished": false },
+          { "name": "button-group-dropdown", "finished": false },
+          { "name": "button-group-select", "finished": false },
+          { "name": "button-group-popover", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "sidebar",
+    "complexityScore": 13,
+    "source": "zaidan",
+    "tasks": [
+      {
+        "id": "primitive.sidebar",
+        "type": "primitive",
+        "dependsOn": [
+          "primitive.button",
+          "primitive.input",
+          "primitive.separator",
+          "primitive.sheet",
+          "primitive.skeleton",
+          "primitive.tooltip"
+        ],
+        "finished": false
+      },
+      {
+        "id": "docs.sidebar",
+        "type": "docs",
+        "dependsOn": ["primitive.sidebar"],
+        "finished": false
+      },
+      {
+        "id": "examples.sidebar",
+        "type": "examples",
+        "dependsOn": ["docs.sidebar"],
+        "finished": false,
+        "checklist": [{ "name": "sidebar-demo", "finished": false }]
+      }
+    ]
+  },
+  {
+    "primitive": "button",
+    "complexityScore": 14,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.button", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "docs.button",
+        "type": "docs",
+        "dependsOn": ["primitive.button"],
+        "finished": false
+      },
+      {
+        "id": "examples.button",
+        "type": "examples",
+        "dependsOn": ["docs.button"],
+        "finished": false,
+        "checklist": [
+          { "name": "button-demo", "finished": false },
+          { "name": "button-size", "finished": false },
+          { "name": "button-default", "finished": false },
+          { "name": "button-outline", "finished": false },
+          { "name": "button-secondary", "finished": false },
+          { "name": "button-ghost", "finished": false },
+          { "name": "button-destructive", "finished": false },
+          { "name": "button-link", "finished": false },
+          { "name": "button-icon", "finished": false },
+          { "name": "button-with-icon", "finished": false },
+          { "name": "button-rounded", "finished": false },
+          { "name": "button-spinner", "finished": false },
+          { "name": "button-group-demo", "finished": false },
+          { "name": "button-aschild", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "calendar",
+    "complexityScore": 14,
+    "source": "zaidan",
+    "tasks": [
+      {
+        "id": "primitive.calendar",
+        "type": "primitive",
+        "dependsOn": ["primitive.button", "primitive.select"],
+        "finished": false
+      },
+      {
+        "id": "docs.calendar",
+        "type": "docs",
+        "dependsOn": ["primitive.calendar"],
+        "finished": false
+      },
+      {
+        "id": "examples.calendar",
+        "type": "examples",
+        "dependsOn": ["docs.calendar"],
+        "finished": false,
+        "checklist": [
+          { "name": "calendar-demo", "finished": false },
+          { "name": "calendar-hijri", "finished": false },
+          { "name": "calendar-basic", "finished": false },
+          { "name": "calendar-range", "finished": false },
+          { "name": "calendar-caption", "finished": false },
+          { "name": "calendar-presets", "finished": false },
+          { "name": "calendar-time", "finished": false },
+          { "name": "calendar-booked-dates", "finished": false },
+          { "name": "calendar-custom-days", "finished": false },
+          { "name": "calendar-week-numbers", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "input",
+    "complexityScore": 14,
+    "source": "zaidan",
+    "tasks": [
+      { "id": "primitive.input", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "docs.input", "type": "docs", "dependsOn": ["primitive.input"], "finished": false },
+      {
+        "id": "examples.input",
+        "type": "examples",
+        "dependsOn": ["docs.input"],
+        "finished": false,
+        "checklist": [
+          { "name": "input-demo", "finished": false },
+          { "name": "input-basic", "finished": false },
+          { "name": "input-field", "finished": false },
+          { "name": "input-fieldgroup", "finished": false },
+          { "name": "input-disabled", "finished": false },
+          { "name": "input-invalid", "finished": false },
+          { "name": "input-file", "finished": false },
+          { "name": "input-inline", "finished": false },
+          { "name": "input-grid", "finished": false },
+          { "name": "input-required", "finished": false },
+          { "name": "input-badge", "finished": false },
+          { "name": "input-input-group", "finished": false },
+          { "name": "input-button-group", "finished": false },
+          { "name": "input-form", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "combobox",
+    "complexityScore": 15,
+    "source": "zaidan",
+    "tasks": [
+      {
+        "id": "primitive.combobox",
+        "type": "primitive",
+        "dependsOn": ["primitive.button", "primitive.input-group"],
+        "finished": false
+      },
+      {
+        "id": "docs.combobox",
+        "type": "docs",
+        "dependsOn": ["primitive.combobox"],
+        "finished": false
+      },
+      {
+        "id": "examples.combobox",
+        "type": "examples",
+        "dependsOn": ["docs.combobox"],
+        "finished": false,
+        "checklist": [
+          { "name": "combobox-demo", "finished": false },
+          { "name": "combobox-basic", "finished": false },
+          { "name": "combobox-multiple", "finished": false },
+          { "name": "combobox-clear", "finished": false },
+          { "name": "combobox-groups", "finished": false },
+          { "name": "combobox-custom", "finished": false },
+          { "name": "combobox-invalid", "finished": false },
+          { "name": "combobox-disabled", "finished": false },
+          { "name": "combobox-auto-highlight", "finished": false },
+          { "name": "combobox-popup", "finished": false },
+          { "name": "combobox-input-group", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "field",
+    "complexityScore": 16,
+    "source": "zaidan",
+    "tasks": [
+      {
+        "id": "primitive.field",
+        "type": "primitive",
+        "dependsOn": ["primitive.label", "primitive.separator"],
+        "finished": false
+      },
+      { "id": "docs.field", "type": "docs", "dependsOn": ["primitive.field"], "finished": false },
+      {
+        "id": "examples.field",
+        "type": "examples",
+        "dependsOn": ["docs.field"],
+        "finished": false,
+        "checklist": [
+          { "name": "field-demo", "finished": false },
+          { "name": "field-input", "finished": false },
+          { "name": "field-textarea", "finished": false },
+          { "name": "field-select", "finished": false },
+          { "name": "field-slider", "finished": false },
+          { "name": "field-fieldset", "finished": false },
+          { "name": "field-checkbox", "finished": false },
+          { "name": "field-radio", "finished": false },
+          { "name": "field-switch", "finished": false },
+          { "name": "field-choice-card", "finished": false },
+          { "name": "field-group", "finished": false },
+          { "name": "field-responsive", "finished": false }
+        ]
+      }
+    ]
+  },
+  {
+    "primitive": "input-group",
+    "complexityScore": 19,
+    "source": "zaidan",
+    "tasks": [
+      {
+        "id": "primitive.input-group",
+        "type": "primitive",
+        "dependsOn": ["primitive.button", "primitive.input", "primitive.textarea"],
+        "finished": false
+      },
+      {
+        "id": "docs.input-group",
+        "type": "docs",
+        "dependsOn": ["primitive.input-group"],
+        "finished": false
+      },
+      {
+        "id": "examples.input-group",
+        "type": "examples",
+        "dependsOn": ["docs.input-group"],
+        "finished": false,
+        "checklist": [
+          { "name": "input-group-demo", "finished": false },
+          { "name": "input-group-inline-start", "finished": false },
+          { "name": "input-group-inline-end", "finished": false },
+          { "name": "input-group-block-start", "finished": false },
+          { "name": "input-group-block-end", "finished": false },
+          { "name": "input-group-icon", "finished": false },
+          { "name": "input-group-text", "finished": false },
+          { "name": "input-group-button", "finished": false },
+          { "name": "input-group-kbd", "finished": false },
+          { "name": "input-group-dropdown", "finished": false },
+          { "name": "input-group-spinner", "finished": false },
+          { "name": "input-group-textarea", "finished": false },
+          { "name": "input-group-custom", "finished": false }
+        ]
+      }
+    ]
+  }
+]

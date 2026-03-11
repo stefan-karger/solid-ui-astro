@@ -18,7 +18,8 @@
     "check:write": "pnpm lint:fix && pnpm format",
     "registry:build": "tsx ./src/scripts/build-registry.ts",
     "icons:build": "tsx ./src/scripts/build-icons.ts",
-    "format:icons": "prettier --write \"src/registry/icons/**/*.ts\""
+    "format:icons": "prettier --write \"src/registry/icons/**/*.ts\"",
+    "ralph:once": "./plans/ralph-once.sh"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
