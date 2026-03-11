@@ -130,6 +130,20 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "hover-card": {
+    name: "hover-card",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/ui/hover-card.tsx")),
+    files: [{
+      path: "registry/ui/hover-card.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "input": {
     name: "input",
     description: "",
@@ -684,6 +698,48 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/examples/command-scrollable.tsx")),
     files: [{
       path: "registry/examples/command-scrollable.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "navigation-menu-demo": {
+    name: "navigation-menu-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["navigation-menu"],
+    component: lazy(() => import("~/registry/examples/navigation-menu-demo.tsx")),
+    files: [{
+      path: "registry/examples/navigation-menu-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "hover-card-demo": {
+    name: "hover-card-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","hover-card"],
+    component: lazy(() => import("~/registry/examples/hover-card-demo.tsx")),
+    files: [{
+      path: "registry/examples/hover-card-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "hover-card-sides": {
+    name: "hover-card-sides",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","hover-card"],
+    component: lazy(() => import("~/registry/examples/hover-card-sides.tsx")),
+    files: [{
+      path: "registry/examples/hover-card-sides.tsx",
       type: "registry:example",
       target: ""
     }],

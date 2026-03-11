@@ -30,21 +30,21 @@
     "complexityScore": 2,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.hover-card", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "primitive.hover-card", "type": "primitive", "dependsOn": [], "finished": true },
       {
         "id": "docs.hover-card",
         "type": "docs",
         "dependsOn": ["primitive.hover-card"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.hover-card",
         "type": "examples",
         "dependsOn": ["docs.hover-card"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "hover-card-demo", "finished": false },
-          { "name": "hover-card-sides", "finished": false }
+          { "name": "hover-card-demo", "finished": true },
+          { "name": "hover-card-sides", "finished": true }
         ]
       }
     ]
