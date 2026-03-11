@@ -1003,6 +1003,50 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "tooltip-demo",
+    type: "registry:example",
+    registryDependencies: ["button", "tooltip"],
+    files: [
+      {
+        path: "examples/tooltip-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "tooltip-sides",
+    type: "registry:example",
+    registryDependencies: ["button", "tooltip"],
+    files: [
+      {
+        path: "examples/tooltip-sides.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "tooltip-keyboard",
+    type: "registry:example",
+    registryDependencies: ["button", "tooltip"],
+    files: [
+      {
+        path: "examples/tooltip-keyboard.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "tooltip-disabled",
+    type: "registry:example",
+    registryDependencies: ["button", "tooltip"],
+    files: [
+      {
+        path: "examples/tooltip-disabled.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "textarea-demo",
     type: "registry:example",
     registryDependencies: ["textarea"],

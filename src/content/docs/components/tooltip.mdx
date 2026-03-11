@@ -1,0 +1,136 @@
+---
+title: Tooltip
+description: Displays informative text when users hover or focus a trigger.
+component: true
+---
+
+<ComponentPreview name="tooltip-demo" previewClassName="h-40" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add tooltip
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @kobalte/core
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="tooltip" title="components/ui/tooltip.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { Tooltip, TooltipContent, TooltipTrigger } from "~/components/ui/tooltip"
+```
+
+```tsx showLineNumbers
+<Tooltip>
+  <TooltipTrigger as="button">Hover or focus me</TooltipTrigger>
+  <TooltipContent>Add to library</TooltipContent>
+</Tooltip>
+```
+
+## Delay Duration
+
+Use `openDelay` and `closeDelay` to control when the tooltip appears and disappears.
+
+```tsx showLineNumbers
+<Tooltip openDelay={250} closeDelay={100}>
+  <TooltipTrigger as="button">Preview details</TooltipTrigger>
+  <TooltipContent>Shows after a short delay.</TooltipContent>
+</Tooltip>
+```
+
+## Positioning
+
+Use `placement` and `gutter` to control where tooltip content is rendered.
+
+```tsx showLineNumbers
+<Tooltip placement="right" gutter={8}>
+  <TooltipTrigger as="button">Right side</TooltipTrigger>
+  <TooltipContent>Aligned to the trigger's right edge.</TooltipContent>
+</Tooltip>
+```
+
+## Disabled
+
+Set `disabled` on `Tooltip` to prevent it from opening.
+
+```tsx showLineNumbers
+<Tooltip disabled>
+  <TooltipTrigger as="button">Will not open</TooltipTrigger>
+  <TooltipContent>This content is never shown.</TooltipContent>
+</Tooltip>
+```
+
+## Examples
+
+### Demo
+
+<ComponentPreview name="tooltip-demo" previewClassName="h-40" />
+
+### Sides
+
+<ComponentPreview name="tooltip-sides" previewClassName="h-52" />
+
+### Keyboard
+
+<ComponentPreview name="tooltip-keyboard" previewClassName="h-44" />
+
+### Disabled
+
+<ComponentPreview name="tooltip-disabled" previewClassName="h-44" />
+
+## API Reference
+
+### Core Parts
+
+| Part             | Description                                              |
+| ---------------- | -------------------------------------------------------- |
+| `Tooltip`        | Root component that controls tooltip state and behavior. |
+| `TooltipTrigger` | Interactive element that opens tooltip content.          |
+| `TooltipContent` | Floating content rendered in a portal near the trigger.  |
+
+### Common Root Props
+
+| Prop           | Type                      | Description                                           |
+| -------------- | ------------------------- | ----------------------------------------------------- |
+| `open`         | `boolean`                 | Controlled open state.                                |
+| `defaultOpen`  | `boolean`                 | Initial open state in uncontrolled mode.              |
+| `onOpenChange` | `(open: boolean) => void` | Called when the open state changes.                   |
+| `openDelay`    | `number`                  | Delay before opening after pointer enter or focus.    |
+| `closeDelay`   | `number`                  | Delay before closing after pointer leave or blur.     |
+| `placement`    | `string`                  | Preferred floating placement such as `top` or `left`. |
+| `gutter`       | `number`                  | Space in pixels between trigger and content.          |
+| `disabled`     | `boolean`                 | Prevents tooltip behavior for the entire instance.    |
+
+See the [Kobalte Tooltip](https://kobalte.dev/docs/core/components/tooltip)
+documentation for all available props and behavior details.

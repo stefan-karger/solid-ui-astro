@@ -344,23 +344,23 @@
     "complexityScore": 4,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.tooltip", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "primitive.tooltip", "type": "primitive", "dependsOn": [], "finished": true },
       {
         "id": "docs.tooltip",
         "type": "docs",
         "dependsOn": ["primitive.tooltip"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.tooltip",
         "type": "examples",
         "dependsOn": ["docs.tooltip"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "tooltip-demo", "finished": false },
-          { "name": "tooltip-sides", "finished": false },
-          { "name": "tooltip-keyboard", "finished": false },
-          { "name": "tooltip-disabled", "finished": false }
+          { "name": "tooltip-demo", "finished": true },
+          { "name": "tooltip-sides", "finished": true },
+          { "name": "tooltip-keyboard", "finished": true },
+          { "name": "tooltip-disabled", "finished": true }
         ]
       }
     ]
