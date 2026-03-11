@@ -177,6 +177,17 @@ export const ui: Registry["items"] = [
     ]
   },
   {
+    name: "progress",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core"],
+    files: [
+      {
+        path: "ui/progress.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
     name: "separator",
     type: "registry:ui",
     dependencies: ["@kobalte/core"],

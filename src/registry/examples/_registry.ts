@@ -618,6 +618,39 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "progress-demo",
+    type: "registry:example",
+    registryDependencies: ["progress"],
+    files: [
+      {
+        path: "examples/progress-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "progress-label",
+    type: "registry:example",
+    registryDependencies: ["progress"],
+    files: [
+      {
+        path: "examples/progress-label.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "progress-controlled",
+    type: "registry:example",
+    registryDependencies: ["progress"],
+    files: [
+      {
+        path: "examples/progress-controlled.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "separator-demo",
     type: "registry:example",
     registryDependencies: ["separator"],

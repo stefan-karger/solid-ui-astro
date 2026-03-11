@@ -139,22 +139,22 @@
     "complexityScore": 3,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.progress", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "primitive.progress", "type": "primitive", "dependsOn": [], "finished": true },
       {
         "id": "docs.progress",
         "type": "docs",
         "dependsOn": ["primitive.progress"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.progress",
         "type": "examples",
         "dependsOn": ["docs.progress"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "progress-demo", "finished": false },
-          { "name": "progress-label", "finished": false },
-          { "name": "progress-controlled", "finished": false }
+          { "name": "progress-demo", "finished": true },
+          { "name": "progress-label", "finished": true },
+          { "name": "progress-controlled", "finished": true }
         ]
       }
     ]

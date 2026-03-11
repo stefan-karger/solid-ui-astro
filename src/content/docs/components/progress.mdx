@@ -1,0 +1,149 @@
+---
+title: Progress
+description: Displays task completion with determinate or custom value formatting.
+component: true
+---
+
+<ComponentPreview name="progress-demo" previewClassName="*:w-full *:max-w-sm" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add progress
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @kobalte/core
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="progress" title="components/ui/progress.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { Progress, ProgressIndicator, ProgressTrack } from "~/components/ui/progress"
+```
+
+```tsx showLineNumbers
+<Progress value={65}>
+  <ProgressTrack>
+    <ProgressIndicator />
+  </ProgressTrack>
+</Progress>
+```
+
+## Labels
+
+Use `ProgressLabel` and `ProgressValue` for contextual messaging and value output.
+
+```tsx showLineNumbers
+import {
+  Progress,
+  ProgressIndicator,
+  ProgressLabel,
+  ProgressTrack,
+  ProgressValue
+} from "~/components/ui/progress"
+
+export function UploadProgress() {
+  return (
+    <Progress value={42} class="grid gap-2">
+      <div class="flex items-center gap-2">
+        <ProgressLabel>Uploading files</ProgressLabel>
+        <ProgressValue />
+      </div>
+      <ProgressTrack>
+        <ProgressIndicator />
+      </ProgressTrack>
+    </Progress>
+  )
+}
+```
+
+## Custom Value Labels
+
+Use `getValueLabel` to replace the default percentage text.
+
+```tsx showLineNumbers
+<Progress
+  value={3}
+  minValue={0}
+  maxValue={10}
+  getValueLabel={({ value, max }) => `${value} of ${max} tasks completed`}
+  class="grid gap-2"
+>
+  <div class="flex items-center gap-2">
+    <ProgressLabel>Processing tasks</ProgressLabel>
+    <ProgressValue />
+  </div>
+  <ProgressTrack>
+    <ProgressIndicator />
+  </ProgressTrack>
+</Progress>
+```
+
+## Examples
+
+### Basic
+
+<ComponentPreview name="progress-demo" previewClassName="*:w-full *:max-w-sm" />
+
+### With Label
+
+<ComponentPreview name="progress-label" previewClassName="*:w-full *:max-w-sm" />
+
+### Controlled
+
+<ComponentPreview name="progress-controlled" previewClassName="*:w-full *:max-w-sm" />
+
+## API Reference
+
+### Core Parts
+
+| Part                | Description                                                     |
+| ------------------- | --------------------------------------------------------------- |
+| `Progress`          | Root container that manages progress state and ARIA attributes. |
+| `ProgressTrack`     | Visual track that contains the indicator.                       |
+| `ProgressIndicator` | Fill element styled with `--kb-progress-fill-width`.            |
+| `ProgressLabel`     | Accessible text label associated with the progress bar.         |
+| `ProgressValue`     | Formatted value label generated from progress state.            |
+
+### Common Props
+
+| Prop            | Type                                                              | Description                                                           |
+| --------------- | ----------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `value`         | `number`                                                          | Current progress value.                                               |
+| `minValue`      | `number`                                                          | Lower bound of the value scale. Defaults to `0`.                      |
+| `maxValue`      | `number`                                                          | Upper bound of the value scale. Defaults to `100`.                    |
+| `indeterminate` | `boolean`                                                         | Marks the progress as indeterminate and removes ARIA value output.    |
+| `getValueLabel` | `(params: { value: number; min: number; max: number }) => string` | Custom formatter for `ProgressValue` and screen reader announcements. |
+
+See the [Kobalte Progress](https://kobalte.dev/docs/core/components/progress)
+documentation for full primitive props and behavior details.
