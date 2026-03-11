@@ -1,0 +1,128 @@
+---
+title: Combobox
+description: Searchable select input with support for grouping and multiple values.
+component: true
+---
+
+<ComponentPreview name="combobox-demo" align="start" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add combobox
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @kobalte/core
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="combobox" title="components/ui/combobox.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxControl,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+  ComboboxTrigger
+} from "~/components/ui/combobox"
+```
+
+```tsx showLineNumbers
+<Combobox
+  options={frameworks}
+  optionValue="value"
+  optionLabel="label"
+  optionTextValue="label"
+  placeholder="Select a framework"
+  itemComponent={(props) => (
+    <ComboboxItem item={props.item}>{props.item.rawValue.label}</ComboboxItem>
+  )}
+>
+  <ComboboxControl>
+    <ComboboxInput />
+    <ComboboxTrigger />
+  </ComboboxControl>
+  <ComboboxContent>
+    <ComboboxList />
+  </ComboboxContent>
+</Combobox>
+```
+
+## Examples
+
+### Basic
+
+<ComponentPreview name="combobox-basic" />
+
+### Multiple
+
+<ComponentPreview name="combobox-multiple" />
+
+### Clear
+
+<ComponentPreview name="combobox-clear" />
+
+### Groups
+
+<ComponentPreview name="combobox-groups" />
+
+### Custom
+
+<ComponentPreview name="combobox-custom" />
+
+### Invalid
+
+<ComponentPreview name="combobox-invalid" />
+
+### Disabled
+
+<ComponentPreview name="combobox-disabled" />
+
+### Auto Highlight
+
+<ComponentPreview name="combobox-auto-highlight" />
+
+### Popup
+
+<ComponentPreview name="combobox-popup" />
+
+### Input Group
+
+<ComponentPreview name="combobox-input-group" />
+
+## API Reference
+
+See the [Kobalte Combobox](https://kobalte.dev/docs/core/components/combobox) documentation
+for all available props and behaviors.

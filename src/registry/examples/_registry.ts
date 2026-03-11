@@ -167,6 +167,127 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "combobox-demo",
+    type: "registry:example",
+    registryDependencies: ["combobox"],
+    files: [
+      {
+        path: "examples/combobox-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "combobox-basic",
+    type: "registry:example",
+    registryDependencies: ["combobox"],
+    files: [
+      {
+        path: "examples/combobox-basic.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "combobox-multiple",
+    type: "registry:example",
+    registryDependencies: ["combobox"],
+    files: [
+      {
+        path: "examples/combobox-multiple.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "combobox-clear",
+    type: "registry:example",
+    registryDependencies: ["combobox"],
+    files: [
+      {
+        path: "examples/combobox-clear.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "combobox-groups",
+    type: "registry:example",
+    registryDependencies: ["combobox"],
+    files: [
+      {
+        path: "examples/combobox-groups.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "combobox-custom",
+    type: "registry:example",
+    registryDependencies: ["combobox"],
+    files: [
+      {
+        path: "examples/combobox-custom.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "combobox-invalid",
+    type: "registry:example",
+    registryDependencies: ["combobox"],
+    files: [
+      {
+        path: "examples/combobox-invalid.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "combobox-disabled",
+    type: "registry:example",
+    registryDependencies: ["combobox"],
+    files: [
+      {
+        path: "examples/combobox-disabled.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "combobox-auto-highlight",
+    type: "registry:example",
+    registryDependencies: ["combobox"],
+    files: [
+      {
+        path: "examples/combobox-auto-highlight.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "combobox-popup",
+    type: "registry:example",
+    registryDependencies: ["combobox"],
+    files: [
+      {
+        path: "examples/combobox-popup.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "combobox-input-group",
+    type: "registry:example",
+    registryDependencies: ["combobox", "input-group"],
+    files: [
+      {
+        path: "examples/combobox-input-group.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "command-demo",
     type: "registry:example",
     registryDependencies: ["command"],

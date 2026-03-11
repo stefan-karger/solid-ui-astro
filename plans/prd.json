@@ -1403,31 +1403,31 @@
         "id": "primitive.combobox",
         "type": "primitive",
         "dependsOn": ["primitive.button", "primitive.input-group"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "docs.combobox",
         "type": "docs",
         "dependsOn": ["primitive.combobox"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.combobox",
         "type": "examples",
         "dependsOn": ["docs.combobox"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "combobox-demo", "finished": false },
-          { "name": "combobox-basic", "finished": false },
-          { "name": "combobox-multiple", "finished": false },
-          { "name": "combobox-clear", "finished": false },
-          { "name": "combobox-groups", "finished": false },
-          { "name": "combobox-custom", "finished": false },
-          { "name": "combobox-invalid", "finished": false },
-          { "name": "combobox-disabled", "finished": false },
-          { "name": "combobox-auto-highlight", "finished": false },
-          { "name": "combobox-popup", "finished": false },
-          { "name": "combobox-input-group", "finished": false }
+          { "name": "combobox-demo", "finished": true },
+          { "name": "combobox-basic", "finished": true },
+          { "name": "combobox-multiple", "finished": true },
+          { "name": "combobox-clear", "finished": true },
+          { "name": "combobox-groups", "finished": true },
+          { "name": "combobox-custom", "finished": true },
+          { "name": "combobox-invalid", "finished": true },
+          { "name": "combobox-disabled", "finished": true },
+          { "name": "combobox-auto-highlight", "finished": true },
+          { "name": "combobox-popup", "finished": true },
+          { "name": "combobox-input-group", "finished": true }
         ]
       }
     ]

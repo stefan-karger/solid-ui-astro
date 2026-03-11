@@ -58,6 +58,18 @@ export const ui: Registry["items"] = [
     ]
   },
   {
+    name: "combobox",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core"],
+    registryDependencies: ["button", "input-group"],
+    files: [
+      {
+        path: "ui/combobox.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
     name: "dialog",
     type: "registry:ui",
     dependencies: ["@kobalte/core"],
