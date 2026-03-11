@@ -1,0 +1,149 @@
+---
+title: Input Group
+description: Add addons, buttons, and helper content to inputs.
+component: true
+---
+
+<ComponentPreview name="input-group-demo" align="start" previewClassName="h-[26rem]" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add input-group
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @kobalte/core
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="input-group" title="components/ui/input-group.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+  InputGroupText,
+  InputGroupTextarea
+} from "~/components/ui/input-group"
+```
+
+```tsx showLineNumbers
+<InputGroup>
+  <InputGroupInput placeholder="Search..." />
+  <InputGroupAddon>
+    <SearchIcon />
+  </InputGroupAddon>
+</InputGroup>
+```
+
+## Align
+
+Use the `align` prop on `InputGroupAddon` to position the addon relative to the control.
+
+For proper focus management, `InputGroupAddon` should be placed after `InputGroupInput` or
+`InputGroupTextarea` in the DOM. Use `align` for visual placement.
+
+### inline-start
+
+<ComponentPreview name="input-group-inline-start" previewClassName="h-48" />
+
+### inline-end
+
+<ComponentPreview name="input-group-inline-end" previewClassName="h-48" />
+
+### block-start
+
+<ComponentPreview name="input-group-block-start" previewClassName="h-96" />
+
+### block-end
+
+<ComponentPreview name="input-group-block-end" previewClassName="h-[26rem]" />
+
+## Examples
+
+### Icon
+
+<ComponentPreview name="input-group-icon" previewClassName="h-80" />
+
+### Text
+
+<ComponentPreview name="input-group-text" previewClassName="h-80" />
+
+### Button
+
+<ComponentPreview name="input-group-button" previewClassName="h-72" />
+
+### Kbd
+
+<ComponentPreview name="input-group-kbd" previewClassName="h-40" />
+
+### Dropdown
+
+<ComponentPreview name="input-group-dropdown" previewClassName="h-56" />
+
+### Spinner
+
+<ComponentPreview name="input-group-spinner" previewClassName="h-80" />
+
+### Textarea
+
+<ComponentPreview name="input-group-textarea" previewClassName="h-96" />
+
+### Custom Input
+
+Add `data-slot="input-group-control"` to a custom control for automatic focus state handling.
+
+<ComponentPreview name="input-group-custom" previewClassName="h-56" />
+
+## API Reference
+
+### InputGroup
+
+The main container for an input or textarea with optional addons.
+
+### InputGroupAddon
+
+Displays icons, text, buttons, or helper content. Use `align` to control positioning.
+
+### InputGroupButton
+
+Renders compact button actions inside addons.
+
+### InputGroupInput
+
+Input variant with `data-slot="input-group-control"` and input-group styles applied.
+
+### InputGroupTextarea
+
+Textarea variant with `data-slot="input-group-control"` and input-group styles applied.

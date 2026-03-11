@@ -1475,33 +1475,33 @@
         "id": "primitive.input-group",
         "type": "primitive",
         "dependsOn": ["primitive.button", "primitive.input", "primitive.textarea"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "docs.input-group",
         "type": "docs",
         "dependsOn": ["primitive.input-group"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.input-group",
         "type": "examples",
         "dependsOn": ["docs.input-group"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "input-group-demo", "finished": false },
-          { "name": "input-group-inline-start", "finished": false },
-          { "name": "input-group-inline-end", "finished": false },
-          { "name": "input-group-block-start", "finished": false },
-          { "name": "input-group-block-end", "finished": false },
-          { "name": "input-group-icon", "finished": false },
-          { "name": "input-group-text", "finished": false },
-          { "name": "input-group-button", "finished": false },
-          { "name": "input-group-kbd", "finished": false },
-          { "name": "input-group-dropdown", "finished": false },
-          { "name": "input-group-spinner", "finished": false },
-          { "name": "input-group-textarea", "finished": false },
-          { "name": "input-group-custom", "finished": false }
+          { "name": "input-group-demo", "finished": true },
+          { "name": "input-group-inline-start", "finished": true },
+          { "name": "input-group-inline-end", "finished": true },
+          { "name": "input-group-block-start", "finished": true },
+          { "name": "input-group-block-end", "finished": true },
+          { "name": "input-group-icon", "finished": true },
+          { "name": "input-group-text", "finished": true },
+          { "name": "input-group-button", "finished": true },
+          { "name": "input-group-kbd", "finished": true },
+          { "name": "input-group-dropdown", "finished": true },
+          { "name": "input-group-spinner", "finished": true },
+          { "name": "input-group-textarea", "finished": true },
+          { "name": "input-group-custom", "finished": true }
         ]
       }
     ]
