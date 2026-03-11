@@ -1,0 +1,93 @@
+---
+title: Direction
+description: Provides app-wide text direction for LTR and RTL layouts.
+component: true
+---
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add direction
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @kobalte/core
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource src="src/registry/ui/direction.tsx" title="components/ui/direction.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { DirectionProvider } from "~/components/ui/direction"
+```
+
+```tsx showLineNumbers
+<html lang="ar" dir="rtl">
+  <body>
+    <DirectionProvider direction="rtl">
+      <App />
+    </DirectionProvider>
+  </body>
+</html>
+```
+
+## useDirection
+
+Use `useDirection()` to read the current direction from context.
+
+```tsx showLineNumbers
+import { useDirection } from "~/components/ui/direction"
+
+const Example = () => {
+  const direction = useDirection()
+
+  return <div>Current direction: {direction}</div>
+}
+```
+
+## API Reference
+
+### Exports
+
+| Name                | Description                                  |
+| ------------------- | -------------------------------------------- |
+| `DirectionProvider` | Provides direction context to child content. |
+| `useDirection`      | Returns the current text direction.          |
+
+### DirectionProvider Props
+
+| Prop        | Type             | Description                                                             |
+| ----------- | ---------------- | ----------------------------------------------------------------------- |
+| `direction` | `"ltr" \| "rtl"` | Sets layout direction. Defaults to `ltr` unless inferred from `locale`. |
+| `locale`    | `string`         | Optional locale override used for Kobalte locale context and direction. |
+| `children`  | `JSX.Element`    | Content wrapped by the provider.                                        |
+
+See the [Kobalte i18n utilities](https://kobalte.dev/docs/core/utilities/i18n) documentation for more details.

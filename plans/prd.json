@@ -118,18 +118,18 @@
     "complexityScore": 3,
     "source": "shadcn-only",
     "tasks": [
-      { "id": "primitive.direction", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "primitive.direction", "type": "primitive", "dependsOn": [], "finished": true },
       {
         "id": "docs.direction",
         "type": "docs",
         "dependsOn": ["primitive.direction"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.direction",
         "type": "examples",
         "dependsOn": ["docs.direction"],
-        "finished": false,
+        "finished": true,
         "checklist": []
       }
     ]
