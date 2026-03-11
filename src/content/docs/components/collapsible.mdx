@@ -1,0 +1,125 @@
+---
+title: Collapsible
+description: Expand and collapse a section of content with an interactive trigger.
+component: true
+---
+
+<ComponentPreview name="collapsible-demo" previewClassName="*:w-full *:max-w-sm" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add collapsible
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @kobalte/core
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="collapsible" title="components/ui/collapsible.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "~/components/ui/collapsible"
+```
+
+```tsx showLineNumbers
+<Collapsible>
+  <CollapsibleTrigger>Can I use this in my project?</CollapsibleTrigger>
+  <CollapsibleContent>
+    Yes. It follows the disclosure pattern and supports controlled and uncontrolled usage.
+  </CollapsibleContent>
+</Collapsible>
+```
+
+## Controlled State
+
+Use `open` and `onOpenChange` to fully control the expanded state.
+
+```tsx showLineNumbers
+const [open, setOpen] = createSignal(false)
+
+<Collapsible open={open()} onOpenChange={setOpen}>
+  <CollapsibleTrigger>Toggle details</CollapsibleTrigger>
+  <CollapsibleContent>Controlled content</CollapsibleContent>
+</Collapsible>
+```
+
+## Disabled
+
+Set `disabled` on the root to prevent toggling.
+
+```tsx showLineNumbers
+<Collapsible disabled>
+  <CollapsibleTrigger>Disabled trigger</CollapsibleTrigger>
+  <CollapsibleContent>This content remains collapsed.</CollapsibleContent>
+</Collapsible>
+```
+
+## Examples
+
+### Demo
+
+<ComponentPreview name="collapsible-demo" previewClassName="*:w-full *:max-w-sm" />
+
+### Basic
+
+<ComponentPreview name="collapsible-basic" previewClassName="*:w-full *:max-w-sm" />
+
+### Settings
+
+<ComponentPreview name="collapsible-settings" previewClassName="*:w-full *:max-w-md" />
+
+### File Tree
+
+<ComponentPreview name="collapsible-file-tree" previewClassName="*:w-full *:max-w-sm" />
+
+## API Reference
+
+### Core Parts
+
+| Part                 | Description                                                  |
+| -------------------- | ------------------------------------------------------------ |
+| `Collapsible`        | Root container that manages expanded state and interactions. |
+| `CollapsibleTrigger` | Interactive control used to toggle content visibility.       |
+| `CollapsibleContent` | Expandable content region associated with the trigger.       |
+
+### Common Root Props
+
+| Prop           | Type                      | Description                                 |
+| -------------- | ------------------------- | ------------------------------------------- |
+| `open`         | `boolean`                 | Controlled open state.                      |
+| `defaultOpen`  | `boolean`                 | Initial open state in uncontrolled mode.    |
+| `onOpenChange` | `(open: boolean) => void` | Callback fired when the state changes.      |
+| `disabled`     | `boolean`                 | Prevents interaction for the entire widget. |
+
+See the [Kobalte Collapsible](https://kobalte.dev/docs/core/components/collapsible)
+documentation for full API details.

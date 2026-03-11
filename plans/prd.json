@@ -209,23 +209,23 @@
     "complexityScore": 4,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.collapsible", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "primitive.collapsible", "type": "primitive", "dependsOn": [], "finished": true },
       {
         "id": "docs.collapsible",
         "type": "docs",
         "dependsOn": ["primitive.collapsible"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.collapsible",
         "type": "examples",
         "dependsOn": ["docs.collapsible"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "collapsible-demo", "finished": false },
-          { "name": "collapsible-basic", "finished": false },
-          { "name": "collapsible-settings", "finished": false },
-          { "name": "collapsible-file-tree", "finished": false }
+          { "name": "collapsible-demo", "finished": true },
+          { "name": "collapsible-basic", "finished": true },
+          { "name": "collapsible-settings", "finished": true },
+          { "name": "collapsible-file-tree", "finished": true }
         ]
       }
     ]

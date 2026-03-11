@@ -288,6 +288,50 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "collapsible-basic",
+    type: "registry:example",
+    registryDependencies: ["collapsible"],
+    files: [
+      {
+        path: "examples/collapsible-basic.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "collapsible-demo",
+    type: "registry:example",
+    registryDependencies: ["collapsible"],
+    files: [
+      {
+        path: "examples/collapsible-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "collapsible-file-tree",
+    type: "registry:example",
+    registryDependencies: ["collapsible"],
+    files: [
+      {
+        path: "examples/collapsible-file-tree.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "collapsible-settings",
+    type: "registry:example",
+    registryDependencies: ["collapsible"],
+    files: [
+      {
+        path: "examples/collapsible-settings.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "combobox-demo",
     type: "registry:example",
     registryDependencies: ["combobox"],
