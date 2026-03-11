@@ -519,6 +519,50 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "separator-demo",
+    type: "registry:example",
+    registryDependencies: ["separator"],
+    files: [
+      {
+        path: "examples/separator-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "separator-vertical",
+    type: "registry:example",
+    registryDependencies: ["separator"],
+    files: [
+      {
+        path: "examples/separator-vertical.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "separator-menu",
+    type: "registry:example",
+    registryDependencies: ["separator"],
+    files: [
+      {
+        path: "examples/separator-menu.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "separator-list",
+    type: "registry:example",
+    registryDependencies: ["separator"],
+    files: [
+      {
+        path: "examples/separator-list.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "input-group-demo",
     type: "registry:example",
     registryDependencies: ["input-group"],

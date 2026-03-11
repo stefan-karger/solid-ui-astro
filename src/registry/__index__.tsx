@@ -158,6 +158,20 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "label": {
+    name: "label",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/ui/label.tsx")),
+    files: [{
+      path: "registry/ui/label.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "navigation-menu": {
     name: "navigation-menu",
     description: "",
@@ -866,6 +880,90 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/examples/input-form.tsx")),
     files: [{
       path: "registry/examples/input-form.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "label-demo": {
+    name: "label-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["label"],
+    component: lazy(() => import("~/registry/examples/label-demo.tsx")),
+    files: [{
+      path: "registry/examples/label-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-demo": {
+    name: "field-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input","label"],
+    component: lazy(() => import("~/registry/examples/field-demo.tsx")),
+    files: [{
+      path: "registry/examples/field-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "separator-demo": {
+    name: "separator-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["separator"],
+    component: lazy(() => import("~/registry/examples/separator-demo.tsx")),
+    files: [{
+      path: "registry/examples/separator-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "separator-vertical": {
+    name: "separator-vertical",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["separator"],
+    component: lazy(() => import("~/registry/examples/separator-vertical.tsx")),
+    files: [{
+      path: "registry/examples/separator-vertical.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "separator-menu": {
+    name: "separator-menu",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["separator"],
+    component: lazy(() => import("~/registry/examples/separator-menu.tsx")),
+    files: [{
+      path: "registry/examples/separator-menu.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "separator-list": {
+    name: "separator-list",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["separator"],
+    component: lazy(() => import("~/registry/examples/separator-list.tsx")),
+    files: [{
+      path: "registry/examples/separator-list.tsx",
       type: "registry:example",
       target: ""
     }],

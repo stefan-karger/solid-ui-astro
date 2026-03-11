@@ -318,23 +318,23 @@
     "complexityScore": 4,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.separator", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "primitive.separator", "type": "primitive", "dependsOn": [], "finished": true },
       {
         "id": "docs.separator",
         "type": "docs",
         "dependsOn": ["primitive.separator"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.separator",
         "type": "examples",
         "dependsOn": ["docs.separator"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "separator-demo", "finished": false },
-          { "name": "separator-vertical", "finished": false },
-          { "name": "separator-menu", "finished": false },
-          { "name": "separator-list", "finished": false }
+          { "name": "separator-demo", "finished": true },
+          { "name": "separator-vertical", "finished": true },
+          { "name": "separator-menu", "finished": true },
+          { "name": "separator-list", "finished": true }
         ]
       }
     ]
