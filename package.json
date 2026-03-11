@@ -19,8 +19,8 @@
     "registry:build": "tsx ./src/scripts/build-registry.ts",
     "icons:build": "tsx ./src/scripts/build-icons.ts",
     "format:icons": "prettier --write \"src/registry/icons/**/*.ts\"",
-    "ralph": "sh ./plans/ralph.sh",
-    "ralph:once": "sh ./plans/ralph-once.sh"
+    "ralph": "bash ./plans/ralph.sh",
+    "ralph:once": "bash ./plans/ralph.sh 1"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",

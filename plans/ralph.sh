@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-if [ -z "${1:-}" ]; then
+if [[ $# -ne 1 || ! "$1" =~ ^[1-9][0-9]*$ ]]; then
   echo "Usage: $0 <iterations>"
   exit 1
 fi
