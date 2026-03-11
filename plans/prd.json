@@ -1368,28 +1368,28 @@
     "complexityScore": 14,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.input", "type": "primitive", "dependsOn": [], "finished": false },
-      { "id": "docs.input", "type": "docs", "dependsOn": ["primitive.input"], "finished": false },
+      { "id": "primitive.input", "type": "primitive", "dependsOn": [], "finished": true },
+      { "id": "docs.input", "type": "docs", "dependsOn": ["primitive.input"], "finished": true },
       {
         "id": "examples.input",
         "type": "examples",
         "dependsOn": ["docs.input"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "input-demo", "finished": false },
-          { "name": "input-basic", "finished": false },
-          { "name": "input-field", "finished": false },
-          { "name": "input-fieldgroup", "finished": false },
-          { "name": "input-disabled", "finished": false },
-          { "name": "input-invalid", "finished": false },
-          { "name": "input-file", "finished": false },
-          { "name": "input-inline", "finished": false },
-          { "name": "input-grid", "finished": false },
-          { "name": "input-required", "finished": false },
-          { "name": "input-badge", "finished": false },
-          { "name": "input-input-group", "finished": false },
-          { "name": "input-button-group", "finished": false },
-          { "name": "input-form", "finished": false }
+          { "name": "input-demo", "finished": true },
+          { "name": "input-basic", "finished": true },
+          { "name": "input-field", "finished": true },
+          { "name": "input-fieldgroup", "finished": true },
+          { "name": "input-disabled", "finished": true },
+          { "name": "input-invalid", "finished": true },
+          { "name": "input-file", "finished": true },
+          { "name": "input-inline", "finished": true },
+          { "name": "input-grid", "finished": true },
+          { "name": "input-required", "finished": true },
+          { "name": "input-badge", "finished": true },
+          { "name": "input-input-group", "finished": true },
+          { "name": "input-button-group", "finished": true },
+          { "name": "input-form", "finished": true }
         ]
       }
     ]

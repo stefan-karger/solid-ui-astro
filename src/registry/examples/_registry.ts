@@ -220,5 +220,159 @@ export const examples: Registry["items"] = [
         type: "registry:example"
       }
     ]
+  },
+  {
+    name: "input-demo",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    files: [
+      {
+        path: "examples/input-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "input-basic",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    files: [
+      {
+        path: "examples/input-basic.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "input-field",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    files: [
+      {
+        path: "examples/input-field.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "input-fieldgroup",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    files: [
+      {
+        path: "examples/input-fieldgroup.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "input-disabled",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    files: [
+      {
+        path: "examples/input-disabled.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "input-invalid",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    files: [
+      {
+        path: "examples/input-invalid.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "input-file",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    files: [
+      {
+        path: "examples/input-file.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "input-inline",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    files: [
+      {
+        path: "examples/input-inline.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "input-grid",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    files: [
+      {
+        path: "examples/input-grid.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "input-required",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    files: [
+      {
+        path: "examples/input-required.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "input-badge",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    files: [
+      {
+        path: "examples/input-badge.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "input-input-group",
+    type: "registry:example",
+    registryDependencies: ["input-group"],
+    files: [
+      {
+        path: "examples/input-input-group.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "input-button-group",
+    type: "registry:example",
+    registryDependencies: ["button", "button-group", "input"],
+    files: [
+      {
+        path: "examples/input-button-group.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "input-form",
+    type: "registry:example",
+    registryDependencies: ["button", "input"],
+    files: [
+      {
+        path: "examples/input-form.tsx",
+        type: "registry:example"
+      }
+    ]
   }
 ]

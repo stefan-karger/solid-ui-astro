@@ -508,6 +508,202 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "input-demo": {
+    name: "input-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    component: lazy(() => import("~/registry/examples/input-demo.tsx")),
+    files: [{
+      path: "registry/examples/input-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "input-basic": {
+    name: "input-basic",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    component: lazy(() => import("~/registry/examples/input-basic.tsx")),
+    files: [{
+      path: "registry/examples/input-basic.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "input-field": {
+    name: "input-field",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    component: lazy(() => import("~/registry/examples/input-field.tsx")),
+    files: [{
+      path: "registry/examples/input-field.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "input-fieldgroup": {
+    name: "input-fieldgroup",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    component: lazy(() => import("~/registry/examples/input-fieldgroup.tsx")),
+    files: [{
+      path: "registry/examples/input-fieldgroup.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "input-disabled": {
+    name: "input-disabled",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    component: lazy(() => import("~/registry/examples/input-disabled.tsx")),
+    files: [{
+      path: "registry/examples/input-disabled.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "input-invalid": {
+    name: "input-invalid",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    component: lazy(() => import("~/registry/examples/input-invalid.tsx")),
+    files: [{
+      path: "registry/examples/input-invalid.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "input-file": {
+    name: "input-file",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    component: lazy(() => import("~/registry/examples/input-file.tsx")),
+    files: [{
+      path: "registry/examples/input-file.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "input-inline": {
+    name: "input-inline",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    component: lazy(() => import("~/registry/examples/input-inline.tsx")),
+    files: [{
+      path: "registry/examples/input-inline.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "input-grid": {
+    name: "input-grid",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    component: lazy(() => import("~/registry/examples/input-grid.tsx")),
+    files: [{
+      path: "registry/examples/input-grid.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "input-required": {
+    name: "input-required",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    component: lazy(() => import("~/registry/examples/input-required.tsx")),
+    files: [{
+      path: "registry/examples/input-required.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "input-badge": {
+    name: "input-badge",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    component: lazy(() => import("~/registry/examples/input-badge.tsx")),
+    files: [{
+      path: "registry/examples/input-badge.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "input-input-group": {
+    name: "input-input-group",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input-group"],
+    component: lazy(() => import("~/registry/examples/input-input-group.tsx")),
+    files: [{
+      path: "registry/examples/input-input-group.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "input-button-group": {
+    name: "input-button-group",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","button-group","input"],
+    component: lazy(() => import("~/registry/examples/input-button-group.tsx")),
+    files: [{
+      path: "registry/examples/input-button-group.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "input-form": {
+    name: "input-form",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","input"],
+    component: lazy(() => import("~/registry/examples/input-form.tsx")),
+    files: [{
+      path: "registry/examples/input-form.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "use-mobile": {
     name: "use-mobile",
     description: "",

@@ -1,0 +1,116 @@
+---
+title: Input
+description: Captures single-line text and other native input values.
+component: true
+---
+
+<ComponentPreview name="input-demo" align="start" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add input
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @kobalte/core
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="input" title="components/ui/input.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { Input } from "~/components/ui/input"
+```
+
+```tsx showLineNumbers
+<Input placeholder="Email" type="email" />
+```
+
+## Examples
+
+### Basic
+
+<ComponentPreview name="input-basic" />
+
+### Field
+
+<ComponentPreview name="input-field" />
+
+### Field Group
+
+<ComponentPreview name="input-fieldgroup" />
+
+### Disabled
+
+<ComponentPreview name="input-disabled" />
+
+### Invalid
+
+<ComponentPreview name="input-invalid" />
+
+### File
+
+<ComponentPreview name="input-file" />
+
+### Inline
+
+<ComponentPreview name="input-inline" />
+
+### Grid
+
+<ComponentPreview name="input-grid" />
+
+### Required
+
+<ComponentPreview name="input-required" />
+
+### Badge
+
+<ComponentPreview name="input-badge" />
+
+### Input Group
+
+<ComponentPreview name="input-input-group" />
+
+### Button Group
+
+<ComponentPreview name="input-button-group" />
+
+### Form
+
+<ComponentPreview name="input-form" />
+
+## API Reference
+
+This component forwards native `input` attributes. See the
+[HTML input element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input)
+reference for all supported props.
