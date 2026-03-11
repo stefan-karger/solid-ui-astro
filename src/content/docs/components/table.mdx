@@ -1,0 +1,115 @@
+---
+title: Table
+description: Displays tabular data with optional footer rows and per-row actions.
+component: true
+---
+
+<ComponentPreview name="table-demo" previewClassName="*:w-full *:max-w-4xl" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add table
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="table" title="components/ui/table.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
+} from "~/components/ui/table"
+```
+
+```tsx showLineNumbers
+<Table>
+  <TableCaption>A list of your recent invoices.</TableCaption>
+  <TableHeader>
+    <TableRow>
+      <TableHead class="w-[120px]">Invoice</TableHead>
+      <TableHead>Status</TableHead>
+      <TableHead>Method</TableHead>
+      <TableHead class="text-right">Amount</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell class="font-medium">INV001</TableCell>
+      <TableCell>Paid</TableCell>
+      <TableCell>Credit Card</TableCell>
+      <TableCell class="text-right">$250.00</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+```
+
+## Examples
+
+### Basic
+
+<ComponentPreview name="table-demo" previewClassName="*:w-full *:max-w-4xl" />
+
+### Footer
+
+Use `TableFooter` to add summary rows.
+
+<ComponentPreview name="table-footer" previewClassName="*:w-full *:max-w-4xl" />
+
+### Row Actions
+
+Use action controls in the last column for row-level operations.
+
+<ComponentPreview name="table-actions" previewClassName="*:w-full *:max-w-4xl" />
+
+## API Reference
+
+### Core Parts
+
+| Part           | Description                                           |
+| -------------- | ----------------------------------------------------- |
+| `Table`        | Responsive wrapper and table root element.            |
+| `TableHeader`  | Header section that groups heading rows.              |
+| `TableBody`    | Main body section for data rows.                      |
+| `TableFooter`  | Footer section for totals and aggregate values.       |
+| `TableRow`     | Row element shared by header, body, and footer.       |
+| `TableHead`    | Header cell for column labels.                        |
+| `TableCell`    | Standard body or footer cell.                         |
+| `TableCaption` | Caption text shown below the table for extra context. |
+
+### Common Props
+
+| Prop    | Type     | Description                                      |
+| ------- | -------- | ------------------------------------------------ |
+| `class` | `string` | Adds custom styles to each table part component. |

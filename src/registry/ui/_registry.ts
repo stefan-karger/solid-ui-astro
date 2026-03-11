@@ -210,6 +210,16 @@ export const ui: Registry["items"] = [
     ]
   },
   {
+    name: "table",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/table.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
     name: "tooltip",
     type: "registry:ui",
     dependencies: ["@kobalte/core"],

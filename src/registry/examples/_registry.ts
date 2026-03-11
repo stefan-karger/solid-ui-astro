@@ -893,6 +893,39 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "table-demo",
+    type: "registry:example",
+    registryDependencies: ["table"],
+    files: [
+      {
+        path: "examples/table-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "table-footer",
+    type: "registry:example",
+    registryDependencies: ["table"],
+    files: [
+      {
+        path: "examples/table-footer.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "table-actions",
+    type: "registry:example",
+    registryDependencies: ["button", "table"],
+    files: [
+      {
+        path: "examples/table-actions.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "textarea-demo",
     type: "registry:example",
     registryDependencies: ["textarea"],
