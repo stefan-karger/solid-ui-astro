@@ -13,6 +13,39 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "aspect-ratio-demo",
+    type: "registry:example",
+    registryDependencies: ["aspect-ratio"],
+    files: [
+      {
+        path: "examples/aspect-ratio-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "aspect-ratio-square",
+    type: "registry:example",
+    registryDependencies: ["aspect-ratio"],
+    files: [
+      {
+        path: "examples/aspect-ratio-square.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "aspect-ratio-portrait",
+    type: "registry:example",
+    registryDependencies: ["aspect-ratio"],
+    files: [
+      {
+        path: "examples/aspect-ratio-portrait.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "button-demo",
     type: "registry:example",
     registryDependencies: ["button"],

@@ -1,0 +1,86 @@
+---
+title: Aspect Ratio
+description: Displays content within a desired ratio.
+component: true
+---
+
+<ComponentPreview name="aspect-ratio-demo" previewClassName="*:w-full *:max-w-md" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add aspect-ratio
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="aspect-ratio" title="components/ui/aspect-ratio.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { AspectRatio } from "~/components/ui/aspect-ratio"
+```
+
+```tsx showLineNumbers
+<div class="w-full max-w-md">
+  <AspectRatio ratio={16 / 9} class="overflow-hidden rounded-lg border bg-muted">
+    <img src="..." alt="..." class="h-full w-full object-cover" />
+  </AspectRatio>
+</div>
+```
+
+## Ratios
+
+Use the `ratio` prop to set any custom proportion. For example, `ratio={1}` renders a square and
+`ratio={3 / 4}` renders a portrait frame.
+
+## Examples
+
+### Basic
+
+<ComponentPreview name="aspect-ratio-demo" previewClassName="*:w-full *:max-w-md" />
+
+### Square
+
+<ComponentPreview name="aspect-ratio-square" previewClassName="*:w-full *:max-w-md" />
+
+### Portrait
+
+<ComponentPreview name="aspect-ratio-portrait" previewClassName="*:w-full *:max-w-xs" />
+
+## API Reference
+
+### Props
+
+| Prop      | Type                            | Description                                                |
+| --------- | ------------------------------- | ---------------------------------------------------------- |
+| `ratio`   | `number`                        | Sets the width / height ratio. Defaults to `16 / 9`.       |
+| `class`   | `string`                        | Adds custom styles to the root element.                    |
+| `style`   | `string` or `JSX.CSSProperties` | Adds inline styles to the root while preserving the ratio. |
+| `...rest` | `HTMLDivElement` attributes     | Forwards native `div` attributes to the root element.      |
+
+This component is implemented with the native CSS `aspect-ratio` property.

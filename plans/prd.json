@@ -73,22 +73,22 @@
     "complexityScore": 3,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.aspect-ratio", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "primitive.aspect-ratio", "type": "primitive", "dependsOn": [], "finished": true },
       {
         "id": "docs.aspect-ratio",
         "type": "docs",
         "dependsOn": ["primitive.aspect-ratio"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.aspect-ratio",
         "type": "examples",
         "dependsOn": ["docs.aspect-ratio"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "aspect-ratio-demo", "finished": false },
-          { "name": "aspect-ratio-square", "finished": false },
-          { "name": "aspect-ratio-portrait", "finished": false }
+          { "name": "aspect-ratio-demo", "finished": true },
+          { "name": "aspect-ratio-square", "finished": true },
+          { "name": "aspect-ratio-portrait", "finished": true }
         ]
       }
     ]

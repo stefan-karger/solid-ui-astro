@@ -13,6 +13,16 @@ export const ui: Registry["items"] = [
     ]
   },
   {
+    name: "aspect-ratio",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/aspect-ratio.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
     name: "button",
     type: "registry:ui",
     dependencies: ["@kobalte/core"],
