@@ -1,0 +1,110 @@
+---
+title: Card
+description: Displays related content and actions in a flexible container.
+component: true
+---
+
+<ComponentPreview name="card-demo" previewClassName="p-4" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add card
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="card" title="components/ui/card.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle
+} from "~/components/ui/card"
+```
+
+```tsx showLineNumbers
+<Card class="w-full max-w-sm">
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Card Description</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>Card Content</p>
+  </CardContent>
+  <CardFooter>
+    <p>Card Footer</p>
+  </CardFooter>
+</Card>
+```
+
+## Small Size
+
+Use `size="sm"` to render a compact card variant.
+
+```tsx showLineNumbers
+<Card size="sm">...</Card>
+```
+
+## Examples
+
+### Basic
+
+<ComponentPreview name="card-demo" previewClassName="p-4" />
+
+### Small
+
+<ComponentPreview name="card-small" previewClassName="p-4" />
+
+### With Image
+
+<ComponentPreview name="card-image" previewClassName="p-4" />
+
+## API Reference
+
+### Core Parts
+
+| Part              | Description                                  |
+| ----------------- | -------------------------------------------- |
+| `Card`            | Root wrapper for card layout and styling.    |
+| `CardHeader`      | Header area for title and description.       |
+| `CardTitle`       | Heading text for the card.                   |
+| `CardDescription` | Supporting text under the title.             |
+| `CardContent`     | Main body area for custom content.           |
+| `CardFooter`      | Footer section for actions or helper content |
+
+### Card Props
+
+| Prop    | Type                | Description                                  |
+| ------- | ------------------- | -------------------------------------------- |
+| `size`  | `"default" \| "sm"` | Controls spacing density for the card.       |
+| `class` | `string`            | Adds custom styles to the root card element. |

@@ -167,6 +167,39 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "card-demo",
+    type: "registry:example",
+    registryDependencies: ["button", "card", "input", "label"],
+    files: [
+      {
+        path: "examples/card-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "card-small",
+    type: "registry:example",
+    registryDependencies: ["button", "card"],
+    files: [
+      {
+        path: "examples/card-small.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "card-image",
+    type: "registry:example",
+    registryDependencies: ["card"],
+    files: [
+      {
+        path: "examples/card-image.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "combobox-demo",
     type: "registry:example",
     registryDependencies: ["combobox"],
