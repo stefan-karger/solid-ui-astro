@@ -4,7 +4,7 @@ description: Displays a button or a component that looks and behaves like one.
 component: true
 ---
 
-<ComponentPreview name="button-demo" align="start" />
+<ComponentPreview name="button-demo" />
 
 ## Installation
 
@@ -52,12 +52,29 @@ import { Button } from "~/components/ui/button"
 ```
 
 ```tsx showLineNumbers
-<Button>Save changes</Button>
+<Button variant="outline">Button</Button>
+```
+
+## Cursor
+
+Tailwind v4 switched from `cursor: pointer` to `cursor: default` for native button elements.
+
+If you want pointer cursors on interactive buttons, add the following base styles:
+
+```css showLineNumbers title="globals.css"
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
 ```
 
 ## Examples
 
-### Sizes
+### Size
+
+Use the `size` prop to change the size of the button.
 
 <ComponentPreview name="button-size" />
 
@@ -91,24 +108,46 @@ import { Button } from "~/components/ui/button"
 
 ### With Icon
 
+Add `data-icon="inline-start"` or `data-icon="inline-end"` to icons to apply directional spacing.
+
 <ComponentPreview name="button-with-icon" />
 
 ### Rounded
+
+Use the `rounded-full` class to make the button rounded.
 
 <ComponentPreview name="button-rounded" />
 
 ### Spinner
 
+Render a loading icon inside the button for pending actions.
+
 <ComponentPreview name="button-spinner" />
 
 ### Group
+
+To create a button group, use the `ButtonGroup` component.
 
 <ComponentPreview name="button-group-demo" />
 
 ### As Child
 
+Use the `as` prop to render another element with button styles.
+
 <ComponentPreview name="button-aschild" />
 
 ## API Reference
 
-See the [Kobalte](https://kobalte.dev/docs/core/components/button#api-reference) documentation for more information.
+The `Button` component wraps Kobalte's button primitive with variant and size styles.
+
+| Prop      | Type                                                                                 | Default     |
+| --------- | ------------------------------------------------------------------------------------ | ----------- |
+| `variant` | `"default" \| "outline" \| "ghost" \| "destructive" \| "secondary" \| "link"`        | `"default"` |
+| `size`    | `"default" \| "xs" \| "sm" \| "lg" \| "icon" \| "icon-xs" \| "icon-sm" \| "icon-lg"` | `"default"` |
+| `as`      | `ValidComponent`                                                                     | `"button"`  |
+| `class`   | `string`                                                                             |             |
+
+All native button attributes are forwarded to the rendered element.
+
+See the [Kobalte Button](https://kobalte.dev/docs/core/components/button#api-reference)
+documentation for additional primitive props.

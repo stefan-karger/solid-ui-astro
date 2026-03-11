@@ -7,7 +7,6 @@ component: true
 <ComponentPreview
   name="accordion-demo"
   previewClassName="*:data-[slot=accordion]:max-w-sm h-[300px]"
-  align="start"
 />
 
 ## Installation
@@ -69,6 +68,35 @@ import {
 </Accordion>
 ```
 
+## Examples
+
+### Basic
+
+Use `type="single"` for one open item at a time, and `collapsible` to allow closing the open item.
+
+<ComponentPreview
+  name="accordion-demo"
+  previewClassName="*:data-[slot=accordion]:max-w-sm h-[300px]"
+/>
+
 ## API Reference
+
+### Core Parts
+
+| Part               | Description                                      |
+| ------------------ | ------------------------------------------------ |
+| `Accordion`        | Root container that manages expanded state.      |
+| `AccordionItem`    | Individual collapsible section in the accordion. |
+| `AccordionTrigger` | Interactive header button for an item.           |
+| `AccordionContent` | Expandable panel content for the active item.    |
+
+### Common Root Props
+
+| Prop           | Type                     | Description                                            |
+| -------------- | ------------------------ | ------------------------------------------------------ |
+| `type`         | `"single" \| "multiple"` | Controls whether one or many items can be open.        |
+| `collapsible`  | `boolean`                | Allows closing the currently open item in single mode. |
+| `value`        | `string \| string[]`     | Controlled expanded value(s).                          |
+| `defaultValue` | `string \| string[]`     | Uncontrolled initial expanded value(s).                |
 
 See the [Kobalte](https://kobalte.dev/docs/core/components/accordion#api-reference) documentation for more information.

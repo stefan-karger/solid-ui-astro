@@ -4,7 +4,7 @@ description: Captures single-line text and other native input values.
 component: true
 ---
 
-<ComponentPreview name="input-demo" align="start" />
+<ComponentPreview name="input-demo" previewClassName="*:max-w-xs" />
 
 ## Installation
 
@@ -26,12 +26,6 @@ npx shadcn@latest add input
 <TabsContent value="manual">
 
 <Steps class="mb-0 pt-2">
-
-<Step>Install the following dependencies:</Step>
-
-```bash
-npm install @kobalte/core
-```
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -59,55 +53,79 @@ import { Input } from "~/components/ui/input"
 
 ### Basic
 
-<ComponentPreview name="input-basic" />
+<ComponentPreview name="input-basic" previewClassName="*:max-w-xs" />
 
 ### Field
 
-<ComponentPreview name="input-field" />
+Use a label and helper text to provide context for the input value.
+
+<ComponentPreview name="input-field" previewClassName="*:max-w-xs" />
 
 ### Field Group
 
-<ComponentPreview name="input-fieldgroup" />
+Use `FieldGroup` patterns to show multiple fields in one form section.
+
+<ComponentPreview name="input-fieldgroup" previewClassName="*:max-w-xs" />
 
 ### Disabled
 
-<ComponentPreview name="input-disabled" />
+Use the `disabled` prop to prevent interaction.
+
+<ComponentPreview name="input-disabled" previewClassName="*:max-w-xs" />
 
 ### Invalid
 
-<ComponentPreview name="input-invalid" />
+Use `aria-invalid="true"` when validation fails.
+
+<ComponentPreview name="input-invalid" previewClassName="*:max-w-xs" />
 
 ### File
 
-<ComponentPreview name="input-file" />
+Use `type="file"` to create a native file picker input.
+
+<ComponentPreview name="input-file" previewClassName="*:max-w-xs" />
 
 ### Inline
 
-<ComponentPreview name="input-inline" />
+Use a horizontal layout for compact label-input pairs.
+
+<ComponentPreview name="input-inline" previewClassName="*:max-w-xs" />
 
 ### Grid
 
-<ComponentPreview name="input-grid" />
+Use a grid layout to place related inputs side by side.
+
+<ComponentPreview name="input-grid" previewClassName="p-6" />
 
 ### Required
 
-<ComponentPreview name="input-required" />
+Use the `required` attribute to indicate mandatory fields.
+
+<ComponentPreview name="input-required" previewClassName="*:max-w-xs" />
 
 ### Badge
 
-<ComponentPreview name="input-badge" />
+Use a small badge in the label to highlight suggested fields.
+
+<ComponentPreview name="input-badge" previewClassName="*:max-w-xs" />
 
 ### Input Group
 
-<ComponentPreview name="input-input-group" />
+Use `InputGroup` to attach icons, text, or actions to an input.
+
+<ComponentPreview name="input-input-group" previewClassName="*:max-w-xs" />
 
 ### Button Group
 
-<ComponentPreview name="input-button-group" />
+Use `ButtonGroup` to combine quick actions with an input.
+
+<ComponentPreview name="input-button-group" previewClassName="*:max-w-xs" />
 
 ### Form
 
-<ComponentPreview name="input-form" />
+A full form example with multiple fields and submit behavior.
+
+<ComponentPreview name="input-form" previewClassName="h-[32rem]" />
 
 ## API Reference
 

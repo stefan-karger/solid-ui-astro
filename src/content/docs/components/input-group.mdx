@@ -4,7 +4,7 @@ description: Add addons, buttons, and helper content to inputs.
 component: true
 ---
 
-<ComponentPreview name="input-group-demo" align="start" previewClassName="h-[26rem]" />
+<ComponentPreview name="input-group-demo" previewClassName="h-[26rem]" />
 
 ## Installation
 
@@ -26,12 +26,6 @@ npx shadcn@latest add input-group
 <TabsContent value="manual">
 
 <Steps class="mb-0 pt-2">
-
-<Step>Install the following dependencies:</Step>
-
-```bash
-npm install @kobalte/core
-```
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -74,19 +68,32 @@ Use the `align` prop on `InputGroupAddon` to position the addon relative to the 
 For proper focus management, `InputGroupAddon` should be placed after `InputGroupInput` or
 `InputGroupTextarea` in the DOM. Use `align` for visual placement.
 
+<Callout>
+  For keyboard and focus navigation, keep addons after the control in the DOM and use `align` to
+  position them visually.
+</Callout>
+
 ### inline-start
+
+Use `align="inline-start"` to place the addon at the start of the input. This is the default.
 
 <ComponentPreview name="input-group-inline-start" previewClassName="h-48" />
 
 ### inline-end
 
+Use `align="inline-end"` to place the addon at the end of the input.
+
 <ComponentPreview name="input-group-inline-end" previewClassName="h-48" />
 
 ### block-start
 
+Use `align="block-start"` to place the addon above a textarea-like control.
+
 <ComponentPreview name="input-group-block-start" previewClassName="h-96" />
 
 ### block-end
+
+Use `align="block-end"` to place the addon below a textarea-like control.
 
 <ComponentPreview name="input-group-block-end" previewClassName="h-[26rem]" />
 
@@ -130,20 +137,98 @@ Add `data-slot="input-group-control"` to a custom control for automatic focus st
 
 ### InputGroup
 
-The main container for an input or textarea with optional addons.
+The main container that wraps inputs and addons.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` |         |
+
+```tsx showLineNumbers
+<InputGroup>
+  <InputGroupInput />
+  <InputGroupAddon />
+</InputGroup>
+```
 
 ### InputGroupAddon
 
-Displays icons, text, buttons, or helper content. Use `align` to control positioning.
+Displays icons, text, buttons, or helper content alongside controls.
+
+| Prop    | Type                                                             | Default          |
+| ------- | ---------------------------------------------------------------- | ---------------- |
+| `align` | `"inline-start" \| "inline-end" \| "block-start" \| "block-end"` | `"inline-start"` |
+| `class` | `string`                                                         |                  |
+
+```tsx showLineNumbers
+<InputGroupAddon align="inline-end">
+  <SearchIcon />
+</InputGroupAddon>
+```
+
+For `<InputGroupInput />`, use `inline-start` or `inline-end`.
+For `<InputGroupTextarea />`, use `block-start` or `block-end`.
+
+`InputGroupAddon` can render multiple buttons and icons.
+
+```tsx showLineNumbers
+<InputGroupAddon>
+  <InputGroupButton>One</InputGroupButton>
+  <InputGroupButton>Two</InputGroupButton>
+</InputGroupAddon>
+```
 
 ### InputGroupButton
 
 Renders compact button actions inside addons.
 
+| Prop      | Type                                                                          | Default    |
+| --------- | ----------------------------------------------------------------------------- | ---------- |
+| `size`    | `"xs" \| "icon-xs" \| "sm" \| "icon-sm"`                                      | `"xs"`     |
+| `variant` | `"default" \| "destructive" \| "outline" \| "secondary" \| "ghost" \| "link"` | `"ghost"`  |
+| `type`    | `"button" \| "submit" \| "reset"`                                             | `"button"` |
+| `class`   | `string`                                                                      |            |
+
+```tsx showLineNumbers
+<InputGroupButton>Send</InputGroupButton>
+<InputGroupButton size="icon-xs" aria-label="Copy">
+  <CopyIcon />
+</InputGroupButton>
+```
+
 ### InputGroupInput
 
 Input variant with `data-slot="input-group-control"` and input-group styles applied.
 
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` |         |
+
+All other props are forwarded to the underlying `<Input />`.
+
+```tsx showLineNumbers
+<InputGroup>
+  <InputGroupInput placeholder="Search..." />
+  <InputGroupAddon>
+    <SearchIcon />
+  </InputGroupAddon>
+</InputGroup>
+```
+
 ### InputGroupTextarea
 
 Textarea variant with `data-slot="input-group-control"` and input-group styles applied.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` |         |
+
+All other props are forwarded to the underlying `<Textarea />`.
+
+```tsx showLineNumbers
+<InputGroup>
+  <InputGroupTextarea placeholder="Enter message..." />
+  <InputGroupAddon align="block-end">
+    <InputGroupButton>Send</InputGroupButton>
+  </InputGroupAddon>
+</InputGroup>
+```

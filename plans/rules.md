@@ -6,3 +6,5 @@
 - Port every docs-referenced example into `src/registry/examples`.
 - Update `src/registry/ui/_registry.ts` and `src/registry/examples/_registry.ts` entries for each new primitive/example.
 - RTL support is not included yet: skip RTL-specific docs sections/previews and skip all `*-rtl` examples.
+- Keep docs in non-RTL parity with the source page (sections, usage notes, and API content), not just a minimal rewrite.
+- Keep `ComponentPreview` centered by default and preserve source API depth (tables/snippets) when present; use `align="start"` only when layout requires it.

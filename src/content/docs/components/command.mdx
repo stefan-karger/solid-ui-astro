@@ -4,7 +4,7 @@ description: Command menu for search and quick actions.
 component: true
 ---
 
-<ComponentPreview name="command-demo" align="start" previewClassName="h-[24.5rem]" />
+<ComponentPreview name="command-demo" previewClassName="h-[24.5rem]" />
 
 ## About
 
@@ -79,6 +79,25 @@ import {
 </Command>
 ```
 
+## Dialog Usage
+
+Use `CommandDialog` when you want a command palette rendered in a dialog.
+
+```tsx showLineNumbers
+import { Command, CommandDialog, CommandInput, CommandList } from "~/components/ui/command"
+
+export function CommandPalette() {
+  return (
+    <CommandDialog open={open()} onOpenChange={setOpen}>
+      <Command options={commands()} optionValue="value" optionLabel="label" optionTextValue="label">
+        <CommandInput placeholder="Search commands..." />
+        <CommandList />
+      </Command>
+    </CommandDialog>
+  )
+}
+```
+
 ## Examples
 
 ### Basic
@@ -104,5 +123,22 @@ Scrollable command menu with multiple items.
 <ComponentPreview name="command-scrollable" />
 
 ## API Reference
+
+### Core Parts
+
+| Part                     | Description                                                    |
+| ------------------------ | -------------------------------------------------------------- |
+| `Command`                | Root searchable command container.                             |
+| `CommandDialog`          | Dialog wrapper for palette-style command menus.                |
+| `CommandInput`           | Search input field with integrated icon.                       |
+| `CommandList`            | Listbox container for command results.                         |
+| `CommandEmpty`           | Empty state shown when no command matches.                     |
+| `CommandGroup`           | Section wrapper for grouped commands.                          |
+| `CommandGroupLabel`      | Label for a command section.                                   |
+| `CommandItem`            | Selectable command row.                                        |
+| `CommandItemLabel`       | Primary label region inside a command item.                    |
+| `CommandItemDescription` | Secondary description region inside a command item.            |
+| `CommandShortcut`        | Right-aligned keyboard shortcut text inside a command item.    |
+| `CommandContent`         | Optional content wrapper from the underlying search primitive. |
 
 See the [Kobalte Search](https://kobalte.dev/docs/core/components/search) documentation for more information.

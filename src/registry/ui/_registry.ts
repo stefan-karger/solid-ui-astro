@@ -95,7 +95,6 @@ export const ui: Registry["items"] = [
   {
     name: "input",
     type: "registry:ui",
-    dependencies: ["@kobalte/core"],
     files: [
       {
         path: "ui/input.tsx",
@@ -106,7 +105,6 @@ export const ui: Registry["items"] = [
   {
     name: "input-group",
     type: "registry:ui",
-    dependencies: ["@kobalte/core"],
     registryDependencies: ["button", "input", "textarea"],
     files: [
       {
@@ -118,7 +116,6 @@ export const ui: Registry["items"] = [
   {
     name: "label",
     type: "registry:ui",
-    dependencies: ["@kobalte/core"],
     files: [
       {
         path: "ui/label.tsx",
@@ -184,7 +181,6 @@ export const ui: Registry["items"] = [
   {
     name: "textarea",
     type: "registry:ui",
-    dependencies: ["@kobalte/core"],
     files: [
       {
         path: "ui/textarea.tsx",

@@ -4,7 +4,11 @@ description: Renders an accessible text label associated with form controls.
 component: true
 ---
 
-<ComponentPreview name="label-demo" align="start" />
+<ComponentPreview name="label-demo" />
+
+<Callout>
+  For full form field patterns, combine `Label` with `Input`, helper text, and error text.
+</Callout>
 
 ## Installation
 
@@ -49,6 +53,17 @@ import { Label } from "~/components/ui/label"
 <Label for="email">Email address</Label>
 ```
 
+## Label in Field
+
+For form inputs, place the label directly above the related control.
+
+```tsx showLineNumbers
+<div class="grid gap-2">
+  <Label for="email">Email address</Label>
+  <Input id="email" type="email" />
+</div>
+```
+
 ## Examples
 
 ### Basic
@@ -56,6 +71,8 @@ import { Label } from "~/components/ui/label"
 <ComponentPreview name="label-demo" />
 
 ### Field
+
+Use a field layout when you need label, control, and helper text together.
 
 <ComponentPreview name="field-demo" />
 
