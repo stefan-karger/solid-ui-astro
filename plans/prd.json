@@ -54,16 +54,16 @@
     "complexityScore": 2,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.label", "type": "primitive", "dependsOn": [], "finished": false },
-      { "id": "docs.label", "type": "docs", "dependsOn": ["primitive.label"], "finished": false },
+      { "id": "primitive.label", "type": "primitive", "dependsOn": [], "finished": true },
+      { "id": "docs.label", "type": "docs", "dependsOn": ["primitive.label"], "finished": true },
       {
         "id": "examples.label",
         "type": "examples",
         "dependsOn": ["docs.label"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "label-demo", "finished": false },
-          { "name": "field-demo", "finished": false }
+          { "name": "label-demo", "finished": true },
+          { "name": "field-demo", "finished": true }
         ]
       }
     ]

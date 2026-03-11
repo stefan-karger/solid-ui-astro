@@ -497,6 +497,28 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "label-demo",
+    type: "registry:example",
+    registryDependencies: ["label"],
+    files: [
+      {
+        path: "examples/label-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "field-demo",
+    type: "registry:example",
+    registryDependencies: ["input", "label"],
+    files: [
+      {
+        path: "examples/field-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "input-group-demo",
     type: "registry:example",
     registryDependencies: ["input-group"],

@@ -116,6 +116,17 @@ export const ui: Registry["items"] = [
     ]
   },
   {
+    name: "label",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core"],
+    files: [
+      {
+        path: "ui/label.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
     name: "navigation-menu",
     type: "registry:ui",
     dependencies: ["@kobalte/core"],

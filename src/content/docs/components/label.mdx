@@ -1,0 +1,66 @@
+---
+title: Label
+description: Renders an accessible text label associated with form controls.
+component: true
+---
+
+<ComponentPreview name="label-demo" align="start" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add label
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="label" title="components/ui/label.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { Label } from "~/components/ui/label"
+```
+
+```tsx showLineNumbers
+<Label for="email">Email address</Label>
+```
+
+## Examples
+
+### Basic
+
+<ComponentPreview name="label-demo" />
+
+### Field
+
+<ComponentPreview name="field-demo" />
+
+## API Reference
+
+This component forwards native `label` attributes. See the
+[HTML label element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label)
+reference for all supported props.
