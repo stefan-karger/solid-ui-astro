@@ -6,7 +6,7 @@ component: true
 
 <ComponentPreview
   name="accordion-demo"
-  previewClassName="*:data-[slot=accordion]:max-w-sm h-[300px]"
+  previewClassName="*:data-[slot=accordion]:w-full *:data-[slot=accordion]:max-w-sm"
 />
 
 ## Installation
@@ -60,10 +60,27 @@ import {
 ```
 
 ```tsx showLineNumbers
-<Accordion type="single" collapsible>
+<Accordion collapsible defaultValue={["item-1"]}>
   <AccordionItem value="item-1">
     <AccordionTrigger>Is it accessible?</AccordionTrigger>
     <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+## Multiple Items
+
+Set `multiple` to allow opening more than one accordion item at the same time.
+
+```tsx showLineNumbers
+<Accordion multiple defaultValue={["item-1", "item-2"]}>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>First item</AccordionTrigger>
+    <AccordionContent>Content for the first item.</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="item-2">
+    <AccordionTrigger>Second item</AccordionTrigger>
+    <AccordionContent>Content for the second item.</AccordionContent>
   </AccordionItem>
 </Accordion>
 ```
@@ -72,12 +89,44 @@ import {
 
 ### Basic
 
-Use `type="single"` for one open item at a time, and `collapsible` to allow closing the open item.
+By default, one item can be open at a time. Add `collapsible` to allow closing the currently open item.
+
+<ComponentPreview
+  name="accordion-basic"
+  previewClassName="*:data-[slot=accordion]:w-full *:data-[slot=accordion]:max-w-sm"
+/>
+
+### Demo
 
 <ComponentPreview
   name="accordion-demo"
-  previewClassName="*:data-[slot=accordion]:max-w-sm h-[300px]"
+  previewClassName="*:data-[slot=accordion]:w-full *:data-[slot=accordion]:max-w-sm"
 />
+
+### Multiple
+
+<ComponentPreview
+  name="accordion-multiple"
+  previewClassName="*:data-[slot=accordion]:w-full *:data-[slot=accordion]:max-w-sm"
+/>
+
+### Disabled
+
+<ComponentPreview
+  name="accordion-disabled"
+  previewClassName="*:data-[slot=accordion]:w-full *:data-[slot=accordion]:max-w-sm"
+/>
+
+### Borders
+
+<ComponentPreview
+  name="accordion-borders"
+  previewClassName="*:data-[slot=accordion]:w-full *:data-[slot=accordion]:max-w-sm"
+/>
+
+### Card
+
+<ComponentPreview name="accordion-card" previewClassName="*:w-full *:max-w-sm" />
 
 ## API Reference
 
@@ -92,11 +141,18 @@ Use `type="single"` for one open item at a time, and `collapsible` to allow clos
 
 ### Common Root Props
 
-| Prop           | Type                     | Description                                            |
-| -------------- | ------------------------ | ------------------------------------------------------ |
-| `type`         | `"single" \| "multiple"` | Controls whether one or many items can be open.        |
-| `collapsible`  | `boolean`                | Allows closing the currently open item in single mode. |
-| `value`        | `string \| string[]`     | Controlled expanded value(s).                          |
-| `defaultValue` | `string \| string[]`     | Uncontrolled initial expanded value(s).                |
+| Prop           | Type                 | Description                                            |
+| -------------- | -------------------- | ------------------------------------------------------ |
+| `collapsible`  | `boolean`            | Allows closing the currently open item in single mode. |
+| `multiple`     | `boolean`            | Allows opening more than one item at once.             |
+| `value`        | `string \| string[]` | Controlled expanded value(s).                          |
+| `defaultValue` | `string \| string[]` | Uncontrolled initial expanded value(s).                |
+
+### Common Item Props
+
+| Prop       | Type      | Description                                   |
+| ---------- | --------- | --------------------------------------------- |
+| `value`    | `string`  | Unique item identifier used for open state.   |
+| `disabled` | `boolean` | Prevents interaction and focus for that item. |
 
 See the [Kobalte](https://kobalte.dev/docs/core/components/accordion#api-reference) documentation for more information.

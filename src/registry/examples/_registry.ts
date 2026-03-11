@@ -2,12 +2,67 @@ import type { Registry } from "~/registry/schema"
 
 export const examples: Registry["items"] = [
   {
+    name: "accordion-basic",
+    type: "registry:example",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "examples/accordion-basic.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "accordion-borders",
+    type: "registry:example",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "examples/accordion-borders.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "accordion-card",
+    type: "registry:example",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "examples/accordion-card.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "accordion-disabled",
+    type: "registry:example",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "examples/accordion-disabled.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "accordion-demo",
     type: "registry:example",
     registryDependencies: ["accordion"],
     files: [
       {
         path: "examples/accordion-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "accordion-multiple",
+    type: "registry:example",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "examples/accordion-multiple.tsx",
         type: "registry:example"
       }
     ]

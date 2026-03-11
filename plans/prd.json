@@ -596,25 +596,25 @@
     "complexityScore": 6,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.accordion", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "primitive.accordion", "type": "primitive", "dependsOn": [], "finished": true },
       {
         "id": "docs.accordion",
         "type": "docs",
         "dependsOn": ["primitive.accordion"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.accordion",
         "type": "examples",
         "dependsOn": ["docs.accordion"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "accordion-demo", "finished": false },
-          { "name": "accordion-basic", "finished": false },
-          { "name": "accordion-multiple", "finished": false },
-          { "name": "accordion-disabled", "finished": false },
-          { "name": "accordion-borders", "finished": false },
-          { "name": "accordion-card", "finished": false }
+          { "name": "accordion-demo", "finished": true },
+          { "name": "accordion-basic", "finished": true },
+          { "name": "accordion-multiple", "finished": true },
+          { "name": "accordion-disabled", "finished": true },
+          { "name": "accordion-borders", "finished": true },
+          { "name": "accordion-card", "finished": true }
         ]
       }
     ]
