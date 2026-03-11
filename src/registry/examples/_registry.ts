@@ -717,6 +717,50 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "popover-demo",
+    type: "registry:example",
+    registryDependencies: ["button", "popover"],
+    files: [
+      {
+        path: "examples/popover-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "popover-basic",
+    type: "registry:example",
+    registryDependencies: ["button", "popover"],
+    files: [
+      {
+        path: "examples/popover-basic.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "popover-alignments",
+    type: "registry:example",
+    registryDependencies: ["button", "popover"],
+    files: [
+      {
+        path: "examples/popover-alignments.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "popover-form",
+    type: "registry:example",
+    registryDependencies: ["button", "input", "label", "popover"],
+    files: [
+      {
+        path: "examples/popover-form.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "progress-demo",
     type: "registry:example",
     registryDependencies: ["progress"],

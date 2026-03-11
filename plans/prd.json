@@ -292,23 +292,23 @@
     "complexityScore": 4,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.popover", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "primitive.popover", "type": "primitive", "dependsOn": [], "finished": true },
       {
         "id": "docs.popover",
         "type": "docs",
         "dependsOn": ["primitive.popover"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.popover",
         "type": "examples",
         "dependsOn": ["docs.popover"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "popover-demo", "finished": false },
-          { "name": "popover-basic", "finished": false },
-          { "name": "popover-alignments", "finished": false },
-          { "name": "popover-form", "finished": false }
+          { "name": "popover-demo", "finished": true },
+          { "name": "popover-basic", "finished": true },
+          { "name": "popover-alignments", "finished": true },
+          { "name": "popover-form", "finished": true }
         ]
       }
     ]

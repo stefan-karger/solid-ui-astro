@@ -1,0 +1,144 @@
+---
+title: Popover
+description: Displays rich content in a floating layer triggered by a button or custom anchor.
+component: true
+---
+
+<ComponentPreview name="popover-demo" previewClassName="h-52" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add popover
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @kobalte/core
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="popover" title="components/ui/popover.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { Popover, PopoverContent, PopoverTrigger } from "~/components/ui/popover"
+```
+
+```tsx showLineNumbers
+<Popover>
+  <PopoverTrigger as="button">Open</PopoverTrigger>
+  <PopoverContent>Popover content</PopoverContent>
+</Popover>
+```
+
+## Controlled State
+
+Use `open` and `onOpenChange` for fully controlled behavior.
+
+```tsx showLineNumbers
+const [open, setOpen] = createSignal(false)
+
+<Popover onOpenChange={setOpen} open={open()}>
+  <PopoverTrigger as="button">Toggle</PopoverTrigger>
+  <PopoverContent>Controlled popover content.</PopoverContent>
+</Popover>
+```
+
+## Positioning
+
+Use `placement` and `gutter` to control where content is rendered.
+
+```tsx showLineNumbers
+<Popover gutter={8} placement="bottom-start">
+  <PopoverTrigger as="button">Bottom start</PopoverTrigger>
+  <PopoverContent>Placed below and aligned to the trigger start.</PopoverContent>
+</Popover>
+```
+
+## Anchor
+
+Use `PopoverAnchor` to position content relative to a separate element.
+
+```tsx showLineNumbers
+<Popover>
+  <PopoverAnchor class="inline-block rounded-md bg-muted px-3 py-2 text-sm">
+    Anchor element
+  </PopoverAnchor>
+  <PopoverTrigger as="button">Open</PopoverTrigger>
+  <PopoverContent>Anchored content.</PopoverContent>
+</Popover>
+```
+
+## Examples
+
+### Demo
+
+<ComponentPreview name="popover-demo" previewClassName="h-52" />
+
+### Basic
+
+<ComponentPreview name="popover-basic" previewClassName="h-52" />
+
+### Alignments
+
+<ComponentPreview name="popover-alignments" previewClassName="h-56" />
+
+### Form
+
+<ComponentPreview name="popover-form" previewClassName="h-64" />
+
+## API Reference
+
+### Core Parts
+
+| Part                 | Description                                              |
+| -------------------- | -------------------------------------------------------- |
+| `Popover`            | Root component that manages open state and positioning.  |
+| `PopoverTrigger`     | Interactive element used to toggle the popover content.  |
+| `PopoverAnchor`      | Optional anchor for custom positioning targets.          |
+| `PopoverContent`     | Floating content rendered in a portal near the trigger.  |
+| `PopoverHeader`      | Layout helper for title and description blocks.          |
+| `PopoverTitle`       | Accessible title for the content region.                 |
+| `PopoverDescription` | Supporting description text for contextual information.  |
+| `PopoverCloseButton` | Optional close control for dismissible content patterns. |
+
+### Common Root Props
+
+| Prop           | Type                      | Description                                             |
+| -------------- | ------------------------- | ------------------------------------------------------- |
+| `open`         | `boolean`                 | Controlled open state.                                  |
+| `defaultOpen`  | `boolean`                 | Initial open state in uncontrolled mode.                |
+| `onOpenChange` | `(open: boolean) => void` | Called when open state changes.                         |
+| `placement`    | `string`                  | Preferred floating placement such as `top` or `right`.  |
+| `gutter`       | `number`                  | Space in pixels between anchor and content.             |
+| `modal`        | `boolean`                 | Traps focus and prevents outside interaction when true. |
+
+See the [Kobalte Popover](https://kobalte.dev/docs/core/components/popover) documentation
+for all available props and behavior details.
