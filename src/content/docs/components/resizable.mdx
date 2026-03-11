@@ -1,0 +1,128 @@
+---
+title: Resizable
+description: Resize adjacent content panels horizontally or vertically.
+component: true
+---
+
+<ComponentPreview name="resizable-demo" previewClassName="*:w-full *:max-w-md" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add resizable
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependency:</Step>
+
+```bash
+npm install solid-resizable-panels
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="resizable" title="components/ui/resizable.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "~/components/ui/resizable"
+```
+
+```tsx showLineNumbers
+<ResizablePanelGroup direction="row" class="min-h-[200px] rounded-lg border">
+  <ResizablePanel id="left-panel" initialSize={30}>
+    Left panel
+  </ResizablePanel>
+  <ResizableHandle />
+  <ResizablePanel id="right-panel" initialSize={70}>
+    Right panel
+  </ResizablePanel>
+</ResizablePanelGroup>
+```
+
+## Vertical Layout
+
+Set `direction="column"` on `ResizablePanelGroup` to switch to a vertical splitter.
+
+```tsx showLineNumbers
+<ResizablePanelGroup direction="column" class="min-h-[300px] rounded-lg border">
+  <ResizablePanel id="top-panel" initialSize={40}>
+    Top
+  </ResizablePanel>
+  <ResizableHandle />
+  <ResizablePanel id="bottom-panel" initialSize={60}>
+    Bottom
+  </ResizablePanel>
+</ResizablePanelGroup>
+```
+
+## Handle Styles
+
+Use `withHandle` to render a visible drag grip.
+
+```tsx showLineNumbers
+<ResizableHandle withHandle />
+```
+
+## Examples
+
+### Demo
+
+<ComponentPreview name="resizable-demo" previewClassName="*:w-full *:max-w-md" />
+
+### Vertical
+
+<ComponentPreview name="resizable-vertical" previewClassName="*:w-full *:max-w-md" />
+
+### Handle
+
+<ComponentPreview name="resizable-handle" previewClassName="*:w-full *:max-w-md" />
+
+## API Reference
+
+### Core Parts
+
+| Part                  | Description                                             |
+| --------------------- | ------------------------------------------------------- |
+| `ResizablePanelGroup` | Flex container that manages panel layout and direction. |
+| `ResizablePanel`      | A resizable section identified by a unique `id`.        |
+| `ResizableHandle`     | Draggable separator between adjacent panels.            |
+
+### Common Props
+
+| Part                  | Prop          | Type                                                     | Description                                           |
+| --------------------- | ------------- | -------------------------------------------------------- | ----------------------------------------------------- |
+| `ResizablePanelGroup` | `direction`   | `"row" \| "column" \| "row-reverse" \| "column-reverse"` | Resizing direction for the panel group.               |
+| `ResizablePanel`      | `id`          | `string`                                                 | Required panel identifier within a group.             |
+| `ResizablePanel`      | `initialSize` | `number`                                                 | Initial panel size in percent.                        |
+| `ResizablePanel`      | `minSize`     | `number`                                                 | Minimum panel size in percent.                        |
+| `ResizablePanel`      | `maxSize`     | `number`                                                 | Maximum panel size in percent.                        |
+| `ResizableHandle`     | `disabled`    | `boolean`                                                | Disables dragging for a handle.                       |
+| `ResizableHandle`     | `withHandle`  | `boolean`                                                | Shows a visual grip element inside the resize handle. |
+
+See the
+[solid-resizable-panels documentation](https://github.com/phgn0/solid-resizable-panels)
+for full API details.

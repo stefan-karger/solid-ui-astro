@@ -199,6 +199,17 @@ export const ui: Registry["items"] = [
     ]
   },
   {
+    name: "resizable",
+    type: "registry:ui",
+    dependencies: ["solid-resizable-panels"],
+    files: [
+      {
+        path: "ui/resizable.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
     name: "separator",
     type: "registry:ui",
     dependencies: ["@kobalte/core"],

@@ -164,22 +164,22 @@
     "complexityScore": 3,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.resizable", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "primitive.resizable", "type": "primitive", "dependsOn": [], "finished": true },
       {
         "id": "docs.resizable",
         "type": "docs",
         "dependsOn": ["primitive.resizable"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.resizable",
         "type": "examples",
         "dependsOn": ["docs.resizable"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "resizable-demo", "finished": false },
-          { "name": "resizable-vertical", "finished": false },
-          { "name": "resizable-handle", "finished": false }
+          { "name": "resizable-demo", "finished": true },
+          { "name": "resizable-vertical", "finished": true },
+          { "name": "resizable-handle", "finished": true }
         ]
       }
     ]
