@@ -542,24 +542,24 @@
     "complexityScore": 5,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.textarea", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "primitive.textarea", "type": "primitive", "dependsOn": [], "finished": true },
       {
         "id": "docs.textarea",
         "type": "docs",
         "dependsOn": ["primitive.textarea"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.textarea",
         "type": "examples",
         "dependsOn": ["docs.textarea"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "textarea-demo", "finished": false },
-          { "name": "textarea-field", "finished": false },
-          { "name": "textarea-disabled", "finished": false },
-          { "name": "textarea-invalid", "finished": false },
-          { "name": "textarea-button", "finished": false }
+          { "name": "textarea-demo", "finished": true },
+          { "name": "textarea-field", "finished": true },
+          { "name": "textarea-disabled", "finished": true },
+          { "name": "textarea-invalid", "finished": true },
+          { "name": "textarea-button", "finished": true }
         ]
       }
     ]

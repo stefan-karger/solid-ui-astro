@@ -1,0 +1,80 @@
+---
+title: Textarea
+description: Captures long-form text with a native multiline input.
+component: true
+---
+
+<ComponentPreview name="textarea-demo" align="start" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add textarea
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @kobalte/core
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="textarea" title="components/ui/textarea.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { Textarea } from "~/components/ui/textarea"
+```
+
+```tsx showLineNumbers
+<Textarea placeholder="Tell us about your project" />
+```
+
+## Examples
+
+### Field
+
+<ComponentPreview name="textarea-field" />
+
+### Disabled
+
+<ComponentPreview name="textarea-disabled" />
+
+### Invalid
+
+<ComponentPreview name="textarea-invalid" />
+
+### With Button
+
+<ComponentPreview name="textarea-button" />
+
+## API Reference
+
+This component forwards native `textarea` attributes. See the
+[HTML textarea element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/textarea)
+reference for all supported props.
