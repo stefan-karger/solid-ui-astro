@@ -3,10 +3,11 @@ import {
   IconCheck,
   IconChevronDown,
   IconChevronRight,
+  IconLoader,
   IconSearch,
   IconX
 } from "@tabler/icons-solidjs"
 
-const icons = { IconCheck, IconChevronDown, IconChevronRight, IconSearch, IconX }
+const icons = { IconCheck, IconChevronDown, IconChevronRight, IconLoader, IconSearch, IconX }
 
 export default icons

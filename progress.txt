@@ -1,0 +1,1 @@
+2026-03-11: Completed the `button` feature (primitive/docs/examples). Added `src/content/docs/components/button.mdx`, registered 14 button examples in `src/registry/examples/_registry.ts`, and implemented all checklist examples under `src/registry/examples/button-*.tsx` including `button-group-demo` and `button-aschild`.

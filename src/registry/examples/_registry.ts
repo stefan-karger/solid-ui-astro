@@ -13,6 +13,160 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "button-demo",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/button-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "button-size",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/button-size.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "button-default",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/button-default.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "button-outline",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/button-outline.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "button-secondary",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/button-secondary.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "button-ghost",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/button-ghost.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "button-destructive",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/button-destructive.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "button-link",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/button-link.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "button-icon",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/button-icon.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "button-with-icon",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/button-with-icon.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "button-rounded",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/button-rounded.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "button-spinner",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/button-spinner.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "button-group-demo",
+    type: "registry:example",
+    registryDependencies: ["button", "button-group"],
+    files: [
+      {
+        path: "examples/button-group-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "button-aschild",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/button-aschild.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "command-demo",
     type: "registry:example",
     registryDependencies: ["command"],

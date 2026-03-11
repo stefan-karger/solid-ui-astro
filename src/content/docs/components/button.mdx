@@ -1,0 +1,114 @@
+---
+title: Button
+description: Displays a button or a component that looks and behaves like one.
+component: true
+---
+
+<ComponentPreview name="button-demo" align="start" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add button
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @kobalte/core
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="button" title="components/ui/button.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { Button } from "~/components/ui/button"
+```
+
+```tsx showLineNumbers
+<Button>Save changes</Button>
+```
+
+## Examples
+
+### Sizes
+
+<ComponentPreview name="button-size" />
+
+### Default
+
+<ComponentPreview name="button-default" />
+
+### Outline
+
+<ComponentPreview name="button-outline" />
+
+### Secondary
+
+<ComponentPreview name="button-secondary" />
+
+### Ghost
+
+<ComponentPreview name="button-ghost" />
+
+### Destructive
+
+<ComponentPreview name="button-destructive" />
+
+### Link
+
+<ComponentPreview name="button-link" />
+
+### Icon
+
+<ComponentPreview name="button-icon" />
+
+### With Icon
+
+<ComponentPreview name="button-with-icon" />
+
+### Rounded
+
+<ComponentPreview name="button-rounded" />
+
+### Spinner
+
+<ComponentPreview name="button-spinner" />
+
+### Group
+
+<ComponentPreview name="button-group-demo" />
+
+### As Child
+
+<ComponentPreview name="button-aschild" />
+
+## API Reference
+
+See the [Kobalte](https://kobalte.dev/docs/core/components/button#api-reference) documentation for more information.

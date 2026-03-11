@@ -1295,33 +1295,33 @@
     "complexityScore": 14,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.button", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "primitive.button", "type": "primitive", "dependsOn": [], "finished": true },
       {
         "id": "docs.button",
         "type": "docs",
         "dependsOn": ["primitive.button"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.button",
         "type": "examples",
         "dependsOn": ["docs.button"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "button-demo", "finished": false },
-          { "name": "button-size", "finished": false },
-          { "name": "button-default", "finished": false },
-          { "name": "button-outline", "finished": false },
-          { "name": "button-secondary", "finished": false },
-          { "name": "button-ghost", "finished": false },
-          { "name": "button-destructive", "finished": false },
-          { "name": "button-link", "finished": false },
-          { "name": "button-icon", "finished": false },
-          { "name": "button-with-icon", "finished": false },
-          { "name": "button-rounded", "finished": false },
-          { "name": "button-spinner", "finished": false },
-          { "name": "button-group-demo", "finished": false },
-          { "name": "button-aschild", "finished": false }
+          { "name": "button-demo", "finished": true },
+          { "name": "button-size", "finished": true },
+          { "name": "button-default", "finished": true },
+          { "name": "button-outline", "finished": true },
+          { "name": "button-secondary", "finished": true },
+          { "name": "button-ghost", "finished": true },
+          { "name": "button-destructive", "finished": true },
+          { "name": "button-link", "finished": true },
+          { "name": "button-icon", "finished": true },
+          { "name": "button-with-icon", "finished": true },
+          { "name": "button-rounded", "finished": true },
+          { "name": "button-spinner", "finished": true },
+          { "name": "button-group-demo", "finished": true },
+          { "name": "button-aschild", "finished": true }
         ]
       }
     ]
