@@ -108,7 +108,7 @@ const NavigationMenuContent = <T extends ValidComponent = "ul">(
       <Content
         data-slot="navigation-menu-content"
         class={cn(
-          "cn-navigation-menu-content absolute top-0 h-full w-auto origin-(--kb-menu-content-transform-origin)",
+          "cn-navigation-menu-content absolute top-0 h-full w-auto origin-(--kb-menu-content-transform-origin) **:data-[slot=navigation-menu-link]:focus:ring-0 **:data-[slot=navigation-menu-link]:focus:outline-none",
           local.class
         )}
         {...others}

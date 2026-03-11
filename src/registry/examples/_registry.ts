@@ -343,6 +343,17 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "navigation-menu-demo",
+    type: "registry:example",
+    registryDependencies: ["navigation-menu"],
+    files: [
+      {
+        path: "examples/navigation-menu-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "input-demo",
     type: "registry:example",
     registryDependencies: ["input"],

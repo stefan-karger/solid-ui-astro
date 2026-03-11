@@ -8,20 +8,20 @@
         "id": "primitive.navigation-menu",
         "type": "primitive",
         "dependsOn": [],
-        "finished": false
+        "finished": true
       },
       {
         "id": "docs.navigation-menu",
         "type": "docs",
         "dependsOn": ["primitive.navigation-menu"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.navigation-menu",
         "type": "examples",
         "dependsOn": ["docs.navigation-menu"],
-        "finished": false,
-        "checklist": [{ "name": "navigation-menu-demo", "finished": false }]
+        "finished": true,
+        "checklist": [{ "name": "navigation-menu-demo", "finished": true }]
       }
     ]
   },
