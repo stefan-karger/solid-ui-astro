@@ -445,23 +445,23 @@
         "id": "primitive.pagination",
         "type": "primitive",
         "dependsOn": ["primitive.button"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "docs.pagination",
         "type": "docs",
         "dependsOn": ["primitive.pagination"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.pagination",
         "type": "examples",
         "dependsOn": ["docs.pagination"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "pagination-demo", "finished": false },
-          { "name": "pagination-simple", "finished": false },
-          { "name": "pagination-icons-only", "finished": false }
+          { "name": "pagination-demo", "finished": true },
+          { "name": "pagination-simple", "finished": true },
+          { "name": "pagination-icons-only", "finished": true }
         ]
       }
     ]

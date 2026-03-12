@@ -1,0 +1,132 @@
+---
+title: Pagination
+description: Pagination with page links, previous/next controls, and overflow ellipsis.
+component: true
+---
+
+<ComponentPreview name="pagination-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add pagination
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @kobalte/core
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="pagination" title="components/ui/pagination.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious
+} from "~/components/ui/pagination"
+```
+
+```tsx showLineNumbers
+<Pagination>
+  <PaginationContent>
+    <PaginationItem>
+      <PaginationPrevious href="#" />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#">1</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#" isActive>
+        2
+      </PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#">3</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationEllipsis />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationNext href="#" />
+    </PaginationItem>
+  </PaginationContent>
+</Pagination>
+```
+
+## Examples
+
+### Demo
+
+<ComponentPreview name="pagination-demo" />
+
+### Simple
+
+A compact pagination layout with page links only.
+
+<ComponentPreview name="pagination-simple" />
+
+### Icons Only
+
+Use icon-only controls when page numbers are managed elsewhere (for example, in table controls).
+
+<ComponentPreview name="pagination-icons-only" />
+
+## API Reference
+
+### Core Parts
+
+| Part                 | Description                                                   |
+| -------------------- | ------------------------------------------------------------- |
+| `Pagination`         | Navigation landmark container with `aria-label="pagination"`. |
+| `PaginationContent`  | Flex list wrapper for pagination items.                       |
+| `PaginationItem`     | List item container for individual controls.                  |
+| `PaginationLink`     | Link-styled control built on top of `Button`.                 |
+| `PaginationPrevious` | Preconfigured previous-page action with label and icon.       |
+| `PaginationNext`     | Preconfigured next-page action with label and icon.           |
+| `PaginationEllipsis` | Non-interactive overflow indicator.                           |
+
+### PaginationLink Props
+
+| Prop       | Type                         | Default  | Description                                |
+| ---------- | ---------------------------- | -------- | ------------------------------------------ |
+| `isActive` | `boolean`                    | `false`  | Applies active state and `aria-current`.   |
+| `size`     | `"default" \| "icon" \| ...` | `"icon"` | Passes through to the underlying `Button`. |
+| `class`    | `string`                     |          | Additional classes for custom styling.     |
+
+`PaginationLink` forwards all anchor (`a`) attributes such as `href`, `target`, and `rel`.
+
+See the [Kobalte Button](https://kobalte.dev/docs/core/components/button) documentation for
+button behavior details used internally by `PaginationLink`.
