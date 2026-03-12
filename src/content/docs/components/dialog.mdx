@@ -1,0 +1,138 @@
+---
+title: Dialog
+description: A window overlaid on the page that keeps focus inside until dismissed.
+component: true
+---
+
+<ComponentPreview name="dialog-demo" previewClassName="h-40" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add dialog
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @kobalte/core
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="dialog" title="components/ui/dialog.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger
+} from "~/components/ui/dialog"
+```
+
+```tsx showLineNumbers
+<Dialog>
+  <DialogTrigger as="button">Open</DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Are you absolutely sure?</DialogTitle>
+      <DialogDescription>
+        This action cannot be undone. This will permanently delete your account and remove your data
+        from our servers.
+      </DialogDescription>
+    </DialogHeader>
+  </DialogContent>
+</Dialog>
+```
+
+## Examples
+
+### Demo
+
+<ComponentPreview name="dialog-demo" previewClassName="h-40" />
+
+### Custom Close Button
+
+Replace the default top-right control with a close action in the footer.
+
+<ComponentPreview name="dialog-close-button" previewClassName="h-44" />
+
+### No Close Button
+
+Use `showCloseButton={false}` to hide the close button in the corner.
+
+<ComponentPreview name="dialog-no-close-button" previewClassName="h-40" />
+
+### Sticky Footer
+
+Keep actions visible while the content scrolls.
+
+<ComponentPreview name="dialog-sticky-footer" previewClassName="h-40" />
+
+### Scrollable Content
+
+Long content can scroll while the dialog remains centered.
+
+<ComponentPreview name="dialog-scrollable-content" previewClassName="h-40" />
+
+## API Reference
+
+### Core Parts
+
+| Part                | Description                                                   |
+| ------------------- | ------------------------------------------------------------- |
+| `Dialog`            | Root component that manages open state and focus behavior.    |
+| `DialogTrigger`     | Interactive element used to open the dialog.                  |
+| `DialogContent`     | Overlay + content container rendered in a portal.             |
+| `DialogHeader`      | Layout wrapper for title and description content.             |
+| `DialogTitle`       | Accessible heading for the dialog content.                    |
+| `DialogDescription` | Supporting text that describes the dialog purpose.            |
+| `DialogFooter`      | Footer container for actions, usually confirm/cancel buttons. |
+| `DialogClose`       | Interactive element used to close the dialog.                 |
+
+### Common Root Props
+
+| Prop            | Type                      | Description                                      |
+| --------------- | ------------------------- | ------------------------------------------------ |
+| `open`          | `boolean`                 | Controlled open state.                           |
+| `defaultOpen`   | `boolean`                 | Initial open state in uncontrolled mode.         |
+| `onOpenChange`  | `(open: boolean) => void` | Called when open state changes.                  |
+| `modal`         | `boolean`                 | Traps focus and blocks outside interaction.      |
+| `preventScroll` | `boolean`                 | Prevents body scrolling while the dialog is open |
+
+### DialogContent Props
+
+| Prop              | Type      | Default | Description                                                  |
+| ----------------- | --------- | ------- | ------------------------------------------------------------ |
+| `showCloseButton` | `boolean` | `true`  | Controls whether the default top-right close button is shown |
+
+See the [Kobalte Dialog](https://kobalte.dev/docs/core/components/dialog) documentation
+for complete behavior details and all available props.

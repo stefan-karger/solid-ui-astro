@@ -871,25 +871,25 @@
         "id": "primitive.dialog",
         "type": "primitive",
         "dependsOn": ["primitive.button"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "docs.dialog",
         "type": "docs",
         "dependsOn": ["primitive.dialog"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.dialog",
         "type": "examples",
         "dependsOn": ["docs.dialog"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "dialog-demo", "finished": false },
-          { "name": "dialog-close-button", "finished": false },
-          { "name": "dialog-no-close-button", "finished": false },
-          { "name": "dialog-sticky-footer", "finished": false },
-          { "name": "dialog-scrollable-content", "finished": false }
+          { "name": "dialog-demo", "finished": true },
+          { "name": "dialog-close-button", "finished": true },
+          { "name": "dialog-no-close-button", "finished": true },
+          { "name": "dialog-sticky-footer", "finished": true },
+          { "name": "dialog-scrollable-content", "finished": true }
         ]
       }
     ]
