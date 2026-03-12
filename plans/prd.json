@@ -520,19 +520,19 @@
     "complexityScore": 5,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.tabs", "type": "primitive", "dependsOn": [], "finished": false },
-      { "id": "docs.tabs", "type": "docs", "dependsOn": ["primitive.tabs"], "finished": false },
+      { "id": "primitive.tabs", "type": "primitive", "dependsOn": [], "finished": true },
+      { "id": "docs.tabs", "type": "docs", "dependsOn": ["primitive.tabs"], "finished": true },
       {
         "id": "examples.tabs",
         "type": "examples",
         "dependsOn": ["docs.tabs"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "tabs-demo", "finished": false },
-          { "name": "tabs-line", "finished": false },
-          { "name": "tabs-vertical", "finished": false },
-          { "name": "tabs-disabled", "finished": false },
-          { "name": "tabs-icons", "finished": false }
+          { "name": "tabs-demo", "finished": true },
+          { "name": "tabs-line", "finished": true },
+          { "name": "tabs-vertical", "finished": true },
+          { "name": "tabs-disabled", "finished": true },
+          { "name": "tabs-icons", "finished": true }
         ]
       }
     ]
