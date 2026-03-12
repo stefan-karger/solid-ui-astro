@@ -1441,27 +1441,27 @@
         "id": "primitive.field",
         "type": "primitive",
         "dependsOn": ["primitive.label", "primitive.separator"],
-        "finished": false
+        "finished": true
       },
-      { "id": "docs.field", "type": "docs", "dependsOn": ["primitive.field"], "finished": false },
+      { "id": "docs.field", "type": "docs", "dependsOn": ["primitive.field"], "finished": true },
       {
         "id": "examples.field",
         "type": "examples",
         "dependsOn": ["docs.field"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "field-demo", "finished": false },
-          { "name": "field-input", "finished": false },
-          { "name": "field-textarea", "finished": false },
-          { "name": "field-select", "finished": false },
-          { "name": "field-slider", "finished": false },
-          { "name": "field-fieldset", "finished": false },
-          { "name": "field-checkbox", "finished": false },
-          { "name": "field-radio", "finished": false },
-          { "name": "field-switch", "finished": false },
-          { "name": "field-choice-card", "finished": false },
-          { "name": "field-group", "finished": false },
-          { "name": "field-responsive", "finished": false }
+          { "name": "field-demo", "finished": true },
+          { "name": "field-input", "finished": true },
+          { "name": "field-textarea", "finished": true },
+          { "name": "field-select", "finished": true },
+          { "name": "field-slider", "finished": true },
+          { "name": "field-fieldset", "finished": true },
+          { "name": "field-checkbox", "finished": true },
+          { "name": "field-radio", "finished": true },
+          { "name": "field-switch", "finished": true },
+          { "name": "field-choice-card", "finished": true },
+          { "name": "field-group", "finished": true },
+          { "name": "field-responsive", "finished": true }
         ]
       }
     ]
