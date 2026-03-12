@@ -1,20 +1,16 @@
 import { Button } from "~/registry/ui/button"
 import { ButtonGroup } from "~/registry/ui/button-group"
+import { Field, FieldLabel } from "~/registry/ui/field"
 import { Input } from "~/registry/ui/input"
 
 export default function InputButtonGroup() {
   return (
-    <div class="grid w-full max-w-lg gap-3">
-      <ButtonGroup class="w-full">
-        <Input placeholder="Search the docs" type="search" />
-        <Button type="button">Search</Button>
+    <Field class="w-full max-w-sm">
+      <FieldLabel for="input-button-group">Search</FieldLabel>
+      <ButtonGroup>
+        <Input id="input-button-group" placeholder="Type to search..." />
+        <Button variant="outline">Search</Button>
       </ButtonGroup>
-      <ButtonGroup class="w-full">
-        <Input placeholder="Project name" type="text" />
-        <Button type="button" variant="outline">
-          Save
-        </Button>
-      </ButtonGroup>
-    </div>
+    </Field>
   )
 }

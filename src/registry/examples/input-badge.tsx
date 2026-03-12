@@ -1,12 +1,14 @@
+import { Field, FieldLabel } from "~/registry/ui/field"
 import { Input } from "~/registry/ui/input"
 
 export default function InputBadge() {
   return (
-    <div class="relative w-full max-w-sm">
-      <Input class="pr-20" placeholder="Project slug" type="text" />
-      <span class="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 rounded-md bg-muted px-2 py-1 text-xs text-muted-foreground">
-        optional
-      </span>
-    </div>
+    <Field class="w-full max-w-sm">
+      <FieldLabel for="input-badge">
+        Webhook URL
+        <span class="cn-badge cn-badge-variant-secondary ml-auto">Beta</span>
+      </FieldLabel>
+      <Input id="input-badge" placeholder="https://api.example.com/webhook" type="url" />
+    </Field>
   )
 }

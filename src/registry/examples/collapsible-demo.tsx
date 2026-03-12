@@ -10,7 +10,7 @@ export default function CollapsibleDemo() {
     <Collapsible class="w-full max-w-sm space-y-2" onOpenChange={setOpen} open={open()}>
       <div class="flex items-center justify-between gap-3 rounded-md border px-4 py-3">
         <h4 class="text-sm font-semibold">@zaidan-ui starred 3 repositories</h4>
-        <CollapsibleTrigger class="size-8 shrink-0 justify-center rounded-md border hover:bg-muted">
+        <CollapsibleTrigger class="group/collapsible-trigger inline-flex size-8 shrink-0 items-center justify-center rounded-md border hover:bg-muted">
           <IconPlaceholder
             class="size-4 transition-transform group-data-[expanded]/collapsible-trigger:rotate-180"
             lucide="ChevronsUpDownIcon"

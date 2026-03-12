@@ -1,4 +1,5 @@
 import { IconPlaceholder } from "~/components/icon-placeholder"
+import { Field, FieldDescription, FieldGroup, FieldLabel } from "~/registry/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
@@ -10,24 +11,20 @@ import {
 
 export default function InputGroupBlockStart() {
   return (
-    <div class="grid w-full max-w-sm gap-4">
-      <div class="grid gap-2">
-        <label class="text-sm font-medium" for="block-start-input">
-          Input
-        </label>
+    <FieldGroup class="w-full max-w-sm">
+      <Field>
+        <FieldLabel for="block-start-input">Input</FieldLabel>
         <InputGroup class="h-auto">
           <InputGroupInput id="block-start-input" placeholder="Enter your name" />
           <InputGroupAddon align="block-start">
             <InputGroupText>Full Name</InputGroupText>
           </InputGroupAddon>
         </InputGroup>
-        <p class="text-sm text-muted-foreground">Header positioned above the input.</p>
-      </div>
+        <FieldDescription>Header positioned above the input.</FieldDescription>
+      </Field>
 
-      <div class="grid gap-2">
-        <label class="text-sm font-medium" for="block-start-textarea">
-          Textarea
-        </label>
+      <Field>
+        <FieldLabel for="block-start-textarea">Textarea</FieldLabel>
         <InputGroup>
           <InputGroupTextarea
             class="font-mono text-sm"
@@ -46,8 +43,8 @@ export default function InputGroupBlockStart() {
             </InputGroupButton>
           </InputGroupAddon>
         </InputGroup>
-        <p class="text-sm text-muted-foreground">Header positioned above the textarea.</p>
-      </div>
-    </div>
+        <FieldDescription>Header positioned above the textarea.</FieldDescription>
+      </Field>
+    </FieldGroup>
   )
 }

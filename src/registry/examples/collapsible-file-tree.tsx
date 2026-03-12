@@ -66,7 +66,7 @@ const renderItem = (item: FileTreeItem): JSX.Element => {
       <Collapsible>
         <CollapsibleTrigger
           as={Button}
-          class="w-full justify-start transition-none hover:bg-accent hover:text-accent-foreground"
+          class="group/collapsible-trigger w-full justify-start transition-none hover:bg-accent hover:text-accent-foreground"
           size="sm"
           variant="ghost"
         >

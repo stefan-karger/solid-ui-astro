@@ -1,39 +1,19 @@
 import { createSignal } from "solid-js"
 
-import {
-  Progress,
-  ProgressIndicator,
-  ProgressLabel,
-  ProgressTrack,
-  ProgressValue
-} from "~/registry/ui/progress"
+import { Progress, ProgressIndicator, ProgressTrack } from "~/registry/ui/progress"
+import { Slider } from "~/registry/ui/slider"
 
 export default function ProgressControlled() {
-  const [value, setValue] = createSignal(40)
+  const [value, setValue] = createSignal([50])
 
   return (
-    <div class="grid w-full max-w-sm gap-3">
-      <Progress value={value()} class="grid gap-2">
-        <div class="flex items-center gap-2">
-          <ProgressLabel>Exporting report</ProgressLabel>
-          <ProgressValue />
-        </div>
+    <div class="flex w-full max-w-sm flex-col gap-4">
+      <Progress value={value()[0]} class="w-full">
         <ProgressTrack>
           <ProgressIndicator />
         </ProgressTrack>
       </Progress>
-
-      <label class="text-sm text-muted-foreground" for="progress-controlled-range">
-        Completion: {value()}%
-      </label>
-      <input
-        id="progress-controlled-range"
-        type="range"
-        min="0"
-        max="100"
-        value={value()}
-        onInput={(event) => setValue(Number(event.currentTarget.value))}
-      />
+      <Slider max={100} min={0} onChange={setValue} step={1} value={value()} />
     </div>
   )
 }

@@ -1,3 +1,4 @@
+import { Field, FieldDescription, FieldGroup, FieldLabel } from "~/registry/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
@@ -9,24 +10,20 @@ import {
 
 export default function InputGroupBlockEnd() {
   return (
-    <div class="grid w-full max-w-sm gap-4">
-      <div class="grid gap-2">
-        <label class="text-sm font-medium" for="block-end-input">
-          Input
-        </label>
+    <FieldGroup class="w-full max-w-sm">
+      <Field>
+        <FieldLabel for="block-end-input">Input</FieldLabel>
         <InputGroup class="h-auto">
           <InputGroupInput id="block-end-input" placeholder="Enter amount" />
           <InputGroupAddon align="block-end">
             <InputGroupText>USD</InputGroupText>
           </InputGroupAddon>
         </InputGroup>
-        <p class="text-sm text-muted-foreground">Footer positioned below the input.</p>
-      </div>
+        <FieldDescription>Footer positioned below the input.</FieldDescription>
+      </Field>
 
-      <div class="grid gap-2">
-        <label class="text-sm font-medium" for="block-end-textarea">
-          Textarea
-        </label>
+      <Field>
+        <FieldLabel for="block-end-textarea">Textarea</FieldLabel>
         <InputGroup>
           <InputGroupTextarea id="block-end-textarea" placeholder="Write a comment..." />
           <InputGroupAddon align="block-end">
@@ -36,8 +33,8 @@ export default function InputGroupBlockEnd() {
             </InputGroupButton>
           </InputGroupAddon>
         </InputGroup>
-        <p class="text-sm text-muted-foreground">Footer positioned below the textarea.</p>
-      </div>
-    </div>
+        <FieldDescription>Footer positioned below the textarea.</FieldDescription>
+      </Field>
+    </FieldGroup>
   )
 }

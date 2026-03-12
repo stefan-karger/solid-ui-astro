@@ -1,14 +1,29 @@
+import { Button } from "~/registry/ui/button"
+import { Field, FieldDescription, FieldGroup, FieldLabel } from "~/registry/ui/field"
 import { Input } from "~/registry/ui/input"
 
 export default function InputFieldgroup() {
   return (
-    <fieldset class="grid w-full max-w-md gap-3 rounded-lg border p-4">
-      <legend class="px-1 text-sm font-medium">Shipping address</legend>
-      <Input placeholder="Street" type="text" />
-      <div class="grid gap-3 sm:grid-cols-2">
-        <Input placeholder="City" type="text" />
-        <Input placeholder="Postal code" type="text" />
-      </div>
-    </fieldset>
+    <div class="w-full max-w-sm">
+      <FieldGroup>
+        <Field>
+          <FieldLabel for="fieldgroup-name">Name</FieldLabel>
+          <Input id="fieldgroup-name" placeholder="Jordan Lee" />
+        </Field>
+
+        <Field>
+          <FieldLabel for="fieldgroup-email">Email</FieldLabel>
+          <Input id="fieldgroup-email" placeholder="name@example.com" type="email" />
+          <FieldDescription>We&apos;ll send updates to this address.</FieldDescription>
+        </Field>
+
+        <Field orientation="horizontal">
+          <Button type="reset" variant="outline">
+            Reset
+          </Button>
+          <Button type="submit">Submit</Button>
+        </Field>
+      </FieldGroup>
+    </div>
   )
 }

@@ -455,7 +455,7 @@ export const examples: Registry["items"] = [
   {
     name: "collapsible-settings",
     type: "registry:example",
-    registryDependencies: ["collapsible"],
+    registryDependencies: ["button", "card", "collapsible", "field", "input"],
     files: [
       {
         path: "examples/collapsible-settings.tsx",
@@ -675,7 +675,7 @@ export const examples: Registry["items"] = [
   {
     name: "input-demo",
     type: "registry:example",
-    registryDependencies: ["input"],
+    registryDependencies: ["field", "input"],
     files: [
       {
         path: "examples/input-demo.tsx",
@@ -697,7 +697,7 @@ export const examples: Registry["items"] = [
   {
     name: "input-field",
     type: "registry:example",
-    registryDependencies: ["input"],
+    registryDependencies: ["field", "input"],
     files: [
       {
         path: "examples/input-field.tsx",
@@ -708,7 +708,7 @@ export const examples: Registry["items"] = [
   {
     name: "input-fieldgroup",
     type: "registry:example",
-    registryDependencies: ["input"],
+    registryDependencies: ["button", "field", "input"],
     files: [
       {
         path: "examples/input-fieldgroup.tsx",
@@ -719,7 +719,7 @@ export const examples: Registry["items"] = [
   {
     name: "input-disabled",
     type: "registry:example",
-    registryDependencies: ["input"],
+    registryDependencies: ["field", "input"],
     files: [
       {
         path: "examples/input-disabled.tsx",
@@ -730,7 +730,7 @@ export const examples: Registry["items"] = [
   {
     name: "input-invalid",
     type: "registry:example",
-    registryDependencies: ["input"],
+    registryDependencies: ["field", "input"],
     files: [
       {
         path: "examples/input-invalid.tsx",
@@ -741,7 +741,7 @@ export const examples: Registry["items"] = [
   {
     name: "input-file",
     type: "registry:example",
-    registryDependencies: ["input"],
+    registryDependencies: ["field", "input"],
     files: [
       {
         path: "examples/input-file.tsx",
@@ -752,7 +752,7 @@ export const examples: Registry["items"] = [
   {
     name: "input-inline",
     type: "registry:example",
-    registryDependencies: ["input"],
+    registryDependencies: ["button", "field", "input"],
     files: [
       {
         path: "examples/input-inline.tsx",
@@ -763,7 +763,7 @@ export const examples: Registry["items"] = [
   {
     name: "input-grid",
     type: "registry:example",
-    registryDependencies: ["input"],
+    registryDependencies: ["field", "input"],
     files: [
       {
         path: "examples/input-grid.tsx",
@@ -774,7 +774,7 @@ export const examples: Registry["items"] = [
   {
     name: "input-required",
     type: "registry:example",
-    registryDependencies: ["input"],
+    registryDependencies: ["field", "input"],
     files: [
       {
         path: "examples/input-required.tsx",
@@ -785,7 +785,7 @@ export const examples: Registry["items"] = [
   {
     name: "input-badge",
     type: "registry:example",
-    registryDependencies: ["input"],
+    registryDependencies: ["field", "input"],
     files: [
       {
         path: "examples/input-badge.tsx",
@@ -796,7 +796,7 @@ export const examples: Registry["items"] = [
   {
     name: "input-input-group",
     type: "registry:example",
-    registryDependencies: ["input-group"],
+    registryDependencies: ["field", "input-group"],
     files: [
       {
         path: "examples/input-input-group.tsx",
@@ -807,7 +807,7 @@ export const examples: Registry["items"] = [
   {
     name: "input-button-group",
     type: "registry:example",
-    registryDependencies: ["button", "button-group", "input"],
+    registryDependencies: ["button", "button-group", "field", "input"],
     files: [
       {
         path: "examples/input-button-group.tsx",
@@ -818,7 +818,7 @@ export const examples: Registry["items"] = [
   {
     name: "input-form",
     type: "registry:example",
-    registryDependencies: ["button", "input"],
+    registryDependencies: ["button", "field", "input", "select"],
     files: [
       {
         path: "examples/input-form.tsx",
@@ -829,7 +829,7 @@ export const examples: Registry["items"] = [
   {
     name: "label-demo",
     type: "registry:example",
-    registryDependencies: ["label"],
+    registryDependencies: ["checkbox", "label"],
     files: [
       {
         path: "examples/label-demo.tsx",
@@ -1038,7 +1038,7 @@ export const examples: Registry["items"] = [
   {
     name: "progress-controlled",
     type: "registry:example",
-    registryDependencies: ["progress"],
+    registryDependencies: ["progress", "slider"],
     files: [
       {
         path: "examples/progress-controlled.tsx",
@@ -1269,7 +1269,7 @@ export const examples: Registry["items"] = [
   {
     name: "input-group-inline-start",
     type: "registry:example",
-    registryDependencies: ["input-group"],
+    registryDependencies: ["field", "input-group"],
     files: [
       {
         path: "examples/input-group-inline-start.tsx",
@@ -1280,7 +1280,7 @@ export const examples: Registry["items"] = [
   {
     name: "input-group-inline-end",
     type: "registry:example",
-    registryDependencies: ["input-group"],
+    registryDependencies: ["field", "input-group"],
     files: [
       {
         path: "examples/input-group-inline-end.tsx",
@@ -1291,7 +1291,7 @@ export const examples: Registry["items"] = [
   {
     name: "input-group-block-start",
     type: "registry:example",
-    registryDependencies: ["input-group"],
+    registryDependencies: ["field", "input-group"],
     files: [
       {
         path: "examples/input-group-block-start.tsx",
@@ -1302,7 +1302,7 @@ export const examples: Registry["items"] = [
   {
     name: "input-group-block-end",
     type: "registry:example",
-    registryDependencies: ["input-group"],
+    registryDependencies: ["field", "input-group"],
     files: [
       {
         path: "examples/input-group-block-end.tsx",
@@ -1500,7 +1500,7 @@ export const examples: Registry["items"] = [
   {
     name: "textarea-disabled",
     type: "registry:example",
-    registryDependencies: ["textarea"],
+    registryDependencies: ["field", "textarea"],
     files: [
       {
         path: "examples/textarea-disabled.tsx",

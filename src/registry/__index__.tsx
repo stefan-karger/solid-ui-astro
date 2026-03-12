@@ -200,6 +200,20 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "field": {
+    name: "field",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: ["label","separator"],
+    component: lazy(() => import("~/registry/ui/field.tsx")),
+    files: [{
+      path: "registry/ui/field.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "hover-card": {
     name: "hover-card",
     description: "",
@@ -988,7 +1002,7 @@ export const Index: Record<string, any> = {
     name: "collapsible-settings",
     description: "",
     type: "registry:example",
-    registryDependencies: ["collapsible"],
+    registryDependencies: ["button","card","collapsible","field","input"],
     component: lazy(() => import("~/registry/examples/collapsible-settings.tsx")),
     files: [{
       path: "registry/examples/collapsible-settings.tsx",
@@ -1268,7 +1282,7 @@ export const Index: Record<string, any> = {
     name: "input-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["input"],
+    registryDependencies: ["field","input"],
     component: lazy(() => import("~/registry/examples/input-demo.tsx")),
     files: [{
       path: "registry/examples/input-demo.tsx",
@@ -1296,7 +1310,7 @@ export const Index: Record<string, any> = {
     name: "input-field",
     description: "",
     type: "registry:example",
-    registryDependencies: ["input"],
+    registryDependencies: ["field","input"],
     component: lazy(() => import("~/registry/examples/input-field.tsx")),
     files: [{
       path: "registry/examples/input-field.tsx",
@@ -1310,7 +1324,7 @@ export const Index: Record<string, any> = {
     name: "input-fieldgroup",
     description: "",
     type: "registry:example",
-    registryDependencies: ["input"],
+    registryDependencies: ["button","field","input"],
     component: lazy(() => import("~/registry/examples/input-fieldgroup.tsx")),
     files: [{
       path: "registry/examples/input-fieldgroup.tsx",
@@ -1324,7 +1338,7 @@ export const Index: Record<string, any> = {
     name: "input-disabled",
     description: "",
     type: "registry:example",
-    registryDependencies: ["input"],
+    registryDependencies: ["field","input"],
     component: lazy(() => import("~/registry/examples/input-disabled.tsx")),
     files: [{
       path: "registry/examples/input-disabled.tsx",
@@ -1338,7 +1352,7 @@ export const Index: Record<string, any> = {
     name: "input-invalid",
     description: "",
     type: "registry:example",
-    registryDependencies: ["input"],
+    registryDependencies: ["field","input"],
     component: lazy(() => import("~/registry/examples/input-invalid.tsx")),
     files: [{
       path: "registry/examples/input-invalid.tsx",
@@ -1352,7 +1366,7 @@ export const Index: Record<string, any> = {
     name: "input-file",
     description: "",
     type: "registry:example",
-    registryDependencies: ["input"],
+    registryDependencies: ["field","input"],
     component: lazy(() => import("~/registry/examples/input-file.tsx")),
     files: [{
       path: "registry/examples/input-file.tsx",
@@ -1366,7 +1380,7 @@ export const Index: Record<string, any> = {
     name: "input-inline",
     description: "",
     type: "registry:example",
-    registryDependencies: ["input"],
+    registryDependencies: ["button","field","input"],
     component: lazy(() => import("~/registry/examples/input-inline.tsx")),
     files: [{
       path: "registry/examples/input-inline.tsx",
@@ -1380,7 +1394,7 @@ export const Index: Record<string, any> = {
     name: "input-grid",
     description: "",
     type: "registry:example",
-    registryDependencies: ["input"],
+    registryDependencies: ["field","input"],
     component: lazy(() => import("~/registry/examples/input-grid.tsx")),
     files: [{
       path: "registry/examples/input-grid.tsx",
@@ -1394,7 +1408,7 @@ export const Index: Record<string, any> = {
     name: "input-required",
     description: "",
     type: "registry:example",
-    registryDependencies: ["input"],
+    registryDependencies: ["field","input"],
     component: lazy(() => import("~/registry/examples/input-required.tsx")),
     files: [{
       path: "registry/examples/input-required.tsx",
@@ -1408,7 +1422,7 @@ export const Index: Record<string, any> = {
     name: "input-badge",
     description: "",
     type: "registry:example",
-    registryDependencies: ["input"],
+    registryDependencies: ["field","input"],
     component: lazy(() => import("~/registry/examples/input-badge.tsx")),
     files: [{
       path: "registry/examples/input-badge.tsx",
@@ -1422,7 +1436,7 @@ export const Index: Record<string, any> = {
     name: "input-input-group",
     description: "",
     type: "registry:example",
-    registryDependencies: ["input-group"],
+    registryDependencies: ["field","input-group"],
     component: lazy(() => import("~/registry/examples/input-input-group.tsx")),
     files: [{
       path: "registry/examples/input-input-group.tsx",
@@ -1436,7 +1450,7 @@ export const Index: Record<string, any> = {
     name: "input-button-group",
     description: "",
     type: "registry:example",
-    registryDependencies: ["button","button-group","input"],
+    registryDependencies: ["button","button-group","field","input"],
     component: lazy(() => import("~/registry/examples/input-button-group.tsx")),
     files: [{
       path: "registry/examples/input-button-group.tsx",
@@ -1450,7 +1464,7 @@ export const Index: Record<string, any> = {
     name: "input-form",
     description: "",
     type: "registry:example",
-    registryDependencies: ["button","input"],
+    registryDependencies: ["button","field","input","select"],
     component: lazy(() => import("~/registry/examples/input-form.tsx")),
     files: [{
       path: "registry/examples/input-form.tsx",
@@ -1464,10 +1478,38 @@ export const Index: Record<string, any> = {
     name: "label-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["label"],
+    registryDependencies: ["checkbox","label"],
     component: lazy(() => import("~/registry/examples/label-demo.tsx")),
     files: [{
       path: "registry/examples/label-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-choice-card": {
+    name: "field-choice-card",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field"],
+    component: lazy(() => import("~/registry/examples/field-choice-card.tsx")),
+    files: [{
+      path: "registry/examples/field-choice-card.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-checkbox": {
+    name: "field-checkbox",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["checkbox","field"],
+    component: lazy(() => import("~/registry/examples/field-checkbox.tsx")),
+    files: [{
+      path: "registry/examples/field-checkbox.tsx",
       type: "registry:example",
       target: ""
     }],
@@ -1478,10 +1520,136 @@ export const Index: Record<string, any> = {
     name: "field-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["input","label"],
+    registryDependencies: ["button","checkbox","field","input","select","textarea"],
     component: lazy(() => import("~/registry/examples/field-demo.tsx")),
     files: [{
       path: "registry/examples/field-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-fieldset": {
+    name: "field-fieldset",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","input"],
+    component: lazy(() => import("~/registry/examples/field-fieldset.tsx")),
+    files: [{
+      path: "registry/examples/field-fieldset.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-group": {
+    name: "field-group",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["checkbox","field"],
+    component: lazy(() => import("~/registry/examples/field-group.tsx")),
+    files: [{
+      path: "registry/examples/field-group.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-input": {
+    name: "field-input",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","input"],
+    component: lazy(() => import("~/registry/examples/field-input.tsx")),
+    files: [{
+      path: "registry/examples/field-input.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-radio": {
+    name: "field-radio",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field"],
+    component: lazy(() => import("~/registry/examples/field-radio.tsx")),
+    files: [{
+      path: "registry/examples/field-radio.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-responsive": {
+    name: "field-responsive",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","field","input","textarea"],
+    component: lazy(() => import("~/registry/examples/field-responsive.tsx")),
+    files: [{
+      path: "registry/examples/field-responsive.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-select": {
+    name: "field-select",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","select"],
+    component: lazy(() => import("~/registry/examples/field-select.tsx")),
+    files: [{
+      path: "registry/examples/field-select.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-slider": {
+    name: "field-slider",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","slider"],
+    component: lazy(() => import("~/registry/examples/field-slider.tsx")),
+    files: [{
+      path: "registry/examples/field-slider.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-switch": {
+    name: "field-switch",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field"],
+    component: lazy(() => import("~/registry/examples/field-switch.tsx")),
+    files: [{
+      path: "registry/examples/field-switch.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-textarea": {
+    name: "field-textarea",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","textarea"],
+    component: lazy(() => import("~/registry/examples/field-textarea.tsx")),
+    files: [{
+      path: "registry/examples/field-textarea.tsx",
       type: "registry:example",
       target: ""
     }],
@@ -1576,7 +1744,7 @@ export const Index: Record<string, any> = {
     name: "progress-controlled",
     description: "",
     type: "registry:example",
-    registryDependencies: ["progress"],
+    registryDependencies: ["progress","slider"],
     component: lazy(() => import("~/registry/examples/progress-controlled.tsx")),
     files: [{
       path: "registry/examples/progress-controlled.tsx",
@@ -1870,7 +2038,7 @@ export const Index: Record<string, any> = {
     name: "input-group-inline-start",
     description: "",
     type: "registry:example",
-    registryDependencies: ["input-group"],
+    registryDependencies: ["field","input-group"],
     component: lazy(() => import("~/registry/examples/input-group-inline-start.tsx")),
     files: [{
       path: "registry/examples/input-group-inline-start.tsx",
@@ -1884,7 +2052,7 @@ export const Index: Record<string, any> = {
     name: "input-group-inline-end",
     description: "",
     type: "registry:example",
-    registryDependencies: ["input-group"],
+    registryDependencies: ["field","input-group"],
     component: lazy(() => import("~/registry/examples/input-group-inline-end.tsx")),
     files: [{
       path: "registry/examples/input-group-inline-end.tsx",
@@ -1898,7 +2066,7 @@ export const Index: Record<string, any> = {
     name: "input-group-block-start",
     description: "",
     type: "registry:example",
-    registryDependencies: ["input-group"],
+    registryDependencies: ["field","input-group"],
     component: lazy(() => import("~/registry/examples/input-group-block-start.tsx")),
     files: [{
       path: "registry/examples/input-group-block-start.tsx",
@@ -1912,7 +2080,7 @@ export const Index: Record<string, any> = {
     name: "input-group-block-end",
     description: "",
     type: "registry:example",
-    registryDependencies: ["input-group"],
+    registryDependencies: ["field","input-group"],
     component: lazy(() => import("~/registry/examples/input-group-block-end.tsx")),
     files: [{
       path: "registry/examples/input-group-block-end.tsx",
@@ -2164,7 +2332,7 @@ export const Index: Record<string, any> = {
     name: "textarea-disabled",
     description: "",
     type: "registry:example",
-    registryDependencies: ["textarea"],
+    registryDependencies: ["field","textarea"],
     component: lazy(() => import("~/registry/examples/textarea-disabled.tsx")),
     files: [{
       path: "registry/examples/textarea-disabled.tsx",

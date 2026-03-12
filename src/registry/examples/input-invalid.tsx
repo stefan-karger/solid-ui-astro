@@ -1,13 +1,12 @@
+import { Field, FieldDescription, FieldLabel } from "~/registry/ui/field"
 import { Input } from "~/registry/ui/input"
 
 export default function InputInvalid() {
   return (
-    <div class="grid w-full max-w-sm gap-2">
-      <label class="text-sm font-medium" for="invalid-email">
-        Email address
-      </label>
-      <Input aria-invalid="true" id="invalid-email" type="email" value="name@" />
-      <p class="text-sm text-destructive">Enter a valid email address.</p>
-    </div>
+    <Field class="w-full max-w-sm" data-invalid>
+      <FieldLabel for="input-invalid">Invalid Input</FieldLabel>
+      <Input aria-invalid id="input-invalid" placeholder="Error" />
+      <FieldDescription>This field contains validation errors.</FieldDescription>
+    </Field>
   )
 }

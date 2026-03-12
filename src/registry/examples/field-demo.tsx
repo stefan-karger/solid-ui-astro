@@ -34,11 +34,12 @@ const months: Option[] = [
 ]
 
 const years: Option[] = [
+  { label: "2024", value: "2024" },
+  { label: "2025", value: "2025" },
   { label: "2026", value: "2026" },
   { label: "2027", value: "2027" },
   { label: "2028", value: "2028" },
-  { label: "2029", value: "2029" },
-  { label: "2030", value: "2030" }
+  { label: "2029", value: "2029" }
 ]
 
 export default function FieldDemo() {
@@ -51,11 +52,11 @@ export default function FieldDemo() {
             <FieldDescription>All transactions are secure and encrypted.</FieldDescription>
             <FieldGroup>
               <Field>
-                <FieldLabel for="checkout-card-name">Name on card</FieldLabel>
+                <FieldLabel for="checkout-card-name">Name on Card</FieldLabel>
                 <Input id="checkout-card-name" placeholder="Evil Rabbit" required />
               </Field>
               <Field>
-                <FieldLabel for="checkout-card-number">Card number</FieldLabel>
+                <FieldLabel for="checkout-card-number">Card Number</FieldLabel>
                 <Input id="checkout-card-number" placeholder="1234 5678 9012 3456" required />
                 <FieldDescription>Enter your 16-digit card number.</FieldDescription>
               </Field>

@@ -1,20 +1,14 @@
+import { Field, FieldDescription, FieldLabel } from "~/registry/ui/field"
 import { Input } from "~/registry/ui/input"
 
 export default function InputRequired() {
   return (
-    <div class="grid w-full max-w-sm gap-3">
-      <div class="grid gap-2">
-        <label class="text-sm font-medium" for="required-email">
-          Email <span class="text-destructive">*</span>
-        </label>
-        <Input id="required-email" placeholder="name@example.com" required type="email" />
-      </div>
-      <div class="grid gap-2">
-        <label class="text-sm font-medium" for="optional-company">
-          Company
-        </label>
-        <Input id="optional-company" placeholder="Optional" type="text" />
-      </div>
-    </div>
+    <Field class="w-full max-w-sm">
+      <FieldLabel for="input-required">
+        Required Field <span class="text-destructive">*</span>
+      </FieldLabel>
+      <Input id="input-required" placeholder="This field is required" required />
+      <FieldDescription>This field must be filled out.</FieldDescription>
+    </Field>
   )
 }

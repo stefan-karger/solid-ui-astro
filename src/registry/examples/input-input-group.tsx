@@ -1,4 +1,5 @@
 import { IconPlaceholder } from "~/components/icon-placeholder"
+import { Field, FieldLabel } from "~/registry/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
@@ -8,21 +9,17 @@ import {
 
 export default function InputInputGroup() {
   return (
-    <div class="grid w-full max-w-lg gap-3">
+    <Field class="w-full max-w-sm">
+      <FieldLabel for="input-group-url">Website URL</FieldLabel>
       <InputGroup>
+        <InputGroupInput id="input-group-url" placeholder="example.com" />
         <InputGroupAddon>
-          <InputGroupText>@</InputGroupText>
+          <InputGroupText>https://</InputGroupText>
         </InputGroupAddon>
-        <InputGroupInput placeholder="username" type="text" />
-      </InputGroup>
-      <InputGroup>
-        <InputGroupAddon>
-          <InputGroupText>
-            <IconPlaceholder class="size-4" lucide="SearchIcon" tabler="IconSearch" />
-          </InputGroupText>
+        <InputGroupAddon align="inline-end">
+          <IconPlaceholder class="size-4" lucide="InfoIcon" tabler="IconInfoCircle" />
         </InputGroupAddon>
-        <InputGroupInput placeholder="Search docs..." type="search" />
       </InputGroup>
-    </div>
+    </Field>
   )
 }
