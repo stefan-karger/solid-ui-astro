@@ -838,26 +838,26 @@
     "complexityScore": 7,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.checkbox", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "primitive.checkbox", "type": "primitive", "dependsOn": [], "finished": true },
       {
         "id": "docs.checkbox",
         "type": "docs",
         "dependsOn": ["primitive.checkbox"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.checkbox",
         "type": "examples",
         "dependsOn": ["docs.checkbox"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "checkbox-demo", "finished": false },
-          { "name": "checkbox-invalid", "finished": false },
-          { "name": "checkbox-basic", "finished": false },
-          { "name": "checkbox-description", "finished": false },
-          { "name": "checkbox-disabled", "finished": false },
-          { "name": "checkbox-group", "finished": false },
-          { "name": "checkbox-table", "finished": false }
+          { "name": "checkbox-demo", "finished": true },
+          { "name": "checkbox-invalid", "finished": true },
+          { "name": "checkbox-basic", "finished": true },
+          { "name": "checkbox-description", "finished": true },
+          { "name": "checkbox-disabled", "finished": true },
+          { "name": "checkbox-group", "finished": true },
+          { "name": "checkbox-table", "finished": true }
         ]
       }
     ]

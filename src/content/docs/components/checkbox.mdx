@@ -1,0 +1,145 @@
+---
+title: Checkbox
+description: Lets users toggle one or more options on and off.
+component: true
+---
+
+<ComponentPreview name="checkbox-demo" previewClassName="*:max-w-sm" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add checkbox
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @kobalte/core
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="checkbox" title="components/ui/checkbox.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { Checkbox } from "~/components/ui/checkbox"
+```
+
+```tsx showLineNumbers
+<label class="flex items-center gap-2 text-sm">
+  <Checkbox />
+  Accept terms and conditions
+</label>
+```
+
+## Controlled State
+
+Use `checked` and `onChange` to fully control the checkbox state.
+
+```tsx showLineNumbers
+import { createSignal } from "solid-js"
+
+import { Checkbox } from "~/components/ui/checkbox"
+
+function NewsletterCheckbox() {
+  const [checked, setChecked] = createSignal(false)
+
+  return (
+    <label class="flex items-center gap-2 text-sm">
+      <Checkbox checked={checked()} onChange={setChecked} />
+      Weekly newsletter
+    </label>
+  )
+}
+```
+
+## Indeterminate State
+
+Use `indeterminate` to represent a partial selection state.
+
+```tsx showLineNumbers
+<Checkbox checked={allSelected()} indeterminate={someSelected()} onChange={toggleAll} />
+```
+
+## Examples
+
+### Demo
+
+<ComponentPreview name="checkbox-demo" previewClassName="*:max-w-sm" />
+
+### Invalid
+
+<ComponentPreview name="checkbox-invalid" previewClassName="*:max-w-sm" />
+
+### Basic
+
+<ComponentPreview name="checkbox-basic" />
+
+### Description
+
+<ComponentPreview name="checkbox-description" previewClassName="*:max-w-sm" />
+
+### Disabled
+
+<ComponentPreview name="checkbox-disabled" previewClassName="*:max-w-sm" />
+
+### Group
+
+<ComponentPreview name="checkbox-group" previewClassName="*:max-w-sm" />
+
+### Table
+
+<ComponentPreview align="start" name="checkbox-table" previewClassName="w-full" />
+
+## API Reference
+
+### Core Parts
+
+| Part       | Description                                          |
+| ---------- | ---------------------------------------------------- |
+| `Checkbox` | Root checkbox primitive with built-in control markup |
+
+### Checkbox Props
+
+| Prop             | Type                         | Default |
+| ---------------- | ---------------------------- | ------- |
+| `checked`        | `boolean`                    |         |
+| `defaultChecked` | `boolean`                    |         |
+| `onChange`       | `(checked: boolean) => void` |         |
+| `indeterminate`  | `boolean`                    | `false` |
+| `disabled`       | `boolean`                    | `false` |
+| `required`       | `boolean`                    | `false` |
+| `name`           | `string`                     |         |
+| `value`          | `string`                     | `on`    |
+| `class`          | `string`                     |         |
+
+All supported Kobalte root props are forwarded to the checkbox root.
+
+See the [Kobalte Checkbox](https://kobalte.dev/docs/core/components/checkbox) documentation
+for full behavior and accessibility details.

@@ -65,6 +65,17 @@ export const ui: Registry["items"] = [
     ]
   },
   {
+    name: "checkbox",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core"],
+    files: [
+      {
+        path: "ui/checkbox.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
     name: "command",
     type: "registry:ui",
     dependencies: ["@kobalte/core"],

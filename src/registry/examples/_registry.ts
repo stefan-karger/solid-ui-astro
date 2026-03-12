@@ -343,6 +343,83 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "checkbox-demo",
+    type: "registry:example",
+    registryDependencies: ["checkbox"],
+    files: [
+      {
+        path: "examples/checkbox-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "checkbox-invalid",
+    type: "registry:example",
+    registryDependencies: ["checkbox"],
+    files: [
+      {
+        path: "examples/checkbox-invalid.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "checkbox-basic",
+    type: "registry:example",
+    registryDependencies: ["checkbox"],
+    files: [
+      {
+        path: "examples/checkbox-basic.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "checkbox-description",
+    type: "registry:example",
+    registryDependencies: ["checkbox"],
+    files: [
+      {
+        path: "examples/checkbox-description.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "checkbox-disabled",
+    type: "registry:example",
+    registryDependencies: ["checkbox"],
+    files: [
+      {
+        path: "examples/checkbox-disabled.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "checkbox-group",
+    type: "registry:example",
+    registryDependencies: ["checkbox"],
+    files: [
+      {
+        path: "examples/checkbox-group.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "checkbox-table",
+    type: "registry:example",
+    registryDependencies: ["checkbox", "table"],
+    files: [
+      {
+        path: "examples/checkbox-table.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "collapsible-basic",
     type: "registry:example",
     registryDependencies: ["collapsible"],
