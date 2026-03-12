@@ -1,0 +1,152 @@
+---
+title: Sheet
+description: Extends Dialog to display complementary content from the edges of the viewport.
+component: true
+---
+
+<ComponentPreview name="sheet-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add sheet
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @kobalte/core
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="sheet" title="components/ui/sheet.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { Button } from "~/components/ui/button"
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger
+} from "~/components/ui/sheet"
+```
+
+```tsx showLineNumbers
+<Sheet>
+  <SheetTrigger as={Button} variant="outline">
+    Open
+  </SheetTrigger>
+  <SheetContent>
+    <SheetHeader>
+      <SheetTitle>Are you absolutely sure?</SheetTitle>
+      <SheetDescription>This action cannot be undone.</SheetDescription>
+    </SheetHeader>
+    <SheetFooter>
+      <SheetClose as={Button} variant="outline">
+        Close
+      </SheetClose>
+    </SheetFooter>
+  </SheetContent>
+</Sheet>
+```
+
+## Examples
+
+### Demo
+
+<ComponentPreview name="sheet-demo" previewClassName="h-44" />
+
+### Side
+
+Use the `side` prop on `SheetContent` to set where the sheet appears. Available values are `top`, `right`, `bottom`, and `left`.
+
+<ComponentPreview name="sheet-side" previewClassName="h-44" align="start" />
+
+### No Close Button
+
+Use `showCloseButton={false}` on `SheetContent` to hide the top-right close button.
+
+<ComponentPreview name="sheet-no-close-button" previewClassName="h-44" />
+
+## Size
+
+Customize width and height by passing classes to `SheetContent`.
+
+```tsx showLineNumbers /class="w-[400px] sm:w-[540px]"/
+<Sheet>
+  <SheetTrigger as={Button} variant="outline">
+    Open
+  </SheetTrigger>
+  <SheetContent class="w-[400px] sm:w-[540px]">
+    <SheetHeader>
+      <SheetTitle>Are you absolutely sure?</SheetTitle>
+      <SheetDescription>This action cannot be undone.</SheetDescription>
+    </SheetHeader>
+  </SheetContent>
+</Sheet>
+```
+
+## API Reference
+
+### Core Parts
+
+| Part               | Description                                                  |
+| ------------------ | ------------------------------------------------------------ |
+| `Sheet`            | Root component that controls open state and focus behavior.  |
+| `SheetTrigger`     | Interactive element used to open the sheet.                  |
+| `SheetContent`     | Sliding panel rendered in a portal with an overlay.          |
+| `SheetHeader`      | Layout wrapper for title and description content.            |
+| `SheetTitle`       | Accessible heading for the sheet content.                    |
+| `SheetDescription` | Supporting text that describes the sheet purpose.            |
+| `SheetFooter`      | Footer container for actions, usually submit/cancel buttons. |
+| `SheetClose`       | Interactive element used to close the sheet.                 |
+
+### Common Root Props
+
+| Prop            | Type                      | Description                                      |
+| --------------- | ------------------------- | ------------------------------------------------ |
+| `open`          | `boolean`                 | Controlled open state.                           |
+| `defaultOpen`   | `boolean`                 | Initial open state in uncontrolled mode.         |
+| `onOpenChange`  | `(open: boolean) => void` | Called when open state changes.                  |
+| `modal`         | `boolean`                 | Traps focus and blocks outside interaction.      |
+| `preventScroll` | `boolean`                 | Prevents body scrolling while the sheet is open. |
+
+### SheetContent Props
+
+| Prop              | Type                                     | Default   | Description                                                  |
+| ----------------- | ---------------------------------------- | --------- | ------------------------------------------------------------ |
+| `side`            | `"top" \| "right" \| "bottom" \| "left"` | `"right"` | Sets the viewport edge where the sheet appears.              |
+| `showCloseButton` | `boolean`                                | `true`    | Controls whether the default top-right close button is shown |
+
+See the [Kobalte Dialog](https://kobalte.dev/docs/core/components/dialog) documentation
+for complete behavior details and all available props.

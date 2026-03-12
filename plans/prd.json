@@ -499,18 +499,18 @@
         "id": "primitive.sheet",
         "type": "primitive",
         "dependsOn": ["primitive.button"],
-        "finished": false
+        "finished": true
       },
-      { "id": "docs.sheet", "type": "docs", "dependsOn": ["primitive.sheet"], "finished": false },
+      { "id": "docs.sheet", "type": "docs", "dependsOn": ["primitive.sheet"], "finished": true },
       {
         "id": "examples.sheet",
         "type": "examples",
         "dependsOn": ["docs.sheet"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "sheet-demo", "finished": false },
-          { "name": "sheet-side", "finished": false },
-          { "name": "sheet-no-close-button", "finished": false }
+          { "name": "sheet-demo", "finished": true },
+          { "name": "sheet-side", "finished": true },
+          { "name": "sheet-no-close-button", "finished": true }
         ]
       }
     ]
