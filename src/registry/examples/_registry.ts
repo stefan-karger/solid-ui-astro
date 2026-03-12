@@ -1003,6 +1003,61 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "kbd-demo",
+    type: "registry:example",
+    registryDependencies: ["kbd"],
+    files: [
+      {
+        path: "examples/kbd-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "kbd-group",
+    type: "registry:example",
+    registryDependencies: ["kbd"],
+    files: [
+      {
+        path: "examples/kbd-group.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "kbd-button",
+    type: "registry:example",
+    registryDependencies: ["button", "kbd"],
+    files: [
+      {
+        path: "examples/kbd-button.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "kbd-tooltip",
+    type: "registry:example",
+    registryDependencies: ["button", "button-group", "kbd", "tooltip"],
+    files: [
+      {
+        path: "examples/kbd-tooltip.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "kbd-input-group",
+    type: "registry:example",
+    registryDependencies: ["input-group", "kbd"],
+    files: [
+      {
+        path: "examples/kbd-input-group.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "label-demo",
     type: "registry:example",
     registryDependencies: ["checkbox", "label"],

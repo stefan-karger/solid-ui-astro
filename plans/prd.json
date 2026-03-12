@@ -392,19 +392,19 @@
     "complexityScore": 5,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.kbd", "type": "primitive", "dependsOn": [], "finished": false },
-      { "id": "docs.kbd", "type": "docs", "dependsOn": ["primitive.kbd"], "finished": false },
+      { "id": "primitive.kbd", "type": "primitive", "dependsOn": [], "finished": true },
+      { "id": "docs.kbd", "type": "docs", "dependsOn": ["primitive.kbd"], "finished": true },
       {
         "id": "examples.kbd",
         "type": "examples",
         "dependsOn": ["docs.kbd"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "kbd-demo", "finished": false },
-          { "name": "kbd-group", "finished": false },
-          { "name": "kbd-button", "finished": false },
-          { "name": "kbd-tooltip", "finished": false },
-          { "name": "kbd-input-group", "finished": false }
+          { "name": "kbd-demo", "finished": true },
+          { "name": "kbd-group", "finished": true },
+          { "name": "kbd-button", "finished": true },
+          { "name": "kbd-tooltip", "finished": true },
+          { "name": "kbd-input-group", "finished": true }
         ]
       }
     ]
