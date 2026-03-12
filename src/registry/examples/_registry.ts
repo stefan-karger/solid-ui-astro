@@ -1003,6 +1003,72 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "select-demo",
+    type: "registry:example",
+    registryDependencies: ["select"],
+    files: [
+      {
+        path: "examples/select-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "select-align-item",
+    type: "registry:example",
+    registryDependencies: ["checkbox", "select"],
+    files: [
+      {
+        path: "examples/select-align-item.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "select-groups",
+    type: "registry:example",
+    registryDependencies: ["select"],
+    files: [
+      {
+        path: "examples/select-groups.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "select-scrollable",
+    type: "registry:example",
+    registryDependencies: ["select"],
+    files: [
+      {
+        path: "examples/select-scrollable.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "select-disabled",
+    type: "registry:example",
+    registryDependencies: ["select"],
+    files: [
+      {
+        path: "examples/select-disabled.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "select-invalid",
+    type: "registry:example",
+    registryDependencies: ["select"],
+    files: [
+      {
+        path: "examples/select-invalid.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "input-group-demo",
     type: "registry:example",
     registryDependencies: ["input-group"],

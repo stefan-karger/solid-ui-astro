@@ -1,0 +1,207 @@
+---
+title: Select
+description: Displays a list of options for the user to pick from, triggered by a button.
+component: true
+---
+
+<ComponentPreview name="select-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add select
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @kobalte/core
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="select" title="components/ui/select.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from "~/components/ui/select"
+```
+
+```tsx showLineNumbers
+type Fruit = {
+  label: string
+  value: string
+}
+
+const fruits: Fruit[] = [
+  { label: "Apple", value: "apple" },
+  { label: "Banana", value: "banana" },
+  { label: "Blueberry", value: "blueberry" }
+]
+
+<Select<Fruit>
+  options={fruits}
+  optionValue="value"
+  optionTextValue="label"
+  placeholder="Select a fruit"
+  itemComponent={(props) => (
+    <SelectItem item={props.item}>{props.item.rawValue.label}</SelectItem>
+  )}
+>
+  <SelectTrigger class="w-full max-w-48">
+    <SelectValue<Fruit> />
+  </SelectTrigger>
+  <SelectContent />
+</Select>
+```
+
+## Grouped Options
+
+Use `optionGroupChildren` with `sectionComponent` to render grouped options with labels and separators.
+
+```tsx showLineNumbers
+<Select<Item, Group>
+  options={groups}
+  optionGroupChildren="options"
+  optionValue="value"
+  optionTextValue="label"
+  sectionComponent={(props) => (
+    <>
+      <Show when={props.section.index !== 0}>
+        <SelectSeparator />
+      </Show>
+      <SelectGroup>
+        <SelectLabel>{props.section.rawValue.label}</SelectLabel>
+      </SelectGroup>
+    </>
+  )}
+  itemComponent={(props) => <SelectItem item={props.item}>{props.item.rawValue.label}</SelectItem>}
+/>
+```
+
+## Alignment
+
+Use `placement` on `Select` to control where the dropdown content appears relative to the trigger.
+
+```tsx showLineNumbers
+<Select placement="bottom-start">
+  <SelectTrigger>
+    <SelectValue placeholder="Select an option" />
+  </SelectTrigger>
+  <SelectContent />
+</Select>
+```
+
+## Invalid State
+
+Set `validationState="invalid"` on `Select` and `aria-invalid` on `SelectTrigger` to show error styling.
+
+```tsx showLineNumbers /validationState="invalid"/ /aria-invalid/
+<Select validationState="invalid">
+  <SelectTrigger aria-invalid>
+    <SelectValue placeholder="Select a fruit" />
+  </SelectTrigger>
+  <SelectContent />
+</Select>
+```
+
+## Examples
+
+### Demo
+
+<ComponentPreview name="select-demo" />
+
+### Align Item With Trigger
+
+<ComponentPreview name="select-align-item" previewClassName="*:max-w-sm" />
+
+### Groups
+
+<ComponentPreview name="select-groups" />
+
+### Scrollable
+
+<ComponentPreview name="select-scrollable" />
+
+### Disabled
+
+<ComponentPreview name="select-disabled" />
+
+### Invalid
+
+<ComponentPreview name="select-invalid" />
+
+## API Reference
+
+### Core Parts
+
+| Part                 | Description                                                        |
+| -------------------- | ------------------------------------------------------------------ |
+| `Select`             | Root component that manages state, collection, and popup behavior. |
+| `SelectTrigger`      | Button element that toggles and anchors the popup.                 |
+| `SelectValue`        | Displays placeholder text or the selected option label.            |
+| `SelectContent`      | Popup container rendered in a portal.                              |
+| `SelectGroup`        | Section wrapper for grouped options.                               |
+| `SelectLabel`        | Group label shown inside content.                                  |
+| `SelectItem`         | Selectable option row.                                             |
+| `SelectSeparator`    | Visual separator between groups.                                   |
+| `SelectHiddenSelect` | Hidden native select for form integration.                         |
+
+### Select Props
+
+| Prop                  | Type                                  | Description                                     |
+| --------------------- | ------------------------------------- | ----------------------------------------------- |
+| `options`             | `T[]`                                 | Collection of options (or grouped options).     |
+| `optionValue`         | `keyof T \| ((option: T) => string)`  | Maps each option to its string value.           |
+| `optionTextValue`     | `keyof T \| ((option: T) => string)`  | Text value used for selected display.           |
+| `optionDisabled`      | `keyof T \| ((option: T) => boolean)` | Marks individual options as disabled.           |
+| `optionGroupChildren` | `keyof G \| ((group: G) => T[])`      | Resolves grouped option children.               |
+| `value`               | `T`                                   | Controlled selected value.                      |
+| `defaultValue`        | `T`                                   | Initial selected value for uncontrolled usage.  |
+| `onChange`            | `(value: T) => void`                  | Called when selection changes.                  |
+| `placeholder`         | `string`                              | Text shown when nothing is selected.            |
+| `placement`           | `"bottom" \| "bottom-start" \| ...`   | Floating placement for the content popup.       |
+| `disabled`            | `boolean`                             | Disables trigger and content interaction.       |
+| `validationState`     | `"valid" \| "invalid"`                | Applies validation semantics for form controls. |
+
+### SelectTrigger Props
+
+| Prop    | Type              | Default     | Description                 |
+| ------- | ----------------- | ----------- | --------------------------- |
+| `size`  | `"sm"\|"default"` | `"default"` | Trigger size variant.       |
+| `class` | `string`          |             | Additional trigger classes. |
+
+`SelectDescription` and `SelectErrorMessage` are also exported for accessible form hints and error messages.
+
+See the [Kobalte Select](https://kobalte.dev/docs/core/components/select) documentation
+for complete behavior and all supported props.
