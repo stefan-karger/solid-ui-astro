@@ -8,6 +8,7 @@ import {
   ComboboxList,
   ComboboxTrigger
 } from "~/registry/ui/combobox"
+import { InputGroupAddon } from "~/registry/ui/input-group"
 
 type Member = {
   value: string
@@ -38,7 +39,9 @@ export default function ComboboxBasic() {
       >
         <ComboboxControl>
           <ComboboxInput />
-          <ComboboxTrigger />
+          <InputGroupAddon align="inline-end">
+            <ComboboxTrigger />
+          </InputGroupAddon>
         </ComboboxControl>
         <ComboboxContent>
           <ComboboxList />

@@ -2,6 +2,13 @@ import { For } from "solid-js"
 
 import { IconPlaceholder } from "~/components/icon-placeholder"
 import { Button } from "~/registry/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from "~/registry/ui/dropdown-menu"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "~/registry/ui/table"
 
 const products = [
@@ -39,14 +46,24 @@ export default function TableActions() {
               <TableCell class="font-medium">{product.name}</TableCell>
               <TableCell class="text-right">{product.price}</TableCell>
               <TableCell class="text-right">
-                <Button
-                  aria-label={`Open actions for ${product.name}`}
-                  class="size-8"
-                  size="icon-sm"
-                  variant="ghost"
-                >
-                  <IconPlaceholder class="size-4" lucide="EllipsisIcon" tabler="IconDots" />
-                </Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger
+                    as={Button}
+                    aria-label={`Open actions for ${product.name}`}
+                    class="size-8"
+                    size="icon-sm"
+                    variant="ghost"
+                  >
+                    <IconPlaceholder class="size-4" lucide="EllipsisIcon" tabler="IconDots" />
+                    <span class="sr-only">Open menu</span>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent class="w-32">
+                    <DropdownMenuItem>Edit</DropdownMenuItem>
+                    <DropdownMenuItem>Duplicate</DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </TableCell>
             </TableRow>
           )}

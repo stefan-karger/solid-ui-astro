@@ -1,6 +1,6 @@
+import { CheckIcon, CopyIcon, InfoIcon, StarIcon } from "lucide-solid"
 import { createSignal } from "solid-js"
 
-import { IconPlaceholder } from "~/components/icon-placeholder"
 import {
   InputGroup,
   InputGroupAddon,
@@ -39,11 +39,7 @@ export default function InputGroupButtonExample() {
         <InputGroupInput placeholder="https://x.com/shadcn" readOnly />
         <InputGroupAddon align="inline-end">
           <InputGroupButton aria-label="Copy" onClick={handleCopy} size="icon-xs" title="Copy">
-            <IconPlaceholder
-              class="size-4"
-              lucide={isCopied() ? "CheckIcon" : "CopyIcon"}
-              tabler={isCopied() ? "IconCheck" : "IconCopy"}
-            />
+            {isCopied() ? <CheckIcon class="size-4" /> : <CopyIcon class="size-4" />}
           </InputGroupButton>
         </InputGroupAddon>
       </InputGroup>
@@ -52,7 +48,7 @@ export default function InputGroupButtonExample() {
         <InputGroupAddon>
           <Popover>
             <PopoverTrigger as={InputGroupButton} size="icon-xs" variant="secondary">
-              <IconPlaceholder class="size-4" lucide="InfoIcon" tabler="IconInfoCircle" />
+              <InfoIcon class="size-4" />
             </PopoverTrigger>
             <PopoverContent class="rounded-xl text-sm">
               <PopoverTitle class="text-sm">Your connection is not secure.</PopoverTitle>
@@ -71,10 +67,8 @@ export default function InputGroupButtonExample() {
             }}
             size="icon-xs"
           >
-            <IconPlaceholder
+            <StarIcon
               class="size-4"
-              lucide="StarIcon"
-              tabler="IconStar"
               style={isFavorite() ? { color: "var(--color-primary)" } : undefined}
             />
           </InputGroupButton>

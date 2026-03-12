@@ -9,6 +9,7 @@ import {
   ComboboxList,
   ComboboxTrigger
 } from "~/registry/ui/combobox"
+import { InputGroupAddon } from "~/registry/ui/input-group"
 
 type Framework = {
   value: string
@@ -38,7 +39,9 @@ export default function ComboboxDemo() {
       <ComboboxHiddenSelect />
       <ComboboxControl class="max-w-sm">
         <ComboboxInput />
-        <ComboboxTrigger />
+        <InputGroupAddon align="inline-end">
+          <ComboboxTrigger />
+        </InputGroupAddon>
       </ComboboxControl>
       <ComboboxContent>
         <ComboboxList />

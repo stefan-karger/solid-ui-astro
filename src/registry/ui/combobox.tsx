@@ -5,7 +5,7 @@ import { mergeProps, splitProps, type ComponentProps, type ValidComponent } from
 
 import { IconPlaceholder } from "~/components/icon-placeholder"
 import { cn } from "~/lib/utils"
-import { buttonVariants } from "~/registry/ui/button"
+import { InputGroup, InputGroupButton, InputGroupInput } from "~/registry/ui/input-group"
 
 type ComboboxProps<
   Option,
@@ -33,7 +33,7 @@ const ComboboxPortal = (props: ComboboxPortalProps) => {
 const comboboxControlVariants = cva("w-full", {
   variants: {
     variant: {
-      default: "cn-input-group",
+      default: null,
       chips: "cn-combobox-chips"
     }
   },
@@ -56,9 +56,13 @@ const ComboboxControl = <Option, T extends ValidComponent = "div">(
 
   return (
     <ComboboxPrimitive.Control
-      data-slot="combobox-control"
+      as={local.variant === "chips" ? undefined : InputGroup}
+      data-slot={local.variant === "chips" ? "combobox-control" : undefined}
       data-variant={local.variant}
-      class={cn(comboboxControlVariants({ variant: local.variant }), local.class)}
+      class={cn(
+        local.variant === "chips" ? comboboxControlVariants({ variant: "chips" }) : undefined,
+        local.class
+      )}
       {...others}
     />
   )
@@ -73,16 +77,7 @@ type ComboboxInputProps<T extends ValidComponent = "input"> = PolymorphicProps<
 const ComboboxInput = <T extends ValidComponent = "input">(props: ComboboxInputProps<T>) => {
   const [local, others] = splitProps(props as ComboboxInputProps, ["class"])
 
-  return (
-    <ComboboxPrimitive.Input
-      data-slot="input-group-control"
-      class={cn(
-        "cn-input-group-input flex-1 border-0 bg-transparent shadow-none focus-visible:ring-0",
-        local.class
-      )}
-      {...others}
-    />
-  )
+  return <ComboboxPrimitive.Input as={InputGroupInput} class={local.class} {...others} />
 }
 
 type ComboboxTriggerProps<T extends ValidComponent = "button"> = PolymorphicProps<
@@ -96,19 +91,18 @@ const ComboboxTrigger = <T extends ValidComponent = "button">(props: ComboboxTri
 
   return (
     <ComboboxPrimitive.Trigger
+      as={InputGroupButton}
+      size="icon-xs"
+      variant="ghost"
       data-slot="combobox-trigger"
-      class={cn(
-        buttonVariants({ variant: "ghost", size: "icon-xs" }),
-        "cn-input-group-button cn-combobox-trigger",
-        local.class
-      )}
+      class={cn("cn-combobox-trigger", local.class)}
       {...others}
     >
       {local.children ?? (
         <IconPlaceholder
           class="cn-combobox-trigger-icon"
           lucide="ChevronsUpDownIcon"
-          tabler="IconChevronsUpDown"
+          tabler="IconSelector"
         />
       )}
     </ComboboxPrimitive.Trigger>

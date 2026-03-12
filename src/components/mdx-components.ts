@@ -3,6 +3,7 @@ import ComponentPreview from "~/components/component-preview.astro"
 import ComponentSource from "~/components/component-source.astro"
 import A from "~/components/docs/a.astro"
 import Blockquote from "~/components/docs/blockquote.astro"
+import Callout from "~/components/docs/callout.astro"
 import CodeTabs from "~/components/docs/code-tabs.astro"
 import Code from "~/components/docs/code.astro"
 import Figcaption from "~/components/docs/figcaption.astro"
@@ -55,6 +56,7 @@ export const mdxComponents = {
   figure: Figure,
   figcaption: Figcaption,
   code: Code,
+  Callout,
   CodeTabs,
   TabsList,
   TabsTrigger,

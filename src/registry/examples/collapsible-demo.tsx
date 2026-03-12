@@ -14,7 +14,7 @@ export default function CollapsibleDemo() {
           <IconPlaceholder
             class="size-4 transition-transform group-data-[expanded]/collapsible-trigger:rotate-180"
             lucide="ChevronsUpDownIcon"
-            tabler="IconChevronsUpDown"
+            tabler="IconSelector"
           />
           <span class="sr-only">Toggle starred repositories</span>
         </CollapsibleTrigger>

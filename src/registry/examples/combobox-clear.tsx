@@ -11,6 +11,7 @@ import {
   ComboboxList,
   ComboboxTrigger
 } from "~/registry/ui/combobox"
+import { InputGroupAddon, InputGroupButton } from "~/registry/ui/input-group"
 
 type Language = {
   value: string
@@ -45,18 +46,21 @@ export default function ComboboxClear() {
         {(state) => (
           <>
             <ComboboxInput />
-            <Show when={state.selectedOptions().length > 0}>
-              <button
-                aria-label="Clear selection"
-                class="inline-flex size-6 items-center justify-center rounded-sm text-muted-foreground transition-colors hover:text-foreground"
-                onClick={() => state.clear()}
-                onMouseDown={(event) => event.preventDefault()}
-                type="button"
-              >
-                <IconPlaceholder class="size-3.5" lucide="XIcon" tabler="IconX" />
-              </button>
-            </Show>
-            <ComboboxTrigger />
+            <InputGroupAddon align="inline-end">
+              <Show when={state.selectedOptions().length > 0}>
+                <InputGroupButton
+                  aria-label="Clear selection"
+                  class="text-muted-foreground transition-colors hover:text-foreground"
+                  onClick={() => state.clear()}
+                  onMouseDown={(event) => event.preventDefault()}
+                  size="icon-xs"
+                  variant="ghost"
+                >
+                  <IconPlaceholder class="size-3.5" lucide="XIcon" tabler="IconX" />
+                </InputGroupButton>
+              </Show>
+              <ComboboxTrigger />
+            </InputGroupAddon>
           </>
         )}
       </ComboboxControl>

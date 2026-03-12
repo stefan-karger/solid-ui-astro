@@ -1,61 +1,116 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "~/registry/ui/collapsible"
+import { For, type JSX } from "solid-js"
 
-export default function CollapsibleFileTree() {
-  return (
-    <div class="w-full max-w-sm rounded-lg border bg-card p-2 text-sm">
-      <Collapsible defaultOpen>
-        <CollapsibleTrigger class="rounded-md px-2 py-1.5 hover:bg-muted/50">
-          <div class="flex items-center gap-2">
-            <IconPlaceholder
-              class="size-4 text-muted-foreground"
-              lucide="FolderIcon"
-              tabler="IconFolder"
-            />
-            <span>src</span>
-          </div>
+import { IconPlaceholder } from "~/components/icon-placeholder"
+import { Button } from "~/registry/ui/button"
+import { Card, CardContent, CardHeader } from "~/registry/ui/card"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "~/registry/ui/collapsible"
+import { Tabs, TabsList, TabsTrigger } from "~/registry/ui/tabs"
+
+type FileTreeItem = { name: string } | { name: string; items: FileTreeItem[] }
+
+const fileTree: FileTreeItem[] = [
+  {
+    name: "components",
+    items: [
+      {
+        name: "ui",
+        items: [
+          { name: "button.tsx" },
+          { name: "card.tsx" },
+          { name: "dialog.tsx" },
+          { name: "input.tsx" },
+          { name: "select.tsx" },
+          { name: "table.tsx" }
+        ]
+      },
+      { name: "login-form.tsx" },
+      { name: "register-form.tsx" }
+    ]
+  },
+  {
+    name: "lib",
+    items: [{ name: "utils.ts" }, { name: "cn.ts" }, { name: "api.ts" }]
+  },
+  {
+    name: "hooks",
+    items: [
+      { name: "use-media-query.ts" },
+      { name: "use-debounce.ts" },
+      { name: "use-local-storage.ts" }
+    ]
+  },
+  {
+    name: "types",
+    items: [{ name: "index.d.ts" }, { name: "api.d.ts" }]
+  },
+  {
+    name: "public",
+    items: [{ name: "favicon.ico" }, { name: "logo.svg" }, { name: "images" }]
+  },
+  { name: "app.tsx" },
+  { name: "layout.tsx" },
+  { name: "globals.css" },
+  { name: "package.json" },
+  { name: "tsconfig.json" },
+  { name: "README.md" },
+  { name: ".gitignore" }
+]
+
+const hasChildren = (item: FileTreeItem): item is { name: string; items: FileTreeItem[] } => {
+  return "items" in item
+}
+
+const renderItem = (item: FileTreeItem): JSX.Element => {
+  if (hasChildren(item)) {
+    return (
+      <Collapsible>
+        <CollapsibleTrigger
+          as={Button}
+          class="w-full justify-start transition-none hover:bg-accent hover:text-accent-foreground"
+          size="sm"
+          variant="ghost"
+        >
           <IconPlaceholder
-            class="size-4 text-muted-foreground transition-transform group-data-[expanded]/collapsible-trigger:rotate-90"
+            class="size-4 transition-transform group-data-[expanded]/collapsible-trigger:rotate-90"
             lucide="ChevronRightIcon"
             tabler="IconChevronRight"
           />
+          <IconPlaceholder class="size-4" lucide="FolderIcon" tabler="IconFolder" />
+          {item.name}
         </CollapsibleTrigger>
-        <CollapsibleContent class="mt-1 space-y-1 pl-4">
-          <FileNode name="app.tsx" />
-          <Collapsible defaultOpen>
-            <CollapsibleTrigger class="rounded-md px-2 py-1.5 hover:bg-muted/50">
-              <div class="flex items-center gap-2">
-                <IconPlaceholder
-                  class="size-4 text-muted-foreground"
-                  lucide="FolderIcon"
-                  tabler="IconFolder"
-                />
-                <span>components</span>
-              </div>
-              <IconPlaceholder
-                class="size-4 text-muted-foreground transition-transform group-data-[expanded]/collapsible-trigger:rotate-90"
-                lucide="ChevronRightIcon"
-                tabler="IconChevronRight"
-              />
-            </CollapsibleTrigger>
-            <CollapsibleContent class="mt-1 space-y-1 pl-4">
-              <FileNode name="button.tsx" />
-              <FileNode name="dialog.tsx" />
-              <FileNode name="input.tsx" />
-            </CollapsibleContent>
-          </Collapsible>
-          <FileNode name="lib/utils.ts" />
+        <CollapsibleContent class="mt-1 ml-5">
+          <div class="flex flex-col gap-1">
+            <For each={item.items}>{(child) => renderItem(child)}</For>
+          </div>
         </CollapsibleContent>
       </Collapsible>
-    </div>
+    )
+  }
+
+  return (
+    <Button class="w-full justify-start gap-2 text-foreground" size="sm" variant="link">
+      <IconPlaceholder class="size-4" lucide="FileIcon" tabler="IconFile" />
+      <span>{item.name}</span>
+    </Button>
   )
 }
 
-function FileNode(props: { name: string }) {
+export default function CollapsibleFileTree() {
   return (
-    <div class="flex items-center gap-2 rounded-md px-2 py-1.5 text-muted-foreground hover:bg-muted/50">
-      <IconPlaceholder class="size-4" lucide="FileIcon" tabler="IconFile" />
-      <span class="truncate">{props.name}</span>
-    </div>
+    <Card class="mx-auto w-full max-w-[16rem] gap-2" size="sm">
+      <CardHeader>
+        <Tabs defaultValue="explorer">
+          <TabsList class="w-full">
+            <TabsTrigger value="explorer">Explorer</TabsTrigger>
+            <TabsTrigger value="outline">Outline</TabsTrigger>
+          </TabsList>
+        </Tabs>
+      </CardHeader>
+      <CardContent>
+        <div class="flex flex-col gap-1 text-sm">
+          <For each={fileTree}>{(item) => renderItem(item)}</For>
+        </div>
+      </CardContent>
+    </Card>
   )
 }

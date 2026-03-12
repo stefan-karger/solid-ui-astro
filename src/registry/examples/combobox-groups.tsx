@@ -10,6 +10,7 @@ import {
   ComboboxSectionLabel,
   ComboboxTrigger
 } from "~/registry/ui/combobox"
+import { InputGroupAddon } from "~/registry/ui/input-group"
 
 type App = {
   value: string
@@ -60,7 +61,9 @@ export default function ComboboxGroups() {
     >
       <ComboboxControl class="max-w-sm">
         <ComboboxInput />
-        <ComboboxTrigger />
+        <InputGroupAddon align="inline-end">
+          <ComboboxTrigger />
+        </InputGroupAddon>
       </ComboboxControl>
       <ComboboxContent>
         <ComboboxList />

@@ -9,8 +9,7 @@ import {
   ComboboxEmpty,
   ComboboxInput,
   ComboboxItem,
-  ComboboxList,
-  ComboboxTrigger
+  ComboboxList
 } from "~/registry/ui/combobox"
 
 type Tag = {
@@ -56,7 +55,6 @@ export default function ComboboxMultiple() {
               )}
             </For>
             <ComboboxInput class="min-w-24 px-0" placeholder="Add a tag" />
-            <ComboboxTrigger />
           </>
         )}
       </ComboboxControl>

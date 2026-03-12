@@ -1,4 +1,7 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { ChartNoAxesColumnIcon, MegaphoneIcon, PaletteIcon } from "lucide-solid"
+import type { Component, ComponentProps } from "solid-js"
+import { Dynamic } from "solid-js/web"
+
 import {
   Combobox,
   ComboboxContent,
@@ -10,13 +13,13 @@ import {
   ComboboxList,
   ComboboxTrigger
 } from "~/registry/ui/combobox"
+import { InputGroupAddon } from "~/registry/ui/input-group"
 
 type Repository = {
   value: string
   label: string
   description: string
-  iconLucide: string
-  iconTabler: string
+  icon: Component<ComponentProps<"svg">>
 }
 
 const repositories: Repository[] = [
@@ -24,22 +27,19 @@ const repositories: Repository[] = [
     value: "design-system",
     label: "design-system",
     description: "Shared components and tokens",
-    iconLucide: "PaletteIcon",
-    iconTabler: "IconPalette"
+    icon: PaletteIcon
   },
   {
     value: "marketing-site",
     label: "marketing-site",
     description: "Landing pages and content",
-    iconLucide: "MegaphoneIcon",
-    iconTabler: "IconSpeakerphone"
+    icon: MegaphoneIcon
   },
   {
     value: "analytics-api",
     label: "analytics-api",
     description: "Event ingestion service",
-    iconLucide: "ChartNoAxesColumnIcon",
-    iconTabler: "IconChartBar"
+    icon: ChartNoAxesColumnIcon
   }
 ]
 
@@ -53,11 +53,7 @@ export default function ComboboxCustom() {
       placeholder="Select a repository"
       itemComponent={(props) => (
         <ComboboxItem item={props.item}>
-          <IconPlaceholder
-            class="size-4 text-muted-foreground"
-            lucide={props.item.rawValue.iconLucide}
-            tabler={props.item.rawValue.iconTabler}
-          />
+          <Dynamic class="size-4 text-muted-foreground" component={props.item.rawValue.icon} />
           <ComboboxItemText class="flex-col gap-0">
             <span class="font-medium">{props.item.rawValue.label}</span>
             <span class="text-xs text-muted-foreground">{props.item.rawValue.description}</span>
@@ -67,7 +63,9 @@ export default function ComboboxCustom() {
     >
       <ComboboxControl class="max-w-md">
         <ComboboxInput />
-        <ComboboxTrigger />
+        <InputGroupAddon align="inline-end">
+          <ComboboxTrigger />
+        </InputGroupAddon>
       </ComboboxControl>
       <ComboboxContent>
         <ComboboxList />

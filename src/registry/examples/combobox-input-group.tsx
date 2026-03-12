@@ -44,7 +44,9 @@ export default function ComboboxInputGroup() {
           />
         </InputGroupAddon>
         <ComboboxInput />
-        <ComboboxTrigger />
+        <InputGroupAddon align="inline-end">
+          <ComboboxTrigger />
+        </InputGroupAddon>
       </ComboboxControl>
       <ComboboxContent>
         <ComboboxList />

@@ -8,6 +8,7 @@ import {
   ComboboxList,
   ComboboxTrigger
 } from "~/registry/ui/combobox"
+import { InputGroupAddon } from "~/registry/ui/input-group"
 
 type Country = {
   value: string
@@ -36,8 +37,10 @@ export default function ComboboxInvalid() {
         )}
       >
         <ComboboxControl>
-          <ComboboxInput aria-invalid placeholder="Choose a country" />
-          <ComboboxTrigger />
+          <ComboboxInput aria-invalid />
+          <InputGroupAddon align="inline-end">
+            <ComboboxTrigger />
+          </InputGroupAddon>
         </ComboboxControl>
         <ComboboxContent>
           <ComboboxList />

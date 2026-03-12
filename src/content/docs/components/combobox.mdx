@@ -57,6 +57,7 @@ import {
   ComboboxList,
   ComboboxTrigger
 } from "~/components/ui/combobox"
+import { InputGroupAddon } from "~/components/ui/input-group"
 ```
 
 ```tsx showLineNumbers
@@ -81,10 +82,12 @@ const frameworks: Framework[] = [
     <ComboboxItem item={props.item}>{props.item.rawValue.label}</ComboboxItem>
   )}
 >
-  <ComboboxControl>
-    <ComboboxInput />
+<ComboboxControl>
+  <ComboboxInput />
+  <InputGroupAddon align="inline-end">
     <ComboboxTrigger />
-  </ComboboxControl>
+  </InputGroupAddon>
+</ComboboxControl>
   <ComboboxContent>
     <ComboboxList />
   </ComboboxContent>
@@ -122,10 +125,12 @@ const members: Member[] = [
     </ComboboxItem>
   )}
 >
-  <ComboboxControl>
-    <ComboboxInput />
+<ComboboxControl>
+  <ComboboxInput />
+  <InputGroupAddon align="inline-end">
     <ComboboxTrigger />
-  </ComboboxControl>
+  </InputGroupAddon>
+</ComboboxControl>
   <ComboboxContent>
     <ComboboxList />
     <ComboboxEmpty>No member found.</ComboboxEmpty>
@@ -149,8 +154,7 @@ import {
   ComboboxEmpty,
   ComboboxInput,
   ComboboxItem,
-  ComboboxList,
-  ComboboxTrigger
+  ComboboxList
 } from "~/components/ui/combobox"
 
 type Tag = {
@@ -192,7 +196,6 @@ const tags: Tag[] = [
           )}
         </For>
         <ComboboxInput class="min-w-24 px-0" />
-        <ComboboxTrigger />
       </>
     )}
   </ComboboxControl>

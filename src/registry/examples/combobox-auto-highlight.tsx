@@ -10,6 +10,7 @@ import {
   ComboboxList,
   ComboboxTrigger
 } from "~/registry/ui/combobox"
+import { InputGroupAddon } from "~/registry/ui/input-group"
 
 type Emoji = {
   value: string
@@ -53,7 +54,9 @@ export default function ComboboxAutoHighlight() {
     >
       <ComboboxControl class="max-w-sm">
         <ComboboxInput />
-        <ComboboxTrigger />
+        <InputGroupAddon align="inline-end">
+          <ComboboxTrigger />
+        </InputGroupAddon>
       </ComboboxControl>
       <ComboboxContent>
         <ComboboxList />

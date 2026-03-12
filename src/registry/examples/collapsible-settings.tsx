@@ -1,55 +1,40 @@
-import { For } from "solid-js"
+import { createSignal } from "solid-js"
 
 import { IconPlaceholder } from "~/components/icon-placeholder"
+import { Button } from "~/registry/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/registry/ui/card"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "~/registry/ui/collapsible"
-
-const sections = [
-  {
-    title: "General settings",
-    description: "Control default workspace behavior and discoverability.",
-    options: ["Show onboarding tips", "Automatically save drafts", "Enable command hints"],
-    defaultOpen: true
-  },
-  {
-    title: "Notifications",
-    description: "Choose how and when updates are delivered.",
-    options: ["Weekly digest", "Mentions and replies", "Release announcements"],
-    defaultOpen: false
-  }
-]
+import { Input } from "~/registry/ui/input"
 
 export default function CollapsibleSettings() {
+  const [open, setOpen] = createSignal(false)
+
   return (
-    <div class="w-full max-w-md space-y-3">
-      <For each={sections}>
-        {(section) => (
-          <Collapsible class="rounded-lg border bg-card" defaultOpen={section.defaultOpen}>
-            <CollapsibleTrigger class="px-4 py-3 text-left hover:bg-muted/40">
-              <div class="space-y-1">
-                <h4 class="text-sm font-medium">{section.title}</h4>
-                <p class="text-xs text-muted-foreground">{section.description}</p>
-              </div>
-              <IconPlaceholder
-                class="size-4 shrink-0 text-muted-foreground transition-transform group-data-[expanded]/collapsible-trigger:rotate-180"
-                lucide="ChevronDownIcon"
-                tabler="IconChevronDown"
-              />
-            </CollapsibleTrigger>
-            <CollapsibleContent class="px-4 pb-4">
-              <ul class="space-y-2 text-sm text-muted-foreground">
-                <For each={section.options}>
-                  {(option) => (
-                    <li class="flex items-center gap-2 rounded-md border bg-muted/30 px-3 py-2">
-                      <span class="size-1.5 rounded-full bg-primary" />
-                      <span>{option}</span>
-                    </li>
-                  )}
-                </For>
-              </ul>
+    <Card class="mx-auto w-full max-w-xs" size="sm">
+      <CardHeader>
+        <CardTitle>Radius</CardTitle>
+        <CardDescription>Set the corner radius of the element.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <Collapsible class="flex items-start gap-2" onOpenChange={setOpen} open={open()}>
+          <div class="grid w-full grid-cols-2 gap-2">
+            <Input aria-label="Radius X" placeholder="0" value="0" />
+            <Input aria-label="Radius Y" placeholder="0" value="0" />
+            <CollapsibleContent class="col-span-full grid grid-cols-subgrid gap-2">
+              <Input aria-label="Radius Top Left" placeholder="0" value="0" />
+              <Input aria-label="Radius Top Right" placeholder="0" value="0" />
             </CollapsibleContent>
-          </Collapsible>
-        )}
-      </For>
-    </div>
+          </div>
+          <CollapsibleTrigger as={Button} class="shrink-0" size="icon" variant="outline">
+            <IconPlaceholder
+              class="size-4 transition-transform group-data-[expanded]/collapsible-trigger:rotate-180"
+              lucide="ChevronDownIcon"
+              tabler="IconChevronDown"
+            />
+            <span class="sr-only">Toggle radius controls</span>
+          </CollapsibleTrigger>
+        </Collapsible>
+      </CardContent>
+    </Card>
   )
 }
