@@ -569,24 +569,24 @@
     "complexityScore": 5,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.toggle", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "primitive.toggle", "type": "primitive", "dependsOn": [], "finished": true },
       {
         "id": "docs.toggle",
         "type": "docs",
         "dependsOn": ["primitive.toggle"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.toggle",
         "type": "examples",
         "dependsOn": ["docs.toggle"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "toggle-demo", "finished": false },
-          { "name": "toggle-outline", "finished": false },
-          { "name": "toggle-text", "finished": false },
-          { "name": "toggle-sizes", "finished": false },
-          { "name": "toggle-disabled", "finished": false }
+          { "name": "toggle-demo", "finished": true },
+          { "name": "toggle-outline", "finished": true },
+          { "name": "toggle-text", "finished": true },
+          { "name": "toggle-sizes", "finished": true },
+          { "name": "toggle-disabled", "finished": true }
         ]
       }
     ]

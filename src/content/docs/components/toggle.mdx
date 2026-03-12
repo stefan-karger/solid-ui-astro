@@ -1,0 +1,102 @@
+---
+title: Toggle
+description: A two-state button that can be either on or off.
+component: true
+---
+
+<ComponentPreview name="toggle-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add toggle
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @kobalte/core
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="toggle" title="components/ui/toggle.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { Toggle } from "~/components/ui/toggle"
+```
+
+```tsx showLineNumbers
+<Toggle>Toggle</Toggle>
+```
+
+## Examples
+
+### Demo
+
+<ComponentPreview name="toggle-demo" />
+
+### Outline
+
+Use `variant="outline"` for an outline style.
+
+<ComponentPreview name="toggle-outline" />
+
+### With Text
+
+<ComponentPreview name="toggle-text" />
+
+### Sizes
+
+Use the `size` prop to change the size of the toggle.
+
+<ComponentPreview name="toggle-sizes" />
+
+### Disabled
+
+<ComponentPreview name="toggle-disabled" />
+
+## API Reference
+
+The `Toggle` component wraps Kobalte's toggle-button primitive with variant and size styles.
+
+| Prop             | Type                         | Default     |
+| ---------------- | ---------------------------- | ----------- |
+| `variant`        | `"default" \| "outline"`     | `"default"` |
+| `size`           | `"default" \| "sm" \| "lg"`  | `"default"` |
+| `pressed`        | `boolean`                    |             |
+| `defaultPressed` | `boolean`                    |             |
+| `onChange`       | `(pressed: boolean) => void` |             |
+| `disabled`       | `boolean`                    | `false`     |
+| `as`             | `ValidComponent`             | `"button"`  |
+| `class`          | `string`                     |             |
+
+All supported Kobalte toggle-button root props are forwarded to the rendered element.
+
+See the [Kobalte Toggle Button](https://kobalte.dev/docs/core/components/toggle-button)
+documentation for complete behavior and accessibility details.

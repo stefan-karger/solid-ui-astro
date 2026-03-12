@@ -1718,6 +1718,61 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "toggle-demo",
+    type: "registry:example",
+    registryDependencies: ["toggle"],
+    files: [
+      {
+        path: "examples/toggle-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "toggle-outline",
+    type: "registry:example",
+    registryDependencies: ["toggle"],
+    files: [
+      {
+        path: "examples/toggle-outline.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "toggle-text",
+    type: "registry:example",
+    registryDependencies: ["toggle"],
+    files: [
+      {
+        path: "examples/toggle-text.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "toggle-sizes",
+    type: "registry:example",
+    registryDependencies: ["toggle"],
+    files: [
+      {
+        path: "examples/toggle-sizes.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "toggle-disabled",
+    type: "registry:example",
+    registryDependencies: ["toggle"],
+    files: [
+      {
+        path: "examples/toggle-disabled.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "tooltip-demo",
     type: "registry:example",
     registryDependencies: ["button", "tooltip"],
