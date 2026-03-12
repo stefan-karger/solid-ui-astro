@@ -640,6 +640,50 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "drawer-demo",
+    type: "registry:example",
+    registryDependencies: ["button", "drawer"],
+    files: [
+      {
+        path: "examples/drawer-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "drawer-scrollable-content",
+    type: "registry:example",
+    registryDependencies: ["button", "drawer"],
+    files: [
+      {
+        path: "examples/drawer-scrollable-content.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "drawer-sides",
+    type: "registry:example",
+    registryDependencies: ["button", "drawer"],
+    files: [
+      {
+        path: "examples/drawer-sides.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "drawer-dialog",
+    type: "registry:example",
+    registryDependencies: ["button", "dialog", "drawer", "input", "label"],
+    files: [
+      {
+        path: "examples/drawer-dialog.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "navigation-menu-demo",
     type: "registry:example",
     registryDependencies: ["navigation-menu"],

@@ -235,23 +235,23 @@
     "complexityScore": 4,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.drawer", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "primitive.drawer", "type": "primitive", "dependsOn": [], "finished": true },
       {
         "id": "docs.drawer",
         "type": "docs",
         "dependsOn": ["primitive.drawer"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.drawer",
         "type": "examples",
         "dependsOn": ["docs.drawer"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "drawer-demo", "finished": false },
-          { "name": "drawer-scrollable-content", "finished": false },
-          { "name": "drawer-sides", "finished": false },
-          { "name": "drawer-dialog", "finished": false }
+          { "name": "drawer-demo", "finished": true },
+          { "name": "drawer-scrollable-content", "finished": true },
+          { "name": "drawer-sides", "finished": true },
+          { "name": "drawer-dialog", "finished": true }
         ]
       }
     ]
