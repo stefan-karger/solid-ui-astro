@@ -624,20 +624,20 @@
     "complexityScore": 6,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.badge", "type": "primitive", "dependsOn": [], "finished": false },
-      { "id": "docs.badge", "type": "docs", "dependsOn": ["primitive.badge"], "finished": false },
+      { "id": "primitive.badge", "type": "primitive", "dependsOn": [], "finished": true },
+      { "id": "docs.badge", "type": "docs", "dependsOn": ["primitive.badge"], "finished": true },
       {
         "id": "examples.badge",
         "type": "examples",
         "dependsOn": ["docs.badge"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "badge-demo", "finished": false },
-          { "name": "badge-variants", "finished": false },
-          { "name": "badge-icon", "finished": false },
-          { "name": "badge-spinner", "finished": false },
-          { "name": "badge-link", "finished": false },
-          { "name": "badge-colors", "finished": false }
+          { "name": "badge-demo", "finished": true },
+          { "name": "badge-variants", "finished": true },
+          { "name": "badge-icon", "finished": true },
+          { "name": "badge-spinner", "finished": true },
+          { "name": "badge-link", "finished": true },
+          { "name": "badge-colors", "finished": true }
         ]
       }
     ]

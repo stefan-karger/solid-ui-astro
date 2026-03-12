@@ -1,0 +1,143 @@
+---
+title: Badge
+description: Displays a compact label for status, metadata, and links.
+component: true
+---
+
+<ComponentPreview name="badge-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add badge
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependency:</Step>
+
+```bash
+npm install @kobalte/core
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="badge" title="components/ui/badge.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { Badge } from "~/components/ui/badge"
+```
+
+```tsx showLineNumbers
+<Badge>Badge</Badge>
+```
+
+## Variants
+
+Use the `variant` prop to switch badge emphasis.
+
+```tsx showLineNumbers
+<Badge>Default</Badge>
+<Badge variant="secondary">Secondary</Badge>
+<Badge variant="destructive">Destructive</Badge>
+<Badge variant="outline">Outline</Badge>
+<Badge variant="ghost">Ghost</Badge>
+<Badge variant="link">Link</Badge>
+```
+
+## Icon and Spinner
+
+Add `data-icon="inline-start"` or `data-icon="inline-end"` to icon elements for spacing.
+
+```tsx showLineNumbers
+<Badge>
+  <svg class="size-3" data-icon="inline-start" aria-hidden="true" />
+  Verified
+</Badge>
+```
+
+## As Link
+
+Set `as="a"` with `href` to render badges as links.
+
+```tsx showLineNumbers
+<Badge as="a" href="#" variant="secondary">
+  Changelog
+</Badge>
+```
+
+## Custom Colors
+
+Override classes directly for custom color schemes.
+
+```tsx showLineNumbers
+<Badge class="bg-blue-600 text-blue-50">Blue</Badge>
+```
+
+## Examples
+
+### Demo
+
+<ComponentPreview name="badge-demo" />
+
+### Variants
+
+<ComponentPreview name="badge-variants" />
+
+### Icon
+
+<ComponentPreview name="badge-icon" />
+
+### Spinner
+
+<ComponentPreview name="badge-spinner" />
+
+### Link
+
+<ComponentPreview name="badge-link" />
+
+### Colors
+
+<ComponentPreview name="badge-colors" />
+
+## API Reference
+
+### Core Parts
+
+| Part    | Description                          |
+| ------- | ------------------------------------ |
+| `Badge` | Root element that displays badge UI. |
+
+### Badge Props
+
+| Prop        | Type                                                                          | Default     | Description                                               |
+| ----------- | ----------------------------------------------------------------------------- | ----------- | --------------------------------------------------------- |
+| `variant`   | `"default" \| "secondary" \| "destructive" \| "outline" \| "ghost" \| "link"` | `"default"` | Visual style variant.                                     |
+| `as`        | `ValidComponent`                                                              | `"span"`    | Polymorphic element type.                                 |
+| `textValue` | `string`                                                                      |             | Accessible text when children are not plain text content. |
+| `class`     | `string`                                                                      |             | Additional classes for custom layout or color overrides.  |
+
+All native attributes for the chosen `as` element are forwarded to the root.

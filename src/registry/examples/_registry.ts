@@ -156,6 +156,72 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "badge-colors",
+    type: "registry:example",
+    registryDependencies: ["badge"],
+    files: [
+      {
+        path: "examples/badge-colors.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "badge-demo",
+    type: "registry:example",
+    registryDependencies: ["badge"],
+    files: [
+      {
+        path: "examples/badge-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "badge-icon",
+    type: "registry:example",
+    registryDependencies: ["badge"],
+    files: [
+      {
+        path: "examples/badge-icon.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "badge-link",
+    type: "registry:example",
+    registryDependencies: ["badge"],
+    files: [
+      {
+        path: "examples/badge-link.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "badge-spinner",
+    type: "registry:example",
+    registryDependencies: ["badge"],
+    files: [
+      {
+        path: "examples/badge-spinner.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "badge-variants",
+    type: "registry:example",
+    registryDependencies: ["badge"],
+    files: [
+      {
+        path: "examples/badge-variants.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "button-demo",
     type: "registry:example",
     registryDependencies: ["button"],

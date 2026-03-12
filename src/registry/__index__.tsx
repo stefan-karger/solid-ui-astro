@@ -60,6 +60,20 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "badge": {
+    name: "badge",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/ui/badge.tsx")),
+    files: [{
+      path: "registry/ui/badge.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "button": {
     name: "button",
     description: "",
@@ -186,6 +200,20 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "drawer": {
+    name: "drawer",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/ui/drawer.tsx")),
+    files: [{
+      path: "registry/ui/drawer.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "dropdown-menu": {
     name: "dropdown-menu",
     description: "",
@@ -256,6 +284,20 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "kbd": {
+    name: "kbd",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/ui/kbd.tsx")),
+    files: [{
+      path: "registry/ui/kbd.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "label": {
     name: "label",
     description: "",
@@ -270,6 +312,34 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "menubar": {
+    name: "menubar",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/ui/menubar.tsx")),
+    files: [{
+      path: "registry/ui/menubar.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "native-select": {
+    name: "native-select",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/ui/native-select.tsx")),
+    files: [{
+      path: "registry/ui/native-select.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "navigation-menu": {
     name: "navigation-menu",
     description: "",
@@ -278,6 +348,20 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/ui/navigation-menu.tsx")),
     files: [{
       path: "registry/ui/navigation-menu.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "pagination": {
+    name: "pagination",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    component: lazy(() => import("~/registry/ui/pagination.tsx")),
+    files: [{
+      path: "registry/ui/pagination.tsx",
       type: "registry:ui",
       target: ""
     }],
@@ -340,6 +424,34 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "sheet": {
+    name: "sheet",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    component: lazy(() => import("~/registry/ui/sheet.tsx")),
+    files: [{
+      path: "registry/ui/sheet.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "skeleton": {
+    name: "skeleton",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/ui/skeleton.tsx")),
+    files: [{
+      path: "registry/ui/skeleton.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "slider": {
     name: "slider",
     description: "",
@@ -390,6 +502,20 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/ui/table.tsx")),
     files: [{
       path: "registry/ui/table.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "toggle": {
+    name: "toggle",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/ui/toggle.tsx")),
+    files: [{
+      path: "registry/ui/toggle.tsx",
       type: "registry:ui",
       target: ""
     }],
@@ -614,6 +740,90 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/examples/aspect-ratio-portrait.tsx")),
     files: [{
       path: "registry/examples/aspect-ratio-portrait.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "badge-colors": {
+    name: "badge-colors",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["badge"],
+    component: lazy(() => import("~/registry/examples/badge-colors.tsx")),
+    files: [{
+      path: "registry/examples/badge-colors.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "badge-demo": {
+    name: "badge-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["badge"],
+    component: lazy(() => import("~/registry/examples/badge-demo.tsx")),
+    files: [{
+      path: "registry/examples/badge-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "badge-icon": {
+    name: "badge-icon",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["badge"],
+    component: lazy(() => import("~/registry/examples/badge-icon.tsx")),
+    files: [{
+      path: "registry/examples/badge-icon.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "badge-link": {
+    name: "badge-link",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["badge"],
+    component: lazy(() => import("~/registry/examples/badge-link.tsx")),
+    files: [{
+      path: "registry/examples/badge-link.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "badge-spinner": {
+    name: "badge-spinner",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["badge"],
+    component: lazy(() => import("~/registry/examples/badge-spinner.tsx")),
+    files: [{
+      path: "registry/examples/badge-spinner.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "badge-variants": {
+    name: "badge-variants",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["badge"],
+    component: lazy(() => import("~/registry/examples/badge-variants.tsx")),
+    files: [{
+      path: "registry/examples/badge-variants.tsx",
       type: "registry:example",
       target: ""
     }],
@@ -1236,6 +1446,244 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "dialog-demo": {
+    name: "dialog-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","dialog","input","label"],
+    component: lazy(() => import("~/registry/examples/dialog-demo.tsx")),
+    files: [{
+      path: "registry/examples/dialog-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "dialog-close-button": {
+    name: "dialog-close-button",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","dialog","input","label"],
+    component: lazy(() => import("~/registry/examples/dialog-close-button.tsx")),
+    files: [{
+      path: "registry/examples/dialog-close-button.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "dialog-no-close-button": {
+    name: "dialog-no-close-button",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","dialog"],
+    component: lazy(() => import("~/registry/examples/dialog-no-close-button.tsx")),
+    files: [{
+      path: "registry/examples/dialog-no-close-button.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "dialog-sticky-footer": {
+    name: "dialog-sticky-footer",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","dialog"],
+    component: lazy(() => import("~/registry/examples/dialog-sticky-footer.tsx")),
+    files: [{
+      path: "registry/examples/dialog-sticky-footer.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "dialog-scrollable-content": {
+    name: "dialog-scrollable-content",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","dialog"],
+    component: lazy(() => import("~/registry/examples/dialog-scrollable-content.tsx")),
+    files: [{
+      path: "registry/examples/dialog-scrollable-content.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "drawer-demo": {
+    name: "drawer-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","drawer"],
+    component: lazy(() => import("~/registry/examples/drawer-demo.tsx")),
+    files: [{
+      path: "registry/examples/drawer-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "drawer-scrollable-content": {
+    name: "drawer-scrollable-content",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","drawer"],
+    component: lazy(() => import("~/registry/examples/drawer-scrollable-content.tsx")),
+    files: [{
+      path: "registry/examples/drawer-scrollable-content.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "drawer-sides": {
+    name: "drawer-sides",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","drawer"],
+    component: lazy(() => import("~/registry/examples/drawer-sides.tsx")),
+    files: [{
+      path: "registry/examples/drawer-sides.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "drawer-dialog": {
+    name: "drawer-dialog",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","dialog","drawer","input","label"],
+    component: lazy(() => import("~/registry/examples/drawer-dialog.tsx")),
+    files: [{
+      path: "registry/examples/drawer-dialog.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "sheet-demo": {
+    name: "sheet-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","input","label","sheet"],
+    component: lazy(() => import("~/registry/examples/sheet-demo.tsx")),
+    files: [{
+      path: "registry/examples/sheet-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "sheet-side": {
+    name: "sheet-side",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","sheet"],
+    component: lazy(() => import("~/registry/examples/sheet-side.tsx")),
+    files: [{
+      path: "registry/examples/sheet-side.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "sheet-no-close-button": {
+    name: "sheet-no-close-button",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","sheet"],
+    component: lazy(() => import("~/registry/examples/sheet-no-close-button.tsx")),
+    files: [{
+      path: "registry/examples/sheet-no-close-button.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "menubar-demo": {
+    name: "menubar-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["menubar"],
+    component: lazy(() => import("~/registry/examples/menubar-demo.tsx")),
+    files: [{
+      path: "registry/examples/menubar-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "menubar-checkbox": {
+    name: "menubar-checkbox",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["menubar"],
+    component: lazy(() => import("~/registry/examples/menubar-checkbox.tsx")),
+    files: [{
+      path: "registry/examples/menubar-checkbox.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "menubar-radio": {
+    name: "menubar-radio",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["menubar"],
+    component: lazy(() => import("~/registry/examples/menubar-radio.tsx")),
+    files: [{
+      path: "registry/examples/menubar-radio.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "menubar-submenu": {
+    name: "menubar-submenu",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["menubar"],
+    component: lazy(() => import("~/registry/examples/menubar-submenu.tsx")),
+    files: [{
+      path: "registry/examples/menubar-submenu.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "menubar-icons": {
+    name: "menubar-icons",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["menubar"],
+    component: lazy(() => import("~/registry/examples/menubar-icons.tsx")),
+    files: [{
+      path: "registry/examples/menubar-icons.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "navigation-menu-demo": {
     name: "navigation-menu-demo",
     description: "",
@@ -1244,6 +1692,62 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/examples/navigation-menu-demo.tsx")),
     files: [{
       path: "registry/examples/navigation-menu-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "native-select-demo": {
+    name: "native-select-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["native-select"],
+    component: lazy(() => import("~/registry/examples/native-select-demo.tsx")),
+    files: [{
+      path: "registry/examples/native-select-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "native-select-groups": {
+    name: "native-select-groups",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["native-select"],
+    component: lazy(() => import("~/registry/examples/native-select-groups.tsx")),
+    files: [{
+      path: "registry/examples/native-select-groups.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "native-select-disabled": {
+    name: "native-select-disabled",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["native-select"],
+    component: lazy(() => import("~/registry/examples/native-select-disabled.tsx")),
+    files: [{
+      path: "registry/examples/native-select-disabled.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "native-select-invalid": {
+    name: "native-select-invalid",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["native-select"],
+    component: lazy(() => import("~/registry/examples/native-select-invalid.tsx")),
+    files: [{
+      path: "registry/examples/native-select-invalid.tsx",
       type: "registry:example",
       target: ""
     }],
@@ -1474,6 +1978,76 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "kbd-demo": {
+    name: "kbd-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["kbd"],
+    component: lazy(() => import("~/registry/examples/kbd-demo.tsx")),
+    files: [{
+      path: "registry/examples/kbd-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "kbd-group": {
+    name: "kbd-group",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["kbd"],
+    component: lazy(() => import("~/registry/examples/kbd-group.tsx")),
+    files: [{
+      path: "registry/examples/kbd-group.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "kbd-button": {
+    name: "kbd-button",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","kbd"],
+    component: lazy(() => import("~/registry/examples/kbd-button.tsx")),
+    files: [{
+      path: "registry/examples/kbd-button.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "kbd-tooltip": {
+    name: "kbd-tooltip",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","button-group","kbd","tooltip"],
+    component: lazy(() => import("~/registry/examples/kbd-tooltip.tsx")),
+    files: [{
+      path: "registry/examples/kbd-tooltip.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "kbd-input-group": {
+    name: "kbd-input-group",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input-group","kbd"],
+    component: lazy(() => import("~/registry/examples/kbd-input-group.tsx")),
+    files: [{
+      path: "registry/examples/kbd-input-group.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "label-demo": {
     name: "label-demo",
     description: "",
@@ -1650,6 +2224,48 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/examples/field-textarea.tsx")),
     files: [{
       path: "registry/examples/field-textarea.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "pagination-demo": {
+    name: "pagination-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["pagination"],
+    component: lazy(() => import("~/registry/examples/pagination-demo.tsx")),
+    files: [{
+      path: "registry/examples/pagination-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "pagination-simple": {
+    name: "pagination-simple",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["pagination"],
+    component: lazy(() => import("~/registry/examples/pagination-simple.tsx")),
+    files: [{
+      path: "registry/examples/pagination-simple.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "pagination-icons-only": {
+    name: "pagination-icons-only",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["pagination"],
+    component: lazy(() => import("~/registry/examples/pagination-icons-only.tsx")),
+    files: [{
+      path: "registry/examples/pagination-icons-only.tsx",
       type: "registry:example",
       target: ""
     }],
@@ -1936,6 +2552,90 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "skeleton-demo": {
+    name: "skeleton-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["skeleton"],
+    component: lazy(() => import("~/registry/examples/skeleton-demo.tsx")),
+    files: [{
+      path: "registry/examples/skeleton-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "skeleton-avatar": {
+    name: "skeleton-avatar",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["skeleton"],
+    component: lazy(() => import("~/registry/examples/skeleton-avatar.tsx")),
+    files: [{
+      path: "registry/examples/skeleton-avatar.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "skeleton-card": {
+    name: "skeleton-card",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["card","skeleton"],
+    component: lazy(() => import("~/registry/examples/skeleton-card.tsx")),
+    files: [{
+      path: "registry/examples/skeleton-card.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "skeleton-text": {
+    name: "skeleton-text",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["skeleton"],
+    component: lazy(() => import("~/registry/examples/skeleton-text.tsx")),
+    files: [{
+      path: "registry/examples/skeleton-text.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "skeleton-form": {
+    name: "skeleton-form",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["skeleton"],
+    component: lazy(() => import("~/registry/examples/skeleton-form.tsx")),
+    files: [{
+      path: "registry/examples/skeleton-form.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "skeleton-table": {
+    name: "skeleton-table",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["skeleton"],
+    component: lazy(() => import("~/registry/examples/skeleton-table.tsx")),
+    files: [{
+      path: "registry/examples/skeleton-table.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "slider-demo": {
     name: "slider-demo",
     description: "",
@@ -2202,6 +2902,76 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "tabs-demo": {
+    name: "tabs-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["card","tabs"],
+    component: lazy(() => import("~/registry/examples/tabs-demo.tsx")),
+    files: [{
+      path: "registry/examples/tabs-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "tabs-line": {
+    name: "tabs-line",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["tabs"],
+    component: lazy(() => import("~/registry/examples/tabs-line.tsx")),
+    files: [{
+      path: "registry/examples/tabs-line.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "tabs-vertical": {
+    name: "tabs-vertical",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["tabs"],
+    component: lazy(() => import("~/registry/examples/tabs-vertical.tsx")),
+    files: [{
+      path: "registry/examples/tabs-vertical.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "tabs-disabled": {
+    name: "tabs-disabled",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["tabs"],
+    component: lazy(() => import("~/registry/examples/tabs-disabled.tsx")),
+    files: [{
+      path: "registry/examples/tabs-disabled.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "tabs-icons": {
+    name: "tabs-icons",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["tabs"],
+    component: lazy(() => import("~/registry/examples/tabs-icons.tsx")),
+    files: [{
+      path: "registry/examples/tabs-icons.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "table-demo": {
     name: "table-demo",
     description: "",
@@ -2238,6 +3008,76 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/examples/table-actions.tsx")),
     files: [{
       path: "registry/examples/table-actions.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "toggle-demo": {
+    name: "toggle-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["toggle"],
+    component: lazy(() => import("~/registry/examples/toggle-demo.tsx")),
+    files: [{
+      path: "registry/examples/toggle-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "toggle-outline": {
+    name: "toggle-outline",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["toggle"],
+    component: lazy(() => import("~/registry/examples/toggle-outline.tsx")),
+    files: [{
+      path: "registry/examples/toggle-outline.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "toggle-text": {
+    name: "toggle-text",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["toggle"],
+    component: lazy(() => import("~/registry/examples/toggle-text.tsx")),
+    files: [{
+      path: "registry/examples/toggle-text.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "toggle-sizes": {
+    name: "toggle-sizes",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["toggle"],
+    component: lazy(() => import("~/registry/examples/toggle-sizes.tsx")),
+    files: [{
+      path: "registry/examples/toggle-sizes.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "toggle-disabled": {
+    name: "toggle-disabled",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["toggle"],
+    component: lazy(() => import("~/registry/examples/toggle-disabled.tsx")),
+    files: [{
+      path: "registry/examples/toggle-disabled.tsx",
       type: "registry:example",
       target: ""
     }],
