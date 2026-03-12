@@ -414,24 +414,24 @@
     "complexityScore": 5,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.menubar", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "primitive.menubar", "type": "primitive", "dependsOn": [], "finished": true },
       {
         "id": "docs.menubar",
         "type": "docs",
         "dependsOn": ["primitive.menubar"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.menubar",
         "type": "examples",
         "dependsOn": ["docs.menubar"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "menubar-demo", "finished": false },
-          { "name": "menubar-checkbox", "finished": false },
-          { "name": "menubar-radio", "finished": false },
-          { "name": "menubar-submenu", "finished": false },
-          { "name": "menubar-icons", "finished": false }
+          { "name": "menubar-demo", "finished": true },
+          { "name": "menubar-checkbox", "finished": true },
+          { "name": "menubar-radio", "finished": true },
+          { "name": "menubar-submenu", "finished": true },
+          { "name": "menubar-icons", "finished": true }
         ]
       }
     ]

@@ -219,6 +219,17 @@ export const ui: Registry["items"] = [
     ]
   },
   {
+    name: "menubar",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core"],
+    files: [
+      {
+        path: "ui/menubar.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
     name: "native-select",
     type: "registry:ui",
     files: [
