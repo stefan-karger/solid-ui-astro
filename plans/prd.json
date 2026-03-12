@@ -265,24 +265,24 @@
         "id": "primitive.native-select",
         "type": "primitive",
         "dependsOn": [],
-        "finished": false
+        "finished": true
       },
       {
         "id": "docs.native-select",
         "type": "docs",
         "dependsOn": ["primitive.native-select"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.native-select",
         "type": "examples",
         "dependsOn": ["docs.native-select"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "native-select-demo", "finished": false },
-          { "name": "native-select-groups", "finished": false },
-          { "name": "native-select-disabled", "finished": false },
-          { "name": "native-select-invalid", "finished": false }
+          { "name": "native-select-demo", "finished": true },
+          { "name": "native-select-groups", "finished": true },
+          { "name": "native-select-disabled", "finished": true },
+          { "name": "native-select-invalid", "finished": true }
         ]
       }
     ]
