@@ -1,0 +1,168 @@
+---
+title: Slider
+description: An input where the user selects one or more values from a range.
+component: true
+---
+
+<ComponentPreview name="slider-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add slider
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @kobalte/core
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="slider" title="components/ui/slider.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { Slider } from "~/components/ui/slider"
+```
+
+```tsx showLineNumbers
+<Slider defaultValue={[33]} max={100} step={1} />
+```
+
+## Range
+
+Use an array with two values for a range slider.
+
+```tsx showLineNumbers
+<Slider defaultValue={[25, 75]} min={0} max={100} step={1} />
+```
+
+## Multiple Thumbs
+
+Use an array with more than two values to render multiple thumbs.
+
+```tsx showLineNumbers
+<Slider defaultValue={[20, 45, 80]} min={0} max={100} step={1} />
+```
+
+## Vertical
+
+Use `orientation="vertical"` for a vertical slider.
+
+```tsx showLineNumbers
+<div class="flex h-52 items-center">
+  <Slider defaultValue={[40]} max={100} orientation="vertical" class="h-full" />
+</div>
+```
+
+## Controlled
+
+Use `value` and `onChange` to control slider values.
+
+```tsx showLineNumbers
+import { createSignal } from "solid-js"
+
+import { Slider } from "~/components/ui/slider"
+
+function ControlledSlider() {
+  const [value, setValue] = createSignal([30, 70])
+
+  return (
+    <>
+      <p>
+        Temperature range: {value()[0]}°C - {value()[1]}°C
+      </p>
+      <Slider value={value()} onChange={setValue} min={0} max={100} step={1} />
+    </>
+  )
+}
+```
+
+## Disabled
+
+Use the `disabled` prop to prevent slider interaction.
+
+```tsx showLineNumbers
+<Slider defaultValue={[35]} max={100} disabled />
+```
+
+## Examples
+
+### Demo
+
+<ComponentPreview name="slider-demo" />
+
+### Range
+
+<ComponentPreview name="slider-range" />
+
+### Multiple
+
+<ComponentPreview name="slider-multiple" />
+
+### Vertical
+
+<ComponentPreview name="slider-vertical" previewClassName="h-64" />
+
+### Controlled
+
+<ComponentPreview name="slider-controlled" />
+
+### Disabled
+
+<ComponentPreview name="slider-disabled" />
+
+## API Reference
+
+### Core Parts
+
+| Part     | Description                                                       |
+| -------- | ----------------------------------------------------------------- |
+| `Slider` | Slider root with built-in track, fill, thumbs, and hidden inputs. |
+
+### Slider Props
+
+| Prop                    | Type                        | Description                                 |
+| ----------------------- | --------------------------- | ------------------------------------------- |
+| `value`                 | `number[]`                  | Controlled slider values.                   |
+| `defaultValue`          | `number[]`                  | Initial values for uncontrolled usage.      |
+| `onChange`              | `(value: number[]) => void` | Called whenever the value changes.          |
+| `onChangeEnd`           | `(value: number[]) => void` | Called when interaction ends.               |
+| `min`                   | `number`                    | Minimum allowed value.                      |
+| `max`                   | `number`                    | Maximum allowed value.                      |
+| `step`                  | `number`                    | Increment/decrement step size.              |
+| `minStepsBetweenThumbs` | `number`                    | Minimum number of steps between thumbs.     |
+| `orientation`           | `"horizontal"\|"vertical"`  | Slider orientation.                         |
+| `disabled`              | `boolean`                   | Disables keyboard and pointer interactions. |
+| `class`                 | `string`                    | Additional classes for the root element.    |
+
+The component forwards all other supported Kobalte slider root props.
+
+See the [Kobalte Slider](https://kobalte.dev/docs/core/components/slider) documentation
+for complete behavior and accessibility details.
