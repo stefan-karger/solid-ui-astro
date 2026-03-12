@@ -467,30 +467,6 @@
     ]
   },
   {
-    "primitive": "scroll-area",
-    "complexityScore": 5,
-    "source": "shadcn-only",
-    "tasks": [
-      { "id": "primitive.scroll-area", "type": "primitive", "dependsOn": [], "finished": false },
-      {
-        "id": "docs.scroll-area",
-        "type": "docs",
-        "dependsOn": ["primitive.scroll-area"],
-        "finished": false
-      },
-      {
-        "id": "examples.scroll-area",
-        "type": "examples",
-        "dependsOn": ["docs.scroll-area"],
-        "finished": false,
-        "checklist": [
-          { "name": "scroll-area-demo", "finished": false },
-          { "name": "scroll-area-horizontal-demo", "finished": false }
-        ]
-      }
-    ]
-  },
-  {
     "primitive": "sheet",
     "complexityScore": 5,
     "source": "zaidan",
@@ -1322,43 +1298,6 @@
           { "name": "button-spinner", "finished": true },
           { "name": "button-group-demo", "finished": true },
           { "name": "button-aschild", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "calendar",
-    "complexityScore": 14,
-    "source": "zaidan",
-    "tasks": [
-      {
-        "id": "primitive.calendar",
-        "type": "primitive",
-        "dependsOn": ["primitive.button", "primitive.select"],
-        "finished": false
-      },
-      {
-        "id": "docs.calendar",
-        "type": "docs",
-        "dependsOn": ["primitive.calendar"],
-        "finished": false
-      },
-      {
-        "id": "examples.calendar",
-        "type": "examples",
-        "dependsOn": ["docs.calendar"],
-        "finished": false,
-        "checklist": [
-          { "name": "calendar-demo", "finished": false },
-          { "name": "calendar-hijri", "finished": false },
-          { "name": "calendar-basic", "finished": false },
-          { "name": "calendar-range", "finished": false },
-          { "name": "calendar-caption", "finished": false },
-          { "name": "calendar-presets", "finished": false },
-          { "name": "calendar-time", "finished": false },
-          { "name": "calendar-booked-dates", "finished": false },
-          { "name": "calendar-custom-days", "finished": false },
-          { "name": "calendar-week-numbers", "finished": false }
         ]
       }
     ]
