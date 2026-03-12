@@ -754,25 +754,25 @@
     "complexityScore": 6,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.skeleton", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "primitive.skeleton", "type": "primitive", "dependsOn": [], "finished": true },
       {
         "id": "docs.skeleton",
         "type": "docs",
         "dependsOn": ["primitive.skeleton"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.skeleton",
         "type": "examples",
         "dependsOn": ["docs.skeleton"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "skeleton-demo", "finished": false },
-          { "name": "skeleton-avatar", "finished": false },
-          { "name": "skeleton-card", "finished": false },
-          { "name": "skeleton-text", "finished": false },
-          { "name": "skeleton-form", "finished": false },
-          { "name": "skeleton-table", "finished": false }
+          { "name": "skeleton-demo", "finished": true },
+          { "name": "skeleton-avatar", "finished": true },
+          { "name": "skeleton-card", "finished": true },
+          { "name": "skeleton-text", "finished": true },
+          { "name": "skeleton-form", "finished": true },
+          { "name": "skeleton-table", "finished": true }
         ]
       }
     ]

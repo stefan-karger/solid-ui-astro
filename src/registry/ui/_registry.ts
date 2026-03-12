@@ -319,6 +319,16 @@ export const ui: Registry["items"] = [
     ]
   },
   {
+    name: "skeleton",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/skeleton.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
     name: "slider",
     type: "registry:ui",
     dependencies: ["@kobalte/core"],
