@@ -1133,32 +1133,32 @@
         "id": "primitive.dropdown-menu",
         "type": "primitive",
         "dependsOn": [],
-        "finished": false
+        "finished": true
       },
       {
         "id": "docs.dropdown-menu",
         "type": "docs",
         "dependsOn": ["primitive.dropdown-menu"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.dropdown-menu",
         "type": "examples",
         "dependsOn": ["docs.dropdown-menu"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "dropdown-menu-demo", "finished": false },
-          { "name": "dropdown-menu-basic", "finished": false },
-          { "name": "dropdown-menu-submenu", "finished": false },
-          { "name": "dropdown-menu-shortcuts", "finished": false },
-          { "name": "dropdown-menu-icons", "finished": false },
-          { "name": "dropdown-menu-checkboxes", "finished": false },
-          { "name": "dropdown-menu-checkboxes-icons", "finished": false },
-          { "name": "dropdown-menu-radio-group", "finished": false },
-          { "name": "dropdown-menu-radio-icons", "finished": false },
-          { "name": "dropdown-menu-destructive", "finished": false },
-          { "name": "dropdown-menu-avatar", "finished": false },
-          { "name": "dropdown-menu-complex", "finished": false }
+          { "name": "dropdown-menu-demo", "finished": true },
+          { "name": "dropdown-menu-basic", "finished": true },
+          { "name": "dropdown-menu-submenu", "finished": true },
+          { "name": "dropdown-menu-shortcuts", "finished": true },
+          { "name": "dropdown-menu-icons", "finished": true },
+          { "name": "dropdown-menu-checkboxes", "finished": true },
+          { "name": "dropdown-menu-checkboxes-icons", "finished": true },
+          { "name": "dropdown-menu-radio-group", "finished": true },
+          { "name": "dropdown-menu-radio-icons", "finished": true },
+          { "name": "dropdown-menu-destructive", "finished": true },
+          { "name": "dropdown-menu-avatar", "finished": true },
+          { "name": "dropdown-menu-complex", "finished": true }
         ]
       }
     ]
