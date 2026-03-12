@@ -3,7 +3,7 @@
 2. Update the PRD with the work that was done.
 3. Append your progress to the progress.txt file.
    Use this to leave a note for the next person working in the codebase.
-4. Make a git commit of that feature.
+4. Make a git commit of that feature. Always start the name with "[RALF] ".
 
 ONLY WORK ON A SINGLE FEATURE.
 If, while implementing the feature, you notice the PRD is complete, output <promise>COMPLETE</promise>.
