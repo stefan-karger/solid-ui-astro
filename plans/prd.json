@@ -786,25 +786,25 @@
     "complexityScore": 6,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.switch", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "primitive.switch", "type": "primitive", "dependsOn": [], "finished": true },
       {
         "id": "docs.switch",
         "type": "docs",
         "dependsOn": ["primitive.switch"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.switch",
         "type": "examples",
         "dependsOn": ["docs.switch"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "switch-demo", "finished": false },
-          { "name": "switch-description", "finished": false },
-          { "name": "switch-choice-card", "finished": false },
-          { "name": "switch-disabled", "finished": false },
-          { "name": "switch-invalid", "finished": false },
-          { "name": "switch-sizes", "finished": false }
+          { "name": "switch-demo", "finished": true },
+          { "name": "switch-description", "finished": true },
+          { "name": "switch-choice-card", "finished": true },
+          { "name": "switch-disabled", "finished": true },
+          { "name": "switch-invalid", "finished": true },
+          { "name": "switch-sizes", "finished": true }
         ]
       }
     ]

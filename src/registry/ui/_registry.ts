@@ -351,6 +351,17 @@ export const ui: Registry["items"] = [
     ]
   },
   {
+    name: "switch",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core"],
+    files: [
+      {
+        path: "ui/switch.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
     name: "separator",
     type: "registry:ui",
     dependencies: ["@kobalte/core"],

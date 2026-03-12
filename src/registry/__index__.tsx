@@ -466,6 +466,20 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "switch": {
+    name: "switch",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/ui/switch.tsx")),
+    files: [{
+      path: "registry/ui/switch.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "separator": {
     name: "separator",
     description: "",
@@ -2206,7 +2220,7 @@ export const Index: Record<string, any> = {
     name: "field-switch",
     description: "",
     type: "registry:example",
-    registryDependencies: ["field"],
+    registryDependencies: ["field","switch"],
     component: lazy(() => import("~/registry/examples/field-switch.tsx")),
     files: [{
       path: "registry/examples/field-switch.tsx",
@@ -3078,6 +3092,90 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/examples/toggle-disabled.tsx")),
     files: [{
       path: "registry/examples/toggle-disabled.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "switch-demo": {
+    name: "switch-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["label","switch"],
+    component: lazy(() => import("~/registry/examples/switch-demo.tsx")),
+    files: [{
+      path: "registry/examples/switch-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "switch-description": {
+    name: "switch-description",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","switch"],
+    component: lazy(() => import("~/registry/examples/switch-description.tsx")),
+    files: [{
+      path: "registry/examples/switch-description.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "switch-choice-card": {
+    name: "switch-choice-card",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","switch"],
+    component: lazy(() => import("~/registry/examples/switch-choice-card.tsx")),
+    files: [{
+      path: "registry/examples/switch-choice-card.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "switch-disabled": {
+    name: "switch-disabled",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","switch"],
+    component: lazy(() => import("~/registry/examples/switch-disabled.tsx")),
+    files: [{
+      path: "registry/examples/switch-disabled.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "switch-invalid": {
+    name: "switch-invalid",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","switch"],
+    component: lazy(() => import("~/registry/examples/switch-invalid.tsx")),
+    files: [{
+      path: "registry/examples/switch-invalid.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "switch-sizes": {
+    name: "switch-sizes",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","switch"],
+    component: lazy(() => import("~/registry/examples/switch-sizes.tsx")),
+    files: [{
+      path: "registry/examples/switch-sizes.tsx",
       type: "registry:example",
       target: ""
     }],
