@@ -1,0 +1,193 @@
+---
+title: Sidebar
+description: A composable, themeable, and customizable sidebar component.
+component: true
+---
+
+<ComponentPreview
+  name="sidebar-demo"
+  previewClassName="h-[36rem] w-full overflow-hidden rounded-xl border"
+  align="start"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add sidebar
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @kobalte/core
+```
+
+<Step>Copy and paste the following files into your project.</Step>
+
+<ComponentSource name="sidebar" title="components/ui/sidebar.tsx" />
+
+<ComponentSource name="use-mobile" title="components/hooks/use-mobile.ts" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarInset,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarProvider,
+  SidebarRail,
+  SidebarTrigger
+} from "~/components/ui/sidebar"
+```
+
+```tsx showLineNumbers
+<SidebarProvider>
+  <Sidebar>
+    <SidebarHeader />
+    <SidebarContent>
+      <SidebarGroup>
+        <SidebarGroupLabel>Application</SidebarGroupLabel>
+        <SidebarGroupContent>
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <SidebarMenuButton as="a" href="#" isActive>
+                Dashboard
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarGroupContent>
+      </SidebarGroup>
+    </SidebarContent>
+    <SidebarRail />
+  </Sidebar>
+  <SidebarInset>
+    <header class="border-b p-4">
+      <SidebarTrigger />
+    </header>
+    <main class="p-4">Page content</main>
+  </SidebarInset>
+</SidebarProvider>
+```
+
+## Examples
+
+### Demo
+
+<ComponentPreview
+  name="sidebar-demo"
+  previewClassName="h-[36rem] w-full overflow-hidden rounded-xl border"
+  align="start"
+/>
+
+## Sidebar Variants
+
+The `Sidebar` component supports these variants:
+
+- `sidebar` (default): attached to the edge of the viewport.
+- `floating`: padded and visually detached from the viewport edge.
+- `inset`: designed for layouts where the page content is wrapped with `SidebarInset`.
+
+## Collapsible Modes
+
+Use the `collapsible` prop to control behavior:
+
+- `offcanvas` (default): slides in and out from the edge.
+- `icon`: collapses to icon-only width.
+- `none`: always visible and non-collapsible.
+
+## Keyboard Shortcut
+
+By default, users can toggle the sidebar with:
+
+- `Cmd+B` on macOS
+- `Ctrl+B` on Windows/Linux
+
+## API Reference
+
+### Core Parts
+
+| Part                   | Description                                                          |
+| ---------------------- | -------------------------------------------------------------------- |
+| `SidebarProvider`      | Context provider that stores open state and keyboard toggle behavior |
+| `Sidebar`              | Main sidebar container and responsive behavior wrapper               |
+| `SidebarInset`         | Main content container used with inset and standard layouts          |
+| `SidebarHeader`        | Header region inside the sidebar                                     |
+| `SidebarContent`       | Scrollable content area for groups and menus                         |
+| `SidebarFooter`        | Footer region inside the sidebar                                     |
+| `SidebarGroup`         | Group wrapper for related navigation items                           |
+| `SidebarGroupLabel`    | Label for a sidebar group                                            |
+| `SidebarGroupAction`   | Optional action button for a group label                             |
+| `SidebarGroupContent`  | Content wrapper inside a group                                       |
+| `SidebarMenu`          | Menu list container                                                  |
+| `SidebarMenuItem`      | Individual menu item wrapper                                         |
+| `SidebarMenuButton`    | Main interactive item in a sidebar menu                              |
+| `SidebarMenuAction`    | Optional action button aligned to a menu item                        |
+| `SidebarMenuBadge`     | Right-aligned badge for counts or status                             |
+| `SidebarMenuSkeleton`  | Loading skeleton state for menu entries                              |
+| `SidebarMenuSub`       | Nested submenu list                                                  |
+| `SidebarMenuSubItem`   | Nested submenu item wrapper                                          |
+| `SidebarMenuSubButton` | Interactive nested submenu item                                      |
+| `SidebarInput`         | Sidebar-scoped input styling wrapper                                 |
+| `SidebarSeparator`     | Sidebar-scoped separator styling wrapper                             |
+| `SidebarTrigger`       | Button that toggles sidebar open/collapsed state                     |
+| `SidebarRail`          | Interactive rail used to toggle the sidebar                          |
+| `useSidebar`           | Hook for controlled/open/mobile sidebar state                        |
+
+### SidebarProvider Props
+
+| Prop           | Type                      | Default | Description                                |
+| -------------- | ------------------------- | ------- | ------------------------------------------ |
+| `defaultOpen`  | `boolean`                 | `true`  | Initial open state in uncontrolled mode    |
+| `open`         | `boolean`                 |         | Controlled open state                      |
+| `onOpenChange` | `(open: boolean) => void` |         | Callback fired when the open state changes |
+
+### Sidebar Props
+
+| Prop          | Type                                 | Default       | Description                    |
+| ------------- | ------------------------------------ | ------------- | ------------------------------ |
+| `side`        | `"left" \| "right"`                  | `"left"`      | Side where the sidebar appears |
+| `variant`     | `"sidebar" \| "floating" \| "inset"` | `"sidebar"`   | Visual variant                 |
+| `collapsible` | `"offcanvas" \| "icon" \| "none"`    | `"offcanvas"` | Collapse behavior              |
+
+### useSidebar Return Value
+
+| Property        | Type                                  | Description                             |
+| --------------- | ------------------------------------- | --------------------------------------- |
+| `state`         | `Accessor<"expanded" \| "collapsed">` | Current desktop visual state            |
+| `open`          | `Accessor<boolean>`                   | Desktop open state                      |
+| `setOpen`       | `(open: boolean \| updater) => void`  | Sets desktop open state                 |
+| `openMobile`    | `Accessor<boolean>`                   | Mobile open state                       |
+| `setOpenMobile` | `(open: boolean \| updater) => void`  | Sets mobile open state                  |
+| `isMobile`      | `Accessor<boolean>`                   | Current mobile breakpoint status        |
+| `toggleSidebar` | `() => void`                          | Toggles desktop or mobile sidebar state |

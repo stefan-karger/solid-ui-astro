@@ -1249,20 +1249,20 @@
           "primitive.skeleton",
           "primitive.tooltip"
         ],
-        "finished": false
+        "finished": true
       },
       {
         "id": "docs.sidebar",
         "type": "docs",
         "dependsOn": ["primitive.sidebar"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.sidebar",
         "type": "examples",
         "dependsOn": ["docs.sidebar"],
-        "finished": false,
-        "checklist": [{ "name": "sidebar-demo", "finished": false }]
+        "finished": true,
+        "checklist": [{ "name": "sidebar-demo", "finished": true }]
       }
     ]
   },

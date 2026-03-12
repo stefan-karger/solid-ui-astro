@@ -1575,6 +1575,17 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "sidebar-demo",
+    type: "registry:example",
+    registryDependencies: ["sidebar"],
+    files: [
+      {
+        path: "examples/sidebar-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "skeleton-demo",
     type: "registry:example",
     registryDependencies: ["skeleton"],
