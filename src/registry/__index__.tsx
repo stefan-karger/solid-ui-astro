@@ -92,7 +92,7 @@ export const Index: Record<string, any> = {
     name: "button-group",
     description: "",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["separator"],
     component: lazy(() => import("~/registry/ui/button-group.tsx")),
     files: [{
       path: "registry/ui/button-group.tsx",
@@ -432,6 +432,20 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/ui/sheet.tsx")),
     files: [{
       path: "registry/ui/sheet.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "sidebar": {
+    name: "sidebar",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: ["button","input","separator","sheet","skeleton","tooltip","use-mobile"],
+    component: lazy(() => import("~/registry/ui/sidebar.tsx")),
+    files: [{
+      path: "registry/ui/sidebar.tsx",
       type: "registry:ui",
       target: ""
     }],
@@ -1026,6 +1040,146 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "button-group-orientation": {
+    name: "button-group-orientation",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","button-group"],
+    component: lazy(() => import("~/registry/examples/button-group-orientation.tsx")),
+    files: [{
+      path: "registry/examples/button-group-orientation.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "button-group-size": {
+    name: "button-group-size",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","button-group"],
+    component: lazy(() => import("~/registry/examples/button-group-size.tsx")),
+    files: [{
+      path: "registry/examples/button-group-size.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "button-group-nested": {
+    name: "button-group-nested",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","button-group"],
+    component: lazy(() => import("~/registry/examples/button-group-nested.tsx")),
+    files: [{
+      path: "registry/examples/button-group-nested.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "button-group-separator": {
+    name: "button-group-separator",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","button-group"],
+    component: lazy(() => import("~/registry/examples/button-group-separator.tsx")),
+    files: [{
+      path: "registry/examples/button-group-separator.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "button-group-split": {
+    name: "button-group-split",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","button-group"],
+    component: lazy(() => import("~/registry/examples/button-group-split.tsx")),
+    files: [{
+      path: "registry/examples/button-group-split.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "button-group-input": {
+    name: "button-group-input",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","button-group","input"],
+    component: lazy(() => import("~/registry/examples/button-group-input.tsx")),
+    files: [{
+      path: "registry/examples/button-group-input.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "button-group-input-group": {
+    name: "button-group-input-group",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","button-group","input-group","tooltip"],
+    component: lazy(() => import("~/registry/examples/button-group-input-group.tsx")),
+    files: [{
+      path: "registry/examples/button-group-input-group.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "button-group-dropdown": {
+    name: "button-group-dropdown",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","button-group","dropdown-menu"],
+    component: lazy(() => import("~/registry/examples/button-group-dropdown.tsx")),
+    files: [{
+      path: "registry/examples/button-group-dropdown.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "button-group-select": {
+    name: "button-group-select",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","button-group","input","select"],
+    component: lazy(() => import("~/registry/examples/button-group-select.tsx")),
+    files: [{
+      path: "registry/examples/button-group-select.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "button-group-popover": {
+    name: "button-group-popover",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","button-group","popover","separator","textarea"],
+    component: lazy(() => import("~/registry/examples/button-group-popover.tsx")),
+    files: [{
+      path: "registry/examples/button-group-popover.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "button-aschild": {
     name: "button-aschild",
     description: "",
@@ -1580,6 +1734,174 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/examples/drawer-dialog.tsx")),
     files: [{
       path: "registry/examples/drawer-dialog.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "dropdown-menu-demo": {
+    name: "dropdown-menu-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","dropdown-menu"],
+    component: lazy(() => import("~/registry/examples/dropdown-menu-demo.tsx")),
+    files: [{
+      path: "registry/examples/dropdown-menu-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "dropdown-menu-basic": {
+    name: "dropdown-menu-basic",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","dropdown-menu"],
+    component: lazy(() => import("~/registry/examples/dropdown-menu-basic.tsx")),
+    files: [{
+      path: "registry/examples/dropdown-menu-basic.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "dropdown-menu-submenu": {
+    name: "dropdown-menu-submenu",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","dropdown-menu"],
+    component: lazy(() => import("~/registry/examples/dropdown-menu-submenu.tsx")),
+    files: [{
+      path: "registry/examples/dropdown-menu-submenu.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "dropdown-menu-shortcuts": {
+    name: "dropdown-menu-shortcuts",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","dropdown-menu"],
+    component: lazy(() => import("~/registry/examples/dropdown-menu-shortcuts.tsx")),
+    files: [{
+      path: "registry/examples/dropdown-menu-shortcuts.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "dropdown-menu-icons": {
+    name: "dropdown-menu-icons",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","dropdown-menu"],
+    component: lazy(() => import("~/registry/examples/dropdown-menu-icons.tsx")),
+    files: [{
+      path: "registry/examples/dropdown-menu-icons.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "dropdown-menu-checkboxes": {
+    name: "dropdown-menu-checkboxes",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","dropdown-menu"],
+    component: lazy(() => import("~/registry/examples/dropdown-menu-checkboxes.tsx")),
+    files: [{
+      path: "registry/examples/dropdown-menu-checkboxes.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "dropdown-menu-checkboxes-icons": {
+    name: "dropdown-menu-checkboxes-icons",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","dropdown-menu"],
+    component: lazy(() => import("~/registry/examples/dropdown-menu-checkboxes-icons.tsx")),
+    files: [{
+      path: "registry/examples/dropdown-menu-checkboxes-icons.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "dropdown-menu-radio-group": {
+    name: "dropdown-menu-radio-group",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","dropdown-menu"],
+    component: lazy(() => import("~/registry/examples/dropdown-menu-radio-group.tsx")),
+    files: [{
+      path: "registry/examples/dropdown-menu-radio-group.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "dropdown-menu-radio-icons": {
+    name: "dropdown-menu-radio-icons",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","dropdown-menu"],
+    component: lazy(() => import("~/registry/examples/dropdown-menu-radio-icons.tsx")),
+    files: [{
+      path: "registry/examples/dropdown-menu-radio-icons.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "dropdown-menu-destructive": {
+    name: "dropdown-menu-destructive",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","dropdown-menu"],
+    component: lazy(() => import("~/registry/examples/dropdown-menu-destructive.tsx")),
+    files: [{
+      path: "registry/examples/dropdown-menu-destructive.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "dropdown-menu-avatar": {
+    name: "dropdown-menu-avatar",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","dropdown-menu"],
+    component: lazy(() => import("~/registry/examples/dropdown-menu-avatar.tsx")),
+    files: [{
+      path: "registry/examples/dropdown-menu-avatar.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "dropdown-menu-complex": {
+    name: "dropdown-menu-complex",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","dropdown-menu"],
+    component: lazy(() => import("~/registry/examples/dropdown-menu-complex.tsx")),
+    files: [{
+      path: "registry/examples/dropdown-menu-complex.tsx",
       type: "registry:example",
       target: ""
     }],
@@ -2560,6 +2882,20 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/examples/select-invalid.tsx")),
     files: [{
       path: "registry/examples/select-invalid.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "sidebar-demo": {
+    name: "sidebar-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["sidebar"],
+    component: lazy(() => import("~/registry/examples/sidebar-demo.tsx")),
+    files: [{
+      path: "registry/examples/sidebar-demo.tsx",
       type: "registry:example",
       target: ""
     }],
