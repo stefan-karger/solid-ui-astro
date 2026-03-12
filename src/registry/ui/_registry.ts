@@ -58,6 +58,7 @@ export const ui: Registry["items"] = [
     name: "button-group",
     type: "registry:ui",
     dependencies: ["@kobalte/core"],
+    registryDependencies: ["separator"],
     files: [
       {
         path: "ui/button-group.tsx",

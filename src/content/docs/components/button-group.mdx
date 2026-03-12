@@ -1,0 +1,200 @@
+---
+title: Button Group
+description: A container that groups related buttons together with consistent styling.
+component: true
+---
+
+<ComponentPreview name="button-group-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add button-group
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @kobalte/core
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="button-group" title="components/ui/button-group.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { ButtonGroup, ButtonGroupSeparator, ButtonGroupText } from "~/components/ui/button-group"
+```
+
+```tsx showLineNumbers
+<ButtonGroup>
+  <Button>Button 1</Button>
+  <Button>Button 2</Button>
+</ButtonGroup>
+```
+
+## Accessibility
+
+- `ButtonGroup` renders with `role="group"`.
+- Use <Kbd>Tab</Kbd> to navigate between controls in the group.
+- Add `aria-label` or `aria-labelledby` to describe the group purpose.
+
+```tsx showLineNumbers
+<ButtonGroup aria-label="Text alignment">
+  <Button>Left</Button>
+  <Button>Center</Button>
+  <Button>Right</Button>
+</ButtonGroup>
+```
+
+## Button Group vs Toggle Group
+
+- Use `ButtonGroup` for grouped action buttons.
+- Use `ToggleGroup` when each control represents a selected or pressed state.
+
+## Examples
+
+### Orientation
+
+Set the `orientation` prop to switch between horizontal and vertical layouts.
+
+<ComponentPreview name="button-group-orientation" />
+
+### Size
+
+Set `size` on each `Button` to build compact or spacious groups.
+
+<ComponentPreview name="button-group-size" />
+
+### Nested
+
+Nest groups to combine segmented controls with separate action clusters.
+
+<ComponentPreview name="button-group-nested" />
+
+### Separator
+
+Use `ButtonGroupSeparator` to add a visual divider between adjacent controls.
+
+<ComponentPreview name="button-group-separator" />
+
+### Split
+
+Create split actions by combining a primary action and an icon-only action.
+
+<ComponentPreview name="button-group-split" />
+
+### Input
+
+Wrap an `Input` with trailing button actions.
+
+<ComponentPreview name="button-group-input" />
+
+### Input Group
+
+Compose nested controls by combining `ButtonGroup` with `InputGroup`.
+
+<ComponentPreview name="button-group-input-group" />
+
+### Dropdown Menu
+
+Attach a menu trigger button for additional actions.
+
+<ComponentPreview name="button-group-dropdown" />
+
+### Select
+
+Pair `Select`, `Input`, and button actions in one grouped layout.
+
+<ComponentPreview name="button-group-select" />
+
+### Popover
+
+Use a popover trigger as an auxiliary action in the group.
+
+<ComponentPreview name="button-group-popover" />
+
+## API Reference
+
+### ButtonGroup
+
+Container for grouping related actions with shared radius and border merging.
+
+| Prop          | Type                         | Default        |
+| ------------- | ---------------------------- | -------------- |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `class`       | `string`                     |                |
+
+```tsx showLineNumbers
+<ButtonGroup>
+  <Button>Back</Button>
+  <Button>Next</Button>
+</ButtonGroup>
+```
+
+You can nest button groups to create segmented clusters.
+
+```tsx showLineNumbers
+<ButtonGroup>
+  <ButtonGroup>{/* page buttons */}</ButtonGroup>
+  <ButtonGroup>{/* next/previous buttons */}</ButtonGroup>
+</ButtonGroup>
+```
+
+### ButtonGroupSeparator
+
+Visual separator that defaults to vertical orientation inside horizontal groups.
+
+| Prop          | Type                         | Default      |
+| ------------- | ---------------------------- | ------------ |
+| `orientation` | `"horizontal" \| "vertical"` | `"vertical"` |
+| `class`       | `string`                     |              |
+
+```tsx showLineNumbers
+<ButtonGroup>
+  <Button variant="secondary">Copy</Button>
+  <ButtonGroupSeparator class="" />
+  <Button variant="secondary">Paste</Button>
+</ButtonGroup>
+```
+
+### ButtonGroupText
+
+Non-interactive text slot for labels and inline context inside a group.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` |         |
+
+```tsx showLineNumbers
+<ButtonGroup>
+  <ButtonGroupText>https://</ButtonGroupText>
+  <Input placeholder="example" />
+  <ButtonGroupText>.com</ButtonGroupText>
+</ButtonGroup>
+```
