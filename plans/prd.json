@@ -370,19 +370,19 @@
     "complexityScore": 5,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.alert", "type": "primitive", "dependsOn": [], "finished": false },
-      { "id": "docs.alert", "type": "docs", "dependsOn": ["primitive.alert"], "finished": false },
+      { "id": "primitive.alert", "type": "primitive", "dependsOn": [], "finished": true },
+      { "id": "docs.alert", "type": "docs", "dependsOn": ["primitive.alert"], "finished": true },
       {
         "id": "examples.alert",
         "type": "examples",
         "dependsOn": ["docs.alert"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "alert-demo", "finished": false },
-          { "name": "alert-basic", "finished": false },
-          { "name": "alert-destructive", "finished": false },
-          { "name": "alert-action", "finished": false },
-          { "name": "alert-colors", "finished": false }
+          { "name": "alert-demo", "finished": true },
+          { "name": "alert-basic", "finished": true },
+          { "name": "alert-destructive", "finished": true },
+          { "name": "alert-action", "finished": true },
+          { "name": "alert-colors", "finished": true }
         ]
       }
     ]

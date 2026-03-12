@@ -68,6 +68,61 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "alert-action",
+    type: "registry:example",
+    registryDependencies: ["alert", "button"],
+    files: [
+      {
+        path: "examples/alert-action.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "alert-basic",
+    type: "registry:example",
+    registryDependencies: ["alert"],
+    files: [
+      {
+        path: "examples/alert-basic.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "alert-colors",
+    type: "registry:example",
+    registryDependencies: ["alert"],
+    files: [
+      {
+        path: "examples/alert-colors.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "alert-demo",
+    type: "registry:example",
+    registryDependencies: ["alert"],
+    files: [
+      {
+        path: "examples/alert-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "alert-destructive",
+    type: "registry:example",
+    registryDependencies: ["alert"],
+    files: [
+      {
+        path: "examples/alert-destructive.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "aspect-ratio-demo",
     type: "registry:example",
     registryDependencies: ["aspect-ratio"],
