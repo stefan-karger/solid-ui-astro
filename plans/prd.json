@@ -970,28 +970,28 @@
     "complexityScore": 9,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.avatar", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "primitive.avatar", "type": "primitive", "dependsOn": [], "finished": true },
       {
         "id": "docs.avatar",
         "type": "docs",
         "dependsOn": ["primitive.avatar"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.avatar",
         "type": "examples",
         "dependsOn": ["docs.avatar"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "avatar-demo", "finished": false },
-          { "name": "avatar-basic", "finished": false },
-          { "name": "avatar-badge", "finished": false },
-          { "name": "avatar-badge-icon", "finished": false },
-          { "name": "avatar-group", "finished": false },
-          { "name": "avatar-group-count", "finished": false },
-          { "name": "avatar-group-count-icon", "finished": false },
-          { "name": "avatar-size", "finished": false },
-          { "name": "avatar-dropdown", "finished": false }
+          { "name": "avatar-demo", "finished": true },
+          { "name": "avatar-basic", "finished": true },
+          { "name": "avatar-badge", "finished": true },
+          { "name": "avatar-badge-icon", "finished": true },
+          { "name": "avatar-group", "finished": true },
+          { "name": "avatar-group-count", "finished": true },
+          { "name": "avatar-group-count-icon", "finished": true },
+          { "name": "avatar-size", "finished": true },
+          { "name": "avatar-dropdown", "finished": true }
         ]
       }
     ]

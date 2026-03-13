@@ -33,6 +33,17 @@ export const ui: Registry["items"] = [
     ]
   },
   {
+    name: "avatar",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core"],
+    files: [
+      {
+        path: "ui/avatar.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
     name: "badge",
     type: "registry:ui",
     dependencies: ["@kobalte/core"],
