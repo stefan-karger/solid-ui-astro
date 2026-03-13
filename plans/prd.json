@@ -875,26 +875,26 @@
     "complexityScore": 7,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.spinner", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "primitive.spinner", "type": "primitive", "dependsOn": [], "finished": true },
       {
         "id": "docs.spinner",
         "type": "docs",
         "dependsOn": ["primitive.spinner"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.spinner",
         "type": "examples",
         "dependsOn": ["docs.spinner"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "spinner-demo", "finished": false },
-          { "name": "spinner-custom", "finished": false },
-          { "name": "spinner-size", "finished": false },
-          { "name": "spinner-button", "finished": false },
-          { "name": "spinner-badge", "finished": false },
-          { "name": "spinner-input-group", "finished": false },
-          { "name": "spinner-empty", "finished": false }
+          { "name": "spinner-demo", "finished": true },
+          { "name": "spinner-custom", "finished": true },
+          { "name": "spinner-size", "finished": true },
+          { "name": "spinner-button", "finished": true },
+          { "name": "spinner-badge", "finished": true },
+          { "name": "spinner-input-group", "finished": true },
+          { "name": "spinner-empty", "finished": true }
         ]
       }
     ]

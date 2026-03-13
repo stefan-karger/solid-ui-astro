@@ -1,0 +1,129 @@
+---
+title: Spinner
+description: An indicator that can be used to show a loading state.
+component: true
+---
+
+<ComponentPreview name="spinner-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add spinner
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="spinner" title="components/ui/spinner.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { Spinner } from "~/components/ui/spinner"
+```
+
+```tsx showLineNumbers
+<Spinner />
+```
+
+## Customization
+
+You can replace the default spinner icon with any other icon by editing the `Spinner` component.
+
+<ComponentPreview name="spinner-custom" />
+
+```tsx showLineNumbers title="components/ui/spinner.tsx"
+import { splitProps, type ComponentProps } from "solid-js"
+
+import { IconPlaceholder } from "~/components/icon-placeholder"
+import { cn } from "~/lib/utils"
+
+type SpinnerProps = ComponentProps<"svg"> & {
+  class?: string | undefined
+}
+
+const Spinner = (props: SpinnerProps) => {
+  const [local, others] = splitProps(props, ["class"])
+
+  return (
+    <IconPlaceholder
+      role="status"
+      aria-label="Loading"
+      class={cn("size-4 animate-spin", local.class)}
+      lucide="LoaderIcon"
+      tabler="IconLoader2"
+      {...others}
+    />
+  )
+}
+
+export { Spinner, type SpinnerProps }
+```
+
+## Examples
+
+### Size
+
+Use the `size-*` utility class to change the size of the spinner.
+
+<ComponentPreview name="spinner-size" />
+
+### Button
+
+Add a spinner to a button to indicate a loading state. Use `data-icon="inline-start"` to add
+consistent icon spacing.
+
+<ComponentPreview name="spinner-button" />
+
+### Badge
+
+Add a spinner to a badge to indicate a loading state. Use `data-icon="inline-start"` for spacing.
+
+<ComponentPreview name="spinner-badge" />
+
+### Input Group
+
+<ComponentPreview name="spinner-input-group" />
+
+### Empty
+
+<ComponentPreview name="spinner-empty" />
+
+## API Reference
+
+### Core Parts
+
+| Part      | Description                                |
+| --------- | ------------------------------------------ |
+| `Spinner` | Animated loading indicator with SVG output |
+
+### Spinner Props
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` |         |
+
+All native `svg` attributes are forwarded to the spinner element.
