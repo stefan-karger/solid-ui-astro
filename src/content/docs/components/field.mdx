@@ -98,10 +98,6 @@ The `Field` family is designed for composing accessible forms. A typical field i
 
 ## Examples
 
-### Demo
-
-<ComponentPreview name="field-demo" previewClassName="h-[800px] p-6 md:h-[850px]" />
-
 ### Input
 
 <ComponentPreview name="field-input" />
@@ -146,9 +142,11 @@ Stack `Field` components with `FieldGroup`. Add `FieldSeparator` to divide secti
 
 <ComponentPreview name="field-group" previewClassName="h-96" />
 
-### Responsive Layout
+## Responsive Layout
 
-Use `orientation="responsive"` to make labels and controls stack on smaller screens and align on wider containers.
+- **Vertical fields:** Default orientation stacks label, control, and helper text for mobile-first layouts.
+- **Horizontal fields:** Set `orientation="horizontal"` on `Field` to align label and control side by side.
+- **Responsive fields:** Set `orientation="responsive"` and use container-aware `FieldGroup` classes to adapt by width.
 
 <ComponentPreview name="field-responsive" previewClassName="h-[650px] p-6 md:h-[500px] md:p-10" />
 

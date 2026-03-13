@@ -1,3 +1,5 @@
+import { For } from "solid-js"
+
 import {
   Accordion,
   AccordionContent,
@@ -5,29 +7,38 @@ import {
   AccordionTrigger
 } from "~/registry/ui/accordion"
 
+const items = [
+  {
+    value: "billing",
+    trigger: "How does billing work?",
+    content:
+      "We offer monthly and annual subscription plans. Billing is charged at the beginning of each cycle, and you can cancel anytime. All plans include automatic backups, 24/7 support, and unlimited team members."
+  },
+  {
+    value: "security",
+    trigger: "Is my data secure?",
+    content:
+      "Yes. We use end-to-end encryption, SOC 2 Type II compliance, and regular third-party security audits. All data is encrypted at rest and in transit using industry-standard protocols."
+  },
+  {
+    value: "integration",
+    trigger: "What integrations do you support?",
+    content:
+      "We integrate with 500+ popular tools including Slack, Zapier, Salesforce, HubSpot, and more. You can also build custom integrations using our REST API and webhooks."
+  }
+]
+
 export default function AccordionBorders() {
   return (
-    <Accordion class="w-full max-w-sm" collapsible defaultValue={["notifications"]}>
-      <AccordionItem class="rounded-md border px-4" value="notifications">
-        <AccordionTrigger class="py-3 text-sm font-medium">
-          Notification preferences
-        </AccordionTrigger>
-        <AccordionContent class="pb-3 text-sm text-muted-foreground">
-          Manage email digests, release updates, and billing alerts in one place.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem class="mt-2 rounded-md border px-4" value="integrations">
-        <AccordionTrigger class="py-3 text-sm font-medium">Integrations</AccordionTrigger>
-        <AccordionContent class="pb-3 text-sm text-muted-foreground">
-          Connect Slack, Linear, and GitHub to keep your team workflows in sync.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem class="mt-2 rounded-md border px-4" value="workspace">
-        <AccordionTrigger class="py-3 text-sm font-medium">Workspace settings</AccordionTrigger>
-        <AccordionContent class="pb-3 text-sm text-muted-foreground">
-          Customize member roles, security policies, and project defaults.
-        </AccordionContent>
-      </AccordionItem>
+    <Accordion class="max-w-lg rounded-lg border" collapsible defaultValue={["billing"]}>
+      <For each={items}>
+        {(item) => (
+          <AccordionItem class="border-b px-4 last:border-b-0" value={item.value}>
+            <AccordionTrigger>{item.trigger}</AccordionTrigger>
+            <AccordionContent>{item.content}</AccordionContent>
+          </AccordionItem>
+        )}
+      </For>
     </Accordion>
   )
 }

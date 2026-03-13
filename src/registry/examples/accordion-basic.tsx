@@ -1,3 +1,5 @@
+import { For } from "solid-js"
+
 import {
   Accordion,
   AccordionContent,
@@ -5,34 +7,38 @@ import {
   AccordionTrigger
 } from "~/registry/ui/accordion"
 
+const items = [
+  {
+    value: "item-1",
+    trigger: "How do I reset my password?",
+    content:
+      "Click on 'Forgot Password' on the login page, enter your email address, and we'll send you a link to reset your password. The link will expire in 24 hours."
+  },
+  {
+    value: "item-2",
+    trigger: "Can I change my subscription plan?",
+    content:
+      "Yes, you can upgrade or downgrade your plan at any time from your account settings. Changes will be reflected in your next billing cycle."
+  },
+  {
+    value: "item-3",
+    trigger: "What payment methods do you accept?",
+    content:
+      "We accept all major credit cards, PayPal, and bank transfers. All payments are processed securely through our payment partners."
+  }
+]
+
 export default function AccordionBasic() {
   return (
-    <Accordion class="w-full max-w-sm rounded-md border" collapsible defaultValue={["item-1"]}>
-      <AccordionItem class="border-b last:border-b-0" value="item-1">
-        <AccordionTrigger class="px-4 py-3 text-sm font-medium">
-          What payment methods do you accept?
-        </AccordionTrigger>
-        <AccordionContent class="px-4 pb-4 text-sm text-muted-foreground">
-          We accept major credit cards, debit cards, and PayPal for all subscriptions.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem class="border-b last:border-b-0" value="item-2">
-        <AccordionTrigger class="px-4 py-3 text-sm font-medium">
-          Can I cancel at any time?
-        </AccordionTrigger>
-        <AccordionContent class="px-4 pb-4 text-sm text-muted-foreground">
-          Yes. You can cancel from your billing settings and keep access until the current cycle
-          ends.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-3">
-        <AccordionTrigger class="px-4 py-3 text-sm font-medium">
-          Do you offer refunds?
-        </AccordionTrigger>
-        <AccordionContent class="px-4 pb-4 text-sm text-muted-foreground">
-          We offer a 14-day refund policy for first-time subscriptions.
-        </AccordionContent>
-      </AccordionItem>
+    <Accordion class="max-w-lg" collapsible defaultValue={["item-1"]}>
+      <For each={items}>
+        {(item) => (
+          <AccordionItem value={item.value}>
+            <AccordionTrigger>{item.trigger}</AccordionTrigger>
+            <AccordionContent>{item.content}</AccordionContent>
+          </AccordionItem>
+        )}
+      </For>
     </Accordion>
   )
 }

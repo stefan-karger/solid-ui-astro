@@ -6,7 +6,7 @@ component: true
 
 <ComponentPreview
   name="accordion-demo"
-  previewClassName="*:data-[slot=accordion]:w-full *:data-[slot=accordion]:max-w-sm"
+  previewClassName="*:data-[slot=accordion]:max-w-sm h-[300px]"
 />
 
 ## Installation
@@ -93,40 +93,42 @@ By default, one item can be open at a time. Add `collapsible` to allow closing t
 
 <ComponentPreview
   name="accordion-basic"
-  previewClassName="*:data-[slot=accordion]:w-full *:data-[slot=accordion]:max-w-sm"
-/>
-
-### Demo
-
-<ComponentPreview
-  name="accordion-demo"
-  previewClassName="*:data-[slot=accordion]:w-full *:data-[slot=accordion]:max-w-sm"
+  previewClassName="*:data-[slot=accordion]:max-w-sm h-[300px]"
 />
 
 ### Multiple
 
 <ComponentPreview
   name="accordion-multiple"
-  previewClassName="*:data-[slot=accordion]:w-full *:data-[slot=accordion]:max-w-sm"
+  previewClassName="*:data-[slot=accordion]:max-w-sm h-[36rem] md:h-[30rem]"
 />
 
 ### Disabled
 
+Use the `disabled` prop on `AccordionItem` to disable individual items.
+
 <ComponentPreview
   name="accordion-disabled"
-  previewClassName="*:data-[slot=accordion]:w-full *:data-[slot=accordion]:max-w-sm"
+  previewClassName="*:data-[slot=accordion]:max-w-sm h-[300px]"
 />
 
 ### Borders
 
+Add `border` to the `Accordion` and `border-b last:border-b-0` to the `AccordionItem` to add borders to the items.
+
 <ComponentPreview
   name="accordion-borders"
-  previewClassName="*:data-[slot=accordion]:w-full *:data-[slot=accordion]:max-w-sm"
+  previewClassName="*:data-[slot=accordion]:max-w-sm h-96 md:h-80"
 />
 
 ### Card
 
-<ComponentPreview name="accordion-card" previewClassName="*:w-full *:max-w-sm" />
+Wrap the `Accordion` in a `Card` component.
+
+<ComponentPreview
+  name="accordion-card"
+  previewClassName="*:data-[slot=accordion]:max-w-sm h-[32rem] md:h-[28rem]"
+/>
 
 ## API Reference
 

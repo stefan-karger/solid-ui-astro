@@ -17,7 +17,7 @@ a collection of all the repos that can be used to gather data / information to b
 ## shadcn-ui
 
 .references/shadcn-ui/apps/v4/registry/bases/radix/ui/ - here you can find the newest versions of all the primitives
-.references/shadcn-ui/apps/v4/registry/new-york-v4/examples/ - here you can find all the examples needed for the docs pages
+.references/shadcn-ui/apps/v4/examples/radix - here you can find all the examples needed for the docs pages
 .references/shadcn-ui/apps/v4/content/docs/components/radix/ - here you can find all the docs pages for the primitives
 
 ## zaidan

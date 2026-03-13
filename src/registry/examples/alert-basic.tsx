@@ -3,19 +3,12 @@ import { Alert, AlertDescription, AlertTitle } from "~/registry/ui/alert"
 
 export default function AlertBasic() {
   return (
-    <div class="grid w-full max-w-md gap-3">
-      <Alert>
-        <AlertTitle>Feature updates are available</AlertTitle>
-        <AlertDescription>
-          Review the changelog to see what shipped in the latest release.
-        </AlertDescription>
-      </Alert>
-
-      <Alert>
-        <IconPlaceholder class="size-4" lucide="CheckIcon" tabler="IconCheck" />
-        <AlertTitle>Backup completed</AlertTitle>
-        <AlertDescription>Your project data was saved successfully.</AlertDescription>
-      </Alert>
-    </div>
+    <Alert class="max-w-md">
+      <IconPlaceholder class="size-4" lucide="CheckCircle2Icon" tabler="IconCircleCheck" />
+      <AlertTitle>Account updated successfully</AlertTitle>
+      <AlertDescription>
+        Your profile information has been saved. Changes will be reflected immediately.
+      </AlertDescription>
+    </Alert>
   )
 }

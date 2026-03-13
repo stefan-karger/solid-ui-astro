@@ -10,18 +10,20 @@ import {
 
 export default function CardSmall() {
   return (
-    <Card class="w-full max-w-sm" size="sm">
+    <Card class="mx-auto w-full max-w-sm" size="sm">
       <CardHeader>
-        <CardTitle>Starter plan</CardTitle>
-        <CardDescription>Perfect for personal projects and prototypes.</CardDescription>
+        <CardTitle>Small Card</CardTitle>
+        <CardDescription>This card uses the small size variant.</CardDescription>
       </CardHeader>
       <CardContent>
-        <p class="text-3xl font-semibold">$9</p>
-        <p class="text-sm text-muted-foreground">per month</p>
+        <p>
+          The card component supports a size prop that can be set to &quot;sm&quot; for a more
+          compact appearance.
+        </p>
       </CardContent>
       <CardFooter>
-        <Button class="w-full" size="sm">
-          Choose plan
+        <Button class="w-full" size="sm" variant="outline">
+          Action
         </Button>
       </CardFooter>
     </Card>

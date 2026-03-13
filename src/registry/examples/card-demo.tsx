@@ -13,22 +13,39 @@ import { Label } from "~/registry/ui/label"
 export default function CardDemo() {
   return (
     <Card class="w-full max-w-sm">
-      <CardHeader>
+      <CardHeader class="grid-cols-[1fr_auto]">
         <CardTitle>Login to your account</CardTitle>
-        <CardDescription>Enter your email below to login to your account.</CardDescription>
+        <CardDescription>Enter your email below to login to your account</CardDescription>
+        <div class="col-start-2 row-span-2 row-start-1 self-start">
+          <Button variant="link">Sign Up</Button>
+        </div>
       </CardHeader>
-      <CardContent class="grid gap-4">
-        <div class="grid gap-2">
-          <Label for="card-email">Email</Label>
-          <Input id="card-email" placeholder="name@example.com" type="email" />
-        </div>
-        <div class="grid gap-2">
-          <Label for="card-password">Password</Label>
-          <Input id="card-password" type="password" />
-        </div>
+      <CardContent>
+        <form>
+          <div class="flex flex-col gap-6">
+            <div class="grid gap-2">
+              <Label for="email">Email</Label>
+              <Input id="email" placeholder="m@example.com" required type="email" />
+            </div>
+            <div class="grid gap-2">
+              <div class="flex items-center">
+                <Label for="password">Password</Label>
+                <a class="ml-auto inline-block text-sm underline-offset-4 hover:underline" href="#">
+                  Forgot your password?
+                </a>
+              </div>
+              <Input id="password" required type="password" />
+            </div>
+          </div>
+        </form>
       </CardContent>
-      <CardFooter>
-        <Button class="w-full">Sign in</Button>
+      <CardFooter class="flex-col gap-2">
+        <Button class="w-full" type="submit">
+          Login
+        </Button>
+        <Button class="w-full" variant="outline">
+          Login with Google
+        </Button>
       </CardFooter>
     </Card>
   )

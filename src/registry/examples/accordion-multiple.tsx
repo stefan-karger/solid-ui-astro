@@ -1,3 +1,5 @@
+import { For } from "solid-js"
+
 import {
   Accordion,
   AccordionContent,
@@ -5,35 +7,38 @@ import {
   AccordionTrigger
 } from "~/registry/ui/accordion"
 
+const items = [
+  {
+    value: "notifications",
+    trigger: "Notification Settings",
+    content:
+      "Manage how you receive notifications. You can enable email alerts for updates or push notifications for mobile devices."
+  },
+  {
+    value: "privacy",
+    trigger: "Privacy & Security",
+    content:
+      "Control your privacy settings and security preferences. Enable two-factor authentication, manage connected devices, review active sessions, and configure data sharing preferences. You can also download your data or delete your account."
+  },
+  {
+    value: "billing",
+    trigger: "Billing & Subscription",
+    content:
+      "View your current plan, payment history, and upcoming invoices. Update your payment method, change your subscription tier, or cancel your subscription."
+  }
+]
+
 export default function AccordionMultiple() {
   return (
-    <Accordion
-      class="w-full max-w-sm rounded-md border"
-      defaultValue={["features", "support"]}
-      multiple
-    >
-      <AccordionItem class="border-b last:border-b-0" value="features">
-        <AccordionTrigger class="px-4 py-3 text-sm font-medium">Product features</AccordionTrigger>
-        <AccordionContent class="px-4 pb-4 text-sm text-muted-foreground">
-          Build forms, dashboards, and internal tools quickly with accessible building blocks.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem class="border-b last:border-b-0" value="support">
-        <AccordionTrigger class="px-4 py-3 text-sm font-medium">
-          Support availability
-        </AccordionTrigger>
-        <AccordionContent class="px-4 pb-4 text-sm text-muted-foreground">
-          Team plans include email support and shared Slack channels during business hours.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="security">
-        <AccordionTrigger class="px-4 py-3 text-sm font-medium">
-          Security and compliance
-        </AccordionTrigger>
-        <AccordionContent class="px-4 pb-4 text-sm text-muted-foreground">
-          We enforce MFA, encryption at rest, and yearly third-party audits.
-        </AccordionContent>
-      </AccordionItem>
+    <Accordion class="max-w-lg" defaultValue={["notifications"]} multiple>
+      <For each={items}>
+        {(item) => (
+          <AccordionItem value={item.value}>
+            <AccordionTrigger>{item.trigger}</AccordionTrigger>
+            <AccordionContent>{item.content}</AccordionContent>
+          </AccordionItem>
+        )}
+      </For>
     </Accordion>
   )
 }

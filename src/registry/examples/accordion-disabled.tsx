@@ -7,25 +7,26 @@ import {
 
 export default function AccordionDisabled() {
   return (
-    <Accordion class="w-full max-w-sm rounded-md border" collapsible defaultValue={["starter"]}>
-      <AccordionItem class="border-b last:border-b-0" value="starter">
-        <AccordionTrigger class="px-4 py-3 text-sm font-medium">Starter plan</AccordionTrigger>
-        <AccordionContent class="px-4 pb-4 text-sm text-muted-foreground">
-          Includes core components, templates, and email support for one project.
+    <Accordion class="w-full" collapsible>
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Can I access my account history?</AccordionTrigger>
+        <AccordionContent>
+          Yes, you can view your complete account history including all transactions, plan changes,
+          and support tickets in the Account History section of your dashboard.
         </AccordionContent>
       </AccordionItem>
-      <AccordionItem class="border-b last:border-b-0" disabled value="business">
-        <AccordionTrigger class="px-4 py-3 text-sm font-medium">
-          Business plan (coming soon)
-        </AccordionTrigger>
-        <AccordionContent class="px-4 pb-4 text-sm text-muted-foreground">
-          This item is disabled and cannot be expanded.
+      <AccordionItem disabled value="item-2">
+        <AccordionTrigger>Premium feature information</AccordionTrigger>
+        <AccordionContent>
+          This section contains information about premium features. Upgrade your plan to access this
+          content.
         </AccordionContent>
       </AccordionItem>
-      <AccordionItem value="enterprise">
-        <AccordionTrigger class="px-4 py-3 text-sm font-medium">Enterprise plan</AccordionTrigger>
-        <AccordionContent class="px-4 pb-4 text-sm text-muted-foreground">
-          Contact sales for SSO, custom contracts, and dedicated onboarding.
+      <AccordionItem value="item-3">
+        <AccordionTrigger>How do I update my email address?</AccordionTrigger>
+        <AccordionContent>
+          You can update your email address in your account settings. You&apos;ll receive a
+          verification email at your new address to confirm the change.
         </AccordionContent>
       </AccordionItem>
     </Accordion>
