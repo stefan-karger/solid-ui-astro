@@ -68,23 +68,6 @@ import {
 </Accordion>
 ```
 
-## Multiple Items
-
-Set `multiple` to allow opening more than one accordion item at the same time.
-
-```tsx showLineNumbers
-<Accordion multiple defaultValue={["item-1", "item-2"]}>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>First item</AccordionTrigger>
-    <AccordionContent>Content for the first item.</AccordionContent>
-  </AccordionItem>
-  <AccordionItem value="item-2">
-    <AccordionTrigger>Second item</AccordionTrigger>
-    <AccordionContent>Content for the second item.</AccordionContent>
-  </AccordionItem>
-</Accordion>
-```
-
 ## Examples
 
 ### Basic
@@ -97,6 +80,8 @@ By default, one item can be open at a time. Add `collapsible` to allow closing t
 />
 
 ### Multiple
+
+Use `type="multiple"` to allow multiple items to be open at the same time.
 
 <ComponentPreview
   name="accordion-multiple"
@@ -143,12 +128,12 @@ Wrap the `Accordion` in a `Card` component.
 
 ### Common Root Props
 
-| Prop           | Type                 | Description                                            |
-| -------------- | -------------------- | ------------------------------------------------------ |
-| `collapsible`  | `boolean`            | Allows closing the currently open item in single mode. |
-| `multiple`     | `boolean`            | Allows opening more than one item at once.             |
-| `value`        | `string \| string[]` | Controlled expanded value(s).                          |
-| `defaultValue` | `string \| string[]` | Uncontrolled initial expanded value(s).                |
+| Prop           | Type       | Description                                            |
+| -------------- | ---------- | ------------------------------------------------------ |
+| `collapsible`  | `boolean`  | Allows closing the currently open item in single mode. |
+| `multiple`     | `boolean`  | Allows opening more than one item at once.             |
+| `value`        | `string[]` | Controlled expanded value(s).                          |
+| `defaultValue` | `string[]` | Uncontrolled initial expanded value(s).                |
 
 ### Common Item Props
 

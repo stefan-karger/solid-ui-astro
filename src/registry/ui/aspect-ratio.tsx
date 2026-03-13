@@ -1,35 +1,25 @@
-import { splitProps, type ComponentProps, type JSX } from "solid-js"
+import { splitProps, type ComponentProps } from "solid-js"
 
 import { cn } from "~/lib/utils"
 
 type AspectRatioProps = ComponentProps<"div"> & {
-  ratio?: number
+  ratio: number
+  class?: string | undefined
 }
 
 const AspectRatio = (props: AspectRatioProps) => {
-  const [local, others] = splitProps(props, ["class", "ratio", "style"])
-
-  const mergedStyle = () => {
-    const ratio = local.ratio ?? 16 / 9
-
-    if (typeof local.style === "string") {
-      return `aspect-ratio: ${ratio}; ${local.style}`
-    }
-
-    return {
-      "aspect-ratio": String(ratio),
-      ...(local.style as JSX.CSSProperties | undefined)
-    }
-  }
+  const [local, others] = splitProps(props, ["class", "ratio"])
 
   return (
     <div
       data-slot="aspect-ratio"
-      class={cn("cn-aspect-ratio relative w-full", local.class)}
-      style={mergedStyle()}
+      style={{
+        "--ratio": local.ratio
+      }}
+      class={cn("relative aspect-(--ratio) overflow-hidden", local.class)}
       {...others}
     />
   )
 }
 
-export { AspectRatio, type AspectRatioProps }
+export { AspectRatio }

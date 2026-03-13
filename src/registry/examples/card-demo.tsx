@@ -1,6 +1,7 @@
 import { Button } from "~/registry/ui/button"
 import {
   Card,
+  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -13,12 +14,12 @@ import { Label } from "~/registry/ui/label"
 export default function CardDemo() {
   return (
     <Card class="w-full max-w-sm">
-      <CardHeader class="grid-cols-[1fr_auto]">
+      <CardHeader>
         <CardTitle>Login to your account</CardTitle>
         <CardDescription>Enter your email below to login to your account</CardDescription>
-        <div class="col-start-2 row-span-2 row-start-1 self-start">
+        <CardAction>
           <Button variant="link">Sign Up</Button>
-        </div>
+        </CardAction>
       </CardHeader>
       <CardContent>
         <form>

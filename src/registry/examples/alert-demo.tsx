@@ -5,7 +5,7 @@ export default function AlertDemo() {
   return (
     <div class="grid w-full max-w-md items-start gap-4">
       <Alert>
-        <IconPlaceholder class="size-4" lucide="CheckCircle2Icon" tabler="IconCircleCheck" />
+        <IconPlaceholder class="size-4" lucide="CircleCheck" tabler="IconCircleCheck" />
         <AlertTitle>Payment successful</AlertTitle>
         <AlertDescription>
           Your payment of $29.99 has been processed. A receipt has been sent to your email address.

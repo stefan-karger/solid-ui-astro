@@ -1,6 +1,13 @@
 import { Badge } from "~/registry/ui/badge"
 import { Button } from "~/registry/ui/button"
-import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "~/registry/ui/card"
+import {
+  Card,
+  CardAction,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle
+} from "~/registry/ui/card"
 
 export default function CardImage() {
   return (
@@ -11,10 +18,10 @@ export default function CardImage() {
         class="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
         src="https://avatar.vercel.sh/shadcn1"
       />
-      <CardHeader class="grid-cols-[1fr_auto]">
-        <div class="col-start-2 row-span-2 row-start-1 self-start">
+      <CardHeader>
+        <CardAction>
           <Badge variant="secondary">Featured</Badge>
-        </div>
+        </CardAction>
         <CardTitle>Design systems meetup</CardTitle>
         <CardDescription>
           A practical talk on component APIs, accessibility, and shipping faster.

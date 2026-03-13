@@ -229,7 +229,7 @@ export default function DropdownMenuComplex() {
 
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <IconPlaceholder class="size-4" lucide="CircleHelpIcon" tabler="IconHelpCircle" />
+            <IconPlaceholder class="size-4" lucide="CircleQuestionMark" tabler="IconHelpCircle" />
             Help and Support
           </DropdownMenuItem>
           <DropdownMenuItem>

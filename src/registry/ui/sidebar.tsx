@@ -269,7 +269,7 @@ const SidebarTrigger = (props: SidebarTriggerProps) => {
       }}
       {...others}
     >
-      <IconPlaceholder class="size-4" lucide="PanelLeftIcon" tabler="IconLayoutSidebarLeft" />
+      <IconPlaceholder class="size-4" lucide="PanelLeftIcon" tabler="IconLayoutSidebar" />
       <span class="sr-only">Toggle Sidebar</span>
     </Button>
   )

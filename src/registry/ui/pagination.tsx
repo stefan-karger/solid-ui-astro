@@ -110,7 +110,7 @@ const PaginationEllipsis = (props: PaginationEllipsisProps) => {
       class={cn("cn-pagination-ellipsis flex items-center justify-center", local.class)}
       {...others}
     >
-      <IconPlaceholder lucide="MoreHorizontalIcon" tabler="IconDots" />
+      <IconPlaceholder lucide="Ellipsis" tabler="IconDots" />
       <span class="sr-only">More pages</span>
     </span>
   )

@@ -44,6 +44,7 @@ npx shadcn@latest add card
 ```tsx showLineNumbers
 import {
   Card,
+  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -57,6 +58,7 @@ import {
   <CardHeader>
     <CardTitle>Card Title</CardTitle>
     <CardDescription>Card Description</CardDescription>
+    <CardAction>Card Action</CardAction>
   </CardHeader>
   <CardContent>
     <p>Card Content</p>
@@ -67,17 +69,11 @@ import {
 </Card>
 ```
 
-## Small Size
-
-Use `size="sm"` to render a compact card variant.
-
-```tsx showLineNumbers
-<Card size="sm">...</Card>
-```
-
 ## Examples
 
 ### Small
+
+Use the `size="sm"` prop to set the size of the card to small. The small size variant uses smaller spacing.
 
 <ComponentPreview name="card-small" previewClassName="h-96" />
 
@@ -95,6 +91,7 @@ Use `size="sm"` to render a compact card variant.
 | `CardHeader`      | Header area for title and description.       |
 | `CardTitle`       | Heading text for the card.                   |
 | `CardDescription` | Supporting text under the title.             |
+| `CardAction`      | Optional action area in the header.          |
 | `CardContent`     | Main body area for custom content.           |
 | `CardFooter`      | Footer section for actions or helper content |
 

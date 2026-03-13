@@ -1,6 +1,17 @@
+import {
+  BlocksIcon,
+  BookOpenIcon,
+  DatabaseIcon,
+  DownloadIcon,
+  FolderTreeIcon,
+  LayoutDashboardIcon,
+  PaletteIcon,
+  RouteIcon,
+  SearchIcon,
+  TerminalIcon
+} from "lucide-solid"
 import { For } from "solid-js"
 
-import { IconPlaceholder } from "~/components/icon-placeholder"
 import {
   Sidebar,
   SidebarContent,
@@ -22,16 +33,20 @@ const sections = [
   {
     title: "Getting Started",
     items: [
-      { title: "Introduction", url: "#", icon: { lucide: "BookOpenIcon", tabler: "IconBook" } },
+      {
+        title: "Introduction",
+        url: "#",
+        icon: <BookOpenIcon class="size-4" />
+      },
       {
         title: "Installation",
         url: "#",
-        icon: { lucide: "DownloadIcon", tabler: "IconDownload" }
+        icon: <DownloadIcon class="size-4" />
       },
       {
         title: "Project Structure",
         url: "#",
-        icon: { lucide: "FolderTreeIcon", tabler: "IconHierarchy" }
+        icon: <FolderTreeIcon class="size-4" />
       }
     ]
   },
@@ -41,18 +56,18 @@ const sections = [
       {
         title: "Routing",
         url: "#",
-        icon: { lucide: "RouteIcon", tabler: "IconRoute" }
+        icon: <RouteIcon class="size-4" />
       },
       {
         title: "Data Fetching",
         url: "#",
         isActive: true,
-        icon: { lucide: "DatabaseIcon", tabler: "IconDatabase" }
+        icon: <DatabaseIcon class="size-4" />
       },
       {
         title: "Styling",
         url: "#",
-        icon: { lucide: "PaletteIcon", tabler: "IconPalette" }
+        icon: <PaletteIcon class="size-4" />
       }
     ]
   },
@@ -62,9 +77,13 @@ const sections = [
       {
         title: "Components",
         url: "#",
-        icon: { lucide: "BlocksIcon", tabler: "IconPackages" }
+        icon: <BlocksIcon class="size-4" />
       },
-      { title: "CLI", url: "#", icon: { lucide: "TerminalIcon", tabler: "IconTerminal2" } }
+      {
+        title: "CLI",
+        url: "#",
+        icon: <TerminalIcon class="size-4" />
+      }
     ]
   }
 ]
@@ -83,11 +102,7 @@ export default function SidebarDemo() {
                 size="lg"
               >
                 <div class="flex size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                  <IconPlaceholder
-                    class="size-4"
-                    lucide="LayoutDashboardIcon"
-                    tabler="IconLayoutDashboard"
-                  />
+                  <LayoutDashboardIcon class="size-4" />
                 </div>
                 <div class="grid flex-1 text-left text-sm leading-tight">
                   <span class="truncate font-medium">Docs Workspace</span>
@@ -103,11 +118,7 @@ export default function SidebarDemo() {
                 Search docs
               </label>
               <SidebarInput class="pl-8" id="sidebar-search" placeholder="Search docs..." />
-              <IconPlaceholder
-                class="pointer-events-none absolute top-1/2 left-2 size-4 -translate-y-1/2 text-muted-foreground"
-                lucide="SearchIcon"
-                tabler="IconSearch"
-              />
+              <SearchIcon class="pointer-events-none absolute top-1/2 left-2 size-4 -translate-y-1/2 text-muted-foreground" />
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarHeader>
@@ -128,11 +139,7 @@ export default function SidebarDemo() {
                             isActive={item.isActive}
                             tooltip={item.title}
                           >
-                            <IconPlaceholder
-                              class="size-4"
-                              lucide={item.icon.lucide}
-                              tabler={item.icon.tabler}
-                            />
+                            {item.icon}
                             <span>{item.title}</span>
                           </SidebarMenuButton>
                         </SidebarMenuItem>

@@ -29,11 +29,7 @@ export default function ButtonGroupDropdown() {
               Mark as Read
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <IconPlaceholder
-                class="size-4"
-                lucide="AlertTriangleIcon"
-                tabler="IconAlertTriangle"
-              />
+              <IconPlaceholder class="size-4" lucide="TriangleAlert" tabler="IconAlertTriangle" />
               Report Conversation
             </DropdownMenuItem>
             <DropdownMenuItem>

@@ -1,0 +1,9 @@
+- all primitives should only export the types that shadcn-ui also exports
+- usage section in docs page: only set showLineNumbers when line count is > 3
+- make sure the dependencies, registryDependencies arrays in the \_registry.ts files reflect the actual needed dependencies (make sure nothing is forgotten and nothing is unecessary present)
+- previewClassName of the ComponentPreview in the docs pages should always match the shadcn-ui version
+- make sure the api props that are shown (still stick with the most important ones) match the kobalte api exactly
+- if mergeProps is needed in a primitive make sure the props are called props and the result of mergeProps is called mergedProps
+- if splitProps is needed in a primitive make sure to split it into [local, others]
+- if splitProps is used make sure that props is never used in the jsx
+- the icons in the examples should always use lucide icons directly especially when the parameters of iconPlaceholder is used dynamically otherwise it breaks the icons:build run
