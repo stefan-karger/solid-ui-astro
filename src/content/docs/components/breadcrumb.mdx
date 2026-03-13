@@ -1,0 +1,171 @@
+---
+title: Breadcrumb
+description: Displays the path to the current resource using a hierarchy of links.
+component: true
+---
+
+<ComponentPreview name="breadcrumb-demo" previewClassName="p-2" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add breadcrumb
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @kobalte/core
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="breadcrumb" title="components/ui/breadcrumb.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator
+} from "~/components/ui/breadcrumb"
+```
+
+```tsx showLineNumbers
+<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="#">Home</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbLink href="#">Components</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>
+```
+
+## Examples
+
+### Basic
+
+A basic breadcrumb with a home link and a components link.
+
+<ComponentPreview name="breadcrumb-basic" />
+
+### Custom separator
+
+Use custom children in `BreadcrumbSeparator` to override the default icon.
+
+<ComponentPreview name="breadcrumb-separator" />
+
+### Dropdown
+
+Compose `BreadcrumbItem` with `DropdownMenu` to add branching navigation.
+
+<ComponentPreview name="breadcrumb-dropdown" />
+
+### Collapsed
+
+Use `BreadcrumbEllipsis` when the breadcrumb path is too long.
+
+<ComponentPreview name="breadcrumb-ellipsis" previewClassName="p-2" />
+
+### Link component
+
+Render custom routing links by passing a component to the `as` prop on `BreadcrumbLink`.
+
+<ComponentPreview name="breadcrumb-link" />
+
+## API Reference
+
+### Breadcrumb
+
+Root navigation element that wraps breadcrumb items.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` |         |
+
+### BreadcrumbList
+
+Ordered list container for breadcrumb items.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` |         |
+
+### BreadcrumbItem
+
+Container for each breadcrumb node.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` |         |
+
+### BreadcrumbLink
+
+Clickable breadcrumb link. Supports polymorphic rendering with the `as` prop.
+
+| Prop    | Type             | Default |
+| ------- | ---------------- | ------- |
+| `as`    | `ValidComponent` | `"a"`   |
+| `class` | `string`         |         |
+
+### BreadcrumbPage
+
+Current page indicator (non-interactive).
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` |         |
+
+### BreadcrumbSeparator
+
+Separator between breadcrumb items. Provide `children` to render a custom separator.
+
+| Prop       | Type          | Default |
+| ---------- | ------------- | ------- |
+| `children` | `JSX.Element` |         |
+| `class`    | `string`      |         |
+
+### BreadcrumbEllipsis
+
+Collapsed overflow indicator.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` |         |
+
+All components forward additional supported props from [Kobalte Breadcrumbs](https://kobalte.dev/docs/core/components/breadcrumbs).

@@ -486,6 +486,72 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "breadcrumb-demo",
+    type: "registry:example",
+    registryDependencies: ["breadcrumb", "button", "dropdown-menu"],
+    files: [
+      {
+        path: "examples/breadcrumb-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "breadcrumb-basic",
+    type: "registry:example",
+    registryDependencies: ["breadcrumb"],
+    files: [
+      {
+        path: "examples/breadcrumb-basic.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "breadcrumb-separator",
+    type: "registry:example",
+    registryDependencies: ["breadcrumb"],
+    files: [
+      {
+        path: "examples/breadcrumb-separator.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "breadcrumb-dropdown",
+    type: "registry:example",
+    registryDependencies: ["breadcrumb", "dropdown-menu"],
+    files: [
+      {
+        path: "examples/breadcrumb-dropdown.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "breadcrumb-ellipsis",
+    type: "registry:example",
+    registryDependencies: ["breadcrumb"],
+    files: [
+      {
+        path: "examples/breadcrumb-ellipsis.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "breadcrumb-link",
+    type: "registry:example",
+    registryDependencies: ["breadcrumb"],
+    files: [
+      {
+        path: "examples/breadcrumb-link.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "card-demo",
     type: "registry:example",
     registryDependencies: ["button", "card", "input", "label"],

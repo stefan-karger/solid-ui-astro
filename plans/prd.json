@@ -623,25 +623,25 @@
     "complexityScore": 6,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.breadcrumb", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "primitive.breadcrumb", "type": "primitive", "dependsOn": [], "finished": true },
       {
         "id": "docs.breadcrumb",
         "type": "docs",
         "dependsOn": ["primitive.breadcrumb"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.breadcrumb",
         "type": "examples",
         "dependsOn": ["docs.breadcrumb"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "breadcrumb-demo", "finished": false },
-          { "name": "breadcrumb-basic", "finished": false },
-          { "name": "breadcrumb-separator", "finished": false },
-          { "name": "breadcrumb-dropdown", "finished": false },
-          { "name": "breadcrumb-ellipsis", "finished": false },
-          { "name": "breadcrumb-link", "finished": false }
+          { "name": "breadcrumb-demo", "finished": true },
+          { "name": "breadcrumb-basic", "finished": true },
+          { "name": "breadcrumb-separator", "finished": true },
+          { "name": "breadcrumb-dropdown", "finished": true },
+          { "name": "breadcrumb-ellipsis", "finished": true },
+          { "name": "breadcrumb-link", "finished": true }
         ]
       }
     ]
