@@ -319,6 +319,17 @@ export const ui: Registry["items"] = [
     ]
   },
   {
+    name: "radio-group",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core"],
+    files: [
+      {
+        path: "ui/radio-group.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
     name: "resizable",
     type: "registry:ui",
     dependencies: ["solid-resizable-panels"],

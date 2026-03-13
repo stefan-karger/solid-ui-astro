@@ -674,25 +674,25 @@
     "complexityScore": 6,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.radio-group", "type": "primitive", "dependsOn": [], "finished": false },
+      { "id": "primitive.radio-group", "type": "primitive", "dependsOn": [], "finished": true },
       {
         "id": "docs.radio-group",
         "type": "docs",
         "dependsOn": ["primitive.radio-group"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.radio-group",
         "type": "examples",
         "dependsOn": ["docs.radio-group"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "radio-group-demo", "finished": false },
-          { "name": "radio-group-description", "finished": false },
-          { "name": "radio-group-choice-card", "finished": false },
-          { "name": "radio-group-fieldset", "finished": false },
-          { "name": "radio-group-disabled", "finished": false },
-          { "name": "radio-group-invalid", "finished": false }
+          { "name": "radio-group-demo", "finished": true },
+          { "name": "radio-group-description", "finished": true },
+          { "name": "radio-group-choice-card", "finished": true },
+          { "name": "radio-group-fieldset", "finished": true },
+          { "name": "radio-group-disabled", "finished": true },
+          { "name": "radio-group-invalid", "finished": true }
         ]
       }
     ]
