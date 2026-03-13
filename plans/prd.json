@@ -1172,25 +1172,25 @@
         "id": "primitive.item",
         "type": "primitive",
         "dependsOn": ["primitive.separator"],
-        "finished": false
+        "finished": true
       },
-      { "id": "docs.item", "type": "docs", "dependsOn": ["primitive.item"], "finished": false },
+      { "id": "docs.item", "type": "docs", "dependsOn": ["primitive.item"], "finished": true },
       {
         "id": "examples.item",
         "type": "examples",
         "dependsOn": ["docs.item"],
-        "finished": false,
+        "finished": true,
         "checklist": [
-          { "name": "item-demo", "finished": false },
-          { "name": "item-variant", "finished": false },
-          { "name": "item-size", "finished": false },
-          { "name": "item-icon", "finished": false },
-          { "name": "item-avatar", "finished": false },
-          { "name": "item-image", "finished": false },
-          { "name": "item-group", "finished": false },
-          { "name": "item-header", "finished": false },
-          { "name": "item-link", "finished": false },
-          { "name": "item-dropdown", "finished": false }
+          { "name": "item-demo", "finished": true },
+          { "name": "item-variant", "finished": true },
+          { "name": "item-size", "finished": true },
+          { "name": "item-icon", "finished": true },
+          { "name": "item-avatar", "finished": true },
+          { "name": "item-image", "finished": true },
+          { "name": "item-group", "finished": true },
+          { "name": "item-header", "finished": true },
+          { "name": "item-link", "finished": true },
+          { "name": "item-dropdown", "finished": true }
         ]
       }
     ]
