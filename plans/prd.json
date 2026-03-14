@@ -8,43 +8,43 @@
         "id": "primitive.empty",
         "type": "primitive",
         "dependsOn": [],
-        "finished": false
+        "finished": true
       },
       {
         "id": "docs.empty",
         "type": "docs",
         "dependsOn": ["primitive.empty"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.empty",
         "type": "examples",
         "dependsOn": ["docs.empty"],
-        "finished": false,
+        "finished": true,
         "checklist": [
           {
             "name": "empty-demo",
-            "finished": false
+            "finished": true
           },
           {
             "name": "empty-outline",
-            "finished": false
+            "finished": true
           },
           {
             "name": "empty-background",
-            "finished": false
+            "finished": true
           },
           {
             "name": "empty-avatar",
-            "finished": false
+            "finished": true
           },
           {
             "name": "empty-avatar-group",
-            "finished": false
+            "finished": true
           },
           {
             "name": "empty-input-group",
-            "finished": false
+            "finished": true
           }
         ]
       }

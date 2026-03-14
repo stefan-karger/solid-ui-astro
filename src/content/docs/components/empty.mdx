@@ -1,0 +1,153 @@
+---
+title: Empty
+description: Display helpful empty states with media, messaging, and actions.
+component: true
+---
+
+<ComponentPreview name="empty-demo" previewClassName="h-[24rem] p-6" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add empty
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="empty" title="components/ui/empty.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle
+} from "~/components/ui/empty"
+```
+
+```tsx showLineNumbers
+<Empty>
+  <EmptyHeader>
+    <EmptyMedia variant="icon">
+      <Icon />
+    </EmptyMedia>
+    <EmptyTitle>No projects yet</EmptyTitle>
+    <EmptyDescription>
+      You haven&apos;t created any projects yet. Get started by creating your first project.
+    </EmptyDescription>
+  </EmptyHeader>
+  <EmptyContent>
+    <Button>Create project</Button>
+  </EmptyContent>
+</Empty>
+```
+
+## Examples
+
+### Outline
+
+Use `EmptyMedia` with `variant="icon"` and an outline-style action.
+
+<ComponentPreview name="empty-outline" previewClassName="h-[24rem] p-6" />
+
+### Background
+
+Apply muted backgrounds for softer empty-state surfaces.
+
+<ComponentPreview name="empty-background" previewClassName="h-[24rem] p-6" />
+
+### Avatar
+
+Display a single avatar when the empty state is tied to an individual assignee or owner.
+
+<ComponentPreview name="empty-avatar" previewClassName="h-[24rem] p-6" />
+
+### Avatar Group
+
+Use avatar groups to represent teams before members are invited.
+
+<ComponentPreview name="empty-avatar-group" previewClassName="h-[24rem] p-6" />
+
+### Input Group
+
+Combine `Empty` with `InputGroup` to guide users toward a search or recovery action.
+
+<ComponentPreview name="empty-input-group" previewClassName="h-[24rem] p-6" />
+
+## API Reference
+
+### Empty
+
+Root container for empty-state layout and centering.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` | -       |
+
+### EmptyHeader
+
+Top section for title, description, and optional media.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` | -       |
+
+### EmptyMedia
+
+Media slot for avatars, icons, or custom visuals.
+
+| Prop      | Type                  | Default     |
+| --------- | --------------------- | ----------- |
+| `variant` | `"default" \| "icon"` | `"default"` |
+| `class`   | `string`              | -           |
+
+### EmptyTitle
+
+Primary title text of the empty state.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` | -       |
+
+### EmptyDescription
+
+Supporting description text and optional inline links.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` | -       |
+
+### EmptyContent
+
+Action area for buttons, inputs, or additional helper content.
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` | -       |
