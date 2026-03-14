@@ -23,6 +23,18 @@ export const ui: Registry["items"] = [
     ]
   },
   {
+    name: "alert-dialog",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/alert-dialog.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
     name: "aspect-ratio",
     type: "registry:ui",
     files: [

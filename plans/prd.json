@@ -59,43 +59,43 @@
         "id": "primitive.alert-dialog",
         "type": "primitive",
         "dependsOn": ["primitive.button"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "docs.alert-dialog",
         "type": "docs",
         "dependsOn": ["primitive.alert-dialog"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.alert-dialog",
         "type": "examples",
         "dependsOn": ["docs.alert-dialog"],
-        "finished": false,
+        "finished": true,
         "checklist": [
           {
             "name": "alert-dialog-demo",
-            "finished": false
+            "finished": true
           },
           {
             "name": "alert-dialog-basic",
-            "finished": false
+            "finished": true
           },
           {
             "name": "alert-dialog-small",
-            "finished": false
+            "finished": true
           },
           {
             "name": "alert-dialog-media",
-            "finished": false
+            "finished": true
           },
           {
             "name": "alert-dialog-small-media",
-            "finished": false
+            "finished": true
           },
           {
             "name": "alert-dialog-destructive",
-            "finished": false
+            "finished": true
           }
         ]
       }

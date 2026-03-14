@@ -123,6 +123,72 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "alert-dialog-demo",
+    type: "registry:example",
+    registryDependencies: ["alert-dialog", "button"],
+    files: [
+      {
+        path: "examples/alert-dialog-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "alert-dialog-basic",
+    type: "registry:example",
+    registryDependencies: ["alert-dialog", "button"],
+    files: [
+      {
+        path: "examples/alert-dialog-basic.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "alert-dialog-small",
+    type: "registry:example",
+    registryDependencies: ["alert-dialog", "button"],
+    files: [
+      {
+        path: "examples/alert-dialog-small.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "alert-dialog-media",
+    type: "registry:example",
+    registryDependencies: ["alert-dialog", "button"],
+    files: [
+      {
+        path: "examples/alert-dialog-media.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "alert-dialog-small-media",
+    type: "registry:example",
+    registryDependencies: ["alert-dialog", "button"],
+    files: [
+      {
+        path: "examples/alert-dialog-small-media.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "alert-dialog-destructive",
+    type: "registry:example",
+    registryDependencies: ["alert-dialog", "button"],
+    files: [
+      {
+        path: "examples/alert-dialog-destructive.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "aspect-ratio-demo",
     type: "registry:example",
     registryDependencies: ["aspect-ratio"],
