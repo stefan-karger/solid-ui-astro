@@ -271,55 +271,55 @@
         "id": "primitive.input-otp",
         "type": "primitive",
         "dependsOn": [],
-        "finished": false
+        "finished": true
       },
       {
         "id": "docs.input-otp",
         "type": "docs",
         "dependsOn": ["primitive.input-otp"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.input-otp",
         "type": "examples",
         "dependsOn": ["docs.input-otp"],
-        "finished": false,
+        "finished": true,
         "checklist": [
           {
             "name": "input-otp-demo",
-            "finished": false
+            "finished": true
           },
           {
             "name": "input-otp-pattern",
-            "finished": false
+            "finished": true
           },
           {
             "name": "input-otp-separator",
-            "finished": false
+            "finished": true
           },
           {
             "name": "input-otp-disabled",
-            "finished": false
+            "finished": true
           },
           {
             "name": "input-otp-controlled",
-            "finished": false
+            "finished": true
           },
           {
             "name": "input-otp-invalid",
-            "finished": false
+            "finished": true
           },
           {
             "name": "input-otp-four-digits",
-            "finished": false
+            "finished": true
           },
           {
             "name": "input-otp-alphanumeric",
-            "finished": false
+            "finished": true
           },
           {
             "name": "input-otp-form",
-            "finished": false
+            "finished": true
           }
         ]
       }
