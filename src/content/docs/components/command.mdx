@@ -55,9 +55,12 @@ npm install @kobalte/core
 import {
   Command,
   CommandEmpty,
+  CommandGroup,
+  CommandGroupLabel,
   CommandInput,
   CommandItem,
-  CommandList
+  CommandList,
+  CommandSeparator
 } from "~/components/ui/command"
 ```
 
@@ -71,6 +74,14 @@ import {
   placeholder="Search an emoji…"
   itemComponent={(props) => (
     <CommandItem item={props.item}>{props.item.rawValue.label}</CommandItem>
+  )}
+  sectionComponent={(props) => (
+    <>
+      {props.section.index > 0 ? <CommandSeparator /> : null}
+      <CommandGroup>
+        <CommandGroupLabel>{props.section.rawValue.heading}</CommandGroupLabel>
+      </CommandGroup>
+    </>
   )}
 >
   <CommandInput />
@@ -112,7 +123,7 @@ A simple command menu in a dialog.
 
 ### Groups
 
-A command menu with groups and icons.
+A command menu with groups, icons, and separators.
 
 <ComponentPreview name="command-groups" />
 
@@ -135,6 +146,7 @@ Scrollable command menu with multiple items.
 | `CommandEmpty`           | Empty state shown when no command matches.                     |
 | `CommandGroup`           | Section wrapper for grouped commands.                          |
 | `CommandGroupLabel`      | Label for a command section.                                   |
+| `CommandSeparator`       | Visual divider between command groups.                         |
 | `CommandItem`            | Selectable command row.                                        |
 | `CommandItemLabel`       | Primary label region inside a command item.                    |
 | `CommandItemDescription` | Secondary description region inside a command item.            |

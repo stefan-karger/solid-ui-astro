@@ -200,6 +200,21 @@ const CommandShortcut = (props: CommandShortcutProps) => {
   )
 }
 
+type CommandSeparatorProps = ComponentProps<"div">
+
+const CommandSeparator = (props: CommandSeparatorProps) => {
+  const [local, others] = splitProps(props, ["class"])
+
+  return (
+    <div
+      data-slot="command-separator"
+      role="separator"
+      class={cn("cn-command-separator", local.class)}
+      {...others}
+    />
+  )
+}
+
 const CommandItemLabel = CommandPrimitive.ItemLabel
 const CommandItemDescription = CommandPrimitive.ItemDescription
 
@@ -225,6 +240,7 @@ export {
   CommandGroup,
   CommandItem,
   CommandShortcut,
+  CommandSeparator,
   CommandItemLabel,
   CommandItemDescription,
   CommandGroupLabel

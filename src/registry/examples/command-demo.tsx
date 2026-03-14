@@ -10,6 +10,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
+  CommandSeparator,
   CommandShortcut
 } from "~/registry/ui/command"
 
@@ -117,9 +118,12 @@ export default function CommandDemo() {
         </CommandItem>
       )}
       sectionComponent={(props) => (
-        <CommandGroup>
-          <CommandGroupLabel>{props.section.rawValue.heading}</CommandGroupLabel>
-        </CommandGroup>
+        <>
+          {props.section.index > 0 ? <CommandSeparator /> : null}
+          <CommandGroup>
+            <CommandGroupLabel>{props.section.rawValue.heading}</CommandGroupLabel>
+          </CommandGroup>
+        </>
       )}
     >
       <CommandInput />

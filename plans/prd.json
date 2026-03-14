@@ -161,39 +161,39 @@
         "id": "primitive.command",
         "type": "primitive",
         "dependsOn": ["primitive.dialog", "primitive.input-group"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "docs.command",
         "type": "docs",
         "dependsOn": ["primitive.command"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.command",
         "type": "examples",
         "dependsOn": ["docs.command"],
-        "finished": false,
+        "finished": true,
         "checklist": [
           {
             "name": "command-demo",
-            "finished": false
+            "finished": true
           },
           {
             "name": "command-basic",
-            "finished": false
+            "finished": true
           },
           {
             "name": "command-shortcuts",
-            "finished": false
+            "finished": true
           },
           {
             "name": "command-groups",
-            "finished": false
+            "finished": true
           },
           {
             "name": "command-scrollable",
-            "finished": false
+            "finished": true
           }
         ]
       }
