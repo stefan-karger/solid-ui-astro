@@ -18,7 +18,7 @@ component: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add sheet
+npx solidui-cli@latest add sheet
 ```
 
 </TabsContent>
@@ -129,20 +129,20 @@ Customize width and height by passing classes to `SheetContent`.
 
 ### Common Root Props
 
-| Prop            | Type                      | Description                                      |
-| --------------- | ------------------------- | ------------------------------------------------ |
-| `open`          | `boolean`                 | Controlled open state.                           |
-| `defaultOpen`   | `boolean`                 | Initial open state in uncontrolled mode.         |
-| `onOpenChange`  | `(open: boolean) => void` | Called when open state changes.                  |
-| `modal`         | `boolean`                 | Traps focus and blocks outside interaction.      |
-| `preventScroll` | `boolean`                 | Prevents body scrolling while the sheet is open. |
+| Prop            | Type                      |
+| --------------- | ------------------------- |
+| `open`          | `boolean`                 |
+| `defaultOpen`   | `boolean`                 |
+| `onOpenChange`  | `(open: boolean) => void` |
+| `modal`         | `boolean`                 |
+| `preventScroll` | `boolean`                 |
 
-### SheetContent Props
+### SheetContent
 
-| Prop              | Type                                     | Default   | Description                                                  |
-| ----------------- | ---------------------------------------- | --------- | ------------------------------------------------------------ |
-| `side`            | `"top" \| "right" \| "bottom" \| "left"` | `"right"` | Sets the viewport edge where the sheet appears.              |
-| `showCloseButton` | `boolean`                                | `true`    | Controls whether the default top-right close button is shown |
+| Prop              | Type                                     | Default   |
+| ----------------- | ---------------------------------------- | --------- |
+| `side`            | `"top" \| "right" \| "bottom" \| "left"` | `"right"` |
+| `showCloseButton` | `boolean`                                | `true`    |
 
 See the [Kobalte Dialog](https://kobalte.dev/docs/core/components/dialog) documentation
 for complete behavior details and all available props.

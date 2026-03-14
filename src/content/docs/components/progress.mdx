@@ -18,7 +18,7 @@ component: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add progress
+npx solidui-cli@latest add progress
 ```
 
 </TabsContent>
@@ -47,7 +47,7 @@ npm install @kobalte/core
 
 ## Usage
 
-```tsx showLineNumbers
+```tsx
 import { Progress, ProgressIndicator, ProgressTrack } from "~/components/ui/progress"
 ```
 
@@ -133,13 +133,13 @@ Use `getValueLabel` to replace the default percentage text.
 
 ### Common Props
 
-| Prop            | Type                                                              | Description                                                           |
-| --------------- | ----------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `value`         | `number`                                                          | Current progress value.                                               |
-| `minValue`      | `number`                                                          | Lower bound of the value scale. Defaults to `0`.                      |
-| `maxValue`      | `number`                                                          | Upper bound of the value scale. Defaults to `100`.                    |
-| `indeterminate` | `boolean`                                                         | Marks the progress as indeterminate and removes ARIA value output.    |
-| `getValueLabel` | `(params: { value: number; min: number; max: number }) => string` | Custom formatter for `ProgressValue` and screen reader announcements. |
+| Prop            | Type                                                              |
+| --------------- | ----------------------------------------------------------------- |
+| `value`         | `number`                                                          |
+| `minValue`      | `number`                                                          |
+| `maxValue`      | `number`                                                          |
+| `indeterminate` | `boolean`                                                         |
+| `getValueLabel` | `(params: { value: number; min: number; max: number }) => string` |
 
 See the [Kobalte Progress](https://kobalte.dev/docs/core/components/progress)
 documentation for full primitive props and behavior details.

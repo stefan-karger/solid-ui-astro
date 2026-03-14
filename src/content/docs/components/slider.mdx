@@ -18,7 +18,7 @@ component: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add slider
+npx solidui-cli@latest add slider
 ```
 
 </TabsContent>
@@ -47,11 +47,11 @@ npm install @kobalte/core
 
 ## Usage
 
-```tsx showLineNumbers
+```tsx
 import { Slider } from "~/components/ui/slider"
 ```
 
-```tsx showLineNumbers
+```tsx
 <Slider defaultValue={[33]} max={100} step={1} />
 ```
 
@@ -142,21 +142,21 @@ Use the `disabled` prop to prevent slider interaction.
 | -------- | ----------------------------------------------------------------- |
 | `Slider` | Slider root with built-in track, fill, thumbs, and hidden inputs. |
 
-### Slider Props
+### Slider
 
-| Prop                    | Type                        | Description                                 |
-| ----------------------- | --------------------------- | ------------------------------------------- |
-| `value`                 | `number[]`                  | Controlled slider values.                   |
-| `defaultValue`          | `number[]`                  | Initial values for uncontrolled usage.      |
-| `onChange`              | `(value: number[]) => void` | Called whenever the value changes.          |
-| `onChangeEnd`           | `(value: number[]) => void` | Called when interaction ends.               |
-| `min`                   | `number`                    | Minimum allowed value.                      |
-| `max`                   | `number`                    | Maximum allowed value.                      |
-| `step`                  | `number`                    | Increment/decrement step size.              |
-| `minStepsBetweenThumbs` | `number`                    | Minimum number of steps between thumbs.     |
-| `orientation`           | `"horizontal"\|"vertical"`  | Slider orientation.                         |
-| `disabled`              | `boolean`                   | Disables keyboard and pointer interactions. |
-| `class`                 | `string`                    | Additional classes for the root element.    |
+| Prop                    | Type                        |
+| ----------------------- | --------------------------- |
+| `value`                 | `number[]`                  |
+| `defaultValue`          | `number[]`                  |
+| `onChange`              | `(value: number[]) => void` |
+| `onChangeEnd`           | `(value: number[]) => void` |
+| `min`                   | `number`                    |
+| `max`                   | `number`                    |
+| `step`                  | `number`                    |
+| `minStepsBetweenThumbs` | `number`                    |
+| `orientation`           | `"horizontal"\|"vertical"`  |
+| `disabled`              | `boolean`                   |
+| `class`                 | `string`                    |
 
 The component forwards all other supported Kobalte slider root props.
 

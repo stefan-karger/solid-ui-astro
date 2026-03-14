@@ -18,7 +18,7 @@ component: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add collapsible
+npx solidui-cli@latest add collapsible
 ```
 
 </TabsContent>
@@ -47,7 +47,7 @@ npm install @kobalte/core
 
 ## Usage
 
-```tsx showLineNumbers
+```tsx
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "~/components/ui/collapsible"
 ```
 
@@ -110,12 +110,12 @@ Set `disabled` on the root to prevent toggling.
 
 ### Common Root Props
 
-| Prop           | Type                      | Description                                 |
-| -------------- | ------------------------- | ------------------------------------------- |
-| `open`         | `boolean`                 | Controlled open state.                      |
-| `defaultOpen`  | `boolean`                 | Initial open state in uncontrolled mode.    |
-| `onOpenChange` | `(open: boolean) => void` | Callback fired when the state changes.      |
-| `disabled`     | `boolean`                 | Prevents interaction for the entire widget. |
+| Prop           | Type                      |
+| -------------- | ------------------------- |
+| `open`         | `boolean`                 |
+| `defaultOpen`  | `boolean`                 |
+| `onOpenChange` | `(open: boolean) => void` |
+| `disabled`     | `boolean`                 |
 
 See the [Kobalte Collapsible](https://kobalte.dev/docs/core/components/collapsible)
 documentation for full API details.

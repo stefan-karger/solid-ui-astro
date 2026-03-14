@@ -18,7 +18,7 @@ component: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add sidebar
+npx solidui-cli@latest add sidebar
 ```
 
 </TabsContent>
@@ -150,21 +150,21 @@ By default, users can toggle the sidebar with:
 | `SidebarRail`          | Interactive rail used to toggle the sidebar                          |
 | `useSidebar`           | Hook for controlled/open/mobile sidebar state                        |
 
-### SidebarProvider Props
+### SidebarProvider
 
-| Prop           | Type                      | Default | Description                                |
-| -------------- | ------------------------- | ------- | ------------------------------------------ |
-| `defaultOpen`  | `boolean`                 | `true`  | Initial open state in uncontrolled mode    |
-| `open`         | `boolean`                 | -       | Controlled open state                      |
-| `onOpenChange` | `(open: boolean) => void` | -       | Callback fired when the open state changes |
+| Prop           | Type                      | Default |
+| -------------- | ------------------------- | ------- |
+| `defaultOpen`  | `boolean`                 | `true`  |
+| `open`         | `boolean`                 | -       |
+| `onOpenChange` | `(open: boolean) => void` | -       |
 
-### Sidebar Props
+### Sidebar
 
-| Prop          | Type                                 | Default       | Description                    |
-| ------------- | ------------------------------------ | ------------- | ------------------------------ |
-| `side`        | `"left" \| "right"`                  | `"left"`      | Side where the sidebar appears |
-| `variant`     | `"sidebar" \| "floating" \| "inset"` | `"sidebar"`   | Visual variant                 |
-| `collapsible` | `"offcanvas" \| "icon" \| "none"`    | `"offcanvas"` | Collapse behavior              |
+| Prop          | Type                                 | Default       |
+| ------------- | ------------------------------------ | ------------- |
+| `side`        | `"left" \| "right"`                  | `"left"`      |
+| `variant`     | `"sidebar" \| "floating" \| "inset"` | `"sidebar"`   |
+| `collapsible` | `"offcanvas" \| "icon" \| "none"`    | `"offcanvas"` |
 
 ### useSidebar Return Value
 

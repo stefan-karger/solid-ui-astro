@@ -22,7 +22,7 @@ Drawer is built on top of [Corvu Drawer](https://corvu.dev/docs/primitives/drawe
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add drawer
+npx solidui-cli@latest add drawer
 ```
 
 </TabsContent>
@@ -123,17 +123,17 @@ You can combine the `Dialog` and `Drawer` components to render a dialog on deskt
 
 ### Common Root Props
 
-| Prop                      | Type                                                 | Default    | Description                                      |
-| ------------------------- | ---------------------------------------------------- | ---------- | ------------------------------------------------ |
-| `side`                    | `"top" &#124; "right" &#124; "bottom" &#124; "left"` | `"bottom"` | The side the drawer opens from.                  |
-| `open`                    | `boolean`                                            | -          | Controlled open state.                           |
-| `defaultOpen`             | `boolean`                                            | `false`    | Initial open state in uncontrolled mode.         |
-| `onOpenChange`            | `(open: boolean) => void`                            | -          | Called when open state changes.                  |
-| `snapPoints`              | `Size[]`                                             | `[0, 1]`   | Positions the drawer can snap to while dragging. |
-| `activeSnapPoint`         | `Size`                                               | -          | Controlled active snap point.                    |
-| `allowSkippingSnapPoints` | `boolean`                                            | `true`     | Allows skipping intermediate snap points.        |
-| `closeOnOutsidePointer`   | `boolean`                                            | `true`     | Closes when pointer interaction happens outside. |
-| `closeOnEscapeKeyDown`    | `boolean`                                            | `true`     | Closes when pressing the Escape key.             |
+| Prop                      | Type                                                 | Default    |
+| ------------------------- | ---------------------------------------------------- | ---------- |
+| `side`                    | `"top" &#124; "right" &#124; "bottom" &#124; "left"` | `"bottom"` |
+| `open`                    | `boolean`                                            | -          |
+| `defaultOpen`             | `boolean`                                            | `false`    |
+| `onOpenChange`            | `(open: boolean) => void`                            | -          |
+| `snapPoints`              | `Size[]`                                             | `[0, 1]`   |
+| `activeSnapPoint`         | `Size`                                               | -          |
+| `allowSkippingSnapPoints` | `boolean`                                            | `true`     |
+| `closeOnOutsidePointer`   | `boolean`                                            | `true`     |
+| `closeOnEscapeKeyDown`    | `boolean`                                            | `true`     |
 
 See the [Corvu Drawer documentation](https://corvu.dev/docs/primitives/drawer)
 for the full API reference and behavior details.

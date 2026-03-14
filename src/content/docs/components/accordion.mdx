@@ -21,7 +21,7 @@ component: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add accordion
+npx solidui-cli@latest add accordion
 ```
 
 </TabsContent>
@@ -128,18 +128,18 @@ Wrap the `Accordion` in a `Card` component.
 
 ### Common Root Props
 
-| Prop           | Type       | Description                                            |
-| -------------- | ---------- | ------------------------------------------------------ |
-| `collapsible`  | `boolean`  | Allows closing the currently open item in single mode. |
-| `multiple`     | `boolean`  | Allows opening more than one item at once.             |
-| `value`        | `string[]` | Controlled expanded value(s).                          |
-| `defaultValue` | `string[]` | Uncontrolled initial expanded value(s).                |
+| Prop           | Type       |
+| -------------- | ---------- |
+| `collapsible`  | `boolean`  |
+| `multiple`     | `boolean`  |
+| `value`        | `string[]` |
+| `defaultValue` | `string[]` |
 
 ### Common Item Props
 
-| Prop       | Type      | Description                                   |
-| ---------- | --------- | --------------------------------------------- |
-| `value`    | `string`  | Unique item identifier used for open state.   |
-| `disabled` | `boolean` | Prevents interaction and focus for that item. |
+| Prop       | Type      |
+| ---------- | --------- |
+| `value`    | `string`  |
+| `disabled` | `boolean` |
 
 See the [Kobalte](https://kobalte.dev/docs/core/components/accordion#api-reference) documentation for more information.

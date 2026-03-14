@@ -16,7 +16,7 @@ component: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add direction
+npx solidui-cli@latest add direction
 ```
 
 </TabsContent>
@@ -45,7 +45,7 @@ npm install @kobalte/core
 
 ## Usage
 
-```tsx showLineNumbers
+```tsx
 import { DirectionProvider } from "~/components/ui/direction"
 ```
 
@@ -82,12 +82,12 @@ const Example = () => {
 | `DirectionProvider` | Provides direction context to child content. |
 | `useDirection`      | Returns the current text direction.          |
 
-### DirectionProvider Props
+### DirectionProvider
 
-| Prop        | Type             | Description                                                             |
-| ----------- | ---------------- | ----------------------------------------------------------------------- |
-| `direction` | `"ltr" \| "rtl"` | Sets layout direction. Defaults to `ltr` unless inferred from `locale`. |
-| `locale`    | `string`         | Optional locale override used for Kobalte locale context and direction. |
-| `children`  | `JSX.Element`    | Content wrapped by the provider.                                        |
+| Prop        | Type             |
+| ----------- | ---------------- |
+| `direction` | `"ltr" \| "rtl"` |
+| `locale`    | `string`         |
+| `children`  | `JSX.Element`    |
 
 See the [Kobalte i18n utilities](https://kobalte.dev/docs/core/utilities/i18n) documentation for more details.

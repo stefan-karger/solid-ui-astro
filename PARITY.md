@@ -4,7 +4,7 @@
 | ----------------- | --------- | -------- | ---- |
 | `accordion`       | x         | x        | x    |
 | `alert`           | x         | x        | x    |
-| `alert-dialog`    |           |          |      |
+| `alert-dialog`    | x         | x        | x    |
 | `aspect-ratio`    | x         | x        | x    |
 | `avatar`          | x         | x        | x    |
 | `badge`           | x         | x        | x    |

@@ -18,7 +18,7 @@ component: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add resizable
+npx solidui-cli@latest add resizable
 ```
 
 </TabsContent>
@@ -47,7 +47,7 @@ npm install solid-resizable-panels
 
 ## Usage
 
-```tsx showLineNumbers
+```tsx
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "~/components/ui/resizable"
 ```
 
@@ -109,15 +109,15 @@ Use `withHandle` to render a visible drag grip.
 
 ### Common Props
 
-| Part                  | Prop          | Type                                                     | Description                                           |
-| --------------------- | ------------- | -------------------------------------------------------- | ----------------------------------------------------- |
-| `ResizablePanelGroup` | `direction`   | `"row" \| "column" \| "row-reverse" \| "column-reverse"` | Resizing direction for the panel group.               |
-| `ResizablePanel`      | `id`          | `string`                                                 | Required panel identifier within a group.             |
-| `ResizablePanel`      | `initialSize` | `number`                                                 | Initial panel size in percent.                        |
-| `ResizablePanel`      | `minSize`     | `number`                                                 | Minimum panel size in percent.                        |
-| `ResizablePanel`      | `maxSize`     | `number`                                                 | Maximum panel size in percent.                        |
-| `ResizableHandle`     | `disabled`    | `boolean`                                                | Disables dragging for a handle.                       |
-| `ResizableHandle`     | `withHandle`  | `boolean`                                                | Shows a visual grip element inside the resize handle. |
+| Part                  | Prop          | Type                                                     |
+| --------------------- | ------------- | -------------------------------------------------------- |
+| `ResizablePanelGroup` | `direction`   | `"row" \| "column" \| "row-reverse" \| "column-reverse"` |
+| `ResizablePanel`      | `id`          | `string`                                                 |
+| `ResizablePanel`      | `initialSize` | `number`                                                 |
+| `ResizablePanel`      | `minSize`     | `number`                                                 |
+| `ResizablePanel`      | `maxSize`     | `number`                                                 |
+| `ResizableHandle`     | `disabled`    | `boolean`                                                |
+| `ResizableHandle`     | `withHandle`  | `boolean`                                                |
 
 See the
 [solid-resizable-panels documentation](https://github.com/phgn0/solid-resizable-panels)

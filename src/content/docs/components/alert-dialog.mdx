@@ -18,7 +18,7 @@ component: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add alert-dialog
+npx solidui-cli@latest add alert-dialog
 ```
 
 </TabsContent>
@@ -131,20 +131,13 @@ Use `variant="destructive"` on the trigger and action to highlight irreversible 
 | `AlertDialogCancel`      | Close button styled for dismissive actions.                      |
 | `AlertDialogAction`      | Close button styled for primary or destructive confirmation.     |
 
-### AlertDialogContent Props
+### size
 
-| Prop   | Type                | Default     | Description                               |
-| ------ | ------------------- | ----------- | ----------------------------------------- |
-| `size` | `"default" \| "sm"` | `"default"` | Controls the max width and footer layout. |
+Use the `size` props on the `AlertDialogContent` component to control the size of the alert dialog. It accepts the following values:
 
-### AlertDialogAction and AlertDialogCancel Props
-
-Both wrappers forward all `CloseButton` props from Kobalte and support button styling props.
-
-| Prop      | Type                                                                                 | Default (`Action`) | Default (`Cancel`) |
-| --------- | ------------------------------------------------------------------------------------ | ------------------ | ------------------ |
-| `variant` | `"default" \| "outline" \| "secondary" \| "ghost" \| "destructive" \| "link"`        | `"default"`        | `"outline"`        |
-| `size`    | `"default" \| "xs" \| "sm" \| "lg" \| "icon" \| "icon-xs" \| "icon-sm" \| "icon-lg"` | `"default"`        | `"default"`        |
+| Prop   | Type                | Default     |
+| ------ | ------------------- | ----------- |
+| `size` | `"default" \| "sm"` | `"default"` |
 
 See the [Kobalte Alert Dialog](https://kobalte.dev/docs/core/components/alert-dialog)
 documentation for complete behavior details and all available props.

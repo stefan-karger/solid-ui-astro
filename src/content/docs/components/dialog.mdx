@@ -18,7 +18,7 @@ component: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add dialog
+npx solidui-cli@latest add dialog
 ```
 
 </TabsContent>
@@ -116,19 +116,19 @@ Long content can scroll while the dialog remains centered.
 
 ### Common Root Props
 
-| Prop            | Type                      | Description                                      |
-| --------------- | ------------------------- | ------------------------------------------------ |
-| `open`          | `boolean`                 | Controlled open state.                           |
-| `defaultOpen`   | `boolean`                 | Initial open state in uncontrolled mode.         |
-| `onOpenChange`  | `(open: boolean) => void` | Called when open state changes.                  |
-| `modal`         | `boolean`                 | Traps focus and blocks outside interaction.      |
-| `preventScroll` | `boolean`                 | Prevents body scrolling while the dialog is open |
+| Prop            | Type                      |
+| --------------- | ------------------------- |
+| `open`          | `boolean`                 |
+| `defaultOpen`   | `boolean`                 |
+| `onOpenChange`  | `(open: boolean) => void` |
+| `modal`         | `boolean`                 |
+| `preventScroll` | `boolean`                 |
 
-### DialogContent Props
+### DialogContent
 
-| Prop              | Type      | Default | Description                                                  |
-| ----------------- | --------- | ------- | ------------------------------------------------------------ |
-| `showCloseButton` | `boolean` | `true`  | Controls whether the default top-right close button is shown |
+| Prop              | Type      | Default |
+| ----------------- | --------- | ------- |
+| `showCloseButton` | `boolean` | `true`  |
 
 See the [Kobalte Dialog](https://kobalte.dev/docs/core/components/dialog) documentation
 for complete behavior details and all available props.

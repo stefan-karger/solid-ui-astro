@@ -18,7 +18,7 @@ component: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add popover
+npx solidui-cli@latest add popover
 ```
 
 </TabsContent>
@@ -47,7 +47,7 @@ npm install @kobalte/core
 
 ## Usage
 
-```tsx showLineNumbers
+```tsx
 import { Popover, PopoverContent, PopoverTrigger } from "~/components/ui/popover"
 ```
 
@@ -127,14 +127,14 @@ Use `PopoverAnchor` to position content relative to a separate element.
 
 ### Common Root Props
 
-| Prop           | Type                      | Description                                             |
-| -------------- | ------------------------- | ------------------------------------------------------- |
-| `open`         | `boolean`                 | Controlled open state.                                  |
-| `defaultOpen`  | `boolean`                 | Initial open state in uncontrolled mode.                |
-| `onOpenChange` | `(open: boolean) => void` | Called when open state changes.                         |
-| `placement`    | `string`                  | Preferred floating placement such as `top` or `right`.  |
-| `gutter`       | `number`                  | Space in pixels between anchor and content.             |
-| `modal`        | `boolean`                 | Traps focus and prevents outside interaction when true. |
+| Prop           | Type                      |
+| -------------- | ------------------------- |
+| `open`         | `boolean`                 |
+| `defaultOpen`  | `boolean`                 |
+| `onOpenChange` | `(open: boolean) => void` |
+| `placement`    | `string`                  |
+| `gutter`       | `number`                  |
+| `modal`        | `boolean`                 |
 
 See the [Kobalte Popover](https://kobalte.dev/docs/core/components/popover) documentation
 for all available props and behavior details.

@@ -18,7 +18,7 @@ component: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add select
+npx solidui-cli@latest add select
 ```
 
 </TabsContent>
@@ -173,29 +173,29 @@ Set `validationState="invalid"` on `Select` and `aria-invalid` on `SelectTrigger
 | `SelectSeparator`    | Visual separator between groups.                                   |
 | `SelectHiddenSelect` | Hidden native select for form integration.                         |
 
-### Select Props
+### Select
 
-| Prop                  | Type                                  | Description                                     |
-| --------------------- | ------------------------------------- | ----------------------------------------------- |
-| `options`             | `T[]`                                 | Collection of options (or grouped options).     |
-| `optionValue`         | `keyof T \| ((option: T) => string)`  | Maps each option to its string value.           |
-| `optionTextValue`     | `keyof T \| ((option: T) => string)`  | Text value used for selected display.           |
-| `optionDisabled`      | `keyof T \| ((option: T) => boolean)` | Marks individual options as disabled.           |
-| `optionGroupChildren` | `keyof G \| ((group: G) => T[])`      | Resolves grouped option children.               |
-| `value`               | `T`                                   | Controlled selected value.                      |
-| `defaultValue`        | `T`                                   | Initial selected value for uncontrolled usage.  |
-| `onChange`            | `(value: T) => void`                  | Called when selection changes.                  |
-| `placeholder`         | `string`                              | Text shown when nothing is selected.            |
-| `placement`           | `"bottom" \| "bottom-start" \| ...`   | Floating placement for the content popup.       |
-| `disabled`            | `boolean`                             | Disables trigger and content interaction.       |
-| `validationState`     | `"valid" \| "invalid"`                | Applies validation semantics for form controls. |
+| Prop                  | Type                                  |
+| --------------------- | ------------------------------------- |
+| `options`             | `T[]`                                 |
+| `optionValue`         | `keyof T \| ((option: T) => string)`  |
+| `optionTextValue`     | `keyof T \| ((option: T) => string)`  |
+| `optionDisabled`      | `keyof T \| ((option: T) => boolean)` |
+| `optionGroupChildren` | `keyof G \| ((group: G) => T[])`      |
+| `value`               | `T`                                   |
+| `defaultValue`        | `T`                                   |
+| `onChange`            | `(value: T) => void`                  |
+| `placeholder`         | `string`                              |
+| `placement`           | `"bottom" \| "bottom-start" \| ...`   |
+| `disabled`            | `boolean`                             |
+| `validationState`     | `"valid" \| "invalid"`                |
 
-### SelectTrigger Props
+### SelectTrigger
 
-| Prop    | Type              | Default     | Description                 |
-| ------- | ----------------- | ----------- | --------------------------- |
-| `size`  | `"sm"\|"default"` | `"default"` | Trigger size variant.       |
-| `class` | `string`          | -           | Additional trigger classes. |
+| Prop    | Type              | Default     |
+| ------- | ----------------- | ----------- |
+| `size`  | `"sm"\|"default"` | `"default"` |
+| `class` | `string`          | -           |
 
 `SelectDescription` and `SelectErrorMessage` are also exported for accessible form hints and error messages.
 

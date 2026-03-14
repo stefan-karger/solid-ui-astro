@@ -18,7 +18,7 @@ component: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add badge
+npx solidui-cli@latest add badge
 ```
 
 </TabsContent>
@@ -95,12 +95,12 @@ You can customize the colors of a badge by adding custom classes such as `bg-gre
 | ------- | ------------------------------------ |
 | `Badge` | Root element that displays badge UI. |
 
-### Badge Props
+### Badge
 
-| Prop      | Type                                                                          | Default     | Description                                              |
-| --------- | ----------------------------------------------------------------------------- | ----------- | -------------------------------------------------------- |
-| `variant` | `"default" \| "secondary" \| "destructive" \| "outline" \| "ghost" \| "link"` | `"default"` | Visual style variant.                                    |
-| `class`   | `string`                                                                      | -           | Additional classes for custom layout or color overrides. |
-| `as`      | `ValidComponent`                                                              | `"span"`    | Polymorphic element type.                                |
+| Prop      | Type                                                                          | Default     |
+| --------- | ----------------------------------------------------------------------------- | ----------- |
+| `variant` | `"default" \| "secondary" \| "destructive" \| "outline" \| "ghost" \| "link"` | `"default"` |
+| `class`   | `string`                                                                      | -           |
+| `as`      | `ValidComponent`                                                              | `"span"`    |
 
 All native attributes for the chosen `as` element are forwarded to the root.

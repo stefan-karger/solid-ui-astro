@@ -18,7 +18,7 @@ component: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add hover-card
+npx solidui-cli@latest add hover-card
 ```
 
 </TabsContent>
@@ -47,7 +47,7 @@ npm install @kobalte/core
 
 ## Usage
 
-```tsx showLineNumbers
+```tsx
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "~/components/ui/hover-card"
 ```
 
@@ -108,12 +108,12 @@ Use `placement` on `HoverCard` to choose where the content appears.
 
 ### Common Props
 
-| Prop         | Type     | Description                                           |
-| ------------ | -------- | ----------------------------------------------------- |
-| `openDelay`  | `number` | Delay in milliseconds before content opens.           |
-| `closeDelay` | `number` | Delay in milliseconds before content closes.          |
-| `placement`  | `string` | Preferred floating placement such as `top` or `left`. |
-| `gutter`     | `number` | Space in pixels between trigger and content.          |
+| Prop         | Type     |
+| ------------ | -------- |
+| `openDelay`  | `number` |
+| `closeDelay` | `number` |
+| `placement`  | `string` |
+| `gutter`     | `number` |
 
 See the [Kobalte Hover Card](https://kobalte.dev/docs/core/components/hover-card)
 documentation for all available props and behavior details.

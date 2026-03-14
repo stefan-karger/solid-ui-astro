@@ -18,7 +18,7 @@ component: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add tabs
+npx solidui-cli@latest add tabs
 ```
 
 </TabsContent>
@@ -47,7 +47,7 @@ npm install @kobalte/core
 
 ## Usage
 
-```tsx showLineNumbers
+```tsx
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs"
 ```
 
@@ -134,31 +134,31 @@ Use the `disabled` prop on `TabsTrigger` to prevent selection.
 | `TabsTrigger` | Interactive tab button that selects a panel.           |
 | `TabsContent` | Panel content associated with a trigger value.         |
 
-### Tabs Props
+### Tabs
 
-| Prop             | Type                         | Default        | Description                       |
-| ---------------- | ---------------------------- | -------------- | --------------------------------- |
-| `value`          | `string`                     | -              | Controlled active tab value.      |
-| `defaultValue`   | `string`                     | -              | Initial tab value (uncontrolled). |
-| `onChange`       | `(value: string) => void`    | -              | Called when active value changes. |
-| `orientation`    | `"horizontal" \| "vertical"` | `"horizontal"` | Layout orientation for tabs.      |
-| `activationMode` | `"automatic" \| "manual"`    | `"automatic"`  | Select on focus or on activation. |
-| `class`          | `string`                     | -              | Additional classes for the root.  |
+| Prop             | Type                         | Default        |
+| ---------------- | ---------------------------- | -------------- |
+| `value`          | `string`                     | -              |
+| `defaultValue`   | `string`                     | -              |
+| `onChange`       | `(value: string) => void`    | -              |
+| `orientation`    | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `activationMode` | `"automatic" \| "manual"`    | `"automatic"`  |
+| `class`          | `string`                     | -              |
 
-### TabsList Props
+### TabsList
 
-| Prop      | Type                | Default     | Description                      |
-| --------- | ------------------- | ----------- | -------------------------------- |
-| `variant` | `"default"\|"line"` | `"default"` | Visual style for the tabs list.  |
-| `class`   | `string`            | -           | Additional classes for the list. |
+| Prop      | Type                | Default     |
+| --------- | ------------------- | ----------- |
+| `variant` | `"default"\|"line"` | `"default"` |
+| `class`   | `string`            | -           |
 
-### TabsTrigger Props
+### TabsTrigger
 
-| Prop       | Type      | Default | Description                                 |
-| ---------- | --------- | ------- | ------------------------------------------- |
-| `value`    | `string`  | -       | Unique value tied to a `TabsContent` panel. |
-| `disabled` | `boolean` | `false` | Prevents interaction for the trigger.       |
-| `class`    | `string`  | -       | Additional classes for the trigger element. |
+| Prop       | Type      | Default |
+| ---------- | --------- | ------- |
+| `value`    | `string`  | -       |
+| `disabled` | `boolean` | `false` |
+| `class`    | `string`  | -       |
 
 See the [Kobalte Tabs](https://kobalte.dev/docs/core/components/tabs) documentation
 for complete behavior and accessibility details.
