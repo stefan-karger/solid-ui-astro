@@ -9,13 +9,7 @@ type Props = HTMLAttributes<"div"> & {
   variant?: "default" | "info" | "warning"
 }
 
-const {
-  class: className,
-  title,
-  icon,
-  variant = "default",
-  ...props
-} = Astro.props
+const { class: className, title, icon, variant = "default", ...props } = Astro.props
 
 const hasIconSlot = Astro.slots.has("icon")
 const hasIcon = Boolean(icon) || hasIconSlot
@@ -37,16 +31,24 @@ const variantClass = {
   data-variant={variant}
   {...props}
 >
-  {hasIcon && (
-    <div class="col-start-1 row-span-2 mr-3 mt-0.5 text-current [&_svg]:size-4">
-      {icon}
-      {!icon && <slot name="icon" />}
-    </div>
-  )}
+  {
+    hasIcon && (
+      <div class="col-start-1 row-span-2 mt-0.5 mr-3 text-current [&_svg]:size-4">
+        {icon}
+        {!icon && <slot name="icon" />}
+      </div>
+    )
+  }
 
-  {title && (
-    <div class={cn("min-h-4 font-medium tracking-tight", hasIcon ? "col-start-2" : "col-start-1")}>{title}</div>
-  )}
+  {
+    title && (
+      <div
+        class={cn("min-h-4 font-medium tracking-tight", hasIcon ? "col-start-2" : "col-start-1")}
+      >
+        {title}
+      </div>
+    )
+  }
 
   <div
     class={cn(

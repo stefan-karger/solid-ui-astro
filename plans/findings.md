@@ -7,3 +7,4 @@
 - if splitProps is needed in a primitive make sure to split it into [local, others]
 - if splitProps is used make sure that props is never used in the jsx
 - the icons in the examples should always use lucide icons directly especially when the parameters of iconPlaceholder is used dynamically otherwise it breaks the icons:build run
+- empty fields inside api reference tables should be marked with a dash '-' (like in shadcn-ui)

@@ -4,16 +4,16 @@ export default function AvatarGroupExample() {
   return (
     <AvatarGroup class="grayscale">
       <Avatar>
-        <AvatarImage alt="@shadcn" src="https://github.com/shadcn.png" />
-        <AvatarFallback>CN</AvatarFallback>
+        <AvatarImage alt="@stefan-karger" src="https://github.com/stefan-karger.png" />
+        <AvatarFallback>SK</AvatarFallback>
       </Avatar>
       <Avatar>
-        <AvatarImage alt="@maxleiter" src="https://github.com/maxleiter.png" />
-        <AvatarFallback>LR</AvatarFallback>
+        <AvatarImage alt="@carere" src="https://github.com/carere.png" />
+        <AvatarFallback>KA</AvatarFallback>
       </Avatar>
       <Avatar>
-        <AvatarImage alt="@evilrabbit" src="https://github.com/evilrabbit.png" />
-        <AvatarFallback>ER</AvatarFallback>
+        <AvatarImage alt="@ryansolid" src="https://github.com/ryansolid" />
+        <AvatarFallback>RC</AvatarFallback>
       </Avatar>
     </AvatarGroup>
   )

@@ -1,900 +1,51 @@
 [
   {
-    "primitive": "navigation-menu",
-    "complexityScore": 1,
-    "source": "zaidan",
-    "tasks": [
-      {
-        "id": "primitive.navigation-menu",
-        "type": "primitive",
-        "dependsOn": [],
-        "finished": true
-      },
-      {
-        "id": "docs.navigation-menu",
-        "type": "docs",
-        "dependsOn": ["primitive.navigation-menu"],
-        "finished": true
-      },
-      {
-        "id": "examples.navigation-menu",
-        "type": "examples",
-        "dependsOn": ["docs.navigation-menu"],
-        "finished": true,
-        "checklist": [{ "name": "navigation-menu-demo", "finished": true }]
-      }
-    ]
-  },
-  {
-    "primitive": "hover-card",
-    "complexityScore": 2,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.hover-card", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.hover-card",
-        "type": "docs",
-        "dependsOn": ["primitive.hover-card"],
-        "finished": true
-      },
-      {
-        "id": "examples.hover-card",
-        "type": "examples",
-        "dependsOn": ["docs.hover-card"],
-        "finished": true,
-        "checklist": [
-          { "name": "hover-card-demo", "finished": true },
-          { "name": "hover-card-sides", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "label",
-    "complexityScore": 2,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.label", "type": "primitive", "dependsOn": [], "finished": true },
-      { "id": "docs.label", "type": "docs", "dependsOn": ["primitive.label"], "finished": true },
-      {
-        "id": "examples.label",
-        "type": "examples",
-        "dependsOn": ["docs.label"],
-        "finished": true,
-        "checklist": [
-          { "name": "label-demo", "finished": true },
-          { "name": "field-demo", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "aspect-ratio",
-    "complexityScore": 3,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.aspect-ratio", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.aspect-ratio",
-        "type": "docs",
-        "dependsOn": ["primitive.aspect-ratio"],
-        "finished": true
-      },
-      {
-        "id": "examples.aspect-ratio",
-        "type": "examples",
-        "dependsOn": ["docs.aspect-ratio"],
-        "finished": true,
-        "checklist": [
-          { "name": "aspect-ratio-demo", "finished": true },
-          { "name": "aspect-ratio-square", "finished": true },
-          { "name": "aspect-ratio-portrait", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "card",
-    "complexityScore": 3,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.card", "type": "primitive", "dependsOn": [], "finished": true },
-      { "id": "docs.card", "type": "docs", "dependsOn": ["primitive.card"], "finished": true },
-      {
-        "id": "examples.card",
-        "type": "examples",
-        "dependsOn": ["docs.card"],
-        "finished": true,
-        "checklist": [
-          { "name": "card-demo", "finished": true },
-          { "name": "card-small", "finished": true },
-          { "name": "card-image", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "direction",
-    "complexityScore": 3,
-    "source": "shadcn-only",
-    "tasks": [
-      { "id": "primitive.direction", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.direction",
-        "type": "docs",
-        "dependsOn": ["primitive.direction"],
-        "finished": true
-      },
-      {
-        "id": "examples.direction",
-        "type": "examples",
-        "dependsOn": ["docs.direction"],
-        "finished": true,
-        "checklist": []
-      }
-    ]
-  },
-  {
-    "primitive": "progress",
-    "complexityScore": 3,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.progress", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.progress",
-        "type": "docs",
-        "dependsOn": ["primitive.progress"],
-        "finished": true
-      },
-      {
-        "id": "examples.progress",
-        "type": "examples",
-        "dependsOn": ["docs.progress"],
-        "finished": true,
-        "checklist": [
-          { "name": "progress-demo", "finished": true },
-          { "name": "progress-label", "finished": true },
-          { "name": "progress-controlled", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "resizable",
-    "complexityScore": 3,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.resizable", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.resizable",
-        "type": "docs",
-        "dependsOn": ["primitive.resizable"],
-        "finished": true
-      },
-      {
-        "id": "examples.resizable",
-        "type": "examples",
-        "dependsOn": ["docs.resizable"],
-        "finished": true,
-        "checklist": [
-          { "name": "resizable-demo", "finished": true },
-          { "name": "resizable-vertical", "finished": true },
-          { "name": "resizable-handle", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "table",
-    "complexityScore": 3,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.table", "type": "primitive", "dependsOn": [], "finished": true },
-      { "id": "docs.table", "type": "docs", "dependsOn": ["primitive.table"], "finished": true },
-      {
-        "id": "examples.table",
-        "type": "examples",
-        "dependsOn": ["docs.table"],
-        "finished": true,
-        "checklist": [
-          { "name": "table-demo", "finished": true },
-          { "name": "table-footer", "finished": true },
-          { "name": "table-actions", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "collapsible",
-    "complexityScore": 4,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.collapsible", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.collapsible",
-        "type": "docs",
-        "dependsOn": ["primitive.collapsible"],
-        "finished": true
-      },
-      {
-        "id": "examples.collapsible",
-        "type": "examples",
-        "dependsOn": ["docs.collapsible"],
-        "finished": true,
-        "checklist": [
-          { "name": "collapsible-demo", "finished": true },
-          { "name": "collapsible-basic", "finished": true },
-          { "name": "collapsible-settings", "finished": true },
-          { "name": "collapsible-file-tree", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "drawer",
-    "complexityScore": 4,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.drawer", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.drawer",
-        "type": "docs",
-        "dependsOn": ["primitive.drawer"],
-        "finished": true
-      },
-      {
-        "id": "examples.drawer",
-        "type": "examples",
-        "dependsOn": ["docs.drawer"],
-        "finished": true,
-        "checklist": [
-          { "name": "drawer-demo", "finished": true },
-          { "name": "drawer-scrollable-content", "finished": true },
-          { "name": "drawer-sides", "finished": true },
-          { "name": "drawer-dialog", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "native-select",
-    "complexityScore": 4,
-    "source": "zaidan",
-    "tasks": [
-      {
-        "id": "primitive.native-select",
-        "type": "primitive",
-        "dependsOn": [],
-        "finished": true
-      },
-      {
-        "id": "docs.native-select",
-        "type": "docs",
-        "dependsOn": ["primitive.native-select"],
-        "finished": true
-      },
-      {
-        "id": "examples.native-select",
-        "type": "examples",
-        "dependsOn": ["docs.native-select"],
-        "finished": true,
-        "checklist": [
-          { "name": "native-select-demo", "finished": true },
-          { "name": "native-select-groups", "finished": true },
-          { "name": "native-select-disabled", "finished": true },
-          { "name": "native-select-invalid", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "popover",
-    "complexityScore": 4,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.popover", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.popover",
-        "type": "docs",
-        "dependsOn": ["primitive.popover"],
-        "finished": true
-      },
-      {
-        "id": "examples.popover",
-        "type": "examples",
-        "dependsOn": ["docs.popover"],
-        "finished": true,
-        "checklist": [
-          { "name": "popover-demo", "finished": true },
-          { "name": "popover-basic", "finished": true },
-          { "name": "popover-alignments", "finished": true },
-          { "name": "popover-form", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "separator",
-    "complexityScore": 4,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.separator", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.separator",
-        "type": "docs",
-        "dependsOn": ["primitive.separator"],
-        "finished": true
-      },
-      {
-        "id": "examples.separator",
-        "type": "examples",
-        "dependsOn": ["docs.separator"],
-        "finished": true,
-        "checklist": [
-          { "name": "separator-demo", "finished": true },
-          { "name": "separator-vertical", "finished": true },
-          { "name": "separator-menu", "finished": true },
-          { "name": "separator-list", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "tooltip",
-    "complexityScore": 4,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.tooltip", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.tooltip",
-        "type": "docs",
-        "dependsOn": ["primitive.tooltip"],
-        "finished": true
-      },
-      {
-        "id": "examples.tooltip",
-        "type": "examples",
-        "dependsOn": ["docs.tooltip"],
-        "finished": true,
-        "checklist": [
-          { "name": "tooltip-demo", "finished": true },
-          { "name": "tooltip-sides", "finished": true },
-          { "name": "tooltip-keyboard", "finished": true },
-          { "name": "tooltip-disabled", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "alert",
-    "complexityScore": 5,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.alert", "type": "primitive", "dependsOn": [], "finished": true },
-      { "id": "docs.alert", "type": "docs", "dependsOn": ["primitive.alert"], "finished": true },
-      {
-        "id": "examples.alert",
-        "type": "examples",
-        "dependsOn": ["docs.alert"],
-        "finished": true,
-        "checklist": [
-          { "name": "alert-demo", "finished": true },
-          { "name": "alert-basic", "finished": true },
-          { "name": "alert-destructive", "finished": true },
-          { "name": "alert-action", "finished": true },
-          { "name": "alert-colors", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "kbd",
-    "complexityScore": 5,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.kbd", "type": "primitive", "dependsOn": [], "finished": true },
-      { "id": "docs.kbd", "type": "docs", "dependsOn": ["primitive.kbd"], "finished": true },
-      {
-        "id": "examples.kbd",
-        "type": "examples",
-        "dependsOn": ["docs.kbd"],
-        "finished": true,
-        "checklist": [
-          { "name": "kbd-demo", "finished": true },
-          { "name": "kbd-group", "finished": true },
-          { "name": "kbd-button", "finished": true },
-          { "name": "kbd-tooltip", "finished": true },
-          { "name": "kbd-input-group", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "menubar",
-    "complexityScore": 5,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.menubar", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.menubar",
-        "type": "docs",
-        "dependsOn": ["primitive.menubar"],
-        "finished": true
-      },
-      {
-        "id": "examples.menubar",
-        "type": "examples",
-        "dependsOn": ["docs.menubar"],
-        "finished": true,
-        "checklist": [
-          { "name": "menubar-demo", "finished": true },
-          { "name": "menubar-checkbox", "finished": true },
-          { "name": "menubar-radio", "finished": true },
-          { "name": "menubar-submenu", "finished": true },
-          { "name": "menubar-icons", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "pagination",
-    "complexityScore": 5,
-    "source": "zaidan",
-    "tasks": [
-      {
-        "id": "primitive.pagination",
-        "type": "primitive",
-        "dependsOn": ["primitive.button"],
-        "finished": true
-      },
-      {
-        "id": "docs.pagination",
-        "type": "docs",
-        "dependsOn": ["primitive.pagination"],
-        "finished": true
-      },
-      {
-        "id": "examples.pagination",
-        "type": "examples",
-        "dependsOn": ["docs.pagination"],
-        "finished": true,
-        "checklist": [
-          { "name": "pagination-demo", "finished": true },
-          { "name": "pagination-simple", "finished": true },
-          { "name": "pagination-icons-only", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "sheet",
-    "complexityScore": 5,
-    "source": "zaidan",
-    "tasks": [
-      {
-        "id": "primitive.sheet",
-        "type": "primitive",
-        "dependsOn": ["primitive.button"],
-        "finished": true
-      },
-      { "id": "docs.sheet", "type": "docs", "dependsOn": ["primitive.sheet"], "finished": true },
-      {
-        "id": "examples.sheet",
-        "type": "examples",
-        "dependsOn": ["docs.sheet"],
-        "finished": true,
-        "checklist": [
-          { "name": "sheet-demo", "finished": true },
-          { "name": "sheet-side", "finished": true },
-          { "name": "sheet-no-close-button", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "tabs",
-    "complexityScore": 5,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.tabs", "type": "primitive", "dependsOn": [], "finished": true },
-      { "id": "docs.tabs", "type": "docs", "dependsOn": ["primitive.tabs"], "finished": true },
-      {
-        "id": "examples.tabs",
-        "type": "examples",
-        "dependsOn": ["docs.tabs"],
-        "finished": true,
-        "checklist": [
-          { "name": "tabs-demo", "finished": true },
-          { "name": "tabs-line", "finished": true },
-          { "name": "tabs-vertical", "finished": true },
-          { "name": "tabs-disabled", "finished": true },
-          { "name": "tabs-icons", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "textarea",
-    "complexityScore": 5,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.textarea", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.textarea",
-        "type": "docs",
-        "dependsOn": ["primitive.textarea"],
-        "finished": true
-      },
-      {
-        "id": "examples.textarea",
-        "type": "examples",
-        "dependsOn": ["docs.textarea"],
-        "finished": true,
-        "checklist": [
-          { "name": "textarea-demo", "finished": true },
-          { "name": "textarea-field", "finished": true },
-          { "name": "textarea-disabled", "finished": true },
-          { "name": "textarea-invalid", "finished": true },
-          { "name": "textarea-button", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "toggle",
-    "complexityScore": 5,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.toggle", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.toggle",
-        "type": "docs",
-        "dependsOn": ["primitive.toggle"],
-        "finished": true
-      },
-      {
-        "id": "examples.toggle",
-        "type": "examples",
-        "dependsOn": ["docs.toggle"],
-        "finished": true,
-        "checklist": [
-          { "name": "toggle-demo", "finished": true },
-          { "name": "toggle-outline", "finished": true },
-          { "name": "toggle-text", "finished": true },
-          { "name": "toggle-sizes", "finished": true },
-          { "name": "toggle-disabled", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "accordion",
-    "complexityScore": 6,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.accordion", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.accordion",
-        "type": "docs",
-        "dependsOn": ["primitive.accordion"],
-        "finished": true
-      },
-      {
-        "id": "examples.accordion",
-        "type": "examples",
-        "dependsOn": ["docs.accordion"],
-        "finished": true,
-        "checklist": [
-          { "name": "accordion-demo", "finished": true },
-          { "name": "accordion-basic", "finished": true },
-          { "name": "accordion-multiple", "finished": true },
-          { "name": "accordion-disabled", "finished": true },
-          { "name": "accordion-borders", "finished": true },
-          { "name": "accordion-card", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "badge",
-    "complexityScore": 6,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.badge", "type": "primitive", "dependsOn": [], "finished": true },
-      { "id": "docs.badge", "type": "docs", "dependsOn": ["primitive.badge"], "finished": true },
-      {
-        "id": "examples.badge",
-        "type": "examples",
-        "dependsOn": ["docs.badge"],
-        "finished": true,
-        "checklist": [
-          { "name": "badge-demo", "finished": true },
-          { "name": "badge-variants", "finished": true },
-          { "name": "badge-icon", "finished": true },
-          { "name": "badge-spinner", "finished": true },
-          { "name": "badge-link", "finished": true },
-          { "name": "badge-colors", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "breadcrumb",
-    "complexityScore": 6,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.breadcrumb", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.breadcrumb",
-        "type": "docs",
-        "dependsOn": ["primitive.breadcrumb"],
-        "finished": true
-      },
-      {
-        "id": "examples.breadcrumb",
-        "type": "examples",
-        "dependsOn": ["docs.breadcrumb"],
-        "finished": true,
-        "checklist": [
-          { "name": "breadcrumb-demo", "finished": true },
-          { "name": "breadcrumb-basic", "finished": true },
-          { "name": "breadcrumb-separator", "finished": true },
-          { "name": "breadcrumb-dropdown", "finished": true },
-          { "name": "breadcrumb-ellipsis", "finished": true },
-          { "name": "breadcrumb-link", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
     "primitive": "empty",
     "complexityScore": 6,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.empty", "type": "primitive", "dependsOn": [], "finished": false },
-      { "id": "docs.empty", "type": "docs", "dependsOn": ["primitive.empty"], "finished": false },
+      {
+        "id": "primitive.empty",
+        "type": "primitive",
+        "dependsOn": [],
+        "finished": false
+      },
+      {
+        "id": "docs.empty",
+        "type": "docs",
+        "dependsOn": ["primitive.empty"],
+        "finished": false
+      },
       {
         "id": "examples.empty",
         "type": "examples",
         "dependsOn": ["docs.empty"],
         "finished": false,
         "checklist": [
-          { "name": "empty-demo", "finished": false },
-          { "name": "empty-outline", "finished": false },
-          { "name": "empty-background", "finished": false },
-          { "name": "empty-avatar", "finished": false },
-          { "name": "empty-avatar-group", "finished": false },
-          { "name": "empty-input-group", "finished": false }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "radio-group",
-    "complexityScore": 6,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.radio-group", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.radio-group",
-        "type": "docs",
-        "dependsOn": ["primitive.radio-group"],
-        "finished": true
-      },
-      {
-        "id": "examples.radio-group",
-        "type": "examples",
-        "dependsOn": ["docs.radio-group"],
-        "finished": true,
-        "checklist": [
-          { "name": "radio-group-demo", "finished": true },
-          { "name": "radio-group-description", "finished": true },
-          { "name": "radio-group-choice-card", "finished": true },
-          { "name": "radio-group-fieldset", "finished": true },
-          { "name": "radio-group-disabled", "finished": true },
-          { "name": "radio-group-invalid", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "select",
-    "complexityScore": 6,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.select", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.select",
-        "type": "docs",
-        "dependsOn": ["primitive.select"],
-        "finished": true
-      },
-      {
-        "id": "examples.select",
-        "type": "examples",
-        "dependsOn": ["docs.select"],
-        "finished": true,
-        "checklist": [
-          { "name": "select-demo", "finished": true },
-          { "name": "select-align-item", "finished": true },
-          { "name": "select-groups", "finished": true },
-          { "name": "select-scrollable", "finished": true },
-          { "name": "select-disabled", "finished": true },
-          { "name": "select-invalid", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "skeleton",
-    "complexityScore": 6,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.skeleton", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.skeleton",
-        "type": "docs",
-        "dependsOn": ["primitive.skeleton"],
-        "finished": true
-      },
-      {
-        "id": "examples.skeleton",
-        "type": "examples",
-        "dependsOn": ["docs.skeleton"],
-        "finished": true,
-        "checklist": [
-          { "name": "skeleton-demo", "finished": true },
-          { "name": "skeleton-avatar", "finished": true },
-          { "name": "skeleton-card", "finished": true },
-          { "name": "skeleton-text", "finished": true },
-          { "name": "skeleton-form", "finished": true },
-          { "name": "skeleton-table", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "slider",
-    "complexityScore": 6,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.slider", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.slider",
-        "type": "docs",
-        "dependsOn": ["primitive.slider"],
-        "finished": true
-      },
-      {
-        "id": "examples.slider",
-        "type": "examples",
-        "dependsOn": ["docs.slider"],
-        "finished": true,
-        "checklist": [
-          { "name": "slider-demo", "finished": true },
-          { "name": "slider-range", "finished": true },
-          { "name": "slider-multiple", "finished": true },
-          { "name": "slider-vertical", "finished": true },
-          { "name": "slider-controlled", "finished": true },
-          { "name": "slider-disabled", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "switch",
-    "complexityScore": 6,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.switch", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.switch",
-        "type": "docs",
-        "dependsOn": ["primitive.switch"],
-        "finished": true
-      },
-      {
-        "id": "examples.switch",
-        "type": "examples",
-        "dependsOn": ["docs.switch"],
-        "finished": true,
-        "checklist": [
-          { "name": "switch-demo", "finished": true },
-          { "name": "switch-description", "finished": true },
-          { "name": "switch-choice-card", "finished": true },
-          { "name": "switch-disabled", "finished": true },
-          { "name": "switch-invalid", "finished": true },
-          { "name": "switch-sizes", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "checkbox",
-    "complexityScore": 7,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.checkbox", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.checkbox",
-        "type": "docs",
-        "dependsOn": ["primitive.checkbox"],
-        "finished": true
-      },
-      {
-        "id": "examples.checkbox",
-        "type": "examples",
-        "dependsOn": ["docs.checkbox"],
-        "finished": true,
-        "checklist": [
-          { "name": "checkbox-demo", "finished": true },
-          { "name": "checkbox-invalid", "finished": true },
-          { "name": "checkbox-basic", "finished": true },
-          { "name": "checkbox-description", "finished": true },
-          { "name": "checkbox-disabled", "finished": true },
-          { "name": "checkbox-group", "finished": true },
-          { "name": "checkbox-table", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "dialog",
-    "complexityScore": 7,
-    "source": "zaidan",
-    "tasks": [
-      {
-        "id": "primitive.dialog",
-        "type": "primitive",
-        "dependsOn": ["primitive.button"],
-        "finished": true
-      },
-      {
-        "id": "docs.dialog",
-        "type": "docs",
-        "dependsOn": ["primitive.dialog"],
-        "finished": true
-      },
-      {
-        "id": "examples.dialog",
-        "type": "examples",
-        "dependsOn": ["docs.dialog"],
-        "finished": true,
-        "checklist": [
-          { "name": "dialog-demo", "finished": true },
-          { "name": "dialog-close-button", "finished": true },
-          { "name": "dialog-no-close-button", "finished": true },
-          { "name": "dialog-sticky-footer", "finished": true },
-          { "name": "dialog-scrollable-content", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "spinner",
-    "complexityScore": 7,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.spinner", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.spinner",
-        "type": "docs",
-        "dependsOn": ["primitive.spinner"],
-        "finished": true
-      },
-      {
-        "id": "examples.spinner",
-        "type": "examples",
-        "dependsOn": ["docs.spinner"],
-        "finished": true,
-        "checklist": [
-          { "name": "spinner-demo", "finished": true },
-          { "name": "spinner-custom", "finished": true },
-          { "name": "spinner-size", "finished": true },
-          { "name": "spinner-button", "finished": true },
-          { "name": "spinner-badge", "finished": true },
-          { "name": "spinner-input-group", "finished": true },
-          { "name": "spinner-empty", "finished": true }
+          {
+            "name": "empty-demo",
+            "finished": false
+          },
+          {
+            "name": "empty-outline",
+            "finished": false
+          },
+          {
+            "name": "empty-background",
+            "finished": false
+          },
+          {
+            "name": "empty-avatar",
+            "finished": false
+          },
+          {
+            "name": "empty-avatar-group",
+            "finished": false
+          },
+          {
+            "name": "empty-input-group",
+            "finished": false
+          }
         ]
       }
     ]
@@ -922,12 +73,30 @@
         "dependsOn": ["docs.alert-dialog"],
         "finished": false,
         "checklist": [
-          { "name": "alert-dialog-demo", "finished": false },
-          { "name": "alert-dialog-basic", "finished": false },
-          { "name": "alert-dialog-small", "finished": false },
-          { "name": "alert-dialog-media", "finished": false },
-          { "name": "alert-dialog-small-media", "finished": false },
-          { "name": "alert-dialog-destructive", "finished": false }
+          {
+            "name": "alert-dialog-demo",
+            "finished": false
+          },
+          {
+            "name": "alert-dialog-basic",
+            "finished": false
+          },
+          {
+            "name": "alert-dialog-small",
+            "finished": false
+          },
+          {
+            "name": "alert-dialog-media",
+            "finished": false
+          },
+          {
+            "name": "alert-dialog-small-media",
+            "finished": false
+          },
+          {
+            "name": "alert-dialog-destructive",
+            "finished": false
+          }
         ]
       }
     ]
@@ -955,43 +124,30 @@
         "dependsOn": ["docs.carousel"],
         "finished": false,
         "checklist": [
-          { "name": "carousel-demo", "finished": false },
-          { "name": "carousel-size", "finished": false },
-          { "name": "carousel-spacing", "finished": false },
-          { "name": "carousel-orientation", "finished": false },
-          { "name": "carousel-api", "finished": false },
-          { "name": "carousel-plugin", "finished": false }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "avatar",
-    "complexityScore": 9,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.avatar", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.avatar",
-        "type": "docs",
-        "dependsOn": ["primitive.avatar"],
-        "finished": true
-      },
-      {
-        "id": "examples.avatar",
-        "type": "examples",
-        "dependsOn": ["docs.avatar"],
-        "finished": true,
-        "checklist": [
-          { "name": "avatar-demo", "finished": true },
-          { "name": "avatar-basic", "finished": true },
-          { "name": "avatar-badge", "finished": true },
-          { "name": "avatar-badge-icon", "finished": true },
-          { "name": "avatar-group", "finished": true },
-          { "name": "avatar-group-count", "finished": true },
-          { "name": "avatar-group-count-icon", "finished": true },
-          { "name": "avatar-size", "finished": true },
-          { "name": "avatar-dropdown", "finished": true }
+          {
+            "name": "carousel-demo",
+            "finished": false
+          },
+          {
+            "name": "carousel-size",
+            "finished": false
+          },
+          {
+            "name": "carousel-spacing",
+            "finished": false
+          },
+          {
+            "name": "carousel-orientation",
+            "finished": false
+          },
+          {
+            "name": "carousel-api",
+            "finished": false
+          },
+          {
+            "name": "carousel-plugin",
+            "finished": false
+          }
         ]
       }
     ]
@@ -1019,11 +175,26 @@
         "dependsOn": ["docs.command"],
         "finished": false,
         "checklist": [
-          { "name": "command-demo", "finished": false },
-          { "name": "command-basic", "finished": false },
-          { "name": "command-shortcuts", "finished": false },
-          { "name": "command-groups", "finished": false },
-          { "name": "command-scrollable", "finished": false }
+          {
+            "name": "command-demo",
+            "finished": false
+          },
+          {
+            "name": "command-basic",
+            "finished": false
+          },
+          {
+            "name": "command-shortcuts",
+            "finished": false
+          },
+          {
+            "name": "command-groups",
+            "finished": false
+          },
+          {
+            "name": "command-scrollable",
+            "finished": false
+          }
         ]
       }
     ]
@@ -1033,7 +204,12 @@
     "complexityScore": 9,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.context-menu", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "primitive.context-menu",
+        "type": "primitive",
+        "dependsOn": [],
+        "finished": false
+      },
       {
         "id": "docs.context-menu",
         "type": "docs",
@@ -1046,15 +222,42 @@
         "dependsOn": ["docs.context-menu"],
         "finished": false,
         "checklist": [
-          { "name": "context-menu-demo", "finished": false },
-          { "name": "context-menu-basic", "finished": false },
-          { "name": "context-menu-submenu", "finished": false },
-          { "name": "context-menu-shortcuts", "finished": false },
-          { "name": "context-menu-groups", "finished": false },
-          { "name": "context-menu-icons", "finished": false },
-          { "name": "context-menu-checkboxes", "finished": false },
-          { "name": "context-menu-radio", "finished": false },
-          { "name": "context-menu-destructive", "finished": false }
+          {
+            "name": "context-menu-demo",
+            "finished": false
+          },
+          {
+            "name": "context-menu-basic",
+            "finished": false
+          },
+          {
+            "name": "context-menu-submenu",
+            "finished": false
+          },
+          {
+            "name": "context-menu-shortcuts",
+            "finished": false
+          },
+          {
+            "name": "context-menu-groups",
+            "finished": false
+          },
+          {
+            "name": "context-menu-icons",
+            "finished": false
+          },
+          {
+            "name": "context-menu-checkboxes",
+            "finished": false
+          },
+          {
+            "name": "context-menu-radio",
+            "finished": false
+          },
+          {
+            "name": "context-menu-destructive",
+            "finished": false
+          }
         ]
       }
     ]
@@ -1064,7 +267,12 @@
     "complexityScore": 9,
     "source": "zaidan",
     "tasks": [
-      { "id": "primitive.input-otp", "type": "primitive", "dependsOn": [], "finished": false },
+      {
+        "id": "primitive.input-otp",
+        "type": "primitive",
+        "dependsOn": [],
+        "finished": false
+      },
       {
         "id": "docs.input-otp",
         "type": "docs",
@@ -1077,15 +285,42 @@
         "dependsOn": ["docs.input-otp"],
         "finished": false,
         "checklist": [
-          { "name": "input-otp-demo", "finished": false },
-          { "name": "input-otp-pattern", "finished": false },
-          { "name": "input-otp-separator", "finished": false },
-          { "name": "input-otp-disabled", "finished": false },
-          { "name": "input-otp-controlled", "finished": false },
-          { "name": "input-otp-invalid", "finished": false },
-          { "name": "input-otp-four-digits", "finished": false },
-          { "name": "input-otp-alphanumeric", "finished": false },
-          { "name": "input-otp-form", "finished": false }
+          {
+            "name": "input-otp-demo",
+            "finished": false
+          },
+          {
+            "name": "input-otp-pattern",
+            "finished": false
+          },
+          {
+            "name": "input-otp-separator",
+            "finished": false
+          },
+          {
+            "name": "input-otp-disabled",
+            "finished": false
+          },
+          {
+            "name": "input-otp-controlled",
+            "finished": false
+          },
+          {
+            "name": "input-otp-invalid",
+            "finished": false
+          },
+          {
+            "name": "input-otp-four-digits",
+            "finished": false
+          },
+          {
+            "name": "input-otp-alphanumeric",
+            "finished": false
+          },
+          {
+            "name": "input-otp-form",
+            "finished": false
+          }
         ]
       }
     ]
@@ -1113,334 +348,34 @@
         "dependsOn": ["docs.toggle-group"],
         "finished": false,
         "checklist": [
-          { "name": "toggle-group-demo", "finished": false },
-          { "name": "toggle-group-outline", "finished": false },
-          { "name": "toggle-group-sizes", "finished": false },
-          { "name": "toggle-group-spacing", "finished": false },
-          { "name": "toggle-group-vertical", "finished": false },
-          { "name": "toggle-group-disabled", "finished": false },
-          { "name": "toggle-group-font-weight-selector", "finished": false }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "dropdown-menu",
-    "complexityScore": 12,
-    "source": "zaidan",
-    "tasks": [
-      {
-        "id": "primitive.dropdown-menu",
-        "type": "primitive",
-        "dependsOn": [],
-        "finished": true
-      },
-      {
-        "id": "docs.dropdown-menu",
-        "type": "docs",
-        "dependsOn": ["primitive.dropdown-menu"],
-        "finished": true
-      },
-      {
-        "id": "examples.dropdown-menu",
-        "type": "examples",
-        "dependsOn": ["docs.dropdown-menu"],
-        "finished": true,
-        "checklist": [
-          { "name": "dropdown-menu-demo", "finished": true },
-          { "name": "dropdown-menu-basic", "finished": true },
-          { "name": "dropdown-menu-submenu", "finished": true },
-          { "name": "dropdown-menu-shortcuts", "finished": true },
-          { "name": "dropdown-menu-icons", "finished": true },
-          { "name": "dropdown-menu-checkboxes", "finished": true },
-          { "name": "dropdown-menu-checkboxes-icons", "finished": true },
-          { "name": "dropdown-menu-radio-group", "finished": true },
-          { "name": "dropdown-menu-radio-icons", "finished": true },
-          { "name": "dropdown-menu-destructive", "finished": true },
-          { "name": "dropdown-menu-avatar", "finished": true },
-          { "name": "dropdown-menu-complex", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "item",
-    "complexityScore": 12,
-    "source": "zaidan",
-    "tasks": [
-      {
-        "id": "primitive.item",
-        "type": "primitive",
-        "dependsOn": ["primitive.separator"],
-        "finished": true
-      },
-      { "id": "docs.item", "type": "docs", "dependsOn": ["primitive.item"], "finished": true },
-      {
-        "id": "examples.item",
-        "type": "examples",
-        "dependsOn": ["docs.item"],
-        "finished": true,
-        "checklist": [
-          { "name": "item-demo", "finished": true },
-          { "name": "item-variant", "finished": true },
-          { "name": "item-size", "finished": true },
-          { "name": "item-icon", "finished": true },
-          { "name": "item-avatar", "finished": true },
-          { "name": "item-image", "finished": true },
-          { "name": "item-group", "finished": true },
-          { "name": "item-header", "finished": true },
-          { "name": "item-link", "finished": true },
-          { "name": "item-dropdown", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "button-group",
-    "complexityScore": 13,
-    "source": "zaidan",
-    "tasks": [
-      {
-        "id": "primitive.button-group",
-        "type": "primitive",
-        "dependsOn": ["primitive.separator"],
-        "finished": true
-      },
-      {
-        "id": "docs.button-group",
-        "type": "docs",
-        "dependsOn": ["primitive.button-group"],
-        "finished": true
-      },
-      {
-        "id": "examples.button-group",
-        "type": "examples",
-        "dependsOn": ["docs.button-group"],
-        "finished": true,
-        "checklist": [
-          { "name": "button-group-demo", "finished": true },
-          { "name": "button-group-orientation", "finished": true },
-          { "name": "button-group-size", "finished": true },
-          { "name": "button-group-nested", "finished": true },
-          { "name": "button-group-separator", "finished": true },
-          { "name": "button-group-split", "finished": true },
-          { "name": "button-group-input", "finished": true },
-          { "name": "button-group-input-group", "finished": true },
-          { "name": "button-group-dropdown", "finished": true },
-          { "name": "button-group-select", "finished": true },
-          { "name": "button-group-popover", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "sidebar",
-    "complexityScore": 13,
-    "source": "zaidan",
-    "tasks": [
-      {
-        "id": "primitive.sidebar",
-        "type": "primitive",
-        "dependsOn": [
-          "primitive.button",
-          "primitive.input",
-          "primitive.separator",
-          "primitive.sheet",
-          "primitive.skeleton",
-          "primitive.tooltip"
-        ],
-        "finished": true
-      },
-      {
-        "id": "docs.sidebar",
-        "type": "docs",
-        "dependsOn": ["primitive.sidebar"],
-        "finished": true
-      },
-      {
-        "id": "examples.sidebar",
-        "type": "examples",
-        "dependsOn": ["docs.sidebar"],
-        "finished": true,
-        "checklist": [{ "name": "sidebar-demo", "finished": true }]
-      }
-    ]
-  },
-  {
-    "primitive": "button",
-    "complexityScore": 14,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.button", "type": "primitive", "dependsOn": [], "finished": true },
-      {
-        "id": "docs.button",
-        "type": "docs",
-        "dependsOn": ["primitive.button"],
-        "finished": true
-      },
-      {
-        "id": "examples.button",
-        "type": "examples",
-        "dependsOn": ["docs.button"],
-        "finished": true,
-        "checklist": [
-          { "name": "button-demo", "finished": true },
-          { "name": "button-size", "finished": true },
-          { "name": "button-default", "finished": true },
-          { "name": "button-outline", "finished": true },
-          { "name": "button-secondary", "finished": true },
-          { "name": "button-ghost", "finished": true },
-          { "name": "button-destructive", "finished": true },
-          { "name": "button-link", "finished": true },
-          { "name": "button-icon", "finished": true },
-          { "name": "button-with-icon", "finished": true },
-          { "name": "button-rounded", "finished": true },
-          { "name": "button-spinner", "finished": true },
-          { "name": "button-group-demo", "finished": true },
-          { "name": "button-aschild", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "input",
-    "complexityScore": 14,
-    "source": "zaidan",
-    "tasks": [
-      { "id": "primitive.input", "type": "primitive", "dependsOn": [], "finished": true },
-      { "id": "docs.input", "type": "docs", "dependsOn": ["primitive.input"], "finished": true },
-      {
-        "id": "examples.input",
-        "type": "examples",
-        "dependsOn": ["docs.input"],
-        "finished": true,
-        "checklist": [
-          { "name": "input-demo", "finished": true },
-          { "name": "input-basic", "finished": true },
-          { "name": "input-field", "finished": true },
-          { "name": "input-fieldgroup", "finished": true },
-          { "name": "input-disabled", "finished": true },
-          { "name": "input-invalid", "finished": true },
-          { "name": "input-file", "finished": true },
-          { "name": "input-inline", "finished": true },
-          { "name": "input-grid", "finished": true },
-          { "name": "input-required", "finished": true },
-          { "name": "input-badge", "finished": true },
-          { "name": "input-input-group", "finished": true },
-          { "name": "input-button-group", "finished": true },
-          { "name": "input-form", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "combobox",
-    "complexityScore": 15,
-    "source": "zaidan",
-    "tasks": [
-      {
-        "id": "primitive.combobox",
-        "type": "primitive",
-        "dependsOn": ["primitive.button", "primitive.input-group"],
-        "finished": true
-      },
-      {
-        "id": "docs.combobox",
-        "type": "docs",
-        "dependsOn": ["primitive.combobox"],
-        "finished": true
-      },
-      {
-        "id": "examples.combobox",
-        "type": "examples",
-        "dependsOn": ["docs.combobox"],
-        "finished": true,
-        "checklist": [
-          { "name": "combobox-demo", "finished": true },
-          { "name": "combobox-basic", "finished": true },
-          { "name": "combobox-multiple", "finished": true },
-          { "name": "combobox-clear", "finished": true },
-          { "name": "combobox-groups", "finished": true },
-          { "name": "combobox-custom", "finished": true },
-          { "name": "combobox-invalid", "finished": true },
-          { "name": "combobox-disabled", "finished": true },
-          { "name": "combobox-auto-highlight", "finished": true },
-          { "name": "combobox-popup", "finished": true },
-          { "name": "combobox-input-group", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "field",
-    "complexityScore": 16,
-    "source": "zaidan",
-    "tasks": [
-      {
-        "id": "primitive.field",
-        "type": "primitive",
-        "dependsOn": ["primitive.label", "primitive.separator"],
-        "finished": true
-      },
-      { "id": "docs.field", "type": "docs", "dependsOn": ["primitive.field"], "finished": true },
-      {
-        "id": "examples.field",
-        "type": "examples",
-        "dependsOn": ["docs.field"],
-        "finished": true,
-        "checklist": [
-          { "name": "field-demo", "finished": true },
-          { "name": "field-input", "finished": true },
-          { "name": "field-textarea", "finished": true },
-          { "name": "field-select", "finished": true },
-          { "name": "field-slider", "finished": true },
-          { "name": "field-fieldset", "finished": true },
-          { "name": "field-checkbox", "finished": true },
-          { "name": "field-radio", "finished": true },
-          { "name": "field-switch", "finished": true },
-          { "name": "field-choice-card", "finished": true },
-          { "name": "field-group", "finished": true },
-          { "name": "field-responsive", "finished": true }
-        ]
-      }
-    ]
-  },
-  {
-    "primitive": "input-group",
-    "complexityScore": 19,
-    "source": "zaidan",
-    "tasks": [
-      {
-        "id": "primitive.input-group",
-        "type": "primitive",
-        "dependsOn": ["primitive.button", "primitive.input", "primitive.textarea"],
-        "finished": true
-      },
-      {
-        "id": "docs.input-group",
-        "type": "docs",
-        "dependsOn": ["primitive.input-group"],
-        "finished": true
-      },
-      {
-        "id": "examples.input-group",
-        "type": "examples",
-        "dependsOn": ["docs.input-group"],
-        "finished": true,
-        "checklist": [
-          { "name": "input-group-demo", "finished": true },
-          { "name": "input-group-inline-start", "finished": true },
-          { "name": "input-group-inline-end", "finished": true },
-          { "name": "input-group-block-start", "finished": true },
-          { "name": "input-group-block-end", "finished": true },
-          { "name": "input-group-icon", "finished": true },
-          { "name": "input-group-text", "finished": true },
-          { "name": "input-group-button", "finished": true },
-          { "name": "input-group-kbd", "finished": true },
-          { "name": "input-group-dropdown", "finished": true },
-          { "name": "input-group-spinner", "finished": true },
-          { "name": "input-group-textarea", "finished": true },
-          { "name": "input-group-custom", "finished": true }
+          {
+            "name": "toggle-group-demo",
+            "finished": false
+          },
+          {
+            "name": "toggle-group-outline",
+            "finished": false
+          },
+          {
+            "name": "toggle-group-sizes",
+            "finished": false
+          },
+          {
+            "name": "toggle-group-spacing",
+            "finished": false
+          },
+          {
+            "name": "toggle-group-vertical",
+            "finished": false
+          },
+          {
+            "name": "toggle-group-disabled",
+            "finished": false
+          },
+          {
+            "name": "toggle-group-font-weight-selector",
+            "finished": false
+          }
         ]
       }
     ]

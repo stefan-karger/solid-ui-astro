@@ -178,7 +178,7 @@ Container that renders a semantic `fieldset` with spacing presets.
 
 | Prop    | Type     | Default |
 | ------- | -------- | ------- |
-| `class` | `string` |         |
+| `class` | `string` | -       |
 
 ```tsx
 <FieldSet>
@@ -194,7 +194,7 @@ Legend element for a `FieldSet`. Switch to the `label` variant to align with lab
 | Prop      | Type                  | Default    |
 | --------- | --------------------- | ---------- |
 | `variant` | `"legend" \| "label"` | `"legend"` |
-| `class`   | `string`              |            |
+| `class`   | `string`              | -          |
 
 ```tsx
 <FieldLegend variant="label">Notification Preferences</FieldLegend>
@@ -206,7 +206,7 @@ Layout wrapper that stacks `Field` components and enables container queries for 
 
 | Prop    | Type     | Default |
 | ------- | -------- | ------- |
-| `class` | `string` |         |
+| `class` | `string` | -       |
 
 ```tsx
 <FieldGroup class="@container/field-group flex flex-col gap-6">
@@ -222,8 +222,8 @@ The core wrapper for a single field. Provides orientation control and invalid-st
 | Prop           | Type                                         | Default      |
 | -------------- | -------------------------------------------- | ------------ |
 | `orientation`  | `"vertical" \| "horizontal" \| "responsive"` | `"vertical"` |
-| `class`        | `string`                                     |              |
-| `data-invalid` | `boolean`                                    |              |
+| `class`        | `string`                                     | -            |
+| `data-invalid` | `boolean`                                    | -            |
 
 ```tsx
 <Field orientation="horizontal">
@@ -238,7 +238,7 @@ Flex column that groups control descriptions when label and control are arranged
 
 | Prop    | Type     | Default |
 | ------- | -------- | ------- |
-| `class` | `string` |         |
+| `class` | `string` | -       |
 
 ```tsx
 <Field>
@@ -256,7 +256,7 @@ Label styled for direct controls and nested field-card layouts.
 
 | Prop    | Type     | Default |
 | ------- | -------- | ------- |
-| `class` | `string` |         |
+| `class` | `string` | -       |
 
 ```tsx
 <FieldLabel for="email">Email</FieldLabel>
@@ -268,7 +268,7 @@ Renders a title with label styling inside `FieldContent`.
 
 | Prop    | Type     | Default |
 | ------- | -------- | ------- |
-| `class` | `string` |         |
+| `class` | `string` | -       |
 
 ```tsx
 <FieldContent>
@@ -283,7 +283,7 @@ Helper text slot that balances long lines in horizontal layouts.
 
 | Prop    | Type     | Default |
 | ------- | -------- | ------- |
-| `class` | `string` |         |
+| `class` | `string` | -       |
 
 ```tsx
 <FieldDescription>We never share your email with anyone.</FieldDescription>
@@ -295,7 +295,7 @@ Visual divider to separate sections inside a `FieldGroup`. Accepts optional inli
 
 | Prop    | Type     | Default |
 | ------- | -------- | ------- |
-| `class` | `string` |         |
+| `class` | `string` | -       |
 
 ```tsx
 <FieldSeparator>Or continue with</FieldSeparator>
@@ -307,8 +307,8 @@ Accessible error container that accepts children or an `errors` array.
 
 | Prop     | Type                                       | Default |
 | -------- | ------------------------------------------ | ------- |
-| `errors` | `Array<{ message?: string } \| undefined>` |         |
-| `class`  | `string`                                   |         |
+| `errors` | `Array<{ message?: string } \| undefined>` | -       |
+| `class`  | `string`                                   | -       |
 
 ```tsx
 <FieldError errors={errors.username} />

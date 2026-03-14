@@ -138,27 +138,27 @@ Use the `disabled` prop on `TabsTrigger` to prevent selection.
 
 | Prop             | Type                         | Default        | Description                       |
 | ---------------- | ---------------------------- | -------------- | --------------------------------- |
-| `value`          | `string`                     |                | Controlled active tab value.      |
-| `defaultValue`   | `string`                     |                | Initial tab value (uncontrolled). |
-| `onChange`       | `(value: string) => void`    |                | Called when active value changes. |
+| `value`          | `string`                     | -              | Controlled active tab value.      |
+| `defaultValue`   | `string`                     | -              | Initial tab value (uncontrolled). |
+| `onChange`       | `(value: string) => void`    | -              | Called when active value changes. |
 | `orientation`    | `"horizontal" \| "vertical"` | `"horizontal"` | Layout orientation for tabs.      |
 | `activationMode` | `"automatic" \| "manual"`    | `"automatic"`  | Select on focus or on activation. |
-| `class`          | `string`                     |                | Additional classes for the root.  |
+| `class`          | `string`                     | -              | Additional classes for the root.  |
 
 ### TabsList Props
 
 | Prop      | Type                | Default     | Description                      |
 | --------- | ------------------- | ----------- | -------------------------------- |
 | `variant` | `"default"\|"line"` | `"default"` | Visual style for the tabs list.  |
-| `class`   | `string`            |             | Additional classes for the list. |
+| `class`   | `string`            | -           | Additional classes for the list. |
 
 ### TabsTrigger Props
 
 | Prop       | Type      | Default | Description                                 |
 | ---------- | --------- | ------- | ------------------------------------------- |
-| `value`    | `string`  |         | Unique value tied to a `TabsContent` panel. |
+| `value`    | `string`  | -       | Unique value tied to a `TabsContent` panel. |
 | `disabled` | `boolean` | `false` | Prevents interaction for the trigger.       |
-| `class`    | `string`  |         | Additional classes for the trigger element. |
+| `class`    | `string`  | -       | Additional classes for the trigger element. |
 
 See the [Kobalte Tabs](https://kobalte.dev/docs/core/components/tabs) documentation
 for complete behavior and accessibility details.

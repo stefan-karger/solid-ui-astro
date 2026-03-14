@@ -19,14 +19,14 @@ const people = [
     email: "shadcn@vercel.com"
   },
   {
-    username: "maxleiter",
-    avatar: "https://github.com/maxleiter.png",
-    email: "maxleiter@vercel.com"
+    username: "carere",
+    avatar: "https://github.com/carere.png",
+    email: "carere@vercel.com"
   },
   {
-    username: "evilrabbit",
-    avatar: "https://github.com/evilrabbit.png",
-    email: "evilrabbit@vercel.com"
+    username: "ryansolid",
+    avatar: "https://github.com/ryansolid",
+    email: "ryansolid@vercel.com"
   }
 ]
 
@@ -38,7 +38,7 @@ export default function ItemGroupExample() {
           <Item variant="outline">
             <ItemMedia>
               <img
-                alt={person.username}
+                alt={`@${person.username}`}
                 class="size-8 rounded-full object-cover grayscale"
                 src={person.avatar}
               />

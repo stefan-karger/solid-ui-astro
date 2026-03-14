@@ -126,11 +126,11 @@ You can combine the `Dialog` and `Drawer` components to render a dialog on deskt
 | Prop                      | Type                                                 | Default    | Description                                      |
 | ------------------------- | ---------------------------------------------------- | ---------- | ------------------------------------------------ |
 | `side`                    | `"top" &#124; "right" &#124; "bottom" &#124; "left"` | `"bottom"` | The side the drawer opens from.                  |
-| `open`                    | `boolean`                                            |            | Controlled open state.                           |
+| `open`                    | `boolean`                                            | -          | Controlled open state.                           |
 | `defaultOpen`             | `boolean`                                            | `false`    | Initial open state in uncontrolled mode.         |
-| `onOpenChange`            | `(open: boolean) => void`                            |            | Called when open state changes.                  |
+| `onOpenChange`            | `(open: boolean) => void`                            | -          | Called when open state changes.                  |
 | `snapPoints`              | `Size[]`                                             | `[0, 1]`   | Positions the drawer can snap to while dragging. |
-| `activeSnapPoint`         | `Size`                                               |            | Controlled active snap point.                    |
+| `activeSnapPoint`         | `Size`                                               | -          | Controlled active snap point.                    |
 | `allowSkippingSnapPoints` | `boolean`                                            | `true`     | Allows skipping intermediate snap points.        |
 | `closeOnOutsidePointer`   | `boolean`                                            | `true`     | Closes when pointer interaction happens outside. |
 | `closeOnEscapeKeyDown`    | `boolean`                                            | `true`     | Closes when pressing the Escape key.             |

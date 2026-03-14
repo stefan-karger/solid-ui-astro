@@ -47,7 +47,7 @@ npm install @kobalte/core
 
 ## Usage
 
-```tsx showLineNumbers
+```tsx
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
 ```
 
@@ -127,7 +127,7 @@ Root container for avatar image and fallback content.
 | Prop    | Type                        | Default     |
 | ------- | --------------------------- | ----------- |
 | `size`  | `"default" \| "sm" \| "lg"` | `"default"` |
-| `class` | `string`                    |             |
+| `class` | `string`                    | -           |
 
 ### AvatarImage
 
@@ -135,9 +135,9 @@ Image element displayed when `src` loads successfully.
 
 | Prop    | Type     | Default |
 | ------- | -------- | ------- |
-| `src`   | `string` |         |
-| `alt`   | `string` |         |
-| `class` | `string` |         |
+| `src`   | `string` | -       |
+| `alt`   | `string` | -       |
+| `class` | `string` | -       |
 
 ### AvatarFallback
 
@@ -145,7 +145,7 @@ Fallback element rendered when the image is unavailable.
 
 | Prop    | Type     | Default |
 | ------- | -------- | ------- |
-| `class` | `string` |         |
+| `class` | `string` | -       |
 
 ### AvatarBadge
 
@@ -153,7 +153,7 @@ Badge indicator positioned on top of the avatar.
 
 | Prop    | Type     | Default |
 | ------- | -------- | ------- |
-| `class` | `string` |         |
+| `class` | `string` | -       |
 
 ### AvatarGroup
 
@@ -161,7 +161,7 @@ Container for overlapping avatars.
 
 | Prop    | Type     | Default |
 | ------- | -------- | ------- |
-| `class` | `string` |         |
+| `class` | `string` | -       |
 
 ### AvatarGroupCount
 
@@ -169,6 +169,6 @@ Count indicator for additional avatars in a group.
 
 | Prop    | Type     | Default |
 | ------- | -------- | ------- |
-| `class` | `string` |         |
+| `class` | `string` | -       |
 
 All supported props from [Kobalte Image](https://kobalte.dev/docs/core/components/image) are forwarded to the respective parts.

@@ -15,9 +15,9 @@ export default function ItemAvatar() {
       <Item variant="outline">
         <ItemMedia>
           <img
-            alt="Evil Rabbit"
+            alt="@ryansolid"
             class="size-10 rounded-full object-cover grayscale"
-            src="https://github.com/evilrabbit.png"
+            src="https://github.com/ryansolid"
           />
         </ItemMedia>
         <ItemContent>
@@ -40,14 +40,14 @@ export default function ItemAvatar() {
               src="https://github.com/shadcn.png"
             />
             <img
-              alt="maxleiter"
+              alt="@carere"
               class="hidden size-8 rounded-full object-cover sm:block"
-              src="https://github.com/maxleiter.png"
+              src="https://github.com/carere.png"
             />
             <img
-              alt="evilrabbit"
+              alt="@ryansolid"
               class="size-8 rounded-full object-cover"
-              src="https://github.com/evilrabbit.png"
+              src="https://github.com/ryansolid"
             />
           </div>
         </ItemMedia>

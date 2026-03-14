@@ -14,8 +14,8 @@ export default function AvatarDropdown() {
     <DropdownMenu>
       <DropdownMenuTrigger as={Button} class="rounded-full" size="icon" variant="ghost">
         <Avatar>
-          <AvatarImage alt="shadcn" src="https://github.com/shadcn.png" />
-          <AvatarFallback>CN</AvatarFallback>
+          <AvatarImage alt="@stefan-karger" src="https://github.com/stefan-karger.png" />
+          <AvatarFallback>SK</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent class="w-32">

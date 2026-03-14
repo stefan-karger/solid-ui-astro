@@ -4,8 +4,8 @@ import { Avatar, AvatarBadge, AvatarFallback, AvatarImage } from "~/registry/ui/
 export default function AvatarBadgeIcon() {
   return (
     <Avatar class="grayscale">
-      <AvatarImage alt="@pranathip" src="https://github.com/pranathip.png" />
-      <AvatarFallback>PP</AvatarFallback>
+      <AvatarImage alt="@michaelessiet" src="https://github.com/michaelessiet.png" />
+      <AvatarFallback>ME</AvatarFallback>
       <AvatarBadge>
         <IconPlaceholder class="size-3" lucide="PlusIcon" tabler="IconPlus" />
       </AvatarBadge>
