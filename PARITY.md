@@ -7,7 +7,7 @@
 | `alert-dialog`    |           |          |      |
 | `aspect-ratio`    | x         | x        | x    |
 | `avatar`          | x         | x        | x    |
-| `badge`           |           |          |      |
+| `badge`           | x         | x        | x    |
 | `breadcrumb`      |           |          |      |
 | `button`          |           |          |      |
 | `button-group`    |           |          |      |

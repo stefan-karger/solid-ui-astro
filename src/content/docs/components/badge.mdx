@@ -47,75 +47,43 @@ npm install @kobalte/core
 
 ## Usage
 
-```tsx showLineNumbers
+```tsx
 import { Badge } from "~/components/ui/badge"
 ```
 
-```tsx showLineNumbers
-<Badge>Badge</Badge>
-```
-
-## Variants
-
-Use the `variant` prop to switch badge emphasis.
-
-```tsx showLineNumbers
-<Badge>Default</Badge>
-<Badge variant="secondary">Secondary</Badge>
-<Badge variant="destructive">Destructive</Badge>
-<Badge variant="outline">Outline</Badge>
-<Badge variant="ghost">Ghost</Badge>
-<Badge variant="link">Link</Badge>
-```
-
-## Icon and Spinner
-
-Add `data-icon="inline-start"` or `data-icon="inline-end"` to icon elements for spacing.
-
-```tsx showLineNumbers
-<Badge>
-  <svg class="size-3" data-icon="inline-start" aria-hidden="true" />
-  Verified
-</Badge>
-```
-
-## As Link
-
-Set `as="a"` with `href` to render badges as links.
-
-```tsx showLineNumbers
-<Badge as="a" href="#" variant="secondary">
-  Changelog
-</Badge>
-```
-
-## Custom Colors
-
-Override classes directly for custom color schemes.
-
-```tsx showLineNumbers
-<Badge class="bg-blue-600 text-blue-50">Blue</Badge>
+```tsx
+<Badge variant="default | outline | secondary | destructive">Badge</Badge>
 ```
 
 ## Examples
 
 ### Variants
 
+Use the `variant` prop to change the variant of the badge.
+
 <ComponentPreview name="badge-variants" />
 
 ### Icon
+
+You can render an icon inside the badge. Use `data-icon="inline-start"` to render the icon on the left and `data-icon="inline-end"` to render the icon on the right.
 
 <ComponentPreview name="badge-icon" />
 
 ### Spinner
 
+You can render a spinner inside the badge. Remember to add the `data-icon="inline-start"` or `data-icon="inline-end"` prop to the spinner.
+
 <ComponentPreview name="badge-spinner" />
 
 ### Link
 
+Use the `as` prop to render a link as a badge.
+
 <ComponentPreview name="badge-link" />
 
-### Colors
+### Custom Colors
+
+You can customize the colors of a badge by adding custom classes such as `bg-green-50 dark:bg-green-800` to the `Badge` component.
 
 <ComponentPreview name="badge-colors" />
 
@@ -129,11 +97,10 @@ Override classes directly for custom color schemes.
 
 ### Badge Props
 
-| Prop        | Type                                                                          | Default     | Description                                               |
-| ----------- | ----------------------------------------------------------------------------- | ----------- | --------------------------------------------------------- |
-| `variant`   | `"default" \| "secondary" \| "destructive" \| "outline" \| "ghost" \| "link"` | `"default"` | Visual style variant.                                     |
-| `as`        | `ValidComponent`                                                              | `"span"`    | Polymorphic element type.                                 |
-| `textValue` | `string`                                                                      | -           | Accessible text when children are not plain text content. |
-| `class`     | `string`                                                                      | -           | Additional classes for custom layout or color overrides.  |
+| Prop      | Type                                                                          | Default     | Description                                              |
+| --------- | ----------------------------------------------------------------------------- | ----------- | -------------------------------------------------------- |
+| `variant` | `"default" \| "secondary" \| "destructive" \| "outline" \| "ghost" \| "link"` | `"default"` | Visual style variant.                                    |
+| `class`   | `string`                                                                      | -           | Additional classes for custom layout or color overrides. |
+| `as`      | `ValidComponent`                                                              | `"span"`    | Polymorphic element type.                                |
 
 All native attributes for the chosen `as` element are forwarded to the root.
