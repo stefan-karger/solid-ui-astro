@@ -334,47 +334,47 @@
         "id": "primitive.toggle-group",
         "type": "primitive",
         "dependsOn": ["primitive.toggle"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "docs.toggle-group",
         "type": "docs",
         "dependsOn": ["primitive.toggle-group"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.toggle-group",
         "type": "examples",
         "dependsOn": ["docs.toggle-group"],
-        "finished": false,
+        "finished": true,
         "checklist": [
           {
             "name": "toggle-group-demo",
-            "finished": false
+            "finished": true
           },
           {
             "name": "toggle-group-outline",
-            "finished": false
+            "finished": true
           },
           {
             "name": "toggle-group-sizes",
-            "finished": false
+            "finished": true
           },
           {
             "name": "toggle-group-spacing",
-            "finished": false
+            "finished": true
           },
           {
             "name": "toggle-group-vertical",
-            "finished": false
+            "finished": true
           },
           {
             "name": "toggle-group-disabled",
-            "finished": false
+            "finished": true
           },
           {
             "name": "toggle-group-font-weight-selector",
-            "finished": false
+            "finished": true
           }
         ]
       }

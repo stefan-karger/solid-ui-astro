@@ -2763,6 +2763,83 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "toggle-group-demo",
+    type: "registry:example",
+    registryDependencies: ["toggle-group"],
+    files: [
+      {
+        path: "examples/toggle-group-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "toggle-group-outline",
+    type: "registry:example",
+    registryDependencies: ["toggle-group"],
+    files: [
+      {
+        path: "examples/toggle-group-outline.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "toggle-group-sizes",
+    type: "registry:example",
+    registryDependencies: ["toggle-group"],
+    files: [
+      {
+        path: "examples/toggle-group-sizes.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "toggle-group-spacing",
+    type: "registry:example",
+    registryDependencies: ["toggle-group"],
+    files: [
+      {
+        path: "examples/toggle-group-spacing.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "toggle-group-vertical",
+    type: "registry:example",
+    registryDependencies: ["toggle-group"],
+    files: [
+      {
+        path: "examples/toggle-group-vertical.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "toggle-group-disabled",
+    type: "registry:example",
+    registryDependencies: ["toggle-group"],
+    files: [
+      {
+        path: "examples/toggle-group-disabled.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "toggle-group-font-weight-selector",
+    type: "registry:example",
+    registryDependencies: ["field", "toggle-group"],
+    files: [
+      {
+        path: "examples/toggle-group-font-weight-selector.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "switch-demo",
     type: "registry:example",
     registryDependencies: ["label", "switch"],

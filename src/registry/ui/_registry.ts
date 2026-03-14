@@ -491,6 +491,18 @@ export const ui: Registry["items"] = [
     ]
   },
   {
+    name: "toggle-group",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core"],
+    registryDependencies: ["toggle"],
+    files: [
+      {
+        path: "ui/toggle-group.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
     name: "tooltip",
     type: "registry:ui",
     dependencies: ["@kobalte/core"],
