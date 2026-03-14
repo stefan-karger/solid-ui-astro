@@ -46,6 +46,20 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "alert-dialog": {
+    name: "alert-dialog",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    component: lazy(() => import("~/registry/ui/alert-dialog.tsx")),
+    files: [{
+      path: "registry/ui/alert-dialog.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "aspect-ratio": {
     name: "aspect-ratio",
     description: "",
@@ -138,6 +152,20 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/ui/card.tsx")),
     files: [{
       path: "registry/ui/card.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "carousel": {
+    name: "carousel",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    component: lazy(() => import("~/registry/ui/carousel.tsx")),
+    files: [{
+      path: "registry/ui/carousel.tsx",
       type: "registry:ui",
       target: ""
     }],
@@ -838,6 +866,90 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/examples/alert-destructive.tsx")),
     files: [{
       path: "registry/examples/alert-destructive.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "alert-dialog-demo": {
+    name: "alert-dialog-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["alert-dialog","button"],
+    component: lazy(() => import("~/registry/examples/alert-dialog-demo.tsx")),
+    files: [{
+      path: "registry/examples/alert-dialog-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "alert-dialog-basic": {
+    name: "alert-dialog-basic",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["alert-dialog","button"],
+    component: lazy(() => import("~/registry/examples/alert-dialog-basic.tsx")),
+    files: [{
+      path: "registry/examples/alert-dialog-basic.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "alert-dialog-small": {
+    name: "alert-dialog-small",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["alert-dialog","button"],
+    component: lazy(() => import("~/registry/examples/alert-dialog-small.tsx")),
+    files: [{
+      path: "registry/examples/alert-dialog-small.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "alert-dialog-media": {
+    name: "alert-dialog-media",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["alert-dialog","button"],
+    component: lazy(() => import("~/registry/examples/alert-dialog-media.tsx")),
+    files: [{
+      path: "registry/examples/alert-dialog-media.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "alert-dialog-small-media": {
+    name: "alert-dialog-small-media",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["alert-dialog","button"],
+    component: lazy(() => import("~/registry/examples/alert-dialog-small-media.tsx")),
+    files: [{
+      path: "registry/examples/alert-dialog-small-media.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "alert-dialog-destructive": {
+    name: "alert-dialog-destructive",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["alert-dialog","button"],
+    component: lazy(() => import("~/registry/examples/alert-dialog-destructive.tsx")),
+    files: [{
+      path: "registry/examples/alert-dialog-destructive.tsx",
       type: "registry:example",
       target: ""
     }],
@@ -1552,6 +1664,90 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/examples/card-image.tsx")),
     files: [{
       path: "registry/examples/card-image.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "carousel-demo": {
+    name: "carousel-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["card","carousel"],
+    component: lazy(() => import("~/registry/examples/carousel-demo.tsx")),
+    files: [{
+      path: "registry/examples/carousel-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "carousel-size": {
+    name: "carousel-size",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["card","carousel"],
+    component: lazy(() => import("~/registry/examples/carousel-size.tsx")),
+    files: [{
+      path: "registry/examples/carousel-size.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "carousel-spacing": {
+    name: "carousel-spacing",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["card","carousel"],
+    component: lazy(() => import("~/registry/examples/carousel-spacing.tsx")),
+    files: [{
+      path: "registry/examples/carousel-spacing.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "carousel-orientation": {
+    name: "carousel-orientation",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["card","carousel"],
+    component: lazy(() => import("~/registry/examples/carousel-orientation.tsx")),
+    files: [{
+      path: "registry/examples/carousel-orientation.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "carousel-api": {
+    name: "carousel-api",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["card","carousel"],
+    component: lazy(() => import("~/registry/examples/carousel-api.tsx")),
+    files: [{
+      path: "registry/examples/carousel-api.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "carousel-plugin": {
+    name: "carousel-plugin",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["card","carousel"],
+    component: lazy(() => import("~/registry/examples/carousel-plugin.tsx")),
+    files: [{
+      path: "registry/examples/carousel-plugin.tsx",
       type: "registry:example",
       target: ""
     }],
