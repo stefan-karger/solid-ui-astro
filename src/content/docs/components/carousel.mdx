@@ -1,0 +1,138 @@
+---
+title: Carousel
+description: A carousel component built on Embla Carousel.
+component: true
+---
+
+<ComponentPreview name="carousel-demo" />
+
+## About
+
+The `Carousel` component wraps Embla Carousel and provides styled primitives for slides, content, and navigation controls.
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add carousel
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install embla-carousel embla-carousel-solid
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="carousel" title="components/ui/carousel.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious
+} from "~/components/ui/carousel"
+```
+
+```tsx showLineNumbers
+<Carousel class="w-full max-w-xs">
+  <CarouselContent>
+    <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem>
+  </CarouselContent>
+  <CarouselPrevious />
+  <CarouselNext />
+</Carousel>
+```
+
+## Examples
+
+### Size
+
+Set custom slide widths with `basis-*` utilities.
+
+<ComponentPreview name="carousel-size" />
+
+### Spacing
+
+Use spacing utilities on `CarouselContent` and `CarouselItem`.
+
+<ComponentPreview name="carousel-spacing" />
+
+### Orientation
+
+Use `orientation="vertical"` for vertical carousels.
+
+<ComponentPreview name="carousel-orientation" previewClassName="h-80" />
+
+### API
+
+Use `setApi` to access Embla methods and subscribe to slide changes.
+
+<ComponentPreview name="carousel-api" />
+
+### Plugin
+
+Use the `plugins` prop to add Embla plugins like autoplay.
+
+```bash
+npm install embla-carousel-autoplay
+```
+
+<ComponentPreview name="carousel-plugin" />
+
+## API Reference
+
+### Core Parts
+
+| Part               | Description                                                     |
+| ------------------ | --------------------------------------------------------------- |
+| `Carousel`         | Root wrapper that sets up Embla and carousel context.           |
+| `CarouselContent`  | Viewport and flex track wrapper for slides.                     |
+| `CarouselItem`     | Individual slide item.                                          |
+| `CarouselPrevious` | Previous navigation button with built-in disabled behavior.     |
+| `CarouselNext`     | Next navigation button with built-in disabled behavior.         |
+| `useCarousel`      | Hook to access carousel context within carousel child elements. |
+
+### Carousel Props
+
+| Prop          | Type                                      | Default        | Description                                           |
+| ------------- | ----------------------------------------- | -------------- | ----------------------------------------------------- |
+| `opts`        | `EmblaOptionsType`                        | -              | Embla options object passed to the carousel instance. |
+| `plugins`     | `EmblaPluginType[]`                       | `[]`           | Embla plugins to initialize with the carousel.        |
+| `orientation` | `"horizontal" \| "vertical"`              | `"horizontal"` | Controls whether slides move along the x or y axis.   |
+| `setApi`      | `(api: CarouselApi \| undefined) => void` | -              | Callback used to capture the Embla API instance.      |
+
+### Keyboard Interaction
+
+When the carousel is focused, `ArrowLeft` moves to the previous slide and `ArrowRight` moves to the next slide.
+
+See the [Embla Carousel docs](https://www.embla-carousel.com/api/options/) for all available options and plugins.

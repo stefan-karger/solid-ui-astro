@@ -110,43 +110,43 @@
         "id": "primitive.carousel",
         "type": "primitive",
         "dependsOn": ["primitive.button"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "docs.carousel",
         "type": "docs",
         "dependsOn": ["primitive.carousel"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.carousel",
         "type": "examples",
         "dependsOn": ["docs.carousel"],
-        "finished": false,
+        "finished": true,
         "checklist": [
           {
             "name": "carousel-demo",
-            "finished": false
+            "finished": true
           },
           {
             "name": "carousel-size",
-            "finished": false
+            "finished": true
           },
           {
             "name": "carousel-spacing",
-            "finished": false
+            "finished": true
           },
           {
             "name": "carousel-orientation",
-            "finished": false
+            "finished": true
           },
           {
             "name": "carousel-api",
-            "finished": false
+            "finished": true
           },
           {
             "name": "carousel-plugin",
-            "finished": false
+            "finished": true
           }
         ]
       }
