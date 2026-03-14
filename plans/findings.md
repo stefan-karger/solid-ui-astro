@@ -6,3 +6,5 @@
 - if splitProps is needed in a primitive make sure to split it into [local, others]
 - if splitProps is used make sure that props is never used in the jsx
 - the icons in the examples should always use lucide icons directly especially when the parameters of iconPlaceholder is used dynamically otherwise it breaks the icons:build run
+- search command doesnt highlight first match automatically like the shadcn-ui version does (cmdk specific feature not present in kobalt/search?)
+- examples should not use IconPlaceholder but instead lucide icon directly

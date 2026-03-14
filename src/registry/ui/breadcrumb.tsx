@@ -7,7 +7,7 @@ import {
   type BreadcrumbsSeparatorProps as BreadcrumbsSeparatorPrimitiveProps
 } from "@kobalte/core/breadcrumbs"
 import type { PolymorphicProps } from "@kobalte/core/polymorphic"
-import { splitProps, type ComponentProps, type ValidComponent } from "solid-js"
+import { Show, splitProps, type ComponentProps, type ValidComponent } from "solid-js"
 
 import { IconPlaceholder } from "~/components/icon-placeholder"
 import { cn } from "~/lib/utils"
@@ -109,9 +109,18 @@ const BreadcrumbSeparator = <T extends ValidComponent = "span">(
       role="presentation"
       {...others}
     >
-      {local.children ?? (
-        <IconPlaceholder class="cn-rtl-flip" lucide="ChevronRightIcon" tabler="IconChevronRight" />
-      )}
+      <Show
+        when={local.children}
+        fallback={
+          <IconPlaceholder
+            class="cn-rtl-flip"
+            lucide="ChevronRightIcon"
+            tabler="IconChevronRight"
+          />
+        }
+      >
+        {(children) => children()}
+      </Show>
     </Separator>
   )
 }

@@ -340,6 +340,22 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined
   },
+  empty: {
+    name: "empty",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/ui/empty.tsx")),
+    files: [
+      {
+        path: "registry/ui/empty.tsx",
+        type: "registry:ui",
+        target: ""
+      }
+    ],
+    categories: undefined,
+    meta: undefined
+  },
   field: {
     name: "field",
     description: "",
@@ -5525,6 +5541,102 @@ export const Index: Record<string, any> = {
     files: [
       {
         path: "registry/examples/textarea-button.tsx",
+        type: "registry:example",
+        target: ""
+      }
+    ],
+    categories: undefined,
+    meta: undefined
+  },
+  "empty-demo": {
+    name: "empty-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button", "empty"],
+    component: lazy(() => import("~/registry/examples/empty-demo.tsx")),
+    files: [
+      {
+        path: "registry/examples/empty-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }
+    ],
+    categories: undefined,
+    meta: undefined
+  },
+  "empty-outline": {
+    name: "empty-outline",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button", "empty"],
+    component: lazy(() => import("~/registry/examples/empty-outline.tsx")),
+    files: [
+      {
+        path: "registry/examples/empty-outline.tsx",
+        type: "registry:example",
+        target: ""
+      }
+    ],
+    categories: undefined,
+    meta: undefined
+  },
+  "empty-background": {
+    name: "empty-background",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button", "empty"],
+    component: lazy(() => import("~/registry/examples/empty-background.tsx")),
+    files: [
+      {
+        path: "registry/examples/empty-background.tsx",
+        type: "registry:example",
+        target: ""
+      }
+    ],
+    categories: undefined,
+    meta: undefined
+  },
+  "empty-avatar": {
+    name: "empty-avatar",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["avatar", "button", "empty"],
+    component: lazy(() => import("~/registry/examples/empty-avatar.tsx")),
+    files: [
+      {
+        path: "registry/examples/empty-avatar.tsx",
+        type: "registry:example",
+        target: ""
+      }
+    ],
+    categories: undefined,
+    meta: undefined
+  },
+  "empty-avatar-group": {
+    name: "empty-avatar-group",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["avatar", "button", "empty"],
+    component: lazy(() => import("~/registry/examples/empty-avatar-group.tsx")),
+    files: [
+      {
+        path: "registry/examples/empty-avatar-group.tsx",
+        type: "registry:example",
+        target: ""
+      }
+    ],
+    categories: undefined,
+    meta: undefined
+  },
+  "empty-input-group": {
+    name: "empty-input-group",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["empty", "input-group", "kbd"],
+    component: lazy(() => import("~/registry/examples/empty-input-group.tsx")),
+    files: [
+      {
+        path: "registry/examples/empty-input-group.tsx",
         type: "registry:example",
         target: ""
       }

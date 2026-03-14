@@ -8,8 +8,8 @@
 | `aspect-ratio`    | x         | x        | x    |
 | `avatar`          | x         | x        | x    |
 | `badge`           | x         | x        | x    |
-| `breadcrumb`      |           |          |      |
-| `button`          |           |          |      |
+| `breadcrumb`      | x         | x        | x    |
+| `button`          | x         | x        | x    |
 | `button-group`    |           |          |      |
 | `calendar`        |           |          |      |
 | `card`            | x         | x        | x    |
