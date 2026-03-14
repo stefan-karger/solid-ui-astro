@@ -208,55 +208,55 @@
         "id": "primitive.context-menu",
         "type": "primitive",
         "dependsOn": [],
-        "finished": false
+        "finished": true
       },
       {
         "id": "docs.context-menu",
         "type": "docs",
         "dependsOn": ["primitive.context-menu"],
-        "finished": false
+        "finished": true
       },
       {
         "id": "examples.context-menu",
         "type": "examples",
         "dependsOn": ["docs.context-menu"],
-        "finished": false,
+        "finished": true,
         "checklist": [
           {
             "name": "context-menu-demo",
-            "finished": false
+            "finished": true
           },
           {
             "name": "context-menu-basic",
-            "finished": false
+            "finished": true
           },
           {
             "name": "context-menu-submenu",
-            "finished": false
+            "finished": true
           },
           {
             "name": "context-menu-shortcuts",
-            "finished": false
+            "finished": true
           },
           {
             "name": "context-menu-groups",
-            "finished": false
+            "finished": true
           },
           {
             "name": "context-menu-icons",
-            "finished": false
+            "finished": true
           },
           {
             "name": "context-menu-checkboxes",
-            "finished": false
+            "finished": true
           },
           {
             "name": "context-menu-radio",
-            "finished": false
+            "finished": true
           },
           {
             "name": "context-menu-destructive",
-            "finished": false
+            "finished": true
           }
         ]
       }
