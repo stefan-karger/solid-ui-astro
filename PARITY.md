@@ -16,7 +16,7 @@
 | `carousel`        |           |          |      |
 | `chart`           |           |          |      |
 | `checkbox`        | x         | x        | x    |
-| `collapsible`     |           |          |      |
+| `collapsible`     | x         | x        | x    |
 | `combobox`        |           |          |      |
 | `command`         |           |          |      |
 | `context-menu`    |           |          |      |

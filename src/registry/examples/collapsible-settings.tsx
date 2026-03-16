@@ -1,6 +1,8 @@
-import { createSignal } from "solid-js"
+"use client"
 
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { MaximizeIcon, MinimizeIcon } from "lucide-solid"
+import { createSignal, Show } from "solid-js"
+
 import { Button } from "~/registry/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/registry/ui/card"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "~/registry/ui/collapsible"
@@ -8,7 +10,7 @@ import { Field, FieldGroup, FieldLabel } from "~/registry/ui/field"
 import { Input } from "~/registry/ui/input"
 
 export default function CollapsibleSettings() {
-  const [open, setOpen] = createSignal(false)
+  const [isOpen, setIsOpen] = createSignal(false)
 
   return (
     <Card class="mx-auto w-full max-w-xs" size="sm">
@@ -17,47 +19,39 @@ export default function CollapsibleSettings() {
         <CardDescription>Set the corner radius of the element.</CardDescription>
       </CardHeader>
       <CardContent>
-        <Collapsible class="flex items-start gap-2" onOpenChange={setOpen} open={open()}>
+        <Collapsible open={isOpen()} onOpenChange={setIsOpen} class="flex items-start gap-2">
           <FieldGroup class="grid w-full grid-cols-2 gap-2">
             <Field>
-              <FieldLabel class="sr-only" for="radius-x">
+              <FieldLabel for="radius-x" class="sr-only">
                 Radius X
               </FieldLabel>
-              <Input id="radius-x" placeholder="0" />
+              <Input id="radius" placeholder="0" value={0} />
             </Field>
             <Field>
-              <FieldLabel class="sr-only" for="radius-y">
+              <FieldLabel for="radius-y" class="sr-only">
                 Radius Y
               </FieldLabel>
-              <Input id="radius-y" placeholder="0" />
+              <Input id="radius" placeholder="0" value={0} />
             </Field>
             <CollapsibleContent class="col-span-full grid grid-cols-subgrid gap-2">
               <Field>
-                <FieldLabel class="sr-only" for="radius-top-left">
-                  Radius Top Left
+                <FieldLabel for="radius-x" class="sr-only">
+                  Radius X
                 </FieldLabel>
-                <Input id="radius-top-left" placeholder="0" />
+                <Input id="radius" placeholder="0" value={0} />
               </Field>
               <Field>
-                <FieldLabel class="sr-only" for="radius-top-right">
-                  Radius Top Right
+                <FieldLabel for="radius-y" class="sr-only">
+                  Radius Y
                 </FieldLabel>
-                <Input id="radius-top-right" placeholder="0" />
+                <Input id="radius" placeholder="0" value={0} />
               </Field>
             </CollapsibleContent>
           </FieldGroup>
-          <CollapsibleTrigger
-            as={Button}
-            class="group/collapsible-trigger w-auto shrink-0"
-            size="icon"
-            variant="outline"
-          >
-            <IconPlaceholder
-              class="size-4 transition-transform group-data-[expanded]/collapsible-trigger:rotate-180"
-              lucide="ChevronDownIcon"
-              tabler="IconChevronDown"
-            />
-            <span class="sr-only">Toggle radius controls</span>
+          <CollapsibleTrigger as={Button<"button">} variant="outline" size="icon">
+            <Show when={isOpen()} fallback={<MaximizeIcon />}>
+              <MinimizeIcon />
+            </Show>
           </CollapsibleTrigger>
         </Collapsible>
       </CardContent>

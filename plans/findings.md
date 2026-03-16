@@ -19,7 +19,11 @@ function Component(props: Props) {
 ## Examples
 
 - always use lucide or tabler icons directly, don't use `IconPlaceholder`
+
+## Docs Pages
+
 - the small description between heading and preview in the examples section should match the shadcn-ui one (only exception is if the ported api differs and some adjustments need to be made)
+- the api link part at the end of the `API Reference` section should always have the same structure: "See the Kobalte/Corvu documentation for more information."
 
 ## ALL! \_registry.ts files
 

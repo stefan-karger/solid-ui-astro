@@ -1,28 +1,34 @@
+import { ChevronsUpDown } from "lucide-solid"
 import { createSignal } from "solid-js"
 
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { Button } from "~/registry/ui/button"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "~/registry/ui/collapsible"
 
 export default function CollapsibleDemo() {
-  const [open, setOpen] = createSignal(false)
+  const [isOpen, setIsOpen] = createSignal(false)
 
   return (
-    <Collapsible class="w-full max-w-sm space-y-2" onOpenChange={setOpen} open={open()}>
-      <div class="flex items-center justify-between gap-3 rounded-md border px-4 py-3">
-        <h4 class="text-sm font-semibold">@zaidan-ui starred 3 repositories</h4>
-        <CollapsibleTrigger class="group/collapsible-trigger inline-flex size-8 shrink-0 items-center justify-center rounded-md border hover:bg-muted">
-          <IconPlaceholder
-            class="size-4 transition-transform group-data-[expanded]/collapsible-trigger:rotate-180"
-            lucide="ChevronsUpDownIcon"
-            tabler="IconSelector"
-          />
-          <span class="sr-only">Toggle starred repositories</span>
+    <Collapsible open={isOpen()} onOpenChange={setIsOpen} class="flex w-[350px] flex-col gap-2">
+      <div class="flex items-center justify-between gap-4 px-4">
+        <h4 class="text-sm font-semibold">Order #4189</h4>
+        <CollapsibleTrigger as={Button} variant="ghost" size="icon" class="size-8">
+          <ChevronsUpDown />
+          <span class="sr-only">Toggle details</span>
         </CollapsibleTrigger>
       </div>
-      <div class="rounded-md border px-4 py-3 font-mono text-sm">@kobalte/core</div>
-      <CollapsibleContent class="space-y-2">
-        <div class="rounded-md border px-4 py-3 font-mono text-sm">@solidjs/router</div>
-        <div class="rounded-md border px-4 py-3 font-mono text-sm">@tanstack/solid-query</div>
+      <div class="flex items-center justify-between rounded-md border px-4 py-2 text-sm">
+        <span class="text-muted-foreground">Status</span>
+        <span class="font-medium">Shipped</span>
+      </div>
+      <CollapsibleContent class="flex flex-col gap-2">
+        <div class="rounded-md border px-4 py-2 text-sm">
+          <p class="font-medium">Shipping address</p>
+          <p class="text-muted-foreground">100 Market St, San Francisco</p>
+        </div>
+        <div class="rounded-md border px-4 py-2 text-sm">
+          <p class="font-medium">Items</p>
+          <p class="text-muted-foreground">2x Studio Headphones</p>
+        </div>
       </CollapsibleContent>
     </Collapsible>
   )

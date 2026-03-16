@@ -48,14 +48,18 @@ npm install @kobalte/core
 ## Usage
 
 ```tsx
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "~/components/ui/collapsible"
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger
+} from "~/components/ui/collapsible"
 ```
 
 ```tsx showLineNumbers
 <Collapsible>
   <CollapsibleTrigger>Can I use this in my project?</CollapsibleTrigger>
   <CollapsibleContent>
-    Yes. It follows the disclosure pattern and supports controlled and uncontrolled usage.
+    Yes. Free to use for personal and commercial projects. No attribution required.
   </CollapsibleContent>
 </Collapsible>
 ```
@@ -79,8 +83,8 @@ Set `disabled` on the root to prevent toggling.
 
 ```tsx showLineNumbers
 <Collapsible disabled>
-  <CollapsibleTrigger>Disabled trigger</CollapsibleTrigger>
-  <CollapsibleContent>This content remains collapsed.</CollapsibleContent>
+  <CollapsibleTrigger>Toggle</CollapsibleTrigger>
+  <CollapsibleContent>Content</CollapsibleContent>
 </Collapsible>
 ```
 
@@ -90,11 +94,15 @@ Set `disabled` on the root to prevent toggling.
 
 <ComponentPreview name="collapsible-basic" />
 
-### Settings
+### Settings Panel
+
+Use a trigger button to reveal additional settings.
 
 <ComponentPreview name="collapsible-settings" />
 
 ### File Tree
+
+Use nested collapsibles to build a file tree.
 
 <ComponentPreview name="collapsible-file-tree" previewClassName="h-[36rem]" />
 
@@ -108,7 +116,7 @@ Set `disabled` on the root to prevent toggling.
 | `CollapsibleTrigger` | Interactive control used to toggle content visibility.       |
 | `CollapsibleContent` | Expandable content region associated with the trigger.       |
 
-### Common Root Props
+### Collapsible
 
 | Prop           | Type                      |
 | -------------- | ------------------------- |
@@ -117,5 +125,4 @@ Set `disabled` on the root to prevent toggling.
 | `onOpenChange` | `(open: boolean) => void` |
 | `disabled`     | `boolean`                 |
 
-See the [Kobalte Collapsible](https://kobalte.dev/docs/core/components/collapsible)
-documentation for full API details.
+See the [Kobalte](https://kobalte.dev/docs/core/components/collapsible) documentation for more information.
