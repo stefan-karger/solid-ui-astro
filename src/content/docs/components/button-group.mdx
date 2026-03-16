@@ -101,17 +101,19 @@ Nest groups to combine segmented controls with separate action clusters.
 
 Use `ButtonGroupSeparator` to add a visual divider between adjacent controls.
 
+Buttons with variant `outline` do not need a separator since they have a border. For other variants, a separator is recommended to improve the visual hierarchy.
+
 <ComponentPreview name="button-group-separator" />
 
 ### Split
 
-Create split actions by combining a primary action and an icon-only action.
+Create a split button group by adding two buttons separated by a `ButtonGroupSeparator`.
 
 <ComponentPreview name="button-group-split" />
 
 ### Input
 
-Wrap an `Input` with trailing button actions.
+Wrap an `Input` component with buttons.
 
 <ComponentPreview name="button-group-input" />
 
@@ -123,21 +125,27 @@ Compose nested controls by combining `ButtonGroup` with `InputGroup`.
 
 ### Dropdown Menu
 
-Attach a menu trigger button for additional actions.
+Create a split button group with a `DropdownMenu` component.
 
 <ComponentPreview name="button-group-dropdown" />
 
 ### Select
 
-Pair `Select`, `Input`, and button actions in one grouped layout.
+Pair with a `Select` component.
 
 <ComponentPreview name="button-group-select" />
 
 ### Popover
 
-Use a popover trigger as an auxiliary action in the group.
+Use with a `Popover` component.
 
 <ComponentPreview name="button-group-popover" />
+
+### Text as Label
+
+Render `ButtonGroupText` as a custom component with the `as` prop.
+
+<ComponentPreview name="button-group-text" />
 
 ## API Reference
 
@@ -148,9 +156,8 @@ Container for grouping related actions with shared radius and border merging.
 | Prop          | Type                         | Default        |
 | ------------- | ---------------------------- | -------------- |
 | `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
-| `class`       | `string`                     | -              |
 
-```tsx showLineNumbers
+```tsx
 <ButtonGroup>
   <Button>Back</Button>
   <Button>Next</Button>
@@ -159,7 +166,7 @@ Container for grouping related actions with shared radius and border merging.
 
 You can nest button groups to create segmented clusters.
 
-```tsx showLineNumbers
+```tsx
 <ButtonGroup>
   <ButtonGroup>{/* page buttons */}</ButtonGroup>
   <ButtonGroup>{/* next/previous buttons */}</ButtonGroup>
@@ -173,9 +180,8 @@ Visual separator that defaults to vertical orientation inside horizontal groups.
 | Prop          | Type                         | Default      |
 | ------------- | ---------------------------- | ------------ |
 | `orientation` | `"horizontal" \| "vertical"` | `"vertical"` |
-| `class`       | `string`                     | -            |
 
-```tsx showLineNumbers
+```tsx
 <ButtonGroup>
   <Button variant="secondary">Copy</Button>
   <ButtonGroupSeparator class="" />
@@ -187,14 +193,16 @@ Visual separator that defaults to vertical orientation inside horizontal groups.
 
 Non-interactive text slot for labels and inline context inside a group.
 
-| Prop    | Type     | Default |
-| ------- | -------- | ------- |
-| `class` | `string` | -       |
+| Prop | Type             | Default |
+| ---- | ---------------- | ------- |
+| `as` | `ValidComponent` | -       |
 
-```tsx showLineNumbers
+```tsx
 <ButtonGroup>
   <ButtonGroupText>https://</ButtonGroupText>
   <Input placeholder="example" />
   <ButtonGroupText>.com</ButtonGroupText>
 </ButtonGroup>
 ```
+
+Use the `as` prop to render a custom component as the text. See the [Text as Label](#text-as-label) example.

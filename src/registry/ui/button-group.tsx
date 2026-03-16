@@ -1,5 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority"
-import { mergeProps, splitProps, type ComponentProps } from "solid-js"
+import { mergeProps, splitProps, type ComponentProps, type ValidComponent } from "solid-js"
+import { Dynamic } from "solid-js/web"
 
 import { cn } from "~/lib/utils"
 import { Separator } from "~/registry/ui/separator"
@@ -10,9 +11,9 @@ const buttonGroupVariants = cva(
     variants: {
       orientation: {
         horizontal:
-          "cn-button-group-orientation-horizontal [&>*:not(:first-child)]:rounded-l-none [&>*:not(:first-child)]:border-l-0 [&>*:not(:last-child)]:rounded-r-none",
+          "cn-button-group-orientation-horizontal [&>*:not(:first-child)]:rounded-l-none [&>*:not(:first-child)]:border-l-0 [&>*:not(:first-child)>[data-slot=select-trigger]]:rounded-l-none [&>*:not(:first-child)>[data-slot=select-trigger]]:border-l-0 [&>*:not(:last-child)]:rounded-r-none [&>*:not(:last-child)>[data-slot=select-trigger]]:rounded-r-none",
         vertical:
-          "cn-button-group-orientation-vertical flex-col [&>*:not(:first-child)]:rounded-t-none [&>*:not(:first-child)]:border-t-0 [&>*:not(:last-child)]:rounded-b-none"
+          "cn-button-group-orientation-vertical flex-col [&>*:not(:first-child)]:rounded-t-none [&>*:not(:first-child)]:border-t-0 [&>*:not(:first-child)>[data-slot=select-trigger]]:rounded-t-none [&>*:not(:first-child)>[data-slot=select-trigger]]:border-t-0 [&>*:not(:last-child)]:rounded-b-none [&>*:not(:last-child)>[data-slot=select-trigger]]:rounded-b-none"
       }
     },
     defaultVariants: {
@@ -36,12 +37,17 @@ const ButtonGroup = (props: ButtonGroupProps) => {
   )
 }
 
-type ButtonGroupTextProps = ComponentProps<"div">
+type ButtonGroupTextProps<T extends ValidComponent = "div"> = {
+  as?: T
+  class?: string | undefined
+} & Omit<ComponentProps<T>, "as" | "class">
 
-const ButtonGroupText = (props: ButtonGroupTextProps) => {
-  const [local, others] = splitProps(props, ["class"])
+const ButtonGroupText = <T extends ValidComponent = "div">(rawProps: ButtonGroupTextProps<T>) => {
+  const props = mergeProps({ as: "div" as T }, rawProps)
+  const [local, others] = splitProps(props as ButtonGroupTextProps, ["as", "class"])
   return (
-    <div
+    <Dynamic
+      component={local.as}
       data-slot="button-group-text"
       class={cn("cn-button-group-text flex items-center [&_svg]:pointer-events-none", local.class)}
       {...others}

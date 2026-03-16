@@ -10,7 +10,7 @@
 | `badge`           | x         | x        | x    |
 | `breadcrumb`      | x         | x        | x    |
 | `button`          | x         | x        | x    |
-| `button-group`    |           |          |      |
+| `button-group`    | x         | x        | x    |
 | `calendar`        |           |          |      |
 | `card`            | x         | x        | x    |
 | `carousel`        |           |          |      |

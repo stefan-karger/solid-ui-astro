@@ -607,6 +607,17 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "button-group-text",
+    type: "registry:example",
+    registryDependencies: ["button-group", "input", "label"],
+    files: [
+      {
+        path: "examples/button-group-text.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "button-group-dropdown",
     type: "registry:example",
     registryDependencies: ["button", "button-group", "dropdown-menu"],

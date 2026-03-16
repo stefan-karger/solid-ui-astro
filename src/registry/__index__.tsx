@@ -1724,6 +1724,22 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined
   },
+  "button-group-text": {
+    name: "button-group-text",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button-group", "input", "label"],
+    component: lazy(() => import("~/registry/examples/button-group-text.tsx")),
+    files: [
+      {
+        path: "registry/examples/button-group-text.tsx",
+        type: "registry:example",
+        target: ""
+      }
+    ],
+    categories: undefined,
+    meta: undefined
+  },
   "button-group-dropdown": {
     name: "button-group-dropdown",
     description: "",
