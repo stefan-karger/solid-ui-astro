@@ -1,16 +1,13 @@
 import { Checkbox } from "~/registry/ui/checkbox"
+import { Field, FieldGroup, FieldLabel } from "~/registry/ui/field"
 
 export default function CheckboxDisabled() {
   return (
-    <div class="grid w-full max-w-sm gap-3">
-      <label class="flex items-center gap-2 text-sm text-muted-foreground">
-        <Checkbox checked disabled />
-        Trial plan (selected)
-      </label>
-      <label class="flex items-center gap-2 text-sm text-muted-foreground">
-        <Checkbox disabled />
-        Enterprise plan
-      </label>
-    </div>
+    <FieldGroup class="mx-auto w-56">
+      <Field orientation="horizontal" data-disabled>
+        <Checkbox id="toggle-checkbox-disabled" name="toggle-checkbox-disabled" disabled />
+        <FieldLabel for="toggle-checkbox-disabled">Enable notifications</FieldLabel>
+      </Field>
+    </FieldGroup>
   )
 }

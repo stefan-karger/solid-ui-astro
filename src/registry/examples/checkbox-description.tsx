@@ -1,15 +1,18 @@
 import { Checkbox } from "~/registry/ui/checkbox"
+import { Field, FieldContent, FieldDescription, FieldGroup, FieldLabel } from "~/registry/ui/field"
 
 export default function CheckboxDescription() {
   return (
-    <label class="flex w-full max-w-sm items-start gap-3 text-sm">
-      <Checkbox defaultChecked />
-      <div class="grid gap-1 leading-none">
-        <span class="font-medium">Enable email updates</span>
-        <span class="text-sm text-muted-foreground">
-          Receive weekly account activity reports and product tips.
-        </span>
-      </div>
-    </label>
+    <FieldGroup class="mx-auto w-72">
+      <Field orientation="horizontal">
+        <Checkbox id="terms-checkbox-desc" name="terms-checkbox-desc" defaultChecked />
+        <FieldContent>
+          <FieldLabel for="terms-checkbox-desc">Accept terms and conditions</FieldLabel>
+          <FieldDescription>
+            By clicking this checkbox, you agree to the terms and conditions.
+          </FieldDescription>
+        </FieldContent>
+      </Field>
+    </FieldGroup>
   )
 }

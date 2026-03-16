@@ -7,3 +7,4 @@
 - search command doesnt highlight first match automatically like the shadcn-ui version does (cmdk specific feature not present in kobalt/search?)
 - examples should not use IconPlaceholder but instead lucide icon directly
 - make sure dynamic components in the shadcn-ui are also dynamic in the port
+- "use client" should never be present in any file

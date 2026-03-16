@@ -3,75 +3,94 @@ import { createSignal, For } from "solid-js"
 import { Checkbox } from "~/registry/ui/checkbox"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "~/registry/ui/table"
 
-const invoices = [
-  { customer: "Acme Corp", id: "INV-001", status: "Paid", total: "$250.00" },
-  { customer: "Globex", id: "INV-002", status: "Pending", total: "$180.00" },
-  { customer: "Initech", id: "INV-003", status: "Overdue", total: "$420.00" }
+const tableData = [
+  {
+    id: "1",
+    name: "Sarah Chen",
+    email: "sarah.chen@example.com",
+    role: "Admin"
+  },
+  {
+    id: "2",
+    name: "Marcus Rodriguez",
+    email: "marcus.rodriguez@example.com",
+    role: "User"
+  },
+  {
+    id: "3",
+    name: "Priya Patel",
+    email: "priya.patel@example.com",
+    role: "User"
+  },
+  {
+    id: "4",
+    name: "David Kim",
+    email: "david.kim@example.com",
+    role: "Editor"
+  }
 ]
 
-export default function CheckboxTable() {
-  const [selected, setSelected] = createSignal<string[]>([])
+export default function CheckboxInTable() {
+  const [selectedRows, setSelectedRows] = createSignal(new Set(["1"]))
 
-  const allSelected = () => selected().length === invoices.length
-  const someSelected = () => selected().length > 0 && !allSelected()
+  const allChecked = () => selectedRows().size === tableData.length
+  const someChecked = () => selectedRows().size > 0
 
-  const toggleAll = (checked: boolean) => {
-    setSelected(checked ? invoices.map((invoice) => invoice.id) : [])
+  const handleSelectAll = (checked: boolean) => {
+    if (checked) {
+      setSelectedRows(new Set(tableData.map((row) => row.id)))
+    } else {
+      setSelectedRows(new Set() as Set<string>)
+    }
   }
 
-  const toggleInvoice = (id: string, checked: boolean) => {
-    setSelected((current) => {
-      if (checked) {
-        return current.includes(id) ? current : [...current, id]
-      }
-
-      return current.filter((value) => value !== id)
-    })
+  const handleSelectRow = (id: string, checked: boolean) => {
+    const newSelected = new Set(selectedRows())
+    if (checked) {
+      newSelected.add(id)
+    } else {
+      newSelected.delete(id)
+    }
+    setSelectedRows(newSelected)
   }
 
   return (
-    <div class="w-full max-w-2xl">
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead class="w-10">
-              <label class="inline-flex items-center">
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead class="w-8">
+            <Checkbox
+              id="select-all-checkbox"
+              name="select-all-checkbox"
+              checked={allChecked()}
+              indeterminate={someChecked() && !allChecked()}
+              onChange={handleSelectAll}
+            />
+          </TableHead>
+          <TableHead>Name</TableHead>
+          <TableHead>Email</TableHead>
+          <TableHead>Role</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <For each={tableData}>
+          {(row) => (
+            <TableRow data-state={selectedRows().has(row.id) ? "selected" : undefined}>
+              <TableCell>
                 <Checkbox
-                  checked={allSelected()}
-                  indeterminate={someSelected()}
-                  onChange={toggleAll}
+                  id={`row-${row.id}-checkbox`}
+                  name={`row-${row.id}-checkbox`}
+                  checked={selectedRows().has(row.id)}
+                  onChange={(checked) => handleSelectRow(row.id, checked === true)}
                 />
-                <span class="sr-only">Select all invoices</span>
-              </label>
-            </TableHead>
-            <TableHead>Invoice</TableHead>
-            <TableHead>Customer</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead class="text-right">Total</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          <For each={invoices}>
-            {(invoice) => (
-              <TableRow data-state={selected().includes(invoice.id) ? "selected" : undefined}>
-                <TableCell>
-                  <label class="inline-flex items-center">
-                    <Checkbox
-                      checked={selected().includes(invoice.id)}
-                      onChange={(checked) => toggleInvoice(invoice.id, checked)}
-                    />
-                    <span class="sr-only">Select {invoice.id}</span>
-                  </label>
-                </TableCell>
-                <TableCell class="font-medium">{invoice.id}</TableCell>
-                <TableCell>{invoice.customer}</TableCell>
-                <TableCell>{invoice.status}</TableCell>
-                <TableCell class="text-right">{invoice.total}</TableCell>
-              </TableRow>
-            )}
-          </For>
-        </TableBody>
-      </Table>
-    </div>
+              </TableCell>
+              <TableCell class="font-medium">{row.name}</TableCell>
+              <TableCell>{row.email}</TableCell>
+              <TableCell>{row.role}</TableCell>
+            </TableRow>
+          )}
+        </For>
+      </TableBody>
+    </Table>
   )
 }

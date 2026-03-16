@@ -1,45 +1,58 @@
-import { createSignal, For } from "solid-js"
-
 import { Checkbox } from "~/registry/ui/checkbox"
-
-const channels = [
-  { label: "Email", value: "email" },
-  { label: "SMS", value: "sms" },
-  { label: "Push notifications", value: "push" }
-]
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+  FieldLegend,
+  FieldSet
+} from "~/registry/ui/field"
 
 export default function CheckboxGroup() {
-  const [selected, setSelected] = createSignal<string[]>(["email"])
-
-  const toggle = (value: string, checked: boolean) => {
-    setSelected((current) => {
-      if (checked) {
-        return current.includes(value) ? current : [...current, value]
-      }
-
-      return current.filter((item) => item !== value)
-    })
-  }
-
   return (
-    <div class="grid w-full max-w-sm gap-3">
-      <p class="text-sm font-medium">Notification channels</p>
-      <div class="grid gap-2" data-slot="checkbox-group">
-        <For each={channels}>
-          {(channel) => (
-            <label class="flex items-center gap-2 text-sm">
-              <Checkbox
-                checked={selected().includes(channel.value)}
-                onChange={(checked) => toggle(channel.value, checked)}
-              />
-              {channel.label}
-            </label>
-          )}
-        </For>
-      </div>
-      <p class="text-sm text-muted-foreground">
-        Selected: {selected().length > 0 ? selected().join(", ") : "None"}
-      </p>
-    </div>
+    <FieldSet>
+      <FieldLegend variant="label">Show these items on the desktop:</FieldLegend>
+      <FieldDescription>Select the items you want to show on the desktop.</FieldDescription>
+      <FieldGroup class="gap-3">
+        <Field orientation="horizontal">
+          <Checkbox
+            id="finder-pref-9k2-hard-disks-ljj-checkbox"
+            name="finder-pref-9k2-hard-disks-ljj-checkbox"
+            defaultChecked
+          />
+          <FieldLabel for="finder-pref-9k2-hard-disks-ljj-checkbox" class="font-normal">
+            Hard disks
+          </FieldLabel>
+        </Field>
+        <Field orientation="horizontal">
+          <Checkbox
+            id="finder-pref-9k2-external-disks-1yg-checkbox"
+            name="finder-pref-9k2-external-disks-1yg-checkbox"
+            defaultChecked
+          />
+          <FieldLabel for="finder-pref-9k2-external-disks-1yg-checkbox" class="font-normal">
+            External disks
+          </FieldLabel>
+        </Field>
+        <Field orientation="horizontal">
+          <Checkbox
+            id="finder-pref-9k2-cds-dvds-fzt-checkbox"
+            name="finder-pref-9k2-cds-dvds-fzt-checkbox"
+          />
+          <FieldLabel for="finder-pref-9k2-cds-dvds-fzt-checkbox" class="font-normal">
+            CDs, DVDs, and iPods
+          </FieldLabel>
+        </Field>
+        <Field orientation="horizontal">
+          <Checkbox
+            id="finder-pref-9k2-connected-servers-6l2-checkbox"
+            name="finder-pref-9k2-connected-servers-6l2-checkbox"
+          />
+          <FieldLabel for="finder-pref-9k2-connected-servers-6l2-checkbox" class="font-normal">
+            Connected servers
+          </FieldLabel>
+        </Field>
+      </FieldGroup>
+    </FieldSet>
   )
 }

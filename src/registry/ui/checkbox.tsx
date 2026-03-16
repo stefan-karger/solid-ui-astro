@@ -1,6 +1,6 @@
 import * as CheckboxPrimitive from "@kobalte/core/checkbox"
 import type { PolymorphicProps } from "@kobalte/core/polymorphic"
-import { splitProps, type ComponentProps, type ValidComponent } from "solid-js"
+import { Match, splitProps, Switch, type ComponentProps, type ValidComponent } from "solid-js"
 
 import { IconPlaceholder } from "~/components/icon-placeholder"
 import { cn } from "~/lib/utils"
@@ -24,9 +24,24 @@ const Checkbox = <T extends ValidComponent = "div">(props: CheckboxProps<T>) => 
         class={cn("cn-checkbox", local.class)}
         data-slot="checkbox"
       >
-        <CheckboxPrimitive.Indicator class="cn-checkbox-indicator" data-slot="checkbox-indicator">
-          <IconPlaceholder lucide="CheckIcon" tabler="IconCheck" />
-        </CheckboxPrimitive.Indicator>
+        <Switch>
+          <Match when={!others.indeterminate /* checked */}>
+            <CheckboxPrimitive.Indicator
+              class="cn-checkbox-indicator"
+              data-slot="checkbox-indicator"
+            >
+              <IconPlaceholder lucide="CheckIcon" tabler="IconCheck" />
+            </CheckboxPrimitive.Indicator>
+          </Match>
+          <Match when={others.indeterminate}>
+            <CheckboxPrimitive.Indicator
+              class="cn-checkbox-indicator"
+              data-slot="checkbox-indicator"
+            >
+              <IconPlaceholder lucide="Minus" tabler="IconMinus" />
+            </CheckboxPrimitive.Indicator>
+          </Match>
+        </Switch>
       </CheckboxPrimitive.Control>
     </CheckboxPrimitive.Root>
   )

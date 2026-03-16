@@ -15,7 +15,7 @@
 | `card`            | x         | x        | x    |
 | `carousel`        |           |          |      |
 | `chart`           |           |          |      |
-| `checkbox`        |           |          |      |
+| `checkbox`        | x         | x        | x    |
 | `collapsible`     |           |          |      |
 | `combobox`        |           |          |      |
 | `command`         |           |          |      |
