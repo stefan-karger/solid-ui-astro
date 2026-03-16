@@ -1,5 +1,3 @@
-"use client"
-
 import { MaximizeIcon, MinimizeIcon } from "lucide-solid"
 import { createSignal, Show } from "solid-js"
 
