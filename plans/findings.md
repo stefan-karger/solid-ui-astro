@@ -1,10 +1,30 @@
-- all primitives should only export the types that shadcn-ui also exports
-- make sure the dependencies, registryDependencies arrays in the \_registry.ts files reflect the actual needed dependencies (make sure nothing is forgotten and nothing is unecessary present)
-- if mergeProps is needed in a primitive make sure the props are called props and the result of mergeProps is called mergedProps
-- if splitProps is needed in a primitive make sure to split it into [local, others]
-- if splitProps is used make sure that props is never used in the jsx
-- the icons in the examples should always use lucide or tabler icons directly
-- search command doesnt highlight first match automatically like the shadcn-ui version does (cmdk specific feature not present in kobalt/search?)
-- examples should not use IconPlaceholder but instead lucide icon directly
+## Primitives
+
+- only export the types that the shadcn-ui version also exports
+- if `splitProps` is needed make sure to split it into `[local, others]`
+- if `splitProps` is used make sure that `props` is not called anywhere afterwards
+- if `mergeProps` is needed make sure the naming is as following:
+
+```tsx
+function Component(props: Props) {
+    const mergedProps = mergeProps({someDefault: true}, props)
+    const [local, others] = splitProps(mergedProps, ["someDefault"])
+}
+
+```
+
 - make sure dynamic components in the shadcn-ui are also dynamic in the port
 - "use client" should never be present in any file
+
+## Examples
+
+- always use lucide or tabler icons directly, don't use `IconPlaceholder`
+- the small description between heading and preview in the examples section should match the shadcn-ui one (only exception is if the ported api differs and some adjustments need to be made)
+
+## ALL! \_registry.ts files
+
+- make sure the dependencies, registryDependencies arrays reflect the actual needed dependencies (make sure nothing is forgotten and nothing is unecessary present)
+
+## Website/Documentation
+
+- search command should always highlight first match automatically like the shadcn-ui version does (cmdk specific feature not present in kobalt/search?)
