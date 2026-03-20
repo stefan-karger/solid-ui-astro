@@ -1,6 +1,13 @@
+import { useComboboxContext } from "@kobalte/core/combobox"
 import type { PolymorphicProps } from "@kobalte/core/polymorphic"
 import * as CommandPrimitive from "@kobalte/core/search"
-import { mergeProps, splitProps, type ComponentProps, type ValidComponent } from "solid-js"
+import {
+  createEffect,
+  mergeProps,
+  splitProps,
+  type ComponentProps,
+  type ValidComponent
+} from "solid-js"
 
 import { IconPlaceholder } from "~/components/icon-placeholder"
 import { cn } from "~/lib/utils"
@@ -13,19 +20,17 @@ import {
 } from "~/registry/ui/dialog"
 import { InputGroup, InputGroupAddon } from "~/registry/ui/input-group"
 
-type CommandProps<
-  Option,
-  OptGroup = never,
-  T extends ValidComponent = "div"
-> = CommandPrimitive.SearchRootProps<Option, OptGroup, T> & {
-  class?: string | undefined
-}
+type CommandProps<Option, OptGroup = never, T extends ValidComponent = "div"> = PolymorphicProps<
+  T,
+  CommandPrimitive.SearchRootProps<Option, OptGroup, T>
+> &
+  Pick<ComponentProps<T>, "class">
 
 const Command = <Option, OptGroup = never, T extends ValidComponent = "div">(
-  props: PolymorphicProps<T, CommandProps<Option, OptGroup, T>>
+  props: CommandProps<Option, OptGroup, T>
 ) => {
-  const mergedProps = mergeProps({ open: true } as CommandProps<Option, OptGroup, T>, props)
-  const [local, others] = splitProps(mergedProps as CommandProps<Option, OptGroup, T>, ["class"])
+  const mergedProps = mergeProps({ open: true, autoHighlightFirst: true }, props)
+  const [local, others] = splitProps(mergedProps as CommandProps<Option>, ["class"])
 
   return (
     <CommandPrimitive.Root
@@ -105,18 +110,51 @@ const CommandInput = (props: CommandInputProps) => {
 
 const CommandContent = CommandPrimitive.Content
 
-type CommandListProps<
-  Option,
-  OptGroup = never,
-  T extends ValidComponent = "ul"
-> = CommandPrimitive.SearchListboxProps<Option, OptGroup, T> & {
-  class?: string | undefined
-}
+type CommandListProps<Option, OptGroup = never, T extends ValidComponent = "ul"> = PolymorphicProps<
+  T,
+  CommandPrimitive.SearchListboxProps<Option, OptGroup, T>
+> &
+  Pick<ComponentProps<T>, "class"> & {
+    autoHighlightFirst?: boolean | undefined
+  }
 
 const CommandList = <Option, OptGroup = never, T extends ValidComponent = "ul">(
-  props: PolymorphicProps<T, CommandListProps<Option, OptGroup, T>>
+  props: CommandListProps<Option, OptGroup, T>
 ) => {
-  const [local, others] = splitProps(props as CommandListProps<Option>, ["class"])
+  const mergedProps = mergeProps({ autoHighlightFirst: true }, props)
+  const [local, others] = splitProps(mergedProps as CommandListProps<Option>, [
+    "class",
+    "autoHighlightFirst"
+  ])
+
+  const context = useComboboxContext()
+
+  createEffect(() => {
+    if (!local.autoHighlightFirst || !context.isOpen()) {
+      return
+    }
+
+    const keyboardDelegate = context.keyboardDelegate()
+    if (keyboardDelegate.getFirstKey == null) return
+    const firstKey = keyboardDelegate.getFirstKey()
+
+    const listState = context.listState()
+    const selectionManager = listState.selectionManager()
+    const focusedKey = selectionManager.focusedKey()
+
+    if (firstKey == null) {
+      if (focusedKey != null) {
+        selectionManager.setFocusedKey(undefined)
+      }
+      return
+    }
+
+    const collection = listState.collection()
+    if (focusedKey == null || !collection.getItem(focusedKey)) {
+      selectionManager.setFocusedKey(firstKey)
+    }
+  })
+
   return (
     <CommandPrimitive.Listbox
       data-slot="command-list"
@@ -126,14 +164,13 @@ const CommandList = <Option, OptGroup = never, T extends ValidComponent = "ul">(
   )
 }
 
-type CommandEmptyProps<T extends ValidComponent = "div"> =
-  CommandPrimitive.SearchNoResultProps<T> & {
-    class?: string | undefined
-  }
+type CommandEmptyProps<T extends ValidComponent = "div"> = PolymorphicProps<
+  T,
+  CommandPrimitive.SearchNoResultProps<T>
+> &
+  Pick<ComponentProps<T>, "class">
 
-const CommandEmpty = <T extends ValidComponent = "div">(
-  props: PolymorphicProps<T, CommandEmptyProps<T>>
-) => {
+const CommandEmpty = <T extends ValidComponent = "div">(props: CommandEmptyProps<T>) => {
   const [local, others] = splitProps(props as CommandEmptyProps, ["class"])
 
   return (
@@ -145,13 +182,13 @@ const CommandEmpty = <T extends ValidComponent = "div">(
   )
 }
 
-type CommandGroupProps<T extends ValidComponent = "li"> = CommandPrimitive.SearchSectionProps<T> & {
-  class?: string | undefined
-}
+type CommandGroupProps<T extends ValidComponent = "li"> = PolymorphicProps<
+  T,
+  CommandPrimitive.SearchSectionProps<T>
+> &
+  Pick<ComponentProps<T>, "class">
 
-const CommandGroup = <T extends ValidComponent = "li">(
-  props: PolymorphicProps<T, CommandGroupProps<T>>
-) => {
+const CommandGroup = <T extends ValidComponent = "li">(props: CommandGroupProps<T>) => {
   const [local, others] = splitProps(props as CommandGroupProps, ["class"])
 
   return (
@@ -163,12 +200,13 @@ const CommandGroup = <T extends ValidComponent = "li">(
   )
 }
 
-type CommandItemProps<T extends ValidComponent = "li"> = CommandPrimitive.SearchItemProps<T> &
+type CommandItemProps<T extends ValidComponent = "li"> = PolymorphicProps<
+  T,
+  CommandPrimitive.SearchItemProps<T>
+> &
   Pick<ComponentProps<T>, "class" | "children">
 
-const CommandItem = <T extends ValidComponent = "li">(
-  props: PolymorphicProps<T, CommandItemProps<T>>
-) => {
+const CommandItem = <T extends ValidComponent = "li">(props: CommandItemProps<T>) => {
   const [local, others] = splitProps(props as CommandItemProps, ["class", "children"])
 
   return (
