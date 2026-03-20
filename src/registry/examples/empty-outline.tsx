@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { IconCloud } from "@tabler/icons-solidjs"
+
 import { Button } from "~/registry/ui/button"
 import {
   Empty,
@@ -14,11 +15,11 @@ export default function EmptyOutline() {
     <Empty class="max-w-md border">
       <EmptyHeader>
         <EmptyMedia variant="icon">
-          <IconPlaceholder class="size-4" lucide="CircleDashedIcon" tabler="IconCircleDashed" />
+          <IconCloud />
         </EmptyMedia>
-        <EmptyTitle>Nothing here yet</EmptyTitle>
+        <EmptyTitle>Cloud Storage Empty</EmptyTitle>
         <EmptyDescription>
-          This space is ready for content. Add your first item to populate this section.
+          Upload files to your cloud storage to access them anywhere.
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>

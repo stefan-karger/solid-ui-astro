@@ -20,7 +20,7 @@ export default function AvatarDemo() {
       </Avatar>
 
       <Avatar>
-        <AvatarImage alt="@ryansolid" src="https://github.com/ryansolid" />
+        <AvatarImage alt="@ryansolid" src="https://github.com/ryansolid.png" />
         <AvatarFallback>RC</AvatarFallback>
         <AvatarBadge class="bg-green-600 dark:bg-green-800" />
       </Avatar>
@@ -35,7 +35,7 @@ export default function AvatarDemo() {
           <AvatarFallback>KA</AvatarFallback>
         </Avatar>
         <Avatar>
-          <AvatarImage alt="@ryansolid" src="https://github.com/ryansolid" />
+          <AvatarImage alt="@ryansolid" src="https://github.com/ryansolid.png" />
           <AvatarFallback>RC</AvatarFallback>
         </Avatar>
         <AvatarGroupCount>+3</AvatarGroupCount>

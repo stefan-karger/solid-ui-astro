@@ -12,7 +12,7 @@ export default function AvatarGroupExample() {
         <AvatarFallback>KA</AvatarFallback>
       </Avatar>
       <Avatar>
-        <AvatarImage alt="@ryansolid" src="https://github.com/ryansolid" />
+        <AvatarImage alt="@ryansolid" src="https://github.com/ryansolid.png" />
         <AvatarFallback>RC</AvatarFallback>
       </Avatar>
     </AvatarGroup>

@@ -17,12 +17,12 @@ export default function ItemAvatar() {
           <img
             alt="@ryansolid"
             class="size-10 rounded-full object-cover grayscale"
-            src="https://github.com/ryansolid"
+            src="https://github.com/ryansolid.png"
           />
         </ItemMedia>
         <ItemContent>
-          <ItemTitle>Evil Rabbit</ItemTitle>
-          <ItemDescription>Last seen 5 months ago</ItemDescription>
+          <ItemTitle>Ryan Carniato</ItemTitle>
+          <ItemDescription>Last seen 5 minutes ago</ItemDescription>
         </ItemContent>
         <ItemActions>
           <Button aria-label="Invite" class="rounded-full" size="icon-sm" variant="outline">
@@ -35,9 +35,9 @@ export default function ItemAvatar() {
         <ItemMedia>
           <div class="flex -space-x-2 [&>img]:ring-2 [&>img]:ring-background [&>img]:grayscale">
             <img
-              alt="shadcn"
+              alt="@stefan-karger"
               class="hidden size-8 rounded-full object-cover sm:block"
-              src="https://github.com/shadcn.png"
+              src="https://github.com/stefan-karger.png"
             />
             <img
               alt="@carere"
@@ -47,7 +47,7 @@ export default function ItemAvatar() {
             <img
               alt="@ryansolid"
               class="size-8 rounded-full object-cover"
-              src="https://github.com/ryansolid"
+              src="https://github.com/ryansolid.png"
             />
           </div>
         </ItemMedia>

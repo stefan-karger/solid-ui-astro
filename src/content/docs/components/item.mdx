@@ -6,7 +6,7 @@ component: true
 
 <ComponentPreview name="item-demo" />
 
-The `Item` component is a flexible container for list-like content. Use it to combine media, title, description, and action areas, then compose multiple rows with `ItemGroup`.
+The `Item` component is a straightforward flex container that can house nearly any type of content. Use it to display a title, description, and actions. Group it with the `ItemGroup` component to create a list of items.
 
 ## Installation
 
@@ -71,9 +71,9 @@ import {
 
 ## Item vs Field
 
-Use `Field` when a row represents form input controls such as checkbox, radio group, input, or select.
+Use `Field` if you need to display a form input such as a checkbox, input, radio, or select.
 
-Use `Item` when you only need presentational content and optional actions.
+If you only need to display content such as a title, description, and actions, use `Item`.
 
 ## Variant
 
@@ -97,7 +97,7 @@ Use `ItemMedia` with `variant="icon"` to display icons.
 
 ### Avatar
 
-Render profile-style rows using image media and action buttons.
+You can use `ItemMedia` with `variant="avatar"` to display an avatar.
 
 <ComponentPreview name="item-avatar" />
 
@@ -109,19 +109,19 @@ Use `ItemMedia` with `variant="image"` for thumbnail-driven rows.
 
 ### Group
 
-Use `ItemGroup` to structure related rows.
+Use `ItemGroup` to group related items together.
 
 <ComponentPreview name="item-group" previewClassName="h-96" />
 
 ### Header
 
-Use `ItemHeader` when media should span full row width above content.
+Use `ItemHeader` to add a header above the item content.
 
 <ComponentPreview name="item-header" previewClassName="h-96" />
 
 ### Link
 
-Use the polymorphic `as` prop to render an item as a link while preserving item styles.
+Use the polymorphic `as` prop to render the item as a link. The hover and focus states will be applied to the anchor element.
 
 <ComponentPreview name="item-link" />
 
@@ -139,8 +139,6 @@ Use the polymorphic `as` prop to render an item as a link while preserving item 
 
 ### Dropdown
 
-Combine `Item` with `DropdownMenu` content for richer selectable rows.
-
 <ComponentPreview name="item-dropdown" />
 
 ## API Reference
@@ -154,17 +152,23 @@ Main row container for media, text content, and actions.
 | `variant` | `"default" \| "outline" \| "muted"` | `"default"` |
 | `size`    | `"default" \| "sm" \| "xs"`         | `"default"` |
 | `as`      | `ValidComponent`                    | `"div"`     |
-| `class`   | `string`                            | -           |
 
 ### ItemGroup
 
-Container for grouping related item rows.
+A container that groups related items together with consistent styling.
 
-| Prop    | Type     | Default |
-| ------- | -------- | ------- |
-| `class` | `string` | -       |
+```tsx
+<ItemGroup>
+  <Item />
+  <Item />
+</ItemGroup>
+```
 
-```tsx showLineNumbers
+### ItemSeparator
+
+A separator between items in a group.
+
+```tsx
 <ItemGroup>
   <Item />
   <ItemSeparator />
@@ -172,67 +176,81 @@ Container for grouping related item rows.
 </ItemGroup>
 ```
 
-### ItemSeparator
-
-Separator for dividing item rows in a group.
-
-| Prop    | Type     | Default |
-| ------- | -------- | ------- |
-| `class` | `string` | -       |
-
 ### ItemMedia
 
-Slot for media content such as icons, images, or avatar-like visuals.
+Use `ItemMedia` to display media content such as icons, images, or avatars.
 
 | Prop      | Type                             | Default     |
 | --------- | -------------------------------- | ----------- |
 | `variant` | `"default" \| "icon" \| "image"` | `"default"` |
-| `class`   | `string`                         | -           |
+
+```tsx
+<ItemMedia variant="icon">
+  <Icon />
+</ItemMedia>
+```
+
+```tsx
+<ItemMedia variant="image">
+  <img src="..." alt="..." />
+</ItemMedia>
+```
 
 ### ItemContent
 
-Wrapper for title/description regions.
+Wraps the title and description of the item.
 
-| Prop    | Type     | Default |
-| ------- | -------- | ------- |
-| `class` | `string` | -       |
+```tsx
+<ItemContent>
+  <ItemTitle>Title</ItemTitle>
+  <ItemDescription>Description</ItemDescription>
+</ItemContent>
+```
 
 ### ItemTitle
 
-Primary text slot for item titles.
+Displays the title of the item.
 
-| Prop    | Type     | Default |
-| ------- | -------- | ------- |
-| `class` | `string` | -       |
+```tsx
+<ItemTitle>Item Title</ItemTitle>
+```
 
 ### ItemDescription
 
-Secondary text slot for supporting descriptions.
+Displays the description of the item.
 
-| Prop    | Type     | Default |
-| ------- | -------- | ------- |
-| `class` | `string` | -       |
+```tsx
+<ItemDescription>Item description</ItemDescription>
+```
 
 ### ItemActions
 
-Container for action buttons and controls.
+Container for action buttons or other interactive elements.
 
-| Prop    | Type     | Default |
-| ------- | -------- | ------- |
-| `class` | `string` | -       |
+```tsx
+<ItemActions>
+  <Button>Action</Button>
+</ItemActions>
+```
 
 ### ItemHeader
 
-Optional top section for full-width header content.
+Displays a header above the item content.
 
-| Prop    | Type     | Default |
-| ------- | -------- | ------- |
-| `class` | `string` | -       |
+```tsx
+<Item>
+  <ItemHeader>Header</ItemHeader>
+  <ItemContent>...</ItemContent>
+</Item>
+```
 
 ### ItemFooter
 
-Optional bottom section for footer content.
+Displays a footer below the item content.
 
-| Prop    | Type     | Default |
-| ------- | -------- | ------- |
-| `class` | `string` | -       |
+```tsx
+<Item>
+  <ItemContent>...</ItemContent>
+  <ItemFooter>Footer</ItemFooter>
+</Item>
+```

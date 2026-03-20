@@ -1,21 +1,32 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { IconBell } from "@tabler/icons-solidjs"
+import { RefreshCcwIcon } from "lucide-solid"
+
 import { Button } from "~/registry/ui/button"
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyTitle } from "~/registry/ui/empty"
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle
+} from "~/registry/ui/empty"
 
 export default function EmptyBackground() {
   return (
-    <Empty class="max-w-md bg-muted/50">
+    <Empty class="h-full bg-muted/30">
       <EmptyHeader>
-        <EmptyTitle>No results found</EmptyTitle>
-        <EmptyDescription>
-          No results match your current filters. Try broadening your search or clearing filters.
+        <EmptyMedia variant="icon">
+          <IconBell />
+        </EmptyMedia>
+        <EmptyTitle>No Notifications</EmptyTitle>
+        <EmptyDescription class="max-w-xs text-pretty">
+          You&apos;re all caught up. New notifications will appear here.
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <Button>Try again</Button>
-        <Button as="a" class="text-muted-foreground" href="#" variant="link">
-          Learn how search works
-          <IconPlaceholder class="size-4" lucide="ArrowUpRightIcon" tabler="IconArrowUpRight" />
+        <Button variant="outline">
+          <RefreshCcwIcon />
+          Refresh
         </Button>
       </EmptyContent>
     </Empty>

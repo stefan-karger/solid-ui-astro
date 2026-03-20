@@ -1,11 +1,6 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarGroup,
-  AvatarGroupCount,
-  AvatarImage
-} from "~/registry/ui/avatar"
+import { PlusIcon } from "lucide-solid"
+
+import { Avatar, AvatarFallback, AvatarImage } from "~/registry/ui/avatar"
 import { Button } from "~/registry/ui/button"
 import {
   Empty,
@@ -18,10 +13,10 @@ import {
 
 export default function EmptyAvatarGroup() {
   return (
-    <Empty class="max-w-md border py-10">
+    <Empty>
       <EmptyHeader>
         <EmptyMedia>
-          <AvatarGroup class="grayscale">
+          <div class="flex -space-x-2 *:data-[slot=avatar]:size-12 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background *:data-[slot=avatar]:grayscale">
             <Avatar>
               <AvatarImage alt="@stefan-karger" src="https://github.com/stefan-karger.png" />
               <AvatarFallback>SK</AvatarFallback>
@@ -34,18 +29,15 @@ export default function EmptyAvatarGroup() {
               <AvatarImage alt="@ryansolid" src="https://github.com/ryansolid.png" />
               <AvatarFallback>RC</AvatarFallback>
             </Avatar>
-            <AvatarGroupCount>
-              <IconPlaceholder class="size-3" lucide="PlusIcon" tabler="IconPlus" />
-            </AvatarGroupCount>
-          </AvatarGroup>
+          </div>
         </EmptyMedia>
-        <EmptyTitle>No team members</EmptyTitle>
+        <EmptyTitle>No Team Members</EmptyTitle>
         <EmptyDescription>Invite your team to collaborate on this project.</EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <Button>
-          <IconPlaceholder class="size-4" lucide="PlusIcon" tabler="IconPlus" />
-          Invite members
+        <Button size="sm">
+          <PlusIcon />
+          Invite Members
         </Button>
       </EmptyContent>
     </Empty>

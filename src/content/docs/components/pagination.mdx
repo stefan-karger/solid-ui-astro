@@ -114,15 +114,12 @@ API Reference
 | `PaginationNext`     | Preconfigured next-page action with label and icon.           |
 | `PaginationEllipsis` | Non-interactive overflow indicator.                           |
 
-### PaginationLink Props
+### PaginationLink
 
 | Prop       | Type                         | Default  | Description                                |
 | ---------- | ---------------------------- | -------- | ------------------------------------------ |
 | `isActive` | `boolean`                    | `false`  | Applies active state and `aria-current`.   |
 | `size`     | `"default" \| "icon" \| ...` | `"icon"` | Passes through to the underlying `Button`. |
-| `class`    | `string`                     | -        | Additional classes for custom styling.     |
 
-`PaginationLink` forwards all anchor (`a`) attributes such as `href`, `target`, and `rel`.
-
-See the [Kobalte Button](https://kobalte.dev/docs/core/components/button) documentation for
-button behavior details used internally by `PaginationLink`.
+See the [Kobalte](https://kobalte.dev/docs/core/components/pagination) documentation for
+more information.

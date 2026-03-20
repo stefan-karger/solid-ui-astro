@@ -24,13 +24,13 @@
 | `direction`       |           |          |      |
 | `drawer`          |           |          |      |
 | `dropdown-menu`   |           |          |      |
-| `empty`           |           |          |      |
+| `empty`           | x         | x        | x    |
 | `field`           |           |          |      |
 | `hover-card`      |           |          |      |
 | `input`           |           |          |      |
 | `input-group`     |           |          |      |
 | `input-otp`       |           |          |      |
-| `item`            |           |          |      |
+| `item`            | x         | x        | x    |
 | `kbd`             |           |          |      |
 | `label`           |           |          |      |
 | `menubar`         |           |          |      |

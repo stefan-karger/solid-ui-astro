@@ -100,14 +100,18 @@ Use `aria-invalid` to show validation styling when the field has an error.
 
 ### NativeSelect
 
-| Prop    | Type              | Default     |
-| ------- | ----------------- | ----------- |
-| `size`  | `"sm"\|"default"` | `"default"` |
-| `class` | `string`          | -           |
+The main select component that wraps the native HTML select element.
 
-All native `select` props are forwarded.
+```tsx
+<NativeSelect>
+  <NativeSelectOption value="option1">Option 1</NativeSelectOption>
+  <NativeSelectOption value="option2">Option 2</NativeSelectOption>
+</NativeSelect>
+```
 
 ### NativeSelectOption
+
+Represents an individual option within the select.
 
 | Prop       | Type      | Default |
 | ---------- | --------- | ------- |
@@ -116,7 +120,16 @@ All native `select` props are forwarded.
 
 ### NativeSelectOptGroup
 
+Groups related options together for better organization.
+
 | Prop       | Type      | Default |
 | ---------- | --------- | ------- |
 | `label`    | `string`  | -       |
 | `disabled` | `boolean` | `false` |
+
+```tsx
+<NativeSelectOptGroup label="Fruits">
+  <NativeSelectOption value="apple">Apple</NativeSelectOption>
+  <NativeSelectOption value="banana">Banana</NativeSelectOption>
+</NativeSelectOptGroup>
+```

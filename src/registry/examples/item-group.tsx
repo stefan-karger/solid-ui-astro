@@ -14,19 +14,19 @@ import {
 
 const people = [
   {
-    username: "shadcn",
-    avatar: "https://github.com/shadcn.png",
-    email: "shadcn@vercel.com"
+    username: "stefan-karger",
+    avatar: "https://github.com/stefan-karger.png",
+    twitter: "@stefan_e_k"
   },
   {
     username: "carere",
     avatar: "https://github.com/carere.png",
-    email: "carere@vercel.com"
+    twitter: "@carere_dev"
   },
   {
     username: "ryansolid",
-    avatar: "https://github.com/ryansolid",
-    email: "ryansolid@vercel.com"
+    avatar: "https://github.com/ryansolid.png",
+    twitter: "@RyanCarniato"
   }
 ]
 
@@ -45,7 +45,7 @@ export default function ItemGroupExample() {
             </ItemMedia>
             <ItemContent class="gap-1">
               <ItemTitle>{person.username}</ItemTitle>
-              <ItemDescription>{person.email}</ItemDescription>
+              <ItemDescription>{person.twitter}</ItemDescription>
             </ItemContent>
             <ItemActions>
               <Button class="rounded-full" size="icon" variant="ghost">

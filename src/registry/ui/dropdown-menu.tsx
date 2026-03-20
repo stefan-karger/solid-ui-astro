@@ -8,8 +8,7 @@ import { cn } from "~/lib/utils"
 type DropdownMenuProps = DropdownMenuPrimitive.DropdownMenuRootProps
 
 const DropdownMenu = (props: DropdownMenuProps) => {
-  const mergedProps = mergeProps({ gutter: 4 }, props)
-  return <DropdownMenuPrimitive.Root data-slot="dropdown-menu" {...mergedProps} />
+  return <DropdownMenuPrimitive.Root data-slot="dropdown-menu" gutter={4} {...props} />
 }
 
 type DropdownMenuPortalProps = DropdownMenuPrimitive.DropdownMenuPortalProps

@@ -1,11 +1,12 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { SearchIcon } from "lucide-solid"
+
 import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyTitle } from "~/registry/ui/empty"
 import { InputGroup, InputGroupAddon, InputGroupInput } from "~/registry/ui/input-group"
 import { Kbd } from "~/registry/ui/kbd"
 
 export default function EmptyInputGroup() {
   return (
-    <Empty class="max-w-lg border">
+    <Empty>
       <EmptyHeader>
         <EmptyTitle>404 - Not Found</EmptyTitle>
         <EmptyDescription>
@@ -14,17 +15,17 @@ export default function EmptyInputGroup() {
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <InputGroup class="w-full">
+        <InputGroup class="sm:w-3/4">
           <InputGroupInput placeholder="Try searching for pages..." />
           <InputGroupAddon>
-            <IconPlaceholder class="size-4" lucide="CircleDashedIcon" tabler="IconCircleDashed" />
+            <SearchIcon />
           </InputGroupAddon>
           <InputGroupAddon align="inline-end">
             <Kbd>/</Kbd>
           </InputGroupAddon>
         </InputGroup>
         <EmptyDescription>
-          Need help? <a href="/docs">Contact support</a>
+          Need help? <a href="#">Contact support</a>
         </EmptyDescription>
       </EmptyContent>
     </Empty>

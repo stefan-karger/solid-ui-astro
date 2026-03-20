@@ -1,11 +1,23 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { IconFolderCode } from "@tabler/icons-solidjs"
+import { ArrowUpRightIcon } from "lucide-solid"
+
 import { Button } from "~/registry/ui/button"
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyTitle } from "~/registry/ui/empty"
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle
+} from "~/registry/ui/empty"
 
 export default function EmptyDemo() {
   return (
     <Empty class="max-w-md">
       <EmptyHeader>
+        <EmptyMedia variant="icon">
+          <IconFolderCode />
+        </EmptyMedia>
         <EmptyTitle>No projects yet</EmptyTitle>
         <EmptyDescription>
           You haven&apos;t created any projects yet. Get started by creating your first project.
@@ -17,8 +29,7 @@ export default function EmptyDemo() {
           <Button variant="outline">Import project</Button>
         </div>
         <Button as="a" class="text-muted-foreground" href="#" variant="link">
-          Learn more
-          <IconPlaceholder class="size-4" lucide="ArrowUpRightIcon" tabler="IconArrowUpRight" />
+          Learn more <ArrowUpRightIcon />
         </Button>
       </EmptyContent>
     </Empty>

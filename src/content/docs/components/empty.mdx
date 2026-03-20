@@ -4,7 +4,7 @@ description: Display helpful empty states with media, messaging, and actions.
 component: true
 ---
 
-<ComponentPreview name="empty-demo" previewClassName="h-[24rem] p-6" />
+<ComponentPreview name="empty-demo" previewClassName="h-96 p-0" />
 
 ## Installation
 
@@ -75,79 +75,123 @@ import {
 
 Use `EmptyMedia` with `variant="icon"` and an outline-style action.
 
-<ComponentPreview name="empty-outline" previewClassName="h-[24rem] p-6" />
+<ComponentPreview name="empty-outline" previewClassName="h-96 p-6 md:p-10" />
 
 ### Background
 
-Apply muted backgrounds for softer empty-state surfaces.
+Use the `bg-*` and `bg-gradient-*` utilities to add a background to the empty state.
 
-<ComponentPreview name="empty-background" previewClassName="h-[24rem] p-6" />
+<ComponentPreview name="empty-background" previewClassName="h-96 p-0" />
 
 ### Avatar
 
-Display a single avatar when the empty state is tied to an individual assignee or owner.
+Use the `EmptyMedia` component to display an avatar in the empty state.
 
-<ComponentPreview name="empty-avatar" previewClassName="h-[24rem] p-6" />
+<ComponentPreview name="empty-avatar" previewClassName="h-96 p-0" />
 
 ### Avatar Group
 
-Use avatar groups to represent teams before members are invited.
+Use the `EmptyMedia` component to display an avatar group in the empty state.
 
-<ComponentPreview name="empty-avatar-group" previewClassName="h-[24rem] p-6" />
+<ComponentPreview name="empty-avatar-group" previewClassName="h-96 p-0" />
 
 ### Input Group
 
-Combine `Empty` with `InputGroup` to guide users toward a search or recovery action.
+You can add an `InputGroup` component to the `EmptyContent` component.
 
-<ComponentPreview name="empty-input-group" previewClassName="h-[24rem] p-6" />
+<ComponentPreview name="empty-input-group" previewClassName="h-96 p-0" />
 
 ## API Reference
 
 ### Empty
 
-Root container for empty-state layout and centering.
+The main component of the empty state. Wraps the `EmptyHeader` and `EmptyContent` components.
 
 | Prop    | Type     | Default |
 | ------- | -------- | ------- |
-| `class` | `string` | -       |
+| `class` | `string` |         |
+
+```tsx
+<Empty>
+  <EmptyHeader />
+  <EmptyContent />
+</Empty>
+```
 
 ### EmptyHeader
 
-Top section for title, description, and optional media.
+The `EmptyHeader` component wraps the empty media, title, and description.
 
 | Prop    | Type     | Default |
 | ------- | -------- | ------- |
-| `class` | `string` | -       |
+| `class` | `string` |         |
+
+```tsx
+<EmptyHeader>
+  <EmptyMedia />
+  <EmptyTitle />
+  <EmptyDescription />
+</EmptyHeader>
+```
 
 ### EmptyMedia
 
-Media slot for avatars, icons, or custom visuals.
+Use the `EmptyMedia` component to display the media of the empty state such as an icon or an image. You can also use it to display other components such as an avatar.
 
-| Prop      | Type                  | Default     |
-| --------- | --------------------- | ----------- |
-| `variant` | `"default" \| "icon"` | `"default"` |
-| `class`   | `string`              | -           |
+| Prop      | Type                  | Default   |
+| --------- | --------------------- | --------- |
+| `variant` | `"default" \| "icon"` | `default` |
+| `class`   | `string`              |           |
+
+```tsx
+<EmptyMedia variant="icon">
+  <Icon />
+</EmptyMedia>
+```
+
+```tsx
+<EmptyMedia>
+  <Avatar>
+    <AvatarImage src="..." />
+    <AvatarFallback>CN</AvatarFallback>
+  </Avatar>
+</EmptyMedia>
+```
 
 ### EmptyTitle
 
-Primary title text of the empty state.
+Use the `EmptyTitle` component to display the title of the empty state.
 
 | Prop    | Type     | Default |
 | ------- | -------- | ------- |
-| `class` | `string` | -       |
+| `class` | `string` |         |
+
+```tsx
+<EmptyTitle>No data</EmptyTitle>
+```
 
 ### EmptyDescription
 
-Supporting description text and optional inline links.
+Use the `EmptyDescription` component to display the description of the empty state.
 
 | Prop    | Type     | Default |
 | ------- | -------- | ------- |
-| `class` | `string` | -       |
+| `class` | `string` |         |
+
+```tsx
+<EmptyDescription>You do not have any notifications.</EmptyDescription>
+```
 
 ### EmptyContent
 
-Action area for buttons, inputs, or additional helper content.
+Use the `EmptyContent` component to display the content of the empty state such as a button, input or a link.
 
 | Prop    | Type     | Default |
 | ------- | -------- | ------- |
-| `class` | `string` | -       |
+| `class` | `string` |         |
+
+```tsx
+<EmptyContent>
+  <Button>Add Project</Button>
+</EmptyContent>
+```

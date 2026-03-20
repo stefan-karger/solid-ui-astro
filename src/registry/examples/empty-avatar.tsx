@@ -1,4 +1,3 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
 import { Avatar, AvatarFallback, AvatarImage } from "~/registry/ui/avatar"
 import { Button } from "~/registry/ui/button"
 import {
@@ -24,16 +23,13 @@ export default function EmptyAvatar() {
             <AvatarFallback>SK</AvatarFallback>
           </Avatar>
         </EmptyMedia>
-        <EmptyTitle>No collaborators yet</EmptyTitle>
+        <EmptyTitle>User Offline</EmptyTitle>
         <EmptyDescription>
-          Invite your first teammate to start reviewing tasks and sharing updates.
+          This user is currently offline. You can leave a message to notify them or try again later.
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <Button>
-          <IconPlaceholder class="size-4" lucide="UserPlusIcon" tabler="IconUserPlus" />
-          Invite teammate
-        </Button>
+        <Button size="sm">Leave Message</Button>
       </EmptyContent>
     </Empty>
   )
