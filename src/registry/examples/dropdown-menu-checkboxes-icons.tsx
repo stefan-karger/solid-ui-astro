@@ -1,6 +1,6 @@
+import { BellIcon, MailIcon, MessageSquareIcon } from "lucide-solid"
 import { createSignal } from "solid-js"
 
-import { IconPlaceholder } from "~/components/icon-placeholder"
 import { Button } from "~/registry/ui/button"
 import {
   DropdownMenu,
@@ -32,14 +32,14 @@ export default function DropdownMenuCheckboxesIcons() {
               setNotifications((prev) => ({ ...prev, email: checked === true }))
             }
           >
-            <IconPlaceholder class="size-4" lucide="MailIcon" tabler="IconMail" />
+            <MailIcon class="size-4" />
             Email notifications
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem
             checked={notifications().sms}
             onChange={(checked) => setNotifications((prev) => ({ ...prev, sms: checked === true }))}
           >
-            <IconPlaceholder class="size-4" lucide="MessageSquareIcon" tabler="IconMessage" />
+            <MessageSquareIcon class="size-4" />
             SMS notifications
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem
@@ -48,7 +48,7 @@ export default function DropdownMenuCheckboxesIcons() {
               setNotifications((prev) => ({ ...prev, push: checked === true }))
             }
           >
-            <IconPlaceholder class="size-4" lucide="BellIcon" tabler="IconBell" />
+            <BellIcon class="size-4" />
             Push notifications
           </DropdownMenuCheckboxItem>
         </DropdownMenuGroup>

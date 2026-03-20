@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { CodeIcon, CopyIcon, CornerDownLeftIcon, RefreshCwIcon } from "lucide-solid"
+
 import {
   InputGroup,
   InputGroupAddon,
@@ -20,23 +21,19 @@ export default function InputGroupTextareaExample() {
           <InputGroupText>Line 1, Column 1</InputGroupText>
           <InputGroupButton class="ml-auto" size="sm" variant="default">
             Run
-            <IconPlaceholder
-              class="size-4"
-              lucide="CornerDownLeftIcon"
-              tabler="IconCornerDownLeft"
-            />
+            <CornerDownLeftIcon class="size-4" />
           </InputGroupButton>
         </InputGroupAddon>
         <InputGroupAddon align="block-start" class="border-b">
           <InputGroupText class="font-mono font-medium">
-            <IconPlaceholder class="size-4" lucide="CodeIcon" tabler="IconCode" />
+            <CodeIcon class="size-4" />
             script.js
           </InputGroupText>
           <InputGroupButton class="ml-auto" size="icon-xs">
-            <IconPlaceholder class="size-4" lucide="RefreshCwIcon" tabler="IconRefresh" />
+            <RefreshCwIcon class="size-4" />
           </InputGroupButton>
           <InputGroupButton size="icon-xs" variant="ghost">
-            <IconPlaceholder class="size-4" lucide="CopyIcon" tabler="IconCopy" />
+            <CopyIcon class="size-4" />
           </InputGroupButton>
         </InputGroupAddon>
       </InputGroup>

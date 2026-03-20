@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { CodeIcon, SearchIcon } from "lucide-solid"
+
 import { Tabs, TabsList, TabsTrigger } from "~/registry/ui/tabs"
 
 export default function TabsIcons() {
@@ -6,11 +7,11 @@ export default function TabsIcons() {
     <Tabs defaultValue="preview">
       <TabsList>
         <TabsTrigger value="preview">
-          <IconPlaceholder class="size-4" lucide="SearchIcon" tabler="IconSearch" />
+          <SearchIcon class="size-4" />
           Preview
         </TabsTrigger>
         <TabsTrigger value="code">
-          <IconPlaceholder class="size-4" lucide="CodeIcon" tabler="IconCode" />
+          <CodeIcon class="size-4" />
           Code
         </TabsTrigger>
       </TabsList>

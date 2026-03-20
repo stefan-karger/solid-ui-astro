@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { ShieldIcon } from "lucide-solid"
+
 import { Button } from "~/registry/ui/button"
 import {
   Item,
@@ -14,7 +15,7 @@ export default function ItemIcon() {
     <div class="flex w-full max-w-lg flex-col gap-6">
       <Item variant="outline">
         <ItemMedia variant="icon">
-          <IconPlaceholder class="size-4" lucide="ShieldIcon" tabler="IconShield" />
+          <ShieldIcon class="size-4" />
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Security Alert</ItemTitle>

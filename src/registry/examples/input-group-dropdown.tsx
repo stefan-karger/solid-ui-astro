@@ -1,6 +1,6 @@
+import { ChevronDownIcon, EllipsisIcon } from "lucide-solid"
 import { createSignal } from "solid-js"
 
-import { IconPlaceholder } from "~/components/icon-placeholder"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -30,7 +30,7 @@ export default function InputGroupDropdown() {
               size="icon-xs"
               variant="ghost"
             >
-              <IconPlaceholder class="size-4" lucide="EllipsisIcon" tabler="IconDots" />
+              <EllipsisIcon class="size-4" />
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuGroup>
@@ -49,7 +49,7 @@ export default function InputGroupDropdown() {
           <DropdownMenu>
             <DropdownMenuTrigger as={InputGroupButton} class="pr-1.5 text-xs" variant="ghost">
               {scope()}
-              <IconPlaceholder class="size-3" lucide="ChevronDownIcon" tabler="IconChevronDown" />
+              <ChevronDownIcon class="size-3" />
             </DropdownMenuTrigger>
             <DropdownMenuContent class="[--radius:0.95rem]">
               <DropdownMenuGroup>

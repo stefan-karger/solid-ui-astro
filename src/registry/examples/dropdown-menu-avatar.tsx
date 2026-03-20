@@ -1,4 +1,11 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import {
+  BadgeCheckIcon,
+  BellIcon,
+  ChevronsUpDownIcon,
+  CreditCardIcon,
+  LogOutIcon
+} from "lucide-solid"
+
 import { Button } from "~/registry/ui/button"
 import {
   DropdownMenu,
@@ -23,34 +30,26 @@ export default function DropdownMenuAvatar() {
             <span class="truncate font-semibold">shadcn</span>
             <span class="truncate text-xs text-muted-foreground">shadcn@example.com</span>
           </div>
-          <IconPlaceholder
-            class="ml-auto size-4 text-muted-foreground"
-            lucide="ChevronsUpDownIcon"
-            tabler="IconSelector"
-          />
+          <ChevronsUpDownIcon class="ml-auto size-4 text-muted-foreground" />
         </DropdownMenuTrigger>
         <DropdownMenuContent class="w-(--kb-popper-anchor-width) min-w-56">
           <DropdownMenuGroup>
             <DropdownMenuItem>
-              <IconPlaceholder
-                class="size-4"
-                lucide="BadgeCheckIcon"
-                tabler="IconRosetteDiscountCheck"
-              />
+              <BadgeCheckIcon class="size-4" />
               Account
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <IconPlaceholder class="size-4" lucide="CreditCardIcon" tabler="IconCreditCard" />
+              <CreditCardIcon class="size-4" />
               Billing
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <IconPlaceholder class="size-4" lucide="BellIcon" tabler="IconBell" />
+              <BellIcon class="size-4" />
               Notifications
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
-            <IconPlaceholder class="size-4" lucide="LogOutIcon" tabler="IconLogout" />
+            <LogOutIcon class="size-4" />
             Sign Out
           </DropdownMenuItem>
         </DropdownMenuContent>
@@ -67,25 +66,21 @@ export default function DropdownMenuAvatar() {
         <DropdownMenuContent>
           <DropdownMenuGroup>
             <DropdownMenuItem>
-              <IconPlaceholder
-                class="size-4"
-                lucide="BadgeCheckIcon"
-                tabler="IconRosetteDiscountCheck"
-              />
+              <BadgeCheckIcon class="size-4" />
               Account
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <IconPlaceholder class="size-4" lucide="CreditCardIcon" tabler="IconCreditCard" />
+              <CreditCardIcon class="size-4" />
               Billing
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <IconPlaceholder class="size-4" lucide="BellIcon" tabler="IconBell" />
+              <BellIcon class="size-4" />
               Notifications
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
-            <IconPlaceholder class="size-4" lucide="LogOutIcon" tabler="IconLogout" />
+            <LogOutIcon class="size-4" />
             Sign Out
           </DropdownMenuItem>
         </DropdownMenuContent>

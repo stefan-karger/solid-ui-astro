@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { ArrowUpIcon } from "lucide-solid"
+
 import {
   InputGroup,
   InputGroupAddon,
@@ -24,7 +25,7 @@ export default function SpinnerInputGroup() {
           <Spinner />
           Validating...
           <InputGroupButton class="ml-auto" variant="default">
-            <IconPlaceholder class="size-4" lucide="ArrowUpIcon" tabler="IconArrowUp" />
+            <ArrowUpIcon class="size-4" />
             <span class="sr-only">Send</span>
           </InputGroupButton>
         </InputGroupAddon>

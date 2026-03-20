@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { SearchIcon } from "lucide-solid"
+
 import { Button } from "~/registry/ui/button"
 
 export default function ButtonRounded() {
@@ -11,7 +12,7 @@ export default function ButtonRounded() {
         Rounded Secondary
       </Button>
       <Button class="rounded-full" size="icon" variant="outline">
-        <IconPlaceholder class="size-4" lucide="SearchIcon" tabler="IconSearch" />
+        <SearchIcon class="size-4" />
         <span class="sr-only">Search</span>
       </Button>
     </div>

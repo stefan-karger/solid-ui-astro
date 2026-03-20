@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { PlusIcon } from "lucide-solid"
+
 import { Button } from "~/registry/ui/button"
 import {
   Item,
@@ -26,7 +27,7 @@ export default function ItemAvatar() {
         </ItemContent>
         <ItemActions>
           <Button aria-label="Invite" class="rounded-full" size="icon-sm" variant="outline">
-            <IconPlaceholder class="size-4" lucide="PlusIcon" tabler="IconPlus" />
+            <PlusIcon class="size-4" />
           </Button>
         </ItemActions>
       </Item>

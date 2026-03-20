@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { EyeOffIcon } from "lucide-solid"
+
 import { Field, FieldDescription, FieldLabel } from "~/registry/ui/field"
 import { InputGroup, InputGroupAddon, InputGroupInput } from "~/registry/ui/input-group"
 
@@ -9,7 +10,7 @@ export default function InputGroupInlineEnd() {
       <InputGroup>
         <InputGroupInput id="inline-end-input" placeholder="Enter password" type="password" />
         <InputGroupAddon align="inline-end">
-          <IconPlaceholder class="size-4" lucide="EyeOffIcon" tabler="IconEyeOff" />
+          <EyeOffIcon class="size-4" />
         </InputGroupAddon>
       </InputGroup>
       <FieldDescription>Icon positioned at the end.</FieldDescription>

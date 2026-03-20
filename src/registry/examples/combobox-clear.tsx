@@ -1,6 +1,6 @@
+import { XIcon } from "lucide-solid"
 import { createSignal, Show } from "solid-js"
 
-import { IconPlaceholder } from "~/components/icon-placeholder"
 import {
   Combobox,
   ComboboxContent,
@@ -56,7 +56,7 @@ export default function ComboboxClear() {
                   size="icon-xs"
                   variant="ghost"
                 >
-                  <IconPlaceholder class="size-3.5" lucide="XIcon" tabler="IconX" />
+                  <XIcon class="size-3.5" />
                 </InputGroupButton>
               </Show>
               <ComboboxTrigger />

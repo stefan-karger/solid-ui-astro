@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { ArrowUpRightIcon } from "lucide-solid"
+
 import { Badge } from "~/registry/ui/badge"
 
 export default function BadgeLink() {
@@ -6,30 +7,15 @@ export default function BadgeLink() {
     <div class="flex flex-wrap items-center gap-2">
       <Badge as="a" href="#">
         Docs
-        <IconPlaceholder
-          class="size-3"
-          data-icon="inline-end"
-          lucide="ArrowUpRightIcon"
-          tabler="IconArrowUpRight"
-        />
+        <ArrowUpRightIcon class="size-3" data-icon="inline-end" />
       </Badge>
       <Badge as="a" href="#" variant="secondary">
         Changelog
-        <IconPlaceholder
-          class="size-3"
-          data-icon="inline-end"
-          lucide="ArrowUpRightIcon"
-          tabler="IconArrowUpRight"
-        />
+        <ArrowUpRightIcon class="size-3" data-icon="inline-end" />
       </Badge>
       <Badge as="a" href="#" variant="ghost">
         Release notes
-        <IconPlaceholder
-          class="size-3"
-          data-icon="inline-end"
-          lucide="ArrowUpRightIcon"
-          tabler="IconArrowUpRight"
-        />
+        <ArrowUpRightIcon class="size-3" data-icon="inline-end" />
       </Badge>
     </div>
   )

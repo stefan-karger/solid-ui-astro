@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { ClipboardPasteIcon, CopyIcon, ScissorsIcon, TrashIcon } from "lucide-solid"
+
 import {
   ContextMenu,
   ContextMenuContent,
@@ -18,22 +19,22 @@ export default function ContextMenuIcons() {
       <ContextMenuContent>
         <ContextMenuGroup>
           <ContextMenuItem>
-            <IconPlaceholder class="size-4" lucide="CopyIcon" tabler="IconCopy" />
+            <CopyIcon class="size-4" />
             Copy
           </ContextMenuItem>
           <ContextMenuItem>
-            <IconPlaceholder class="size-4" lucide="ScissorsIcon" tabler="IconScissors" />
+            <ScissorsIcon class="size-4" />
             Cut
           </ContextMenuItem>
           <ContextMenuItem>
-            <IconPlaceholder class="size-4" lucide="ClipboardPasteIcon" tabler="IconClipboard" />
+            <ClipboardPasteIcon class="size-4" />
             Paste
           </ContextMenuItem>
         </ContextMenuGroup>
         <ContextMenuSeparator />
         <ContextMenuGroup>
           <ContextMenuItem variant="destructive">
-            <IconPlaceholder class="size-4" lucide="TrashIcon" tabler="IconTrash" />
+            <TrashIcon class="size-4" />
             Delete
           </ContextMenuItem>
         </ContextMenuGroup>

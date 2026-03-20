@@ -1,16 +1,17 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { ChevronRightIcon, SearchIcon } from "lucide-solid"
+
 import { Button } from "~/registry/ui/button"
 
 export default function ButtonWithIcon() {
   return (
     <div class="flex flex-wrap items-center gap-2">
       <Button>
-        <IconPlaceholder class="size-4" lucide="SearchIcon" tabler="IconSearch" />
+        <SearchIcon class="size-4" />
         Search
       </Button>
       <Button variant="outline">
         Continue
-        <IconPlaceholder class="size-4" lucide="ChevronRightIcon" tabler="IconChevronRight" />
+        <ChevronRightIcon class="size-4" />
       </Button>
     </div>
   )

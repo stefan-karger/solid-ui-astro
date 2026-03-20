@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { SearchIcon } from "lucide-solid"
+
 import { InputGroup, InputGroupAddon, InputGroupInput } from "~/registry/ui/input-group"
 
 export default function InputGroupDemo() {
@@ -6,11 +7,7 @@ export default function InputGroupDemo() {
     <InputGroup class="w-full max-w-sm">
       <InputGroupInput placeholder="Search..." />
       <InputGroupAddon>
-        <IconPlaceholder
-          class="size-4 text-muted-foreground"
-          lucide="SearchIcon"
-          tabler="IconSearch"
-        />
+        <SearchIcon class="size-4 text-muted-foreground" />
       </InputGroupAddon>
       <InputGroupAddon align="inline-end">12 results</InputGroupAddon>
     </InputGroup>

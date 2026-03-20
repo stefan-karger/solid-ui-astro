@@ -1,6 +1,6 @@
+import { EllipsisIcon } from "lucide-solid"
 import { For } from "solid-js"
 
-import { IconPlaceholder } from "~/components/icon-placeholder"
 import { Button } from "~/registry/ui/button"
 import {
   DropdownMenu,
@@ -54,7 +54,7 @@ export default function TableActions() {
                     size="icon-sm"
                     variant="ghost"
                   >
-                    <IconPlaceholder class="size-4" lucide="EllipsisIcon" tabler="IconDots" />
+                    <EllipsisIcon class="size-4" />
                     <span class="sr-only">Open menu</span>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent class="w-32">

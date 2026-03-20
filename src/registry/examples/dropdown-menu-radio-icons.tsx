@@ -1,6 +1,6 @@
+import { Building2Icon, CreditCardIcon, WalletIcon } from "lucide-solid"
 import { createSignal } from "solid-js"
 
-import { IconPlaceholder } from "~/components/icon-placeholder"
 import { Button } from "~/registry/ui/button"
 import {
   DropdownMenu,
@@ -25,15 +25,15 @@ export default function DropdownMenuRadioIcons() {
           <DropdownMenuLabel>Select Payment Method</DropdownMenuLabel>
           <DropdownMenuRadioGroup onChange={setPaymentMethod} value={paymentMethod()}>
             <DropdownMenuRadioItem value="card">
-              <IconPlaceholder class="size-4" lucide="CreditCardIcon" tabler="IconCreditCard" />
+              <CreditCardIcon class="size-4" />
               Credit Card
             </DropdownMenuRadioItem>
             <DropdownMenuRadioItem value="paypal">
-              <IconPlaceholder class="size-4" lucide="WalletIcon" tabler="IconWallet" />
+              <WalletIcon class="size-4" />
               PayPal
             </DropdownMenuRadioItem>
             <DropdownMenuRadioItem value="bank">
-              <IconPlaceholder class="size-4" lucide="Building2Icon" tabler="IconBuildingBank" />
+              <Building2Icon class="size-4" />
               Bank Transfer
             </DropdownMenuRadioItem>
           </DropdownMenuRadioGroup>

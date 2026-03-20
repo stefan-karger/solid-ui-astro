@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { LoaderCircleIcon, LoaderIcon, RefreshCwIcon } from "lucide-solid"
+
 import {
   InputGroup,
   InputGroupAddon,
@@ -12,18 +13,14 @@ export default function InputGroupSpinner() {
       <InputGroup>
         <InputGroupInput placeholder="Searching..." />
         <InputGroupAddon align="inline-end">
-          <IconPlaceholder class="size-4 animate-spin" lucide="LoaderIcon" tabler="IconLoader2" />
+          <LoaderIcon class="size-4 animate-spin" />
         </InputGroupAddon>
       </InputGroup>
 
       <InputGroup>
         <InputGroupInput placeholder="Processing..." />
         <InputGroupAddon>
-          <IconPlaceholder
-            class="size-4 animate-spin"
-            lucide="LoaderCircleIcon"
-            tabler="IconLoader"
-          />
+          <LoaderCircleIcon class="size-4 animate-spin" />
         </InputGroupAddon>
       </InputGroup>
 
@@ -31,18 +28,14 @@ export default function InputGroupSpinner() {
         <InputGroupInput placeholder="Saving changes..." />
         <InputGroupAddon align="inline-end">
           <InputGroupText>Saving...</InputGroupText>
-          <IconPlaceholder class="size-4 animate-spin" lucide="LoaderIcon" tabler="IconLoader2" />
+          <LoaderIcon class="size-4 animate-spin" />
         </InputGroupAddon>
       </InputGroup>
 
       <InputGroup>
         <InputGroupInput placeholder="Refreshing data..." />
         <InputGroupAddon>
-          <IconPlaceholder
-            class="size-4 animate-spin"
-            lucide="RefreshCwIcon"
-            tabler="IconRefresh"
-          />
+          <RefreshCwIcon class="size-4 animate-spin" />
         </InputGroupAddon>
         <InputGroupAddon align="inline-end">
           <InputGroupText class="text-muted-foreground">Please wait...</InputGroupText>

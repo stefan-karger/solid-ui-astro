@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { BotIcon, ChevronDownIcon } from "lucide-solid"
+
 import { Button } from "~/registry/ui/button"
 import { ButtonGroup } from "~/registry/ui/button-group"
 import { Popover, PopoverContent, PopoverTrigger } from "~/registry/ui/popover"
@@ -9,13 +10,13 @@ export default function ButtonGroupPopover() {
   return (
     <ButtonGroup>
       <Button variant="outline">
-        <IconPlaceholder class="size-4" lucide="BotIcon" tabler="IconRobot" />
+        <BotIcon class="size-4" />
         Copilot
       </Button>
 
       <Popover>
         <PopoverTrigger as={Button} aria-label="Open popover" size="icon" variant="outline">
-          <IconPlaceholder class="size-4" lucide="ChevronDownIcon" tabler="IconChevronDown" />
+          <ChevronDownIcon class="size-4" />
         </PopoverTrigger>
         <PopoverContent class="w-80 rounded-xl p-0 text-sm">
           <div class="px-4 py-3">

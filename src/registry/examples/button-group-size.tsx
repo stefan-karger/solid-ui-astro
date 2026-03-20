@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { PlusIcon } from "lucide-solid"
+
 import { Button } from "~/registry/ui/button"
 import { ButtonGroup } from "~/registry/ui/button-group"
 
@@ -16,7 +17,7 @@ export default function ButtonGroupSize() {
           Group
         </Button>
         <Button size="icon-sm" variant="outline">
-          <IconPlaceholder class="size-4" lucide="PlusIcon" tabler="IconPlus" />
+          <PlusIcon class="size-4" />
         </Button>
       </ButtonGroup>
 
@@ -25,7 +26,7 @@ export default function ButtonGroupSize() {
         <Button variant="outline">Button</Button>
         <Button variant="outline">Group</Button>
         <Button size="icon" variant="outline">
-          <IconPlaceholder class="size-4" lucide="PlusIcon" tabler="IconPlus" />
+          <PlusIcon class="size-4" />
         </Button>
       </ButtonGroup>
 
@@ -40,7 +41,7 @@ export default function ButtonGroupSize() {
           Group
         </Button>
         <Button size="icon-lg" variant="outline">
-          <IconPlaceholder class="size-4" lucide="PlusIcon" tabler="IconPlus" />
+          <PlusIcon class="size-4" />
         </Button>
       </ButtonGroup>
     </div>

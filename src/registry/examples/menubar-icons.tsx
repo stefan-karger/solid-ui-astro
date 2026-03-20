@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { ArchiveIcon, FileIcon, FolderIcon, InfoIcon, SearchIcon, Trash2Icon } from "lucide-solid"
+
 import {
   Menubar,
   MenubarContent,
@@ -17,16 +18,16 @@ export default function MenubarIcons() {
         <MenubarTrigger>File</MenubarTrigger>
         <MenubarContent>
           <MenubarItem>
-            <IconPlaceholder class="size-4" lucide="FileIcon" tabler="IconFile" />
+            <FileIcon class="size-4" />
             New File <MenubarShortcut>⌘N</MenubarShortcut>
           </MenubarItem>
           <MenubarItem>
-            <IconPlaceholder class="size-4" lucide="FolderIcon" tabler="IconFolder" />
+            <FolderIcon class="size-4" />
             Open Folder
           </MenubarItem>
           <MenubarSeparator />
           <MenubarItem>
-            <IconPlaceholder class="size-4" lucide="ArchiveIcon" tabler="IconArchive" />
+            <ArchiveIcon class="size-4" />
             Save <MenubarShortcut>⌘S</MenubarShortcut>
           </MenubarItem>
         </MenubarContent>
@@ -36,16 +37,16 @@ export default function MenubarIcons() {
         <MenubarContent>
           <MenubarGroup>
             <MenubarItem>
-              <IconPlaceholder class="size-4" lucide="SearchIcon" tabler="IconSearch" />
+              <SearchIcon class="size-4" />
               Search
             </MenubarItem>
             <MenubarItem>
-              <IconPlaceholder class="size-4" lucide="InfoIcon" tabler="IconInfoCircle" />
+              <InfoIcon class="size-4" />
               Help
             </MenubarItem>
             <MenubarSeparator />
             <MenubarItem variant="destructive">
-              <IconPlaceholder class="size-4" lucide="Trash2Icon" tabler="IconTrash" />
+              <Trash2Icon class="size-4" />
               Delete
             </MenubarItem>
           </MenubarGroup>

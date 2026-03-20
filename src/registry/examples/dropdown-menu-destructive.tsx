@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { ArchiveIcon, PencilIcon, ShareIcon, TrashIcon } from "lucide-solid"
+
 import { Button } from "~/registry/ui/button"
 import {
   DropdownMenu,
@@ -16,20 +17,20 @@ export default function DropdownMenuDestructive() {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>
-          <IconPlaceholder class="size-4" lucide="PencilIcon" tabler="IconPencil" />
+          <PencilIcon class="size-4" />
           Edit
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <IconPlaceholder class="size-4" lucide="ShareIcon" tabler="IconShare" />
+          <ShareIcon class="size-4" />
           Share
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <IconPlaceholder class="size-4" lucide="ArchiveIcon" tabler="IconArchive" />
+          <ArchiveIcon class="size-4" />
           Archive
         </DropdownMenuItem>
         <DropdownMenuItem variant="destructive">
-          <IconPlaceholder class="size-4" lucide="TrashIcon" tabler="IconTrash" />
+          <TrashIcon class="size-4" />
           Delete
         </DropdownMenuItem>
       </DropdownMenuContent>

@@ -1,6 +1,6 @@
+import { ActivityIcon, LayoutPanelTopIcon, PanelLeftIcon } from "lucide-solid"
 import { createSignal } from "solid-js"
 
-import { IconPlaceholder } from "~/components/icon-placeholder"
 import { Button } from "~/registry/ui/button"
 import {
   DropdownMenu,
@@ -25,7 +25,7 @@ export default function DropdownMenuCheckboxes() {
         <DropdownMenuGroup>
           <DropdownMenuLabel>Appearance</DropdownMenuLabel>
           <DropdownMenuCheckboxItem checked={showStatusBar()} onChange={setShowStatusBar}>
-            <IconPlaceholder class="size-4" lucide="LayoutPanelTopIcon" tabler="IconLayout" />
+            <LayoutPanelTopIcon class="size-4" />
             Status Bar
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem
@@ -33,11 +33,11 @@ export default function DropdownMenuCheckboxes() {
             disabled
             onChange={setShowActivityBar}
           >
-            <IconPlaceholder class="size-4" lucide="ActivityIcon" tabler="IconActivity" />
+            <ActivityIcon class="size-4" />
             Activity Bar
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem checked={showPanel()} onChange={setShowPanel}>
-            <IconPlaceholder class="size-4" lucide="PanelLeftIcon" tabler="IconLayoutSidebar" />
+            <PanelLeftIcon class="size-4" />
             Panel
           </DropdownMenuCheckboxItem>
         </DropdownMenuGroup>

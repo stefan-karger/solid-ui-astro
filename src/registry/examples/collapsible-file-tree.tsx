@@ -1,6 +1,6 @@
+import { ChevronRightIcon, FileIcon, FolderIcon } from "lucide-solid"
 import { For, type JSX } from "solid-js"
 
-import { IconPlaceholder } from "~/components/icon-placeholder"
 import { Button } from "~/registry/ui/button"
 import { Card, CardContent, CardHeader } from "~/registry/ui/card"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "~/registry/ui/collapsible"
@@ -70,12 +70,8 @@ const renderItem = (item: FileTreeItem): JSX.Element => {
           size="sm"
           variant="ghost"
         >
-          <IconPlaceholder
-            class="size-4 transition-transform group-data-[expanded]/collapsible-trigger:rotate-90"
-            lucide="ChevronRightIcon"
-            tabler="IconChevronRight"
-          />
-          <IconPlaceholder class="size-4" lucide="FolderIcon" tabler="IconFolder" />
+          <ChevronRightIcon class="size-4 transition-transform group-data-[expanded]/collapsible-trigger:rotate-90" />
+          <FolderIcon class="size-4" />
           {item.name}
         </CollapsibleTrigger>
         <CollapsibleContent class="mt-1 ml-5">
@@ -89,7 +85,7 @@ const renderItem = (item: FileTreeItem): JSX.Element => {
 
   return (
     <Button class="w-full justify-start gap-2 text-foreground" size="sm" variant="link">
-      <IconPlaceholder class="size-4" lucide="FileIcon" tabler="IconFile" />
+      <FileIcon class="size-4" />
       <span>{item.name}</span>
     </Button>
   )

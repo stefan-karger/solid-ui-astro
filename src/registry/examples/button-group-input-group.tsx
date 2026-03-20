@@ -1,6 +1,6 @@
+import { AudioLinesIcon, PlusIcon } from "lucide-solid"
 import { createSignal } from "solid-js"
 
-import { IconPlaceholder } from "~/components/icon-placeholder"
 import { Button } from "~/registry/ui/button"
 import { ButtonGroup } from "~/registry/ui/button-group"
 import {
@@ -18,7 +18,7 @@ export default function ButtonGroupInputGroup() {
     <ButtonGroup class="[--radius:9999rem]">
       <ButtonGroup>
         <Button size="icon" variant="outline">
-          <IconPlaceholder class="size-4" lucide="PlusIcon" tabler="IconPlus" />
+          <PlusIcon class="size-4" />
         </Button>
       </ButtonGroup>
 
@@ -38,7 +38,7 @@ export default function ButtonGroupInputGroup() {
                 onClick={() => setVoiceEnabled((value) => !value)}
                 size="icon-xs"
               >
-                <IconPlaceholder class="size-4" lucide="AudioLinesIcon" tabler="IconWaveSine" />
+                <AudioLinesIcon class="size-4" />
               </TooltipTrigger>
               <TooltipContent>Voice Mode</TooltipContent>
             </Tooltip>

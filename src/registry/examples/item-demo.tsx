@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { BadgeCheckIcon, ChevronRightIcon } from "lucide-solid"
+
 import { Button } from "~/registry/ui/button"
 import {
   Item,
@@ -26,17 +27,13 @@ export default function ItemDemo() {
 
       <Item as="a" href="#" size="sm" variant="outline">
         <ItemMedia variant="icon">
-          <IconPlaceholder
-            class="size-5"
-            lucide="BadgeCheckIcon"
-            tabler="IconRosetteDiscountCheck"
-          />
+          <BadgeCheckIcon class="size-5" />
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Your profile has been verified.</ItemTitle>
         </ItemContent>
         <ItemActions>
-          <IconPlaceholder class="size-4" lucide="ChevronRightIcon" tabler="IconChevronRight" />
+          <ChevronRightIcon class="size-4" />
         </ItemActions>
       </Item>
     </div>

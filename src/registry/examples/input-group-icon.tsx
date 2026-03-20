@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { CheckIcon, CreditCardIcon, InfoIcon, MailIcon, SearchIcon, StarIcon } from "lucide-solid"
+
 import { InputGroup, InputGroupAddon, InputGroupInput } from "~/registry/ui/input-group"
 
 export default function InputGroupIcon() {
@@ -7,32 +8,32 @@ export default function InputGroupIcon() {
       <InputGroup>
         <InputGroupInput placeholder="Search..." />
         <InputGroupAddon>
-          <IconPlaceholder class="size-4" lucide="SearchIcon" tabler="IconSearch" />
+          <SearchIcon class="size-4" />
         </InputGroupAddon>
       </InputGroup>
 
       <InputGroup>
         <InputGroupInput placeholder="Enter your email" type="email" />
         <InputGroupAddon>
-          <IconPlaceholder class="size-4" lucide="MailIcon" tabler="IconMail" />
+          <MailIcon class="size-4" />
         </InputGroupAddon>
       </InputGroup>
 
       <InputGroup>
         <InputGroupInput placeholder="Card number" />
         <InputGroupAddon>
-          <IconPlaceholder class="size-4" lucide="CreditCardIcon" tabler="IconCreditCard" />
+          <CreditCardIcon class="size-4" />
         </InputGroupAddon>
         <InputGroupAddon align="inline-end">
-          <IconPlaceholder class="size-4" lucide="CheckIcon" tabler="IconCheck" />
+          <CheckIcon class="size-4" />
         </InputGroupAddon>
       </InputGroup>
 
       <InputGroup>
         <InputGroupInput placeholder="Card number" />
         <InputGroupAddon align="inline-end">
-          <IconPlaceholder class="size-4" lucide="StarIcon" tabler="IconStar" />
-          <IconPlaceholder class="size-4" lucide="InfoIcon" tabler="IconInfoCircle" />
+          <StarIcon class="size-4" />
+          <InfoIcon class="size-4" />
         </InputGroupAddon>
       </InputGroup>
     </div>

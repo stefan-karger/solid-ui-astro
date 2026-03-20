@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { PlusIcon } from "lucide-solid"
+
 import {
   Avatar,
   AvatarFallback,
@@ -23,7 +24,7 @@ export default function AvatarGroupCountIcon() {
         <AvatarFallback>RC</AvatarFallback>
       </Avatar>
       <AvatarGroupCount>
-        <IconPlaceholder class="size-3" lucide="PlusIcon" tabler="IconPlus" />
+        <PlusIcon class="size-3" />
       </AvatarGroupCount>
     </AvatarGroup>
   )

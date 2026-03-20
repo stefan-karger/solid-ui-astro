@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { InboxIcon } from "lucide-solid"
+
 import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "~/registry/ui/item"
 
 export default function ItemSize() {
@@ -6,7 +7,7 @@ export default function ItemSize() {
     <div class="flex w-full max-w-md flex-col gap-6">
       <Item variant="outline">
         <ItemMedia variant="icon">
-          <IconPlaceholder class="size-4" lucide="InboxIcon" tabler="IconInbox" />
+          <InboxIcon class="size-4" />
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Default Size</ItemTitle>
@@ -16,7 +17,7 @@ export default function ItemSize() {
 
       <Item size="sm" variant="outline">
         <ItemMedia variant="icon">
-          <IconPlaceholder class="size-4" lucide="InboxIcon" tabler="IconInbox" />
+          <InboxIcon class="size-4" />
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Small Size</ItemTitle>
@@ -26,7 +27,7 @@ export default function ItemSize() {
 
       <Item size="xs" variant="outline">
         <ItemMedia variant="icon">
-          <IconPlaceholder class="size-4" lucide="InboxIcon" tabler="IconInbox" />
+          <InboxIcon class="size-4" />
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Extra Small Size</ItemTitle>

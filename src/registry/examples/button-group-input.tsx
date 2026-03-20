@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { SearchIcon } from "lucide-solid"
+
 import { Button } from "~/registry/ui/button"
 import { ButtonGroup } from "~/registry/ui/button-group"
 import { Input } from "~/registry/ui/input"
@@ -8,7 +9,7 @@ export default function ButtonGroupInput() {
     <ButtonGroup>
       <Input placeholder="Search..." />
       <Button aria-label="Search" variant="outline">
-        <IconPlaceholder class="size-4" lucide="SearchIcon" tabler="IconSearch" />
+        <SearchIcon class="size-4" />
       </Button>
     </ButtonGroup>
   )

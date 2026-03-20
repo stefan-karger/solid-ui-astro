@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { CreditCardIcon, LogOutIcon, SettingsIcon, UserIcon } from "lucide-solid"
+
 import { Button } from "~/registry/ui/button"
 import {
   DropdownMenu,
@@ -16,20 +17,20 @@ export default function DropdownMenuIcons() {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>
-          <IconPlaceholder class="size-4" lucide="UserIcon" tabler="IconUser" />
+          <UserIcon class="size-4" />
           Profile
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <IconPlaceholder class="size-4" lucide="CreditCardIcon" tabler="IconCreditCard" />
+          <CreditCardIcon class="size-4" />
           Billing
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <IconPlaceholder class="size-4" lucide="SettingsIcon" tabler="IconSettings" />
+          <SettingsIcon class="size-4" />
           Settings
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem variant="destructive">
-          <IconPlaceholder class="size-4" lucide="LogOutIcon" tabler="IconLogout" />
+          <LogOutIcon class="size-4" />
           Log out
         </DropdownMenuItem>
       </DropdownMenuContent>

@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { InfoIcon } from "lucide-solid"
+
 import { Field, FieldLabel } from "~/registry/ui/field"
 import {
   InputGroup,
@@ -17,7 +18,7 @@ export default function InputInputGroup() {
           <InputGroupText>https://</InputGroupText>
         </InputGroupAddon>
         <InputGroupAddon align="inline-end">
-          <IconPlaceholder class="size-4" lucide="InfoIcon" tabler="IconInfoCircle" />
+          <InfoIcon class="size-4" />
         </InputGroupAddon>
       </InputGroup>
     </Field>

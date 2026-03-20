@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { Trash2Icon } from "lucide-solid"
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,7 +23,7 @@ export default function AlertDialogDestructive() {
       <AlertDialogContent size="sm">
         <AlertDialogHeader>
           <AlertDialogMedia class="bg-destructive/10 text-destructive dark:bg-destructive/20 dark:text-destructive">
-            <IconPlaceholder lucide="Trash2Icon" tabler="IconTrash" />
+            <Trash2Icon />
           </AlertDialogMedia>
           <AlertDialogTitle>Delete chat?</AlertDialogTitle>
           <AlertDialogDescription>

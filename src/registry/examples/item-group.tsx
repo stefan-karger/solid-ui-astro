@@ -1,6 +1,6 @@
+import { PlusIcon } from "lucide-solid"
 import { For } from "solid-js"
 
-import { IconPlaceholder } from "~/components/icon-placeholder"
 import { Button } from "~/registry/ui/button"
 import {
   Item,
@@ -49,7 +49,7 @@ export default function ItemGroupExample() {
             </ItemContent>
             <ItemActions>
               <Button class="rounded-full" size="icon" variant="ghost">
-                <IconPlaceholder class="size-4" lucide="PlusIcon" tabler="IconPlus" />
+                <PlusIcon class="size-4" />
               </Button>
             </ItemActions>
           </Item>

@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { SearchIcon } from "lucide-solid"
+
 import { InputGroup, InputGroupAddon, InputGroupInput } from "~/registry/ui/input-group"
 import { Kbd } from "~/registry/ui/kbd"
 
@@ -8,11 +9,7 @@ export default function KbdInputGroup() {
       <InputGroup>
         <InputGroupInput placeholder="Search..." />
         <InputGroupAddon>
-          <IconPlaceholder
-            class="size-4 text-muted-foreground"
-            lucide="SearchIcon"
-            tabler="IconSearch"
-          />
+          <SearchIcon class="size-4 text-muted-foreground" />
         </InputGroupAddon>
         <InputGroupAddon align="inline-end">
           <Kbd>Cmd</Kbd>

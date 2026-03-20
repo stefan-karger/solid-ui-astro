@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { SearchIcon } from "lucide-solid"
+
 import {
   Combobox,
   ComboboxContent,
@@ -37,11 +38,7 @@ export default function ComboboxInputGroup() {
     >
       <ComboboxControl class="max-w-md">
         <InputGroupAddon>
-          <IconPlaceholder
-            class="size-4 text-muted-foreground"
-            lucide="SearchIcon"
-            tabler="IconSearch"
-          />
+          <SearchIcon class="size-4 text-muted-foreground" />
         </InputGroupAddon>
         <ComboboxInput />
         <InputGroupAddon align="inline-end">

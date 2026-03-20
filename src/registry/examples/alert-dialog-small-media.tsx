@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { ActivityIcon } from "lucide-solid"
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,7 +23,7 @@ export default function AlertDialogSmallMedia() {
       <AlertDialogContent size="sm">
         <AlertDialogHeader>
           <AlertDialogMedia>
-            <IconPlaceholder lucide="ActivityIcon" tabler="IconWaveSine" />
+            <ActivityIcon />
           </AlertDialogMedia>
           <AlertDialogTitle>Allow accessory to connect?</AlertDialogTitle>
           <AlertDialogDescription>

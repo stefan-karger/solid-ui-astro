@@ -1,35 +1,21 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { ArrowRightIcon, ArrowUpRightIcon, CircleCheckIcon } from "lucide-solid"
+
 import { Badge } from "~/registry/ui/badge"
 
 export default function BadgeIcon() {
   return (
     <div class="flex flex-wrap items-center gap-2">
       <Badge>
-        <IconPlaceholder
-          class="size-3"
-          data-icon="inline-start"
-          lucide="CircleCheckIcon"
-          tabler="IconCircleCheck"
-        />
+        <CircleCheckIcon class="size-3" data-icon="inline-start" />
         Verified
       </Badge>
       <Badge variant="secondary">
         New
-        <IconPlaceholder
-          class="size-3"
-          data-icon="inline-end"
-          lucide="ArrowRightIcon"
-          tabler="IconArrowRight"
-        />
+        <ArrowRightIcon class="size-3" data-icon="inline-end" />
       </Badge>
       <Badge variant="outline">
         External
-        <IconPlaceholder
-          class="size-3"
-          data-icon="inline-end"
-          lucide="ArrowUpRightIcon"
-          tabler="IconArrowUpRight"
-        />
+        <ArrowUpRightIcon class="size-3" data-icon="inline-end" />
       </Badge>
     </div>
   )

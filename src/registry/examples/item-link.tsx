@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { ArrowUpRightIcon, ChevronRightIcon } from "lucide-solid"
+
 import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from "~/registry/ui/item"
 
 export default function ItemLink() {
@@ -10,7 +11,7 @@ export default function ItemLink() {
           <ItemDescription>Learn how to get started with our components.</ItemDescription>
         </ItemContent>
         <ItemActions>
-          <IconPlaceholder class="size-4" lucide="ChevronRightIcon" tabler="IconChevronRight" />
+          <ChevronRightIcon class="size-4" />
         </ItemActions>
       </Item>
 
@@ -20,7 +21,7 @@ export default function ItemLink() {
           <ItemDescription>Opens in a new tab with security attributes.</ItemDescription>
         </ItemContent>
         <ItemActions>
-          <IconPlaceholder class="size-4" lucide="ArrowUpRightIcon" tabler="IconArrowUpRight" />
+          <ArrowUpRightIcon class="size-4" />
         </ItemActions>
       </Item>
     </div>

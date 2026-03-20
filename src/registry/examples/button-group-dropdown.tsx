@@ -1,4 +1,14 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import {
+  CheckIcon,
+  ChevronDownIcon,
+  CopyIcon,
+  ShareIcon,
+  TrashIcon,
+  TriangleAlert,
+  UserRoundXIcon,
+  VolumeOffIcon
+} from "lucide-solid"
+
 import { Button } from "~/registry/ui/button"
 import { ButtonGroup } from "~/registry/ui/button-group"
 import {
@@ -16,39 +26,39 @@ export default function ButtonGroupDropdown() {
       <Button variant="outline">Follow</Button>
       <DropdownMenu>
         <DropdownMenuTrigger as={Button} aria-label="More options" class="!pl-2" variant="outline">
-          <IconPlaceholder class="size-4" lucide="ChevronDownIcon" tabler="IconChevronDown" />
+          <ChevronDownIcon class="size-4" />
         </DropdownMenuTrigger>
         <DropdownMenuContent class="[--radius:1rem]">
           <DropdownMenuGroup>
             <DropdownMenuItem>
-              <IconPlaceholder class="size-4" lucide="VolumeOffIcon" tabler="IconVolumeOff" />
+              <VolumeOffIcon class="size-4" />
               Mute Conversation
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <IconPlaceholder class="size-4" lucide="CheckIcon" tabler="IconCheck" />
+              <CheckIcon class="size-4" />
               Mark as Read
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <IconPlaceholder class="size-4" lucide="TriangleAlert" tabler="IconAlertTriangle" />
+              <TriangleAlert class="size-4" />
               Report Conversation
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <IconPlaceholder class="size-4" lucide="UserRoundXIcon" tabler="IconUserX" />
+              <UserRoundXIcon class="size-4" />
               Block User
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <IconPlaceholder class="size-4" lucide="ShareIcon" tabler="IconShare" />
+              <ShareIcon class="size-4" />
               Share Conversation
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <IconPlaceholder class="size-4" lucide="CopyIcon" tabler="IconCopy" />
+              <CopyIcon class="size-4" />
               Copy Conversation
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <DropdownMenuItem variant="destructive">
-              <IconPlaceholder class="size-4" lucide="TrashIcon" tabler="IconTrash" />
+              <TrashIcon class="size-4" />
               Delete Conversation
             </DropdownMenuItem>
           </DropdownMenuGroup>

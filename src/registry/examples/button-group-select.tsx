@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { ArrowRightIcon } from "lucide-solid"
+
 import { Button } from "~/registry/ui/button"
 import { ButtonGroup } from "~/registry/ui/button-group"
 import { Input } from "~/registry/ui/input"
@@ -41,7 +42,7 @@ export default function ButtonGroupSelect() {
 
       <ButtonGroup>
         <Button aria-label="Send" size="icon" variant="outline">
-          <IconPlaceholder class="size-4" lucide="ArrowRightIcon" tabler="IconArrowRight" />
+          <ArrowRightIcon class="size-4" />
         </Button>
       </ButtonGroup>
     </ButtonGroup>

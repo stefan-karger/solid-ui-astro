@@ -1,6 +1,6 @@
+import { ChevronDownIcon } from "lucide-solid"
 import { For } from "solid-js"
 
-import { IconPlaceholder } from "~/components/icon-placeholder"
 import { Avatar, AvatarFallback, AvatarImage } from "~/registry/ui/avatar"
 import { Button } from "~/registry/ui/button"
 import {
@@ -35,7 +35,7 @@ export default function ItemDropdown() {
     <DropdownMenu placement="bottom-end">
       <DropdownMenuTrigger as={Button} class="w-fit" variant="outline">
         Select
-        <IconPlaceholder class="size-4" lucide="ChevronDownIcon" tabler="IconChevronDown" />
+        <ChevronDownIcon class="size-4" />
       </DropdownMenuTrigger>
       <DropdownMenuContent class="w-56">
         <DropdownMenuGroup>

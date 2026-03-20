@@ -1,6 +1,32 @@
+import {
+  BellIcon,
+  CircleQuestionMark,
+  CreditCardIcon,
+  DownloadIcon,
+  EllipsisIcon,
+  EyeIcon,
+  FileCodeIcon,
+  FileIcon,
+  FileTextIcon,
+  FolderIcon,
+  FolderOpenIcon,
+  FolderSearchIcon,
+  KeyboardIcon,
+  LanguagesIcon,
+  LayoutPanelTopIcon,
+  LogOutIcon,
+  MailIcon,
+  MonitorIcon,
+  MoonIcon,
+  PaletteIcon,
+  SaveIcon,
+  SettingsIcon,
+  ShieldIcon,
+  SunIcon,
+  UserIcon
+} from "lucide-solid"
 import { createSignal } from "solid-js"
 
-import { IconPlaceholder } from "~/components/icon-placeholder"
 import { Button } from "~/registry/ui/button"
 import {
   DropdownMenu,
@@ -36,43 +62,43 @@ export default function DropdownMenuComplex() {
         <DropdownMenuGroup>
           <DropdownMenuLabel>File</DropdownMenuLabel>
           <DropdownMenuItem>
-            <IconPlaceholder class="size-4" lucide="FileIcon" tabler="IconFile" />
+            <FileIcon class="size-4" />
             New File
             <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <IconPlaceholder class="size-4" lucide="FolderIcon" tabler="IconFolder" />
+            <FolderIcon class="size-4" />
             New Folder
             <DropdownMenuShortcut>⇧⌘N</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>
-              <IconPlaceholder class="size-4" lucide="FolderOpenIcon" tabler="IconFolderOpen" />
+              <FolderOpenIcon class="size-4" />
               Open Recent
             </DropdownMenuSubTrigger>
             <DropdownMenuSubContent>
               <DropdownMenuGroup>
                 <DropdownMenuLabel>Recent Projects</DropdownMenuLabel>
                 <DropdownMenuItem>
-                  <IconPlaceholder class="size-4" lucide="FileCodeIcon" tabler="IconFileCode" />
+                  <FileCodeIcon class="size-4" />
                   Project Alpha
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <IconPlaceholder class="size-4" lucide="FileCodeIcon" tabler="IconFileCode" />
+                  <FileCodeIcon class="size-4" />
                   Project Beta
                 </DropdownMenuItem>
                 <DropdownMenuSub>
                   <DropdownMenuSubTrigger>
-                    <IconPlaceholder class="size-4" lucide="EllipsisIcon" tabler="IconDots" />
+                    <EllipsisIcon class="size-4" />
                     More Projects
                   </DropdownMenuSubTrigger>
                   <DropdownMenuSubContent>
                     <DropdownMenuItem>
-                      <IconPlaceholder class="size-4" lucide="FileCodeIcon" tabler="IconFileCode" />
+                      <FileCodeIcon class="size-4" />
                       Project Gamma
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                      <IconPlaceholder class="size-4" lucide="FileCodeIcon" tabler="IconFileCode" />
+                      <FileCodeIcon class="size-4" />
                       Project Delta
                     </DropdownMenuItem>
                   </DropdownMenuSubContent>
@@ -81,11 +107,7 @@ export default function DropdownMenuComplex() {
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
                 <DropdownMenuItem>
-                  <IconPlaceholder
-                    class="size-4"
-                    lucide="FolderSearchIcon"
-                    tabler="IconFolderSearch"
-                  />
+                  <FolderSearchIcon class="size-4" />
                   Browse...
                 </DropdownMenuItem>
               </DropdownMenuGroup>
@@ -93,12 +115,12 @@ export default function DropdownMenuComplex() {
           </DropdownMenuSub>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
-            <IconPlaceholder class="size-4" lucide="SaveIcon" tabler="IconDeviceFloppy" />
+            <SaveIcon class="size-4" />
             Save
             <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <IconPlaceholder class="size-4" lucide="DownloadIcon" tabler="IconDownload" />
+            <DownloadIcon class="size-4" />
             Export
             <DropdownMenuShortcut>⇧⌘E</DropdownMenuShortcut>
           </DropdownMenuItem>
@@ -114,19 +136,19 @@ export default function DropdownMenuComplex() {
               setNotifications((prev) => ({ ...prev, email: checked === true }))
             }
           >
-            <IconPlaceholder class="size-4" lucide="EyeIcon" tabler="IconEye" />
+            <EyeIcon class="size-4" />
             Show Sidebar
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem
             checked={notifications().sms}
             onChange={(checked) => setNotifications((prev) => ({ ...prev, sms: checked === true }))}
           >
-            <IconPlaceholder class="size-4" lucide="LayoutPanelTopIcon" tabler="IconLayout" />
+            <LayoutPanelTopIcon class="size-4" />
             Show Status Bar
           </DropdownMenuCheckboxItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>
-              <IconPlaceholder class="size-4" lucide="PaletteIcon" tabler="IconPalette" />
+              <PaletteIcon class="size-4" />
               Theme
             </DropdownMenuSubTrigger>
             <DropdownMenuSubContent>
@@ -134,19 +156,15 @@ export default function DropdownMenuComplex() {
                 <DropdownMenuLabel>Appearance</DropdownMenuLabel>
                 <DropdownMenuRadioGroup onChange={setTheme} value={theme()}>
                   <DropdownMenuRadioItem value="light">
-                    <IconPlaceholder class="size-4" lucide="SunIcon" tabler="IconSun" />
+                    <SunIcon class="size-4" />
                     Light
                   </DropdownMenuRadioItem>
                   <DropdownMenuRadioItem value="dark">
-                    <IconPlaceholder class="size-4" lucide="MoonIcon" tabler="IconMoon" />
+                    <MoonIcon class="size-4" />
                     Dark
                   </DropdownMenuRadioItem>
                   <DropdownMenuRadioItem value="system">
-                    <IconPlaceholder
-                      class="size-4"
-                      lucide="MonitorIcon"
-                      tabler="IconDeviceDesktop"
-                    />
+                    <MonitorIcon class="size-4" />
                     System
                   </DropdownMenuRadioItem>
                 </DropdownMenuRadioGroup>
@@ -160,33 +178,33 @@ export default function DropdownMenuComplex() {
         <DropdownMenuGroup>
           <DropdownMenuLabel>Account</DropdownMenuLabel>
           <DropdownMenuItem>
-            <IconPlaceholder class="size-4" lucide="UserIcon" tabler="IconUser" />
+            <UserIcon class="size-4" />
             Profile
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <IconPlaceholder class="size-4" lucide="CreditCardIcon" tabler="IconCreditCard" />
+            <CreditCardIcon class="size-4" />
             Billing
           </DropdownMenuItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>
-              <IconPlaceholder class="size-4" lucide="SettingsIcon" tabler="IconSettings" />
+              <SettingsIcon class="size-4" />
               Settings
             </DropdownMenuSubTrigger>
             <DropdownMenuSubContent>
               <DropdownMenuGroup>
                 <DropdownMenuLabel>Preferences</DropdownMenuLabel>
                 <DropdownMenuItem>
-                  <IconPlaceholder class="size-4" lucide="KeyboardIcon" tabler="IconKeyboard" />
+                  <KeyboardIcon class="size-4" />
                   Keyboard Shortcuts
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <IconPlaceholder class="size-4" lucide="LanguagesIcon" tabler="IconLanguage" />
+                  <LanguagesIcon class="size-4" />
                   Language
                 </DropdownMenuItem>
                 <DropdownMenuSub>
                   <DropdownMenuSubTrigger>
-                    <IconPlaceholder class="size-4" lucide="BellIcon" tabler="IconBell" />
+                    <BellIcon class="size-4" />
                     Notifications
                   </DropdownMenuSubTrigger>
                   <DropdownMenuSubContent>
@@ -198,7 +216,7 @@ export default function DropdownMenuComplex() {
                           setNotifications((prev) => ({ ...prev, push: checked === true }))
                         }
                       >
-                        <IconPlaceholder class="size-4" lucide="BellIcon" tabler="IconBell" />
+                        <BellIcon class="size-4" />
                         Push Notifications
                       </DropdownMenuCheckboxItem>
                       <DropdownMenuCheckboxItem
@@ -207,7 +225,7 @@ export default function DropdownMenuComplex() {
                           setNotifications((prev) => ({ ...prev, email: checked === true }))
                         }
                       >
-                        <IconPlaceholder class="size-4" lucide="MailIcon" tabler="IconMail" />
+                        <MailIcon class="size-4" />
                         Email Notifications
                       </DropdownMenuCheckboxItem>
                     </DropdownMenuGroup>
@@ -217,7 +235,7 @@ export default function DropdownMenuComplex() {
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
                 <DropdownMenuItem>
-                  <IconPlaceholder class="size-4" lucide="ShieldIcon" tabler="IconShield" />
+                  <ShieldIcon class="size-4" />
                   Privacy and Security
                 </DropdownMenuItem>
               </DropdownMenuGroup>
@@ -229,11 +247,11 @@ export default function DropdownMenuComplex() {
 
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <IconPlaceholder class="size-4" lucide="CircleQuestionMark" tabler="IconHelpCircle" />
+            <CircleQuestionMark class="size-4" />
             Help and Support
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <IconPlaceholder class="size-4" lucide="FileTextIcon" tabler="IconFileText" />
+            <FileTextIcon class="size-4" />
             Documentation
           </DropdownMenuItem>
         </DropdownMenuGroup>
@@ -242,7 +260,7 @@ export default function DropdownMenuComplex() {
 
         <DropdownMenuGroup>
           <DropdownMenuItem variant="destructive">
-            <IconPlaceholder class="size-4" lucide="LogOutIcon" tabler="IconLogout" />
+            <LogOutIcon class="size-4" />
             Sign Out
             <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
           </DropdownMenuItem>

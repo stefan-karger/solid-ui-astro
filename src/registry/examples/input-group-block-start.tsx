@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { CodeIcon, CopyIcon } from "lucide-solid"
+
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "~/registry/ui/field"
 import {
   InputGroup,
@@ -32,14 +33,10 @@ export default function InputGroupBlockStart() {
             placeholder="console.log('Hello, world!');"
           />
           <InputGroupAddon align="block-start">
-            <IconPlaceholder
-              class="size-4 text-muted-foreground"
-              lucide="CodeIcon"
-              tabler="IconCode"
-            />
+            <CodeIcon class="size-4 text-muted-foreground" />
             <InputGroupText class="font-mono">script.js</InputGroupText>
             <InputGroupButton aria-label="Copy" class="ml-auto" size="icon-xs">
-              <IconPlaceholder class="size-4" lucide="CopyIcon" tabler="IconCopy" />
+              <CopyIcon class="size-4" />
             </InputGroupButton>
           </InputGroupAddon>
         </InputGroup>

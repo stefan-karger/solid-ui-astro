@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { ShareIcon } from "lucide-solid"
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,7 +23,7 @@ export default function AlertDialogMediaExample() {
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogMedia>
-            <IconPlaceholder lucide="ShareIcon" tabler="IconShare" />
+            <ShareIcon />
           </AlertDialogMedia>
           <AlertDialogTitle>Share this project?</AlertDialogTitle>
           <AlertDialogDescription>

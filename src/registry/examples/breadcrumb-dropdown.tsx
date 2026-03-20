@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { ChevronDownIcon } from "lucide-solid"
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -29,7 +30,7 @@ export default function BreadcrumbDropdown() {
           <DropdownMenu>
             <DropdownMenuTrigger as="button" class="flex items-center gap-1">
               Components
-              <IconPlaceholder class="size-3.5" lucide="ChevronDownIcon" tabler="IconChevronDown" />
+              <ChevronDownIcon class="size-3.5" />
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuGroup>

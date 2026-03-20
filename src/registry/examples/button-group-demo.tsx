@@ -1,6 +1,16 @@
+import {
+  ArchiveIcon,
+  ArrowLeftIcon,
+  CalendarPlusIcon,
+  ClockIcon,
+  EllipsisIcon,
+  ListFilterIcon,
+  MailCheckIcon,
+  TagIcon,
+  Trash2Icon
+} from "lucide-solid"
 import { createSignal } from "solid-js"
 
-import { IconPlaceholder } from "~/components/icon-placeholder"
 import { Button } from "~/registry/ui/button"
 import { ButtonGroup } from "~/registry/ui/button-group"
 import {
@@ -24,7 +34,7 @@ export default function ButtonGroupDemo() {
     <ButtonGroup>
       <ButtonGroup class="hidden sm:flex">
         <Button aria-label="Go back" size="icon" variant="outline">
-          <IconPlaceholder class="size-4" lucide="ArrowLeftIcon" tabler="IconArrowLeft" />
+          <ArrowLeftIcon class="size-4" />
         </Button>
       </ButtonGroup>
 
@@ -43,41 +53,37 @@ export default function ButtonGroupDemo() {
             size="icon"
             variant="outline"
           >
-            <IconPlaceholder class="size-4" lucide="EllipsisIcon" tabler="IconDots" />
+            <EllipsisIcon class="size-4" />
             <span class="sr-only">Open menu</span>
           </DropdownMenuTrigger>
           <DropdownMenuContent class="w-40">
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <IconPlaceholder class="size-4" lucide="MailCheckIcon" tabler="IconMailCheck" />
+                <MailCheckIcon class="size-4" />
                 Mark as read
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <IconPlaceholder class="size-4" lucide="ArchiveIcon" tabler="IconArchive" />
+                <ArchiveIcon class="size-4" />
                 Archive
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <IconPlaceholder class="size-4" lucide="ClockIcon" tabler="IconClock" />
+                <ClockIcon class="size-4" />
                 Snooze
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <IconPlaceholder
-                  class="size-4"
-                  lucide="CalendarPlusIcon"
-                  tabler="IconCalendarPlus"
-                />
+                <CalendarPlusIcon class="size-4" />
                 Add to calendar
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <IconPlaceholder class="size-4" lucide="ListFilterIcon" tabler="IconFilter" />
+                <ListFilterIcon class="size-4" />
                 Add to list
               </DropdownMenuItem>
               <DropdownMenuSub>
                 <DropdownMenuSubTrigger>
-                  <IconPlaceholder class="size-4" lucide="TagIcon" tabler="IconTag" />
+                  <TagIcon class="size-4" />
                   Label as...
                 </DropdownMenuSubTrigger>
                 <DropdownMenuSubContent>
@@ -92,7 +98,7 @@ export default function ButtonGroupDemo() {
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem variant="destructive">
-                <IconPlaceholder class="size-4" lucide="Trash2Icon" tabler="IconTrash" />
+                <Trash2Icon class="size-4" />
                 Trash
               </DropdownMenuItem>
             </DropdownMenuGroup>

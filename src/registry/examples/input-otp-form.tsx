@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { RefreshCwIcon } from "lucide-solid"
+
 import { Button } from "~/registry/ui/button"
 import {
   Card,
@@ -27,11 +28,7 @@ export default function InputOTPForm() {
             <div class="flex items-center justify-between gap-2">
               <FieldLabel for="otp-verification">Verification code</FieldLabel>
               <Button size="xs" variant="outline">
-                <IconPlaceholder
-                  data-icon="inline-start"
-                  lucide="RefreshCwIcon"
-                  tabler="IconRefresh"
-                />
+                <RefreshCwIcon data-icon="inline-start" />
                 Resend code
               </Button>
             </div>

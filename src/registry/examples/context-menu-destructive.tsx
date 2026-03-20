@@ -1,4 +1,5 @@
-import { IconPlaceholder } from "~/components/icon-placeholder"
+import { PencilIcon, ShareIcon, TrashIcon } from "lucide-solid"
+
 import {
   ContextMenu,
   ContextMenuContent,
@@ -18,18 +19,18 @@ export default function ContextMenuDestructive() {
       <ContextMenuContent>
         <ContextMenuGroup>
           <ContextMenuItem>
-            <IconPlaceholder class="size-4" lucide="PencilIcon" tabler="IconPencil" />
+            <PencilIcon class="size-4" />
             Edit
           </ContextMenuItem>
           <ContextMenuItem>
-            <IconPlaceholder class="size-4" lucide="ShareIcon" tabler="IconShare" />
+            <ShareIcon class="size-4" />
             Share
           </ContextMenuItem>
         </ContextMenuGroup>
         <ContextMenuSeparator />
         <ContextMenuGroup>
           <ContextMenuItem variant="destructive">
-            <IconPlaceholder class="size-4" lucide="TrashIcon" tabler="IconTrash" />
+            <TrashIcon class="size-4" />
             Delete
           </ContextMenuItem>
         </ContextMenuGroup>
