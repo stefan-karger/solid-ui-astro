@@ -50,8 +50,10 @@ npm install @kobalte/core
 ```tsx showLineNumbers
 import {
   Combobox,
+  ComboboxClear,
   ComboboxContent,
   ComboboxControl,
+  ComboboxEmpty,
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
@@ -73,6 +75,7 @@ const frameworks: Framework[] = [
 ]
 
 <Combobox
+  autoHighlight
   options={frameworks}
   optionValue="value"
   optionLabel="label"
@@ -82,17 +85,21 @@ const frameworks: Framework[] = [
     <ComboboxItem item={props.item}>{props.item.rawValue.label}</ComboboxItem>
   )}
 >
-<ComboboxControl>
-  <ComboboxInput />
-  <InputGroupAddon align="inline-end">
-    <ComboboxTrigger />
-  </InputGroupAddon>
-</ComboboxControl>
+  <ComboboxControl>
+    <ComboboxInput />
+    <InputGroupAddon align="inline-end">
+      <ComboboxClear aria-label="Clear selection" />
+      <ComboboxTrigger />
+    </InputGroupAddon>
+  </ComboboxControl>
   <ComboboxContent>
     <ComboboxList />
+    <ComboboxEmpty>No framework found.</ComboboxEmpty>
   </ComboboxContent>
 </Combobox>
 ```
+
+Use `autoHighlight` to focus the first matching option when the list opens or the filtered results change. This is the recommended way to get first-item highlighting without relying on `triggerMode="focus"`.
 
 ## Custom Items
 
@@ -148,11 +155,11 @@ import { For } from "solid-js"
 import {
   Combobox,
   ComboboxChip,
+  ComboboxChipInput,
   ComboboxChipRemove,
   ComboboxContent,
   ComboboxControl,
   ComboboxEmpty,
-  ComboboxInput,
   ComboboxItem,
   ComboboxList
 } from "~/components/ui/combobox"
@@ -195,7 +202,7 @@ const tags: Tag[] = [
             </ComboboxChip>
           )}
         </For>
-        <ComboboxInput class="min-w-24 px-0" />
+        <ComboboxChipInput class="min-w-24" placeholder="Add a tag" />
       </>
     )}
   </ComboboxControl>
@@ -222,19 +229,19 @@ A combobox with multiple selection and chips.
 
 ### Clear
 
-Show a clear action for selected values.
+Use `ComboboxClear` to clear the current selection.
 
 <ComponentPreview name="combobox-clear" />
 
 ### Groups
 
-Group options with section labels and separators.
+Group options with `ComboboxSection` and `ComboboxSectionLabel`.
 
 <ComponentPreview name="combobox-groups" />
 
 ### Custom
 
-Render custom option layouts inside `ComboboxItem`.
+Render richer option layouts with `ComboboxItemText`.
 
 <ComponentPreview name="combobox-custom" />
 
@@ -252,13 +259,13 @@ Use the `disabled` prop to prevent interaction.
 
 ### Auto Highlight
 
-Use `autoHighlight` to focus the first filtered option.
+Use `autoHighlight` to focus the first filtered option. This keeps the usual combobox open and dismiss behavior intact while still giving you command-style first-result highlighting.
 
 <ComponentPreview name="combobox-auto-highlight" />
 
 ### Popup
 
-Render combobox content from a popup trigger pattern.
+Use `triggerMode="manual"` when opening the list from the trigger.
 
 <ComponentPreview name="combobox-popup" />
 
@@ -272,20 +279,32 @@ Use `InputGroup` styles to add inline controls.
 
 ### Core Parts
 
-| Part                 | Description                                             |
-| -------------------- | ------------------------------------------------------- |
-| `Combobox`           | Root component that manages state and filtering.        |
-| `ComboboxControl`    | Input wrapper that controls trigger and chip rendering. |
-| `ComboboxInput`      | Text input used for searching options.                  |
-| `ComboboxTrigger`    | Button that opens or toggles the list.                  |
-| `ComboboxContent`    | Popper-based floating content container.                |
-| `ComboboxList`       | Listbox that renders available options.                 |
-| `ComboboxItem`       | Selectable option item.                                 |
-| `ComboboxEmpty`      | Empty state shown when no options match.                |
-| `ComboboxChip`       | Selected token for multi-select mode.                   |
-| `ComboboxChipRemove` | Remove action for a selected chip.                      |
+| Part                   | Description                                             |
+| ---------------------- | ------------------------------------------------------- |
+| `Combobox`             | Root component that manages state and filtering.        |
+| `ComboboxControl`      | Input wrapper that controls trigger and chip rendering. |
+| `ComboboxInput`        | Text input used for searching options.                  |
+| `ComboboxChipInput`    | Inline chip input for `variant="chips"` multi-selects.  |
+| `ComboboxTrigger`      | Button that opens or toggles the list.                  |
+| `ComboboxClear`        | Button that clears the current selection.               |
+| `ComboboxContent`      | Popper-based floating content container.                |
+| `ComboboxList`         | Listbox that renders available options.                 |
+| `ComboboxItem`         | Selectable option item.                                 |
+| `ComboboxItemText`     | Optional wrapper for structured item content.           |
+| `ComboboxEmpty`        | Empty state shown when no options match.                |
+| `ComboboxSection`      | Group wrapper for sectioned option data.                |
+| `ComboboxSectionLabel` | Label element for grouped options.                      |
+| `ComboboxSeparator`    | Visual divider between groups or item clusters.         |
+| `ComboboxChip`         | Selected token for multi-select mode.                   |
+| `ComboboxChipRemove`   | Remove action for a selected chip.                      |
 
-`ComboboxHiddenSelect`, `ComboboxLabel`, `ComboboxDescription`, and
-`ComboboxErrorMessage` are also exported for form integration and accessibility.
+`ComboboxPortal`, `ComboboxHiddenSelect`, `ComboboxLabel`, `ComboboxDescription`, and
+`ComboboxErrorMessage` are also exported for custom positioning, form integration, and accessibility.
+
+### Combobox & ComboboxList
+
+| Prop            | Type      | Description                                                               |
+| --------------- | --------- | ------------------------------------------------------------------------- |
+| `autoHighlight` | `boolean` | Focuses the first available option when the list opens or results update. |
 
 See the [Kobalte](https://kobalte.dev/docs/core/components/combobox) documentation for more information.

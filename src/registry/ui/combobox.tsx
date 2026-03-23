@@ -1,7 +1,17 @@
 import * as ComboboxPrimitive from "@kobalte/core/combobox"
 import type { PolymorphicProps } from "@kobalte/core/polymorphic"
 import { cva, type VariantProps } from "class-variance-authority"
-import { mergeProps, splitProps, type ComponentProps, type ValidComponent } from "solid-js"
+import {
+  createContext,
+  createEffect,
+  mergeProps,
+  Show,
+  splitProps,
+  useContext,
+  type ComponentProps,
+  type ParentProps,
+  type ValidComponent
+} from "solid-js"
 
 import { IconPlaceholder } from "~/components/icon-placeholder"
 import { cn } from "~/lib/utils"
@@ -12,16 +22,32 @@ type ComboboxProps<
   OptGroup = never,
   T extends ValidComponent = "div"
 > = ComboboxPrimitive.ComboboxRootProps<Option, OptGroup, T> & {
-  class?: string | undefined
+  autoHighlight?: boolean | undefined
+} & Pick<ComponentProps<T>, "class" | "children">
+
+type ComboboxRootContextValue = {
+  autoHighlight: () => boolean
 }
+
+const ComboboxRootContext = createContext<ComboboxRootContextValue>()
 
 const Combobox = <Option, OptGroup = never, T extends ValidComponent = "div">(
   props: PolymorphicProps<T, ComboboxProps<Option, OptGroup, T>>
 ) => {
-  const mergedProps = mergeProps({ gutter: 4 }, props)
-  const [local, others] = splitProps(mergedProps as ComboboxProps<Option, OptGroup, T>, ["class"])
+  const mergedProps = mergeProps({ autoHighlight: false }, props)
+  const [local, others] = splitProps(mergedProps as ComboboxProps<Option, OptGroup, T>, [
+    "autoHighlight",
+    "class",
+    "children"
+  ])
 
-  return <ComboboxPrimitive.Root data-slot="combobox" class={local.class} {...others} />
+  return (
+    <ComboboxRootContext.Provider value={{ autoHighlight: () => local.autoHighlight ?? false }}>
+      <ComboboxPrimitive.Root data-slot="combobox" class={local.class} gutter={6} {...others}>
+        {local.children}
+      </ComboboxPrimitive.Root>
+    </ComboboxRootContext.Provider>
+  )
 }
 
 type ComboboxPortalProps = ComboboxPrimitive.ComboboxPortalProps
@@ -80,6 +106,29 @@ const ComboboxInput = <T extends ValidComponent = "input">(props: ComboboxInputP
   return <ComboboxPrimitive.Input as={InputGroupInput} class={local.class} {...others} />
 }
 
+type ComboboxChipInputProps<T extends ValidComponent = "input"> = PolymorphicProps<
+  T,
+  ComboboxPrimitive.ComboboxInputProps<T>
+> &
+  Pick<ComponentProps<T>, "class">
+
+const ComboboxChipInput = <T extends ValidComponent = "input">(
+  props: ComboboxChipInputProps<T>
+) => {
+  const [local, others] = splitProps(props as ComboboxChipInputProps, ["class"])
+
+  return (
+    <ComboboxPrimitive.Input
+      data-slot="combobox-chip-input"
+      class={cn(
+        "cn-combobox-chip-input min-w-16 flex-1 border-0 bg-transparent p-0 shadow-none ring-0 outline-none focus-visible:ring-0 disabled:bg-transparent aria-invalid:ring-0 dark:bg-transparent dark:disabled:bg-transparent",
+        local.class
+      )}
+      {...others}
+    />
+  )
+}
+
 type ComboboxTriggerProps<T extends ValidComponent = "button"> = PolymorphicProps<
   T,
   ComboboxPrimitive.ComboboxTriggerProps<T>
@@ -101,11 +150,45 @@ const ComboboxTrigger = <T extends ValidComponent = "button">(props: ComboboxTri
       {local.children ?? (
         <IconPlaceholder
           class="cn-combobox-trigger-icon"
-          lucide="ChevronsUpDownIcon"
-          tabler="IconSelector"
+          lucide="ChevronDownIcon"
+          tabler="IconChevronDown"
         />
       )}
     </ComboboxPrimitive.Trigger>
+  )
+}
+
+type ComboboxClearProps = Omit<ComponentProps<typeof InputGroupButton>, "onClick" | "onMouseDown">
+
+const ComboboxClear = (props: ComboboxClearProps) => {
+  const context = ComboboxPrimitive.useComboboxContext()
+  const [local, others] = splitProps(props, ["class", "children"])
+
+  return (
+    <Show when={context.selectedOptions().length > 0}>
+      <InputGroupButton
+        data-slot="combobox-clear"
+        type="button"
+        variant="ghost"
+        size="icon-xs"
+        class={cn("cn-combobox-clear", local.class)}
+        onClick={(event) => {
+          if (!event.defaultPrevented) {
+            context.listState().selectionManager().clearSelection()
+          }
+        }}
+        onMouseDown={(event) => {
+          if (!event.defaultPrevented) {
+            event.preventDefault()
+          }
+        }}
+        {...others}
+      >
+        {local.children ?? (
+          <IconPlaceholder class="cn-combobox-clear-icon size-3" lucide="XIcon" tabler="IconX" />
+        )}
+      </InputGroupButton>
+    </Show>
   )
 }
 
@@ -137,19 +220,57 @@ type ComboboxListProps<
   OptGroup = never,
   T extends ValidComponent = "ul"
 > = PolymorphicProps<T, ComboboxPrimitive.ComboboxListboxProps<Option, OptGroup, T>> &
-  Pick<ComponentProps<T>, "class">
+  Pick<ComponentProps<T>, "class"> & {
+    autoHighlight?: boolean | undefined
+  }
+
+const ComboboxAutoHighlightController = (props: ParentProps<{ autoHighlight: boolean }>) => {
+  const context = ComboboxPrimitive.useComboboxContext()
+
+  createEffect(() => {
+    if (!props.autoHighlight || !context.isOpen()) {
+      return
+    }
+
+    const keyboardDelegate = context.keyboardDelegate()
+    if (keyboardDelegate.getFirstKey == null) return
+    const firstKey = keyboardDelegate.getFirstKey()
+
+    const listState = context.listState()
+    const selectionManager = listState.selectionManager()
+    const focusedKey = selectionManager.focusedKey()
+
+    if (firstKey == null) {
+      if (focusedKey != null) {
+        selectionManager.setFocusedKey(undefined)
+      }
+      return
+    }
+
+    const collection = listState.collection()
+    if (focusedKey == null || !collection.getItem(focusedKey)) {
+      selectionManager.setFocusedKey(firstKey)
+    }
+  })
+
+  return <>{props.children}</>
+}
 
 const ComboboxList = <Option, OptGroup = never, T extends ValidComponent = "ul">(
   props: ComboboxListProps<Option, OptGroup, T>
 ) => {
-  const [local, others] = splitProps(props as ComboboxListProps<Option>, ["class"])
+  const rootContext = useContext(ComboboxRootContext)
+  const [local, others] = splitProps(props as ComboboxListProps<Option>, ["autoHighlight", "class"])
+  const autoHighlight = () => local.autoHighlight ?? rootContext?.autoHighlight() ?? false
 
   return (
-    <ComboboxPrimitive.Listbox
-      data-slot="combobox-list"
-      class={cn("cn-combobox-list", local.class)}
-      {...others}
-    />
+    <ComboboxAutoHighlightController autoHighlight={autoHighlight()}>
+      <ComboboxPrimitive.Listbox
+        data-slot="combobox-list"
+        class={cn("cn-combobox-list", local.class)}
+        {...others}
+      />
+    </ComboboxAutoHighlightController>
   )
 }
 
@@ -274,7 +395,9 @@ export {
   ComboboxPortal,
   ComboboxControl,
   ComboboxInput,
+  ComboboxChipInput,
   ComboboxTrigger,
+  ComboboxClear,
   ComboboxContent,
   ComboboxList,
   ComboboxEmpty,

@@ -17,8 +17,8 @@
 | `chart`           |           |          |      |
 | `checkbox`        | x         | x        | x    |
 | `collapsible`     | x         | x        | x    |
-| `combobox`        |           |          |      |
-| `command`         |           |          |      |
+| `combobox`        | x         | x        | x    |
+| `command`         | x         | x        | x    |
 | `context-menu`    |           |          |      |
 | `dialog`          |           |          |      |
 | `direction`       |           |          |      |

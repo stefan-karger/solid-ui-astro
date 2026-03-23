@@ -3,11 +3,11 @@ import { For } from "solid-js"
 import {
   Combobox,
   ComboboxChip,
+  ComboboxChipInput,
   ComboboxChipRemove,
   ComboboxContent,
   ComboboxControl,
   ComboboxEmpty,
-  ComboboxInput,
   ComboboxItem,
   ComboboxList
 } from "~/registry/ui/combobox"
@@ -33,7 +33,7 @@ export default function ComboboxMultiple() {
       optionValue="value"
       optionLabel="label"
       optionTextValue="label"
-      placeholder="Select tags"
+      defaultValue={[tags[0]]}
       itemComponent={(props) => (
         <ComboboxItem item={props.item}>{props.item.rawValue.label}</ComboboxItem>
       )}
@@ -54,7 +54,7 @@ export default function ComboboxMultiple() {
                 </ComboboxChip>
               )}
             </For>
-            <ComboboxInput class="min-w-24 px-0" placeholder="Add a tag" />
+            <ComboboxChipInput class="min-w-24" placeholder="Add a tag" />
           </>
         )}
       </ComboboxControl>

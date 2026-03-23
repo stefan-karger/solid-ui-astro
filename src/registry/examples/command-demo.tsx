@@ -32,6 +32,12 @@ const options: CommandGroupOption[] = [
     heading: "Suggestions",
     items: [
       {
+        value: "calculator",
+        label: "Calculator",
+        disabled: true,
+        icon: Calculator
+      },
+      {
         value: "calendar",
         label: "Calendar",
         icon: Calendar
@@ -40,12 +46,6 @@ const options: CommandGroupOption[] = [
         value: "search-emoji",
         label: "Search Emoji",
         icon: Smile
-      },
-      {
-        value: "calculator",
-        label: "Calculator",
-        disabled: true,
-        icon: Calculator
       }
     ]
   },

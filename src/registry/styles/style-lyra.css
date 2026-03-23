@@ -320,6 +320,10 @@
     @apply -ml-1 opacity-50 hover:opacity-100;
   }
 
+  .cn-combobox-chip-input {
+    @apply text-inherit placeholder:text-muted-foreground;
+  }
+
   /* MARK: Command */
   .cn-command {
     @apply rounded-none bg-popover text-popover-foreground;

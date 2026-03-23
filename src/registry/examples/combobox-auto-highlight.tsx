@@ -41,7 +41,7 @@ export default function ComboboxAutoHighlight() {
 
   return (
     <Combobox<Emoji>
-      triggerMode="focus"
+      autoHighlight
       options={filteredEmojis()}
       optionValue="value"
       optionLabel="label"

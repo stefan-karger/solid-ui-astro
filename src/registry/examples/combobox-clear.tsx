@@ -1,17 +1,16 @@
-import { XIcon } from "lucide-solid"
-import { createSignal, Show } from "solid-js"
+import { createSignal } from "solid-js"
 
 import {
   Combobox,
+  ComboboxClear,
   ComboboxContent,
   ComboboxControl,
   ComboboxEmpty,
   ComboboxInput,
   ComboboxItem,
-  ComboboxList,
-  ComboboxTrigger
+  ComboboxList
 } from "~/registry/ui/combobox"
-import { InputGroupAddon, InputGroupButton } from "~/registry/ui/input-group"
+import { InputGroupAddon } from "~/registry/ui/input-group"
 
 type Language = {
   value: string
@@ -26,7 +25,7 @@ const languages: Language[] = [
   { value: "ruby", label: "Ruby" }
 ]
 
-export default function ComboboxClear() {
+export default function ComboboxClearExample() {
   const [value, setValue] = createSignal<Language | null>(null)
 
   return (
@@ -43,26 +42,13 @@ export default function ComboboxClear() {
       )}
     >
       <ComboboxControl<Language> class="max-w-sm">
-        {(state) => (
-          <>
-            <ComboboxInput />
-            <InputGroupAddon align="inline-end">
-              <Show when={state.selectedOptions().length > 0}>
-                <InputGroupButton
-                  aria-label="Clear selection"
-                  class="text-muted-foreground transition-colors hover:text-foreground"
-                  onClick={() => state.clear()}
-                  onMouseDown={(event) => event.preventDefault()}
-                  size="icon-xs"
-                  variant="ghost"
-                >
-                  <XIcon class="size-3.5" />
-                </InputGroupButton>
-              </Show>
-              <ComboboxTrigger />
-            </InputGroupAddon>
-          </>
-        )}
+        <ComboboxInput />
+        <InputGroupAddon align="inline-end">
+          <ComboboxClear
+            aria-label="Clear selection"
+            class="text-muted-foreground transition-colors hover:text-foreground"
+          />
+        </InputGroupAddon>
       </ComboboxControl>
       <ComboboxContent>
         <ComboboxList />
