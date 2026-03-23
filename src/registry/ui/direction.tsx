@@ -1,5 +1,5 @@
 import { getReadingDirection, I18nProvider, useLocale, type Direction } from "@kobalte/core/i18n"
-import { createContext, splitProps, useContext, type JSX } from "solid-js"
+import { createContext, splitProps, useContext, type Accessor, type JSX } from "solid-js"
 
 type DirectionProviderProps = {
   children: JSX.Element
@@ -26,13 +26,13 @@ const DirectionProvider = (props: DirectionProviderProps) => {
   )
 }
 
-const useDirection = () => {
+const useDirection = (): Accessor<Direction> => {
   const direction = useContext(DirectionContext)
   if (direction) {
-    return direction()
+    return direction
   }
 
-  return useLocale().direction()
+  return useLocale().direction
 }
 
 export { DirectionProvider, type Direction, type DirectionProviderProps, useDirection }

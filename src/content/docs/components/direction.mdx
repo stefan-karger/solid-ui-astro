@@ -4,6 +4,11 @@ description: Provides app-wide text direction for LTR and RTL layouts.
 component: true
 ---
 
+The `DirectionProvider` component sets the reading direction for your application. Use it to
+support both left-to-right and right-to-left interfaces from a single component tree.
+
+<ComponentPreview name="direction-demo" previewClassName="h-auto p-6" />
+
 ## Installation
 
 <CodeTabs>
@@ -53,7 +58,7 @@ import { DirectionProvider } from "~/components/ui/direction"
 <html lang="ar" dir="rtl">
   <body>
     <DirectionProvider direction="rtl">
-      <App />
+      {/* Your app content */}
     </DirectionProvider>
   </body>
 </html>
@@ -69,18 +74,18 @@ import { useDirection } from "~/components/ui/direction"
 const Example = () => {
   const direction = useDirection()
 
-  return <div>Current direction: {direction}</div>
+  return <div>Current direction: {direction()}</div>
 }
 ```
 
 ## API Reference
 
-### Exports
+### Core Parts
 
-| Name                | Description                                  |
-| ------------------- | -------------------------------------------- |
-| `DirectionProvider` | Provides direction context to child content. |
-| `useDirection`      | Returns the current text direction.          |
+| Name                | Description                                      |
+| ------------------- | ------------------------------------------------ |
+| `DirectionProvider` | Provides direction context to child content.     |
+| `useDirection`      | Returns a getter for the current text direction. |
 
 ### DirectionProvider
 
@@ -88,6 +93,5 @@ const Example = () => {
 | ----------- | ---------------- |
 | `direction` | `"ltr" \| "rtl"` |
 | `locale`    | `string`         |
-| `children`  | `JSX.Element`    |
 
 See the [Kobalte](https://kobalte.dev/docs/core/utilities/i18n) documentation for more information.

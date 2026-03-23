@@ -21,7 +21,7 @@
 | `command`         | x         | x        | x    |
 | `context-menu`    |           |          |      |
 | `dialog`          |           |          |      |
-| `direction`       |           |          |      |
+| `direction`       | x         | x        | x    |
 | `drawer`          |           |          |      |
 | `dropdown-menu`   |           |          |      |
 | `empty`           | x         | x        | x    |

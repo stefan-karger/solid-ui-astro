@@ -2356,6 +2356,20 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "direction-demo": {
+    name: "direction-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","card","direction","input","label"],
+    component: lazy(() => import("~/registry/examples/direction-demo.tsx")),
+    files: [{
+      path: "registry/examples/direction-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "drawer-demo": {
     name: "drawer-demo",
     description: "",
