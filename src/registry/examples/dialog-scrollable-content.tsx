@@ -21,7 +21,7 @@ export default function DialogScrollableContent() {
           <DialogTitle>Scrollable Content</DialogTitle>
           <DialogDescription>This is a dialog with scrollable content.</DialogDescription>
         </DialogHeader>
-        <div class="-mx-4 max-h-[50vh] overflow-y-auto px-4">
+        <div class="-mx-4 no-scrollbar max-h-[50vh] overflow-y-auto px-4">
           <For each={Array.from({ length: 10 })}>
             {() => (
               <p class="mb-4 leading-normal">

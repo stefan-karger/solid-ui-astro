@@ -19,8 +19,8 @@
 | `collapsible`     | x         | x        | x    |
 | `combobox`        | x         | x        | x    |
 | `command`         | x         | x        | x    |
-| `context-menu`    |           |          |      |
-| `dialog`          |           |          |      |
+| `context-menu`    | x         | x        | x    |
+| `dialog`          | x         | x        | x    |
 | `direction`       | x         | x        | x    |
 | `drawer`          |           |          |      |
 | `dropdown-menu`   |           |          |      |

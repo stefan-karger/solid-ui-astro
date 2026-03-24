@@ -39,7 +39,7 @@ export default function DialogStickyFooter() {
             )}
           </For>
         </div>
-        <DialogFooter class="sticky bottom-0">
+        <DialogFooter>
           <DialogClose as={Button} variant="outline">
             Close
           </DialogClose>
