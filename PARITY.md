@@ -23,7 +23,7 @@
 | `dialog`          | x         | x        | x    |
 | `direction`       | x         | x        | x    |
 | `drawer`          | x         | x        | x    |
-| `dropdown-menu`   |           |          |      |
+| `dropdown-menu`   | x         | x        | x    |
 | `empty`           | x         | x        | x    |
 | `field`           |           |          |      |
 | `hover-card`      |           |          |      |
