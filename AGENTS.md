@@ -17,3 +17,7 @@ if you move/port over a primitive from zaidan make sure to do the following chan
 - replace all the z-_ classes with the cn-_ classes to make it align with shadcn-ui
 - replace all occurences of lucide-icons with the use of @src/components/icon-placeholder.tsx like it's done in shadcn-ui
 - allways port/move over the full primitive!
+
+## solid-ui
+
+.references/solid-ui/apps/docs/src/registry/ui - here you can find all the old solid-ui implementation (only reference them if explicitelly stated)

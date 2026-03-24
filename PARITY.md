@@ -22,7 +22,7 @@
 | `context-menu`    | x         | x        | x    |
 | `dialog`          | x         | x        | x    |
 | `direction`       | x         | x        | x    |
-| `drawer`          |           |          |      |
+| `drawer`          | x         | x        | x    |
 | `dropdown-menu`   |           |          |      |
 | `empty`           | x         | x        | x    |
 | `field`           |           |          |      |
