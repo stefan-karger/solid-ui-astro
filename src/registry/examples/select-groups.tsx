@@ -63,7 +63,7 @@ export default function SelectGroups() {
       )}
     >
       <SelectTrigger class="w-full max-w-52">
-        <SelectValue<FoodOption> />
+        <SelectValue<FoodOption>>{(state) => state.selectedOption()?.label}</SelectValue>
       </SelectTrigger>
       <SelectContent />
     </Select>

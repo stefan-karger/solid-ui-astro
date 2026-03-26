@@ -10,7 +10,7 @@ import {
 
 export default function InputInputGroup() {
   return (
-    <Field class="w-full max-w-sm">
+    <Field class="w-full max-w-xs">
       <FieldLabel for="input-group-url">Website URL</FieldLabel>
       <InputGroup>
         <InputGroupInput id="input-group-url" placeholder="example.com" />

@@ -918,15 +918,15 @@
   }
 
   .cn-radio-group-item {
-    @apply flex size-4 rounded-full border-input text-primary transition-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/20 data-checked:border-primary data-checked:bg-primary dark:bg-input/30 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40;
+    @apply flex size-4 rounded-full border-input text-primary transition-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/20 aria-invalid:aria-checked:border-primary data-checked:border-primary data-checked:bg-primary data-checked:text-primary-foreground dark:bg-input/30 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 dark:data-checked:bg-primary;
   }
 
   .cn-radio-group-indicator {
-    @apply flex size-4 items-center justify-center text-white group-aria-invalid/radio-group-item:text-destructive;
+    @apply flex size-4 items-center justify-center;
   }
 
   .cn-radio-group-indicator-icon {
-    @apply absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 fill-current;
+    @apply absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-foreground;
   }
 
   /* MARK: Resizable */
@@ -973,7 +973,7 @@
   }
 
   .cn-select-group {
-    @apply scroll-my-1 px-0 py-1;
+    @apply scroll-my-1 p-1;
   }
 
   .cn-select-item-text {

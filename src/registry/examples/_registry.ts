@@ -2455,17 +2455,6 @@ export const examples: Registry["items"] = [
     ]
   },
   {
-    name: "select-align-item",
-    type: "registry:example",
-    registryDependencies: ["checkbox", "select"],
-    files: [
-      {
-        path: "examples/select-align-item.tsx",
-        type: "registry:example"
-      }
-    ]
-  },
-  {
     name: "select-groups",
     type: "registry:example",
     registryDependencies: ["select"],

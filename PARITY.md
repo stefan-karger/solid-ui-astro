@@ -25,10 +25,10 @@
 | `drawer`          | x         | x        | x    |
 | `dropdown-menu`   | x         | x        | x    |
 | `empty`           | x         | x        | x    |
-| `field`           |           |          |      |
-| `hover-card`      |           |          |      |
-| `input`           |           |          |      |
-| `input-group`     |           |          |      |
+| `field`           | x         | x        | x    |
+| `hover-card`      | x         | x        | x    |
+| `input`           | x         | x        | x    |
+| `input-group`     | x         | x        | x    |
 | `input-otp`       |           |          |      |
 | `item`            | x         | x        | x    |
 | `kbd`             |           |          |      |
@@ -39,10 +39,10 @@
 | `pagination`      |           |          |      |
 | `popover`         |           |          |      |
 | `progress`        |           |          |      |
-| `radio-group`     |           |          |      |
+| `radio-group`     | x         | x        | x    |
 | `resizable`       |           |          |      |
 | `scroll-area`     |           |          |      |
-| `select`          |           |          |      |
+| `select`          | x         | x        | x    |
 | `separator`       |           |          |      |
 | `sheet`           |           |          |      |
 | `sidebar`         |           |          |      |
@@ -53,7 +53,7 @@
 | `switch`          |           |          |      |
 | `table`           |           |          |      |
 | `tabs`            |           |          |      |
-| `textarea`        |           |          |      |
+| `textarea`        | x         | x        | x    |
 | `toggle`          |           |          |      |
 | `toggle-group`    |           |          |      |
 | `tooltip`         |           |          |      |

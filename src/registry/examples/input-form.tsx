@@ -46,8 +46,8 @@ export default function InputForm() {
                 <SelectItem item={props.item}>{props.item.rawValue.label}</SelectItem>
               )}
             >
-              <SelectTrigger id="form-country">
-                <SelectValue<Country> />
+              <SelectTrigger id="form-country" class="w-full">
+                <SelectValue<Country>>{(state) => state.selectedOption()?.label}</SelectValue>
               </SelectTrigger>
               <SelectContent />
             </Select>

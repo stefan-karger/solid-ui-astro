@@ -303,15 +303,17 @@ Visual divider to separate sections inside a `FieldGroup`. Accepts optional inli
 
 ### FieldError
 
-Accessible error container that accepts children or an `errors` array.
+Accessible error container that accepts children or an `errors` array, including validator issues.
 
-| Prop     | Type                                       | Default |
-| -------- | ------------------------------------------ | ------- |
-| `errors` | `Array<{ message?: string } \| undefined>` | -       |
-| `class`  | `string`                                   | -       |
+| Prop     | Type                                               | Default |
+| -------- | -------------------------------------------------- | ------- |
+| `errors` | `ReadonlyArray<{ message?: string } \| undefined>` | -       |
+| `class`  | `string`                                           | -       |
 
 ```tsx
 <FieldError errors={errors.username} />
 ```
 
 When the `errors` array contains multiple messages, `FieldError` renders a list automatically.
+
+`FieldError` also accepts issues produced by any validator that implements [Standard Schema](https://standardschema.dev/), including Zod, Valibot, and ArkType. Pass the `issues` array from the schema result directly to render a unified error list across libraries.

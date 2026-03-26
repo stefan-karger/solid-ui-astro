@@ -3854,20 +3854,6 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "select-align-item": {
-    name: "select-align-item",
-    description: "",
-    type: "registry:example",
-    registryDependencies: ["checkbox","select"],
-    component: lazy(() => import("~/registry/examples/select-align-item.tsx")),
-    files: [{
-      path: "registry/examples/select-align-item.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    categories: undefined,
-    meta: undefined,
-  },
   "select-groups": {
     name: "select-groups",
     description: "",

@@ -1,73 +1,42 @@
-import { Item, ItemIndicator, ItemInput, RadioGroup } from "@kobalte/core/radio-group"
-import { splitProps, type ComponentProps } from "solid-js"
-
-import { cn } from "~/lib/utils"
 import {
   Field,
   FieldContent,
   FieldDescription,
   FieldGroup,
   FieldLabel,
+  FieldLegend,
   FieldSet,
   FieldTitle
 } from "~/registry/ui/field"
-
-type RadioItemProps = ComponentProps<typeof Item>
-
-const RadioItem = (props: RadioItemProps) => {
-  const [local, others] = splitProps(props, ["class", "id"])
-
-  return (
-    <Item
-      class={cn(
-        "group/radio-group-item peer relative aspect-square shrink-0 border outline-none after:absolute after:-inset-x-3 after:-inset-y-2",
-        "cn-radio-group-item data-disabled:cursor-not-allowed data-disabled:opacity-50",
-        local.class
-      )}
-      data-slot="radio-group-item"
-      {...others}
-    >
-      <ItemInput class="peer sr-only" data-slot="radio-group-item-input" id={local.id} />
-      <ItemIndicator class="cn-radio-group-indicator" data-slot="radio-group-indicator">
-        <span class="cn-radio-group-indicator-icon rounded-full bg-current" />
-      </ItemIndicator>
-    </Item>
-  )
-}
+import { RadioGroup, RadioGroupItem } from "~/registry/ui/radio-group"
 
 export default function FieldChoiceCard() {
   return (
-    <div class="w-full max-w-md">
-      <FieldGroup>
-        <FieldSet>
-          <FieldLabel for="field-choice-card-environment">Compute Environment</FieldLabel>
-          <FieldDescription>Select the compute environment for your cluster.</FieldDescription>
-          <RadioGroup
-            class="cn-radio-group w-full"
-            defaultValue="kubernetes"
-            data-slot="radio-group"
-          >
-            <FieldLabel for="field-choice-kubernetes">
-              <Field orientation="horizontal">
-                <FieldContent>
-                  <FieldTitle>Kubernetes</FieldTitle>
-                  <FieldDescription>Run GPU workloads on a Kubernetes cluster.</FieldDescription>
-                </FieldContent>
-                <RadioItem id="field-choice-kubernetes" value="kubernetes" />
-              </Field>
-            </FieldLabel>
-            <FieldLabel for="field-choice-vm">
-              <Field orientation="horizontal">
-                <FieldContent>
-                  <FieldTitle>Virtual Machine</FieldTitle>
-                  <FieldDescription>Use a VM cluster to run GPU workloads.</FieldDescription>
-                </FieldContent>
-                <RadioItem id="field-choice-vm" value="vm" />
-              </Field>
-            </FieldLabel>
-          </RadioGroup>
-        </FieldSet>
-      </FieldGroup>
-    </div>
+    <FieldGroup class="w-full max-w-xs">
+      <FieldSet>
+        <FieldLegend variant="label">Compute Environment</FieldLegend>
+        <FieldDescription>Select the compute environment for your cluster.</FieldDescription>
+        <RadioGroup defaultValue="kubernetes">
+          <FieldLabel for="kubernetes-r2h">
+            <Field orientation="horizontal">
+              <FieldContent>
+                <FieldTitle>Kubernetes</FieldTitle>
+                <FieldDescription>Run GPU workloads on a K8s cluster.</FieldDescription>
+              </FieldContent>
+              <RadioGroupItem value="kubernetes" id="kubernetes-r2h" />
+            </Field>
+          </FieldLabel>
+          <FieldLabel for="vm-z4k">
+            <Field orientation="horizontal">
+              <FieldContent>
+                <FieldTitle>Virtual Machine</FieldTitle>
+                <FieldDescription>Access a cluster to run GPU workloads.</FieldDescription>
+              </FieldContent>
+              <RadioGroupItem value="vm" id="vm-z4k" />
+            </Field>
+          </FieldLabel>
+        </RadioGroup>
+      </FieldSet>
+    </FieldGroup>
   )
 }

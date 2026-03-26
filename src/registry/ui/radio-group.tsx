@@ -1,6 +1,7 @@
 import type { PolymorphicProps } from "@kobalte/core/polymorphic"
 import {
   Item,
+  ItemControl,
   ItemIndicator,
   ItemInput,
   RadioGroup as RadioGroupPrimitive,
@@ -39,18 +40,20 @@ const RadioGroupItem = <T extends ValidComponent = "div">(props: RadioGroupItemP
   const [local, others] = splitProps(props as RadioGroupItemProps, ["class", "id"])
 
   return (
-    <Item
-      class={cn(
-        "cn-radio-group-item group/radio-group-item peer relative aspect-square shrink-0 border outline-none after:absolute after:-inset-x-3 after:-inset-y-2 data-disabled:cursor-not-allowed data-disabled:opacity-50",
-        local.class
-      )}
-      data-slot="radio-group-item"
-      {...others}
-    >
+    <Item class="group/radio-group-item" data-slot="radio-group-item" {...others}>
       <ItemInput class="peer sr-only" data-slot="radio-group-item-input" id={local.id} />
-      <ItemIndicator class="cn-radio-group-indicator" data-slot="radio-group-indicator">
-        <span class="cn-radio-group-indicator-icon rounded-full bg-current" />
-      </ItemIndicator>
+      <ItemControl
+        aria-invalid={others["aria-invalid"]}
+        class={cn(
+          "cn-radio-group-item peer relative aspect-square shrink-0 border outline-none after:absolute after:-inset-x-3 after:-inset-y-2 data-disabled:cursor-not-allowed data-disabled:opacity-50",
+          local.class
+        )}
+        data-slot="radio-group-item-control"
+      >
+        <ItemIndicator class="cn-radio-group-indicator" data-slot="radio-group-indicator">
+          <span class="cn-radio-group-indicator-icon" />
+        </ItemIndicator>
+      </ItemControl>
     </Item>
   )
 }

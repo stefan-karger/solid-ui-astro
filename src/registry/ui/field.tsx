@@ -199,7 +199,7 @@ const FieldSeparator = (props: FieldSeparatorProps) => {
 type FieldErrorProps = ComponentProps<"div"> & {
   class?: string | undefined
   children?: JSX.Element
-  errors?: Array<{ message?: string } | undefined>
+  errors?: ReadonlyArray<{ message?: string } | undefined>
 }
 
 const FieldError = (props: FieldErrorProps) => {

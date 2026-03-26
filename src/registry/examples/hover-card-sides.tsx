@@ -3,7 +3,7 @@ import { For } from "solid-js"
 import { Button } from "~/registry/ui/button"
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "~/registry/ui/hover-card"
 
-const HOVER_CARD_SIDES = ["top", "right", "bottom", "left"] as const
+const HOVER_CARD_SIDES = ["left", "top", "bottom", "right"] as const
 
 export default function HoverCardSides() {
   return (

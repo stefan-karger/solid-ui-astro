@@ -28,7 +28,7 @@ export default function SelectDisabled() {
       )}
     >
       <SelectTrigger class="w-full max-w-48">
-        <SelectValue<Fruit> />
+        <SelectValue<Fruit>>{(state) => state.selectedOption()?.label}</SelectValue>
       </SelectTrigger>
       <SelectContent />
     </Select>

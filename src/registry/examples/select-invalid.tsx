@@ -1,3 +1,4 @@
+import { Field, FieldError, FieldLabel } from "~/registry/ui/field"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "~/registry/ui/select"
 
 type Fruit = {
@@ -15,10 +16,8 @@ const fruits: Fruit[] = [
 
 export default function SelectInvalid() {
   return (
-    <div class="grid w-full max-w-48 gap-2" data-invalid>
-      <label class="text-sm font-medium" for="select-invalid-fruit">
-        Fruit
-      </label>
+    <Field class="max-w-48" data-invalid>
+      <FieldLabel for="select-invalid-fruit">Fruit</FieldLabel>
       <Select<Fruit>
         options={fruits}
         optionValue="value"
@@ -29,12 +28,12 @@ export default function SelectInvalid() {
           <SelectItem item={props.item}>{props.item.rawValue.label}</SelectItem>
         )}
       >
-        <SelectTrigger aria-invalid id="select-invalid-fruit">
-          <SelectValue<Fruit> />
+        <SelectTrigger aria-invalid class="w-full" id="select-invalid-fruit">
+          <SelectValue<Fruit>>{(state) => state.selectedOption()?.label}</SelectValue>
         </SelectTrigger>
         <SelectContent />
       </Select>
-      <p class="text-sm text-destructive">Please select a fruit.</p>
-    </div>
+      <FieldError>Please select a fruit.</FieldError>
+    </Field>
   )
 }

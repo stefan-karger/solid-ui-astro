@@ -12,14 +12,14 @@ import {
 
 export default function FieldCheckbox() {
   return (
-    <div class="w-full max-w-md">
+    <div class="w-full max-w-xs">
       <FieldGroup>
         <FieldSet>
           <FieldLegend variant="label">Show these items on the desktop</FieldLegend>
           <FieldDescription>Select the items you want to show on the desktop.</FieldDescription>
           <FieldGroup class="gap-3">
             <Field orientation="horizontal">
-              <Checkbox defaultChecked id="finder-pref-hard-disks" />
+              <Checkbox id="finder-pref-hard-disks" />
               <FieldLabel class="font-normal" for="finder-pref-hard-disks">
                 Hard disks
               </FieldLabel>

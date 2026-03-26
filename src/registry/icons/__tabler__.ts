@@ -9,7 +9,6 @@ import {
   IconLoader,
   IconMinus,
   IconSearch,
-  IconSelector,
   IconX
 } from "@tabler/icons-solidjs"
 
@@ -23,7 +22,6 @@ const icons = {
   IconLoader,
   IconMinus,
   IconSearch,
-  IconSelector,
   IconX
 }
 

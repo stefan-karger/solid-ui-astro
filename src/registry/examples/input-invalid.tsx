@@ -3,7 +3,7 @@ import { Input } from "~/registry/ui/input"
 
 export default function InputInvalid() {
   return (
-    <Field class="w-full max-w-sm" data-invalid>
+    <Field class="w-full max-w-xs" data-invalid>
       <FieldLabel for="input-invalid">Invalid Input</FieldLabel>
       <Input aria-invalid id="input-invalid" placeholder="Error" />
       <FieldDescription>This field contains validation errors.</FieldDescription>

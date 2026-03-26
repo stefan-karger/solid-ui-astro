@@ -5,7 +5,7 @@ import { Input } from "~/registry/ui/input"
 
 export default function InputButtonGroup() {
   return (
-    <Field class="w-full max-w-sm">
+    <Field class="w-full max-w-xs">
       <FieldLabel for="input-button-group">Search</FieldLabel>
       <ButtonGroup>
         <Input id="input-button-group" placeholder="Type to search..." />

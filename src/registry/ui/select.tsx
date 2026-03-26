@@ -82,7 +82,7 @@ const SelectTrigger = <T extends ValidComponent = "button">(rawProps: SelectTrig
       data-slot="select-trigger"
       data-size={local.size}
       class={cn(
-        "cn-select-trigger flex w-fit items-center justify-between whitespace-nowrap outline-none disabled:cursor-not-allowed disabled:opacity-50 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:items-center [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "cn-select-trigger flex w-fit items-center justify-between whitespace-nowrap outline-none disabled:cursor-not-allowed disabled:opacity-50 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center [&_svg]:pointer-events-none [&_svg]:shrink-0",
         local.class
       )}
       {...others}
@@ -91,8 +91,8 @@ const SelectTrigger = <T extends ValidComponent = "button">(rawProps: SelectTrig
       <SelectPrimitive.Icon data-slot="select-trigger-icon">
         <IconPlaceholder
           class="cn-select-trigger-icon"
-          lucide="ChevronsUpDownIcon"
-          tabler="IconSelector"
+          lucide="ChevronDownIcon"
+          tabler="IconChevronDown"
         />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
@@ -118,7 +118,7 @@ const SelectContent = <T extends ValidComponent = "div">(props: SelectContentPro
         )}
         {...others}
       >
-        <SelectPrimitive.Listbox class="m-0 p-1" />
+        <SelectPrimitive.Listbox class="m-0 p-1 outline-none" />
       </SelectPrimitive.Content>
     </SelectPrimitive.Portal>
   )
@@ -164,15 +164,20 @@ const SelectItem = <T extends ValidComponent = "li">(rawProps: SelectItemProps<T
       )}
       {...others}
     >
-      <SelectPrimitive.ItemLabel data-slot="select-item-text" class="cn-select-item-text">
-        {local.children}
-      </SelectPrimitive.ItemLabel>
       <SelectPrimitive.ItemIndicator
+        as="span"
         data-slot="select-item-indicator"
         class="cn-select-item-indicator"
       >
-        <IconPlaceholder lucide="CheckIcon" tabler="IconCheck" />
+        <IconPlaceholder
+          class="cn-select-item-indicator-icon pointer-events-none"
+          lucide="CheckIcon"
+          tabler="IconCheck"
+        />
       </SelectPrimitive.ItemIndicator>
+      <SelectPrimitive.ItemLabel as="span" data-slot="select-item-text" class="cn-select-item-text">
+        {local.children}
+      </SelectPrimitive.ItemLabel>
     </SelectPrimitive.Item>
   )
 }
@@ -183,7 +188,11 @@ const SelectSeparator = (props: SelectSeparatorProps) => {
   const [local, others] = splitProps(props, ["class"])
 
   return (
-    <hr data-slot="select-separator" class={cn("cn-select-separator", local.class)} {...others} />
+    <hr
+      data-slot="select-separator"
+      class={cn("cn-select-separator pointer-events-none", local.class)}
+      {...others}
+    />
   )
 }
 

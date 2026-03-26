@@ -79,67 +79,13 @@ const fruits: Fruit[] = [
   )}
 >
   <SelectTrigger class="w-full max-w-48">
-    <SelectValue<Fruit> />
-  </SelectTrigger>
-  <SelectContent />
-</Select>
-```
-
-## Grouped Options
-
-Use `optionGroupChildren` with `sectionComponent` to render grouped options with labels and separators.
-
-```tsx showLineNumbers
-<Select<Item, Group>
-  options={groups}
-  optionGroupChildren="options"
-  optionValue="value"
-  optionTextValue="label"
-  sectionComponent={(props) => (
-    <>
-      <Show when={props.section.index !== 0}>
-        <SelectSeparator />
-      </Show>
-      <SelectGroup>
-        <SelectLabel>{props.section.rawValue.label}</SelectLabel>
-      </SelectGroup>
-    </>
-  )}
-  itemComponent={(props) => <SelectItem item={props.item}>{props.item.rawValue.label}</SelectItem>}
-/>
-```
-
-## Alignment
-
-Use `placement` on `Select` to control where the dropdown content appears relative to the trigger.
-
-```tsx showLineNumbers
-<Select placement="bottom-start">
-  <SelectTrigger>
-    <SelectValue placeholder="Select an option" />
-  </SelectTrigger>
-  <SelectContent />
-</Select>
-```
-
-## Invalid State
-
-Set `validationState="invalid"` on `Select` and `aria-invalid` on `SelectTrigger` to show error styling.
-
-```tsx showLineNumbers /validationState="invalid"/ /aria-invalid/
-<Select validationState="invalid">
-  <SelectTrigger aria-invalid>
-    <SelectValue placeholder="Select a fruit" />
+    <SelectValue<Fruit>>{(state) => state.selectedOption()?.label}</SelectValue>
   </SelectTrigger>
   <SelectContent />
 </Select>
 ```
 
 ## Examples
-
-### Align Item With Trigger
-
-<ComponentPreview name="select-align-item" />
 
 ### Groups
 
@@ -154,6 +100,17 @@ Set `validationState="invalid"` on `Select` and `aria-invalid` on `SelectTrigger
 <ComponentPreview name="select-disabled" />
 
 ### Invalid
+
+Add the `data-invalid` attribute to the Field component and the `aria-invalid` attribute to the SelectTrigger component to show an error state.
+
+```tsx showLineNumbers
+<Field data-invalid>
+  <FieldLabel>Fruit</FieldLabel>
+  <SelectTrigger aria-invalid>
+    <SelectValue />
+  </SelectTrigger>
+</Field>
+```
 
 <ComponentPreview name="select-invalid" />
 
@@ -172,31 +129,5 @@ Set `validationState="invalid"` on `Select` and `aria-invalid` on `SelectTrigger
 | `SelectItem`         | Selectable option row.                                             |
 | `SelectSeparator`    | Visual separator between groups.                                   |
 | `SelectHiddenSelect` | Hidden native select for form integration.                         |
-
-### Select
-
-| Prop                  | Type                                  |
-| --------------------- | ------------------------------------- |
-| `options`             | `T[]`                                 |
-| `optionValue`         | `keyof T \| ((option: T) => string)`  |
-| `optionTextValue`     | `keyof T \| ((option: T) => string)`  |
-| `optionDisabled`      | `keyof T \| ((option: T) => boolean)` |
-| `optionGroupChildren` | `keyof G \| ((group: G) => T[])`      |
-| `value`               | `T`                                   |
-| `defaultValue`        | `T`                                   |
-| `onChange`            | `(value: T) => void`                  |
-| `placeholder`         | `string`                              |
-| `placement`           | `"bottom" \| "bottom-start" \| ...`   |
-| `disabled`            | `boolean`                             |
-| `validationState`     | `"valid" \| "invalid"`                |
-
-### SelectTrigger
-
-| Prop    | Type              | Default     |
-| ------- | ----------------- | ----------- |
-| `size`  | `"sm"\|"default"` | `"default"` |
-| `class` | `string`          | -           |
-
-`SelectDescription` and `SelectErrorMessage` are also exported for accessible form hints and error messages.
 
 See the [Kobalte](https://kobalte.dev/docs/core/components/select) documentation for more information.

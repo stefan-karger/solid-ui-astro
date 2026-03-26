@@ -142,13 +142,27 @@ const componentNextHref = componentNeighbors.next
 
       {
         page.data.component && (componentPreviousHref || componentNextHref) && (
-          <footer class="mt-4 flex items-center gap-3 border-t pt-6">
+          <footer class="flex h-16 w-full items-center gap-2 sm:px-0">
             {componentPreviousHref && (
               <a
                 href={componentPreviousHref}
-                class="inline-flex items-center gap-2 rounded-md border bg-background px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+                data-slot="button"
+                class="group/button cn-button cn-button-variant-secondary inline-flex h-8 shrink-0 items-center justify-center gap-1.5 px-2.5 text-sm whitespace-nowrap shadow-none transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
               >
-                <span aria-hidden="true">&larr;</span>
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M5 12h14" />
+                  <path d="M5 12l6 6" />
+                  <path d="M5 12l6-6" />
+                </svg>
                 {componentNeighbors.previous?.data.title}
               </a>
             )}
@@ -156,10 +170,24 @@ const componentNextHref = componentNeighbors.next
             {componentNextHref && (
               <a
                 href={componentNextHref}
-                class="ml-auto inline-flex items-center gap-2 rounded-md border bg-background px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+                data-slot="button"
+                class="group/button cn-button cn-button-variant-secondary ml-auto inline-flex h-8 shrink-0 items-center justify-center gap-1.5 px-2.5 text-sm whitespace-nowrap shadow-none transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
               >
                 {componentNeighbors.next?.data.title}
-                <span aria-hidden="true">&rarr;</span>
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M5 12h14" />
+                  <path d="M13 18l6-6" />
+                  <path d="M13 6l6 6" />
+                </svg>
               </a>
             )}
           </footer>

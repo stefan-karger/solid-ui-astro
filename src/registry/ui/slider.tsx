@@ -1,6 +1,14 @@
 import type { PolymorphicProps } from "@kobalte/core/polymorphic"
 import * as SliderPrimitive from "@kobalte/core/slider"
-import { For, mergeProps, splitProps, type ComponentProps, type ValidComponent } from "solid-js"
+import {
+  createMemo,
+  For,
+  mergeProps,
+  splitProps,
+  untrack,
+  type ComponentProps,
+  type ValidComponent
+} from "solid-js"
 
 import { cn } from "~/lib/utils"
 
@@ -33,7 +41,11 @@ const Slider = <T extends ValidComponent = "div">(rawProps: SliderProps<T>) => {
     "max"
   ])
 
-  const thumbs = () => local.value ?? local.defaultValue ?? [local.min]
+  const thumbs = createMemo(() => {
+    if (Array.isArray(untrack(() => local.value))) return untrack(() => local.value)
+    if (Array.isArray(local.defaultValue)) return local.defaultValue
+    return [local.min]
+  })
 
   return (
     <SliderPrimitive.Root

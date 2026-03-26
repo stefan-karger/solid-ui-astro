@@ -4,7 +4,7 @@ import { Input } from "~/registry/ui/input"
 
 export default function InputFieldgroup() {
   return (
-    <div class="w-full max-w-sm">
+    <div class="w-full max-w-xs">
       <FieldGroup>
         <Field>
           <FieldLabel for="fieldgroup-name">Name</FieldLabel>

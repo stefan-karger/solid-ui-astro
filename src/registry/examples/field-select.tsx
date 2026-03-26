@@ -31,8 +31,8 @@ export default function FieldSelect() {
             <SelectItem item={props.item}>{props.item.rawValue.label}</SelectItem>
           )}
         >
-          <SelectTrigger id="field-select-department">
-            <SelectValue<Department> />
+          <SelectTrigger class="w-full" id="field-select-department">
+            <SelectValue<Department>>{(state) => state.selectedOption()?.label}</SelectValue>
           </SelectTrigger>
           <SelectContent />
         </Select>

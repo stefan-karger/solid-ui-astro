@@ -4,7 +4,7 @@ description: Captures long-form text with a native multiline input.
 component: true
 ---
 
-<ComponentPreview name="textarea-demo" previewClassName="*:max-w-xs" />
+<ComponentPreview name="textarea-demo" />
 
 ## Installation
 
@@ -46,34 +46,34 @@ import { Textarea } from "~/components/ui/textarea"
 ```
 
 ```tsx
-<Textarea placeholder="Tell us about your project" />
+<Textarea />
 ```
 
 ## Examples
 
 ### Field
 
-Use a label and description to make multiline input intent clear.
+Use `Field`, `FieldLabel`, and `FieldDescription` to create a textarea with a label and description.
 
-<ComponentPreview name="textarea-field" previewClassName="*:max-w-xs" />
+<ComponentPreview name="textarea-field" />
 
 ### Disabled
 
-Use the `disabled` prop to prevent editing.
+Use the `disabled` prop to disable the textarea. To style the disabled state, add the `data-disabled` attribute to the `Field` component.
 
-<ComponentPreview name="textarea-disabled" previewClassName="*:max-w-xs" />
+<ComponentPreview name="textarea-disabled" />
 
 ### Invalid
 
-Use `aria-invalid="true"` when the current value fails validation.
+Use the `aria-invalid` prop to mark the textarea as invalid. To style the invalid state, add the `data-invalid` attribute to the `Field` component.
 
-<ComponentPreview name="textarea-invalid" previewClassName="*:max-w-xs" />
+<ComponentPreview name="textarea-invalid" />
 
 ### Button
 
-Pair with `Button` to create a textarea with a submit action.
+Pair with `Button` to create a textarea with a submit button.
 
-<ComponentPreview name="textarea-button" previewClassName="*:max-w-xs" />
+<ComponentPreview name="textarea-button" />
 
 API Reference
 

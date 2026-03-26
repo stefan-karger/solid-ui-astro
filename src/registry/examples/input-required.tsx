@@ -3,7 +3,7 @@ import { Input } from "~/registry/ui/input"
 
 export default function InputRequired() {
   return (
-    <Field class="w-full max-w-sm">
+    <Field class="w-full max-w-xs">
       <FieldLabel for="input-required">
         Required Field <span class="text-destructive">*</span>
       </FieldLabel>

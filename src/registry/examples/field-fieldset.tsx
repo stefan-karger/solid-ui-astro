@@ -10,7 +10,7 @@ import { Input } from "~/registry/ui/input"
 
 export default function FieldFieldset() {
   return (
-    <div class="w-full max-w-md space-y-6">
+    <div class="w-full max-w-sm">
       <FieldSet>
         <FieldLegend>Address Information</FieldLegend>
         <FieldDescription>We need your address to deliver your order.</FieldDescription>

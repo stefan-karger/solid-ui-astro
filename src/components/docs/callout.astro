@@ -15,7 +15,7 @@ const hasIconSlot = Astro.slots.has("icon")
 const hasIcon = Boolean(icon) || hasIconSlot
 
 const variantClass = {
-  default: "border-border bg-card text-card-foreground",
+  default: "border-surface bg-surface text-surface-foreground",
   info: "border-blue-300 bg-blue-50 text-blue-950 dark:border-blue-900 dark:bg-blue-950/40 dark:text-blue-100",
   warning:
     "border-amber-300 bg-amber-50 text-amber-950 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-100"
@@ -24,7 +24,8 @@ const variantClass = {
 
 <div
   class={cn(
-    "mt-6 grid w-auto grid-cols-[0_1fr] items-start gap-y-1 rounded-xl border px-4 py-3 text-sm [&_code]:border",
+    "mt-6 grid w-auto items-start gap-y-1 rounded-xl border px-4 py-3 text-sm [&_code]:border",
+    hasIcon ? "grid-cols-[auto_minmax(0,1fr)]" : "grid-cols-1",
     variantClass,
     className
   )}
@@ -43,7 +44,10 @@ const variantClass = {
   {
     title && (
       <div
-        class={cn("min-h-4 font-medium tracking-tight", hasIcon ? "col-start-2" : "col-start-1")}
+        class={cn(
+          "col-start-1 min-h-4 min-w-0 font-medium tracking-tight",
+          hasIcon && "col-start-2"
+        )}
       >
         {title}
       </div>
@@ -52,9 +56,9 @@ const variantClass = {
 
   <div
     class={cn(
-      "grid gap-1 text-sm [&_p]:leading-relaxed",
-      hasIcon || title ? "col-start-2" : "col-start-1",
-      variant === "default" ? "text-muted-foreground" : "text-current/80"
+      "col-start-1 grid min-w-0 gap-1 text-sm [&_p]:leading-relaxed",
+      hasIcon && "col-start-2",
+      variant === "default" ? "text-card-foreground/80" : "text-current/80"
     )}
   >
     <slot />

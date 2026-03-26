@@ -10,7 +10,7 @@ import {
 
 export default function FieldGroupExample() {
   return (
-    <div class="w-full max-w-md">
+    <div class="w-full max-w-xs">
       <FieldGroup>
         <FieldSet>
           <FieldLabel>Responses</FieldLabel>

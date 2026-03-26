@@ -2,7 +2,7 @@ import { Textarea } from "~/registry/ui/textarea"
 
 export default function TextareaInvalid() {
   return (
-    <div class="grid w-full max-w-sm gap-2">
+    <div class="grid w-full max-w-xs gap-2">
       <label class="text-sm font-medium" for="invalid-feedback">
         Feedback
       </label>

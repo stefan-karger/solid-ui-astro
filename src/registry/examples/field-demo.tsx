@@ -72,8 +72,8 @@ export default function FieldDemo() {
                       <SelectItem item={props.item}>{props.item.rawValue.label}</SelectItem>
                     )}
                   >
-                    <SelectTrigger id="checkout-exp-month">
-                      <SelectValue<Option> />
+                    <SelectTrigger class="w-full" id="checkout-exp-month">
+                      <SelectValue<Option>>{(state) => state.selectedOption()?.label}</SelectValue>
                     </SelectTrigger>
                     <SelectContent />
                   </Select>
@@ -89,8 +89,8 @@ export default function FieldDemo() {
                       <SelectItem item={props.item}>{props.item.rawValue.label}</SelectItem>
                     )}
                   >
-                    <SelectTrigger id="checkout-exp-year">
-                      <SelectValue<Option> />
+                    <SelectTrigger class="w-full" id="checkout-exp-year">
+                      <SelectValue<Option>>{(state) => state.selectedOption()?.label}</SelectValue>
                     </SelectTrigger>
                     <SelectContent />
                   </Select>
