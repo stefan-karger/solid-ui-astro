@@ -2,14 +2,17 @@ import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "~/registry
 
 export default function ResizableVertical() {
   return (
-    <ResizablePanelGroup class="min-h-[300px] w-full max-w-md rounded-lg border" direction="column">
-      <ResizablePanel id="resizable-vertical-panel-1" initialSize={30}>
+    <ResizablePanelGroup
+      orientation="vertical"
+      class="min-h-[200px] max-w-sm rounded-lg border"
+    >
+      <ResizablePanel initialSize={0.25}>
         <div class="flex h-full items-center justify-center p-6">
           <span class="font-semibold">Header</span>
         </div>
       </ResizablePanel>
       <ResizableHandle />
-      <ResizablePanel id="resizable-vertical-panel-2" initialSize={70}>
+      <ResizablePanel initialSize={0.75}>
         <div class="flex h-full items-center justify-center p-6">
           <span class="font-semibold">Content</span>
         </div>

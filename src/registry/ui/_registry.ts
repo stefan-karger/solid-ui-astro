@@ -399,7 +399,7 @@ export const ui: Registry["items"] = [
   {
     name: "resizable",
     type: "registry:ui",
-    dependencies: ["solid-resizable-panels"],
+    dependencies: ["@corvu/resizable"],
     files: [
       {
         path: "ui/resizable.tsx",

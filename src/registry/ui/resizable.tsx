@@ -1,28 +1,25 @@
-import { splitProps, type JSX } from "solid-js"
 import {
+  Handle,
   Panel,
-  PanelGroup,
-  ResizeHandle,
-  type PanelGroupProps,
+  Root,
+  type HandleProps,
   type PanelProps,
-  type ResizeHandleProps
-} from "solid-resizable-panels"
+  type RootProps
+} from "@corvu/resizable"
+import { splitProps, type ComponentProps } from "solid-js"
 
 import { cn } from "~/lib/utils"
 
-type ResizablePanelGroupProps = PanelGroupProps & {
-  children?: JSX.Element
-}
+type ResizablePanelGroupProps = RootProps & Pick<ComponentProps<"div">, "class" | "children">
 
 const ResizablePanelGroup = (props: ResizablePanelGroupProps) => {
-  const [local, others] = splitProps(props, ["class", "direction"])
+  const [local, others] = splitProps(props as ResizablePanelGroupProps, ["class"])
 
   return (
-    <PanelGroup
-      direction={local.direction}
+    <Root
+      data-slot="resizable-panel-group"
       class={cn(
-        "cn-resizable-panel-group flex h-full w-full [&>.ResizeablePanelGroup-Panel]:min-w-0",
-        local.direction?.includes("column") && "cn-resizable-panel-group-vertical flex-col",
+        "cn-resizable-panel-group flex h-full w-full data-[orientation=vertical]:flex-col",
         local.class
       )}
       {...others}
@@ -30,48 +27,49 @@ const ResizablePanelGroup = (props: ResizablePanelGroupProps) => {
   )
 }
 
-type ResizablePanelProps = PanelProps & {
-  children?: JSX.Element
-}
+type ResizablePanelProps = PanelProps & Pick<ComponentProps<"div">, "class" | "children">
 
 const ResizablePanel = (props: ResizablePanelProps) => {
-  const [local, others] = splitProps(props, ["class"])
-
-  return <Panel class={cn("cn-resizable-panel min-w-0", local.class)} {...others} />
-}
-
-type ResizableHandleProps = ResizeHandleProps & {
-  withHandle?: boolean
-  children?: JSX.Element
-}
-
-const ResizableHandle = (props: ResizableHandleProps) => {
-  const [local, others] = splitProps(props, ["class", "children", "withHandle"])
+  const [local, others] = splitProps(props as ResizablePanelProps, ["class"])
 
   return (
-    <ResizeHandle
+    <Panel
+      data-slot="resizable-panel"
+      class={cn("cn-resizable-panel min-w-0", local.class)}
+      {...others}
+    />
+  )
+}
+
+type ResizableHandleProps = HandleProps &
+  Pick<ComponentProps<"button">, "class" | "children"> & {
+    withHandle?: boolean
+  }
+
+const ResizableHandle = (props: ResizableHandleProps) => {
+  const [local, others] = splitProps(props as ResizableHandleProps, [
+    "class",
+    "children",
+    "withHandle"
+  ])
+
+  return (
+    <Handle
+      data-slot="resizable-handle"
       class={cn(
         "cn-resizable-handle relative flex w-px shrink-0 touch-none items-center justify-center bg-border outline-none select-none",
         "after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2",
         "focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1",
-        "[.cn-resizable-panel-group-vertical>&]:h-px [.cn-resizable-panel-group-vertical>&]:w-full",
-        "[.cn-resizable-panel-group-vertical>&]:after:inset-x-0 [.cn-resizable-panel-group-vertical>&]:after:top-1/2 [.cn-resizable-panel-group-vertical>&]:after:h-1 [.cn-resizable-panel-group-vertical>&]:after:w-full [.cn-resizable-panel-group-vertical>&]:after:translate-x-0 [.cn-resizable-panel-group-vertical>&]:after:-translate-y-1/2",
+        "data-[orientation=vertical]:h-px data-[orientation=vertical]:w-full",
+        "data-[orientation=vertical]:after:inset-x-0 data-[orientation=vertical]:after:top-1/2 data-[orientation=vertical]:after:h-1 data-[orientation=vertical]:after:w-full data-[orientation=vertical]:after:translate-x-0 data-[orientation=vertical]:after:-translate-y-1/2",
+        "[&[data-orientation=vertical]>div]:rotate-90",
         local.class
       )}
       {...others}
     >
-      {local.withHandle && (
-        <div
-          class={cn(
-            "z-10 flex h-4 w-3 items-center justify-center rounded-sm border bg-background",
-            "[.cn-resizable-panel-group-vertical>&]:rotate-90"
-          )}
-        >
-          <div class="cn-resizable-handle-icon" />
-        </div>
-      )}
+      {local.withHandle && <div class="cn-resizable-handle-icon z-10 flex shrink-0" />}
       {local.children}
-    </ResizeHandle>
+    </Handle>
   )
 }
 

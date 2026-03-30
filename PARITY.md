@@ -40,8 +40,7 @@
 | `popover`         | x         | x        | x    |
 | `progress`        | x         | x        | x    |
 | `radio-group`     | x         | x        | x    |
-| `resizable`       |           |          |      |
-| `scroll-area`     |           |          |      |
+| `resizable`       | x         | x        | x    |
 | `select`          | x         | x        | x    |
 | `separator`       |           |          |      |
 | `sheet`           |           |          |      |

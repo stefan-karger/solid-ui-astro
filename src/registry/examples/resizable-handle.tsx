@@ -2,16 +2,19 @@ import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "~/registry
 
 export default function ResizableHandleDemo() {
   return (
-    <ResizablePanelGroup class="min-h-[200px] w-full max-w-md rounded-lg border" direction="row">
-      <ResizablePanel id="resizable-handle-panel-1" initialSize={50}>
+    <ResizablePanelGroup
+      orientation="horizontal"
+      class="min-h-[200px] max-w-md rounded-lg border md:min-w-[450px]"
+    >
+      <ResizablePanel initialSize={0.25}>
         <div class="flex h-full items-center justify-center p-6">
-          <span class="font-semibold">Navigation</span>
+          <span class="font-semibold">Sidebar</span>
         </div>
       </ResizablePanel>
       <ResizableHandle withHandle />
-      <ResizablePanel id="resizable-handle-panel-2" initialSize={50}>
+      <ResizablePanel initialSize={0.75}>
         <div class="flex h-full items-center justify-center p-6">
-          <span class="font-semibold">Preview</span>
+          <span class="font-semibold">Content</span>
         </div>
       </ResizablePanel>
     </ResizablePanelGroup>
