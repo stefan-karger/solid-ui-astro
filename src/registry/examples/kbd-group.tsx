@@ -6,10 +6,10 @@ export default function KbdGroupExample() {
       <p class="text-sm text-muted-foreground">
         Use{" "}
         <KbdGroup>
-          <Kbd>Ctrl</Kbd>
-          <Kbd>B</Kbd>
+          <Kbd>Ctrl + B</Kbd>
+          <Kbd>Ctrl + K</Kbd>
         </KbdGroup>{" "}
-        to toggle bold text.
+        to open the command palette
       </p>
     </div>
   )

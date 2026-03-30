@@ -1,6 +1,6 @@
 ---
 title: Tooltip
-description: Displays informative text when users hover or focus a trigger.
+description: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
 component: true
 ---
 
@@ -48,60 +48,33 @@ npm install @kobalte/core
 ## Usage
 
 ```tsx
-import { Tooltip, TooltipContent, TooltipTrigger } from "~/components/ui/tooltip"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger
+} from "~/components/ui/tooltip"
 ```
 
 ```tsx showLineNumbers
 <Tooltip>
-  <TooltipTrigger as="button">Hover or focus me</TooltipTrigger>
-  <TooltipContent>Add to library</TooltipContent>
-</Tooltip>
-```
-
-## Delay Duration
-
-Use `openDelay` and `closeDelay` to control when the tooltip appears and disappears.
-
-```tsx showLineNumbers
-<Tooltip openDelay={250} closeDelay={100}>
-  <TooltipTrigger as="button">Preview details</TooltipTrigger>
-  <TooltipContent>Shows after a short delay.</TooltipContent>
-</Tooltip>
-```
-
-## Positioning
-
-Use `placement` and `gutter` to control where tooltip content is rendered.
-
-```tsx showLineNumbers
-<Tooltip placement="right" gutter={8}>
-  <TooltipTrigger as="button">Right side</TooltipTrigger>
-  <TooltipContent>Aligned to the trigger's right edge.</TooltipContent>
-</Tooltip>
-```
-
-## Disabled
-
-Set `disabled` on `Tooltip` to prevent it from opening.
-
-```tsx showLineNumbers
-<Tooltip disabled>
-  <TooltipTrigger as="button">Will not open</TooltipTrigger>
-  <TooltipContent>This content is never shown.</TooltipContent>
+  <TooltipTrigger as="button">Hover</TooltipTrigger>
+  <TooltipContent>
+    <p>Add to library</p>
+  </TooltipContent>
 </Tooltip>
 ```
 
 ## Examples
 
-### Sides
+### Side
 
 <ComponentPreview name="tooltip-sides" />
 
-### Keyboard
+### With Keyboard Shortcut
 
 <ComponentPreview name="tooltip-keyboard" />
 
-### Disabled
+### Disabled Button
 
 <ComponentPreview name="tooltip-disabled" />
 
@@ -114,18 +87,5 @@ Set `disabled` on `Tooltip` to prevent it from opening.
 | `Tooltip`        | Root component that controls tooltip state and behavior. |
 | `TooltipTrigger` | Interactive element that opens tooltip content.          |
 | `TooltipContent` | Floating content rendered in a portal near the trigger.  |
-
-### Common Root Props
-
-| Prop           | Type                      |
-| -------------- | ------------------------- |
-| `open`         | `boolean`                 |
-| `defaultOpen`  | `boolean`                 |
-| `onOpenChange` | `(open: boolean) => void` |
-| `openDelay`    | `number`                  |
-| `closeDelay`   | `number`                  |
-| `placement`    | `string`                  |
-| `gutter`       | `number`                  |
-| `disabled`     | `boolean`                 |
 
 See the [Kobalte](https://kobalte.dev/docs/core/components/tooltip) documentation for more information.

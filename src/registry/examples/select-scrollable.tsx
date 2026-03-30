@@ -101,7 +101,7 @@ export default function SelectScrollable() {
       <SelectTrigger class="w-full max-w-64">
         <SelectValue<TimezoneOption>>{(state) => state.selectedOption()?.label}</SelectValue>
       </SelectTrigger>
-      <SelectContent class="max-h-60" />
+      <SelectContent class="no-scrollbar max-h-60" />
     </Select>
   )
 }

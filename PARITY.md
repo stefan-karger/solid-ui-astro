@@ -29,13 +29,13 @@
 | `hover-card`      | x         | x        | x    |
 | `input`           | x         | x        | x    |
 | `input-group`     | x         | x        | x    |
-| `input-otp`       |           |          |      |
+| `input-otp`       | x         | x        | x    |
 | `item`            | x         | x        | x    |
-| `kbd`             |           |          |      |
-| `label`           |           |          |      |
-| `menubar`         |           |          |      |
-| `native-select`   |           |          |      |
-| `navigation-menu` |           |          |      |
+| `kbd`             | x         | x        | x    |
+| `label`           | x         | x        | x    |
+| `menubar`         | x         | x        | x    |
+| `native-select`   | x         | x        | x    |
+| `navigation-menu` | x         | x        | x    |
 | `pagination`      |           |          |      |
 | `popover`         |           |          |      |
 | `progress`        |           |          |      |
@@ -56,4 +56,4 @@
 | `textarea`        | x         | x        | x    |
 | `toggle`          |           |          |      |
 | `toggle-group`    |           |          |      |
-| `tooltip`         |           |          |      |
+| `tooltip`         | x         | x        | x    |

@@ -12,7 +12,7 @@ export default function KbdInputGroup() {
           <SearchIcon class="size-4 text-muted-foreground" />
         </InputGroupAddon>
         <InputGroupAddon align="inline-end">
-          <Kbd>Cmd</Kbd>
+          <Kbd>⌘</Kbd>
           <Kbd>K</Kbd>
         </InputGroupAddon>
       </InputGroup>

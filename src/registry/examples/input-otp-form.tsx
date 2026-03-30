@@ -14,7 +14,7 @@ import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "~/regi
 
 export default function InputOTPForm() {
   return (
-    <Card class="mx-auto w-full max-w-md">
+    <Card class="mx-auto max-w-md">
       <CardHeader>
         <CardTitle>Verify your login</CardTitle>
         <CardDescription>
@@ -23,44 +23,44 @@ export default function InputOTPForm() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form>
-          <Field>
-            <div class="flex items-center justify-between gap-2">
-              <FieldLabel for="otp-verification">Verification code</FieldLabel>
-              <Button size="xs" variant="outline">
-                <RefreshCwIcon data-icon="inline-start" />
-                Resend code
-              </Button>
-            </div>
-            <InputOTP id="otp-verification" maxLength={6} required>
-              <InputOTPGroup class="*:data-[slot=input-otp-slot]:h-12 *:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:text-xl">
-                <InputOTPSlot index={0} />
-                <InputOTPSlot index={1} />
-                <InputOTPSlot index={2} />
-              </InputOTPGroup>
-              <InputOTPSeparator class="mx-2" />
-              <InputOTPGroup class="*:data-[slot=input-otp-slot]:h-12 *:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:text-xl">
-                <InputOTPSlot index={3} />
-                <InputOTPSlot index={4} />
-                <InputOTPSlot index={5} />
-              </InputOTPGroup>
-            </InputOTP>
-            <FieldDescription>
-              <a href="#">I no longer have access to this email address.</a>
-            </FieldDescription>
-          </Field>
-        </form>
+        <Field>
+          <div class="flex items-center justify-between">
+            <FieldLabel for="otp-verification">Verification code</FieldLabel>
+            <Button size="xs" variant="outline">
+              <RefreshCwIcon data-icon="inline-start" />
+              Resend Code
+            </Button>
+          </div>
+          <InputOTP id="otp-verification" maxLength={6} required>
+            <InputOTPGroup class="*:data-[slot=input-otp-slot]:h-12 *:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:text-xl">
+              <InputOTPSlot index={0} />
+              <InputOTPSlot index={1} />
+              <InputOTPSlot index={2} />
+            </InputOTPGroup>
+            <InputOTPSeparator class="mx-2" />
+            <InputOTPGroup class="*:data-[slot=input-otp-slot]:h-12 *:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:text-xl">
+              <InputOTPSlot index={3} />
+              <InputOTPSlot index={4} />
+              <InputOTPSlot index={5} />
+            </InputOTPGroup>
+          </InputOTP>
+          <FieldDescription>
+            <a href="#">I no longer have access to this email address.</a>
+          </FieldDescription>
+        </Field>
       </CardContent>
-      <CardFooter class="flex-col gap-2">
-        <Button class="w-full" type="submit">
-          Verify
-        </Button>
-        <div class="text-sm text-muted-foreground">
-          Having trouble signing in?{" "}
-          <a href="#" class="underline underline-offset-4 transition-colors hover:text-primary">
-            Contact support
-          </a>
-        </div>
+      <CardFooter>
+        <Field>
+          <Button class="w-full" type="submit">
+            Verify
+          </Button>
+          <div class="text-sm text-muted-foreground">
+            Having trouble signing in?{" "}
+            <a href="#" class="underline underline-offset-4 transition-colors hover:text-primary">
+              Contact support
+            </a>
+          </div>
+        </Field>
       </CardFooter>
     </Card>
   )

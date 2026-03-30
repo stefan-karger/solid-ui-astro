@@ -1,25 +1,31 @@
 ---
 import type { HTMLAttributes } from "astro/types"
+import { InfoIcon, TriangleAlertIcon } from "lucide-solid"
 
 import { cn } from "~/lib/utils"
 
 type Props = HTMLAttributes<"div"> & {
   title?: unknown
-  icon?: unknown
+  showIcon?: boolean
   variant?: "default" | "info" | "warning"
 }
 
-const { class: className, title, icon, variant = "default", ...props } = Astro.props
+const { class: className, title, showIcon = false, variant = "default", ...props } = Astro.props
 
 const hasIconSlot = Astro.slots.has("icon")
-const hasIcon = Boolean(icon) || hasIconSlot
+const shouldShowDefaultIcon = showIcon && !hasIconSlot
+const hasIcon = hasIconSlot || shouldShowDefaultIcon
+const hasTitle = Boolean(title)
 
-const variantClass = {
-  default: "border-surface bg-surface text-surface-foreground",
-  info: "border-blue-300 bg-blue-50 text-blue-950 dark:border-blue-900 dark:bg-blue-950/40 dark:text-blue-100",
-  warning:
-    "border-amber-300 bg-amber-50 text-amber-950 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-100"
-}[variant]
+const defaultIconByVariant = {
+  default: InfoIcon,
+  info: InfoIcon,
+  warning: TriangleAlertIcon
+}
+
+const DefaultIcon = defaultIconByVariant[variant]
+
+const variantClass = "border-surface bg-surface text-surface-foreground"
 ---
 
 <div
@@ -34,9 +40,13 @@ const variantClass = {
 >
   {
     hasIcon && (
-      <div class="col-start-1 row-span-2 mt-0.5 mr-3 text-current [&_svg]:size-4">
-        {icon}
-        {!icon && <slot name="icon" />}
+      <div
+        class={cn(
+          "col-start-1 mr-3 text-current [&_svg]:size-4 [&_svg]:translate-y-0.5",
+          hasTitle ? "row-span-2" : "row-span-1"
+        )}
+      >
+        {hasIconSlot ? <slot name="icon" /> : shouldShowDefaultIcon && <DefaultIcon />}
       </div>
     )
   }
@@ -58,7 +68,7 @@ const variantClass = {
     class={cn(
       "col-start-1 grid min-w-0 gap-1 text-sm [&_p]:leading-relaxed",
       hasIcon && "col-start-2",
-      variant === "default" ? "text-card-foreground/80" : "text-current/80"
+      "text-card-foreground/80"
     )}
   >
     <slot />

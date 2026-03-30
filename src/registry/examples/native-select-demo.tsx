@@ -2,7 +2,7 @@ import { NativeSelect, NativeSelectOption } from "~/registry/ui/native-select"
 
 export default function NativeSelectDemo() {
   return (
-    <NativeSelect class="w-full max-w-52">
+    <NativeSelect>
       <NativeSelectOption value="">Select status</NativeSelectOption>
       <NativeSelectOption value="todo">Todo</NativeSelectOption>
       <NativeSelectOption value="in-progress">In Progress</NativeSelectOption>

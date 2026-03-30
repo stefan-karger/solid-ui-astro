@@ -92,7 +92,7 @@ export default function MenubarDemo() {
         <MenubarContent class="w-44">
           <MenubarGroup>
             <MenubarCheckboxItem>Bookmarks Bar</MenubarCheckboxItem>
-            <MenubarCheckboxItem checked>Full URLs</MenubarCheckboxItem>
+            <MenubarCheckboxItem defaultChecked>Full URLs</MenubarCheckboxItem>
           </MenubarGroup>
           <MenubarSeparator />
           <MenubarGroup>

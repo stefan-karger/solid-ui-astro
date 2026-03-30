@@ -1,11 +1,11 @@
-import { For, splitProps, type ComponentProps } from "solid-js"
+import { For, type JSX } from "solid-js"
 
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
+  NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle
 } from "~/registry/ui/navigation-menu"
@@ -14,51 +14,52 @@ const components: { title: string; href: string; description: string }[] = [
   {
     title: "Alert Dialog",
     href: "/docs/components/alert-dialog",
-    description: "Interrupts users with important content and requires an explicit response."
+    description:
+      "A modal dialog that interrupts the user with important content and expects a response."
   },
   {
     title: "Hover Card",
     href: "/docs/components/hover-card",
-    description: "Shows preview content when a linked element receives hover or focus."
+    description: "For sighted users to preview content available behind a link."
   },
   {
     title: "Progress",
     href: "/docs/components/progress",
-    description: "Displays task completion state with determinate or indeterminate progress."
+    description: "Displays an indicator showing the completion progress of a task."
   },
   {
-    title: "Scroll Area",
+    title: "Scroll-area",
     href: "/docs/components/scroll-area",
-    description: "Provides a custom scroll container while preserving native semantics."
+    description: "Visually or semantically separates content."
   },
   {
     title: "Tabs",
     href: "/docs/components/tabs",
-    description: "Organizes content into layered sections shown one panel at a time."
+    description: "A set of layered sections of content displayed one panel at a time."
   },
   {
     title: "Tooltip",
     href: "/docs/components/tooltip",
-    description: "Displays contextual information on hover or keyboard focus."
+    description: "A popup that displays information related to an element on focus or hover."
   }
 ]
 
 export default function NavigationMenuDemo() {
   return (
-    <div class="w-full max-w-2xl">
-      <NavigationMenu>
+    <NavigationMenu>
+      <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul class="w-96 rounded-md bg-popover p-2">
+            <ul class="w-96">
               <ListItem href="/docs" title="Introduction">
-                Reusable components built with accessibility-first primitives.
+                Re-usable components built with Tailwind CSS.
               </ListItem>
-              <ListItem href="/docs" title="Installation">
-                Learn how to add dependencies and structure your component registry.
+              <ListItem href="/docs/installation" title="Installation">
+                How to install dependencies and structure your app.
               </ListItem>
-              <ListItem href="/docs" title="Typography">
-                Text styles for headings, paragraphs, lists, and inline code.
+              <ListItem href="/docs/components/typography" title="Typography">
+                Styles for headings, paragraphs, lists...etc
               </ListItem>
             </ul>
           </NavigationMenuContent>
@@ -66,7 +67,7 @@ export default function NavigationMenuDemo() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Components</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul class="grid w-[400px] gap-2 rounded-md bg-popover p-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+            <ul class="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               <For each={components}>
                 {(component) => (
                   <ListItem title={component.title} href={component.href}>
@@ -77,30 +78,21 @@ export default function NavigationMenuDemo() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink
-            href="/docs/components/navigation-menu"
-            class={navigationMenuTriggerStyle()}
-          >
-            Documentation
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuIndicator />
-      </NavigationMenu>
-    </div>
+        <NavigationMenuTrigger as="a" href="/docs" class={navigationMenuTriggerStyle()}>
+          Docs
+        </NavigationMenuTrigger>
+      </NavigationMenuList>
+    </NavigationMenu>
   )
 }
 
-function ListItem(props: ComponentProps<"li"> & { href: string; title: string }) {
-  const [local, others] = splitProps(props, ["title", "children", "href"])
+function ListItem(props: { href: string; title: string; children: JSX.Element }) {
   return (
-    <li {...others}>
-      <NavigationMenuLink href={local.href}>
-        <div class="flex flex-col gap-1">
-          <div class="leading-none font-medium">{local.title}</div>
-          <div class="line-clamp-2 text-sm text-muted-foreground">{local.children}</div>
-        </div>
-      </NavigationMenuLink>
-    </li>
+    <NavigationMenuLink href={props.href}>
+      <div class="flex flex-col gap-1 text-sm">
+        <div class="leading-none font-medium">{props.title}</div>
+        <div class="line-clamp-2 text-muted-foreground">{props.children}</div>
+      </div>
+    </NavigationMenuLink>
   )
 }

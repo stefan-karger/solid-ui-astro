@@ -3,9 +3,9 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "~/registry/ui/tooltip"
 
 export default function TooltipDemo() {
   return (
-    <Tooltip openDelay={150}>
+    <Tooltip>
       <TooltipTrigger as={Button} variant="outline">
-        Hover or focus
+        Hover
       </TooltipTrigger>
       <TooltipContent>Add to library</TooltipContent>
     </Tooltip>

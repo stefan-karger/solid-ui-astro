@@ -8,28 +8,23 @@ export default function KbdTooltip() {
     <div class="flex flex-wrap gap-4">
       <ButtonGroup>
         <Tooltip>
-          <TooltipTrigger as={Button} size="sm" variant="outline">
+          <TooltipTrigger as={Button} variant="outline">
             Save
           </TooltipTrigger>
-          <TooltipContent class="pr-1.5">
-            <div class="flex items-center gap-2">
-              Save changes <Kbd>S</Kbd>
-            </div>
+          <TooltipContent>
+            Save Changes <Kbd>S</Kbd>
           </TooltipContent>
         </Tooltip>
-
         <Tooltip>
-          <TooltipTrigger as={Button} size="sm" variant="outline">
+          <TooltipTrigger as={Button} variant="outline">
             Print
           </TooltipTrigger>
-          <TooltipContent class="pr-1.5">
-            <div class="flex items-center gap-2">
-              Print document
-              <KbdGroup>
-                <Kbd>Ctrl</Kbd>
-                <Kbd>P</Kbd>
-              </KbdGroup>
-            </div>
+          <TooltipContent>
+            Print Document{" "}
+            <KbdGroup>
+              <Kbd>Ctrl</Kbd>
+              <Kbd>P</Kbd>
+            </KbdGroup>
           </TooltipContent>
         </Tooltip>
       </ButtonGroup>

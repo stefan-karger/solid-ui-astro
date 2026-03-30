@@ -1,12 +1,8 @@
-import { createSignal } from "solid-js"
-
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "~/registry/ui/input-otp"
 
 export default function InputOTPDemo() {
-  const [value, setValue] = createSignal("123456")
-
   return (
-    <InputOTP maxLength={6} onValueChange={setValue} value={value()}>
+    <InputOTP defaultValue="123456" maxLength={6}>
       <InputOTPGroup>
         <InputOTPSlot index={0} />
         <InputOTPSlot index={1} />

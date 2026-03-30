@@ -99,13 +99,13 @@ type MenubarItemProps<T extends ValidComponent = "div"> = PolymorphicProps<
   }
 
 const MenubarItem = <T extends ValidComponent = "div">(rawProps: MenubarItemProps<T>) => {
-  const props = mergeProps({ inset: false, variant: "default" } as MenubarItemProps<T>, rawProps)
+  const props = mergeProps({ variant: "default" } as MenubarItemProps<T>, rawProps)
   const [local, others] = splitProps(props as MenubarItemProps, ["class", "inset", "variant"])
 
   return (
     <MenubarPrimitive.Item
       data-slot="menubar-item"
-      data-inset={local.inset}
+      data-inset={local.inset || undefined}
       data-variant={local.variant}
       class={cn(
         "cn-menubar-item group/menubar-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
@@ -208,7 +208,7 @@ const MenubarLabel = <T extends ValidComponent = "span">(props: MenubarLabelProp
   return (
     <MenubarPrimitive.GroupLabel
       data-slot="menubar-label"
-      data-inset={local.inset}
+      data-inset={local.inset || undefined}
       class={cn("cn-menubar-label data-inset:pl-8", local.class)}
       {...others}
     />
@@ -271,7 +271,7 @@ const MenubarSubTrigger = <T extends ValidComponent = "div">(props: MenubarSubTr
   return (
     <MenubarPrimitive.SubTrigger
       data-slot="menubar-sub-trigger"
-      data-inset={local.inset}
+      data-inset={local.inset || undefined}
       class={cn(
         "cn-menubar-sub-trigger flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         local.class

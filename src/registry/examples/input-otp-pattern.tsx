@@ -6,7 +6,7 @@ const REGEXP_ONLY_DIGITS = "^\\d*$"
 export default function InputOTPPattern() {
   return (
     <Field class="w-fit">
-      <FieldLabel for="digits-only">Digits only</FieldLabel>
+      <FieldLabel for="digits-only">Digits Only</FieldLabel>
       <InputOTP id="digits-only" maxLength={6} pattern={REGEXP_ONLY_DIGITS}>
         <InputOTPGroup>
           <InputOTPSlot index={0} />

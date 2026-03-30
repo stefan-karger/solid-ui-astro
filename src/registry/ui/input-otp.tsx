@@ -29,7 +29,7 @@ const InputOTP = (props: InputOTPProps) => {
       {...others}
     >
       <OtpField.Input
-        class={cn("disabled:cursor-not-allowed", local.class)}
+        class={cn("cn-input-otp-input disabled:cursor-not-allowed", local.class)}
         data-slot="input-otp-input"
         disabled={local.disabled}
         id={local.id}
@@ -80,7 +80,7 @@ const InputOTPSlot = (props: InputOTPSlotProps) => {
     >
       {char()}
       <Show when={showCaret()}>
-        <div class="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <div class="cn-input-otp-caret pointer-events-none absolute inset-0 flex items-center justify-center">
           <div class="cn-input-otp-caret-line" />
         </div>
       </Show>
@@ -95,9 +95,9 @@ const InputOTPSeparator = (props: InputOTPSeparatorProps) => {
 
   return (
     <div
-      aria-hidden="true"
       class={cn("cn-input-otp-separator flex items-center", local.class)}
       data-slot="input-otp-separator"
+      role="separator"
       {...others}
     >
       <IconPlaceholder class="size-4" lucide="MinusIcon" tabler="IconMinus" />
