@@ -11,46 +11,21 @@ type ProgressProps<T extends ValidComponent = "div"> = PolymorphicProps<
   Pick<ComponentProps<T>, "class" | "children">
 
 const Progress = <T extends ValidComponent = "div">(props: ProgressProps<T>) => {
-  const [local, others] = splitProps(props as ProgressProps, ["class"])
+  const [local, others] = splitProps(props as ProgressProps, ["class", "children"])
+
   return (
-    <ProgressPrimitive.Root data-slot="progress" class={cn("w-full", local.class)} {...others} />
-  )
-}
-
-type ProgressTrackProps<T extends ValidComponent = "div"> = PolymorphicProps<
-  T,
-  ProgressPrimitive.ProgressTrackProps<T>
-> &
-  Pick<ComponentProps<T>, "class" | "children">
-
-const ProgressTrack = <T extends ValidComponent = "div">(props: ProgressTrackProps<T>) => {
-  const [local, others] = splitProps(props as ProgressTrackProps, ["class"])
-  return (
-    <ProgressPrimitive.Track
-      data-slot="progress-track"
-      class={cn("cn-progress cn-progress-track relative overflow-hidden", local.class)}
-      {...others}
-    />
-  )
-}
-
-type ProgressIndicatorProps<T extends ValidComponent = "div"> = PolymorphicProps<
-  T,
-  ProgressPrimitive.ProgressFillProps<T>
-> &
-  Pick<ComponentProps<T>, "class">
-
-const ProgressIndicator = <T extends ValidComponent = "div">(props: ProgressIndicatorProps<T>) => {
-  const [local, others] = splitProps(props as ProgressIndicatorProps, ["class"])
-  return (
-    <ProgressPrimitive.Fill
-      data-slot="progress-indicator"
-      class={cn(
-        "cn-progress-indicator h-full w-(--kb-progress-fill-width) transition-all",
-        local.class
-      )}
-      {...others}
-    />
+    <ProgressPrimitive.Root data-slot="progress" class={cn("w-full", local.class)} {...others}>
+      {local.children}
+      <ProgressPrimitive.Track
+        data-slot="progress-track"
+        class={cn("cn-progress cn-progress-track relative overflow-hidden")}
+      >
+        <ProgressPrimitive.Fill
+          data-slot="progress-indicator"
+          class={cn("cn-progress-indicator h-full w-(--kb-progress-fill-width) transition-all")}
+        />
+      </ProgressPrimitive.Track>
+    </ProgressPrimitive.Root>
   )
 }
 
@@ -90,13 +65,9 @@ const ProgressValue = <T extends ValidComponent = "div">(props: ProgressValuePro
 
 export {
   Progress,
-  ProgressIndicator,
   ProgressLabel,
-  ProgressTrack,
   ProgressValue,
-  type ProgressIndicatorProps,
   type ProgressLabelProps,
   type ProgressProps,
-  type ProgressTrackProps,
   type ProgressValueProps
 }

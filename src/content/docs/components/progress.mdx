@@ -48,15 +48,11 @@ npm install @kobalte/core
 ## Usage
 
 ```tsx
-import { Progress, ProgressIndicator, ProgressTrack } from "~/components/ui/progress"
+import { Progress } from "~/components/ui/progress"
 ```
 
 ```tsx showLineNumbers
-<Progress value={65}>
-  <ProgressTrack>
-    <ProgressIndicator />
-  </ProgressTrack>
-</Progress>
+<Progress value={65} />
 ```
 
 ## Labels
@@ -64,13 +60,7 @@ import { Progress, ProgressIndicator, ProgressTrack } from "~/components/ui/prog
 Use `ProgressLabel` and `ProgressValue` for contextual messaging and value output.
 
 ```tsx showLineNumbers
-import {
-  Progress,
-  ProgressIndicator,
-  ProgressLabel,
-  ProgressTrack,
-  ProgressValue
-} from "~/components/ui/progress"
+import { Progress, ProgressLabel, ProgressValue } from "~/components/ui/progress"
 
 export function UploadProgress() {
   return (
@@ -79,9 +69,6 @@ export function UploadProgress() {
         <ProgressLabel>Uploading files</ProgressLabel>
         <ProgressValue />
       </div>
-      <ProgressTrack>
-        <ProgressIndicator />
-      </ProgressTrack>
     </Progress>
   )
 }
@@ -103,9 +90,6 @@ Use `getValueLabel` to replace the default percentage text.
     <ProgressLabel>Processing tasks</ProgressLabel>
     <ProgressValue />
   </div>
-  <ProgressTrack>
-    <ProgressIndicator />
-  </ProgressTrack>
 </Progress>
 ```
 
@@ -123,22 +107,12 @@ Use `getValueLabel` to replace the default percentage text.
 
 ### Core Parts
 
-| Part                | Description                                                     |
-| ------------------- | --------------------------------------------------------------- |
-| `Progress`          | Root container that manages progress state and ARIA attributes. |
-| `ProgressTrack`     | Visual track that contains the indicator.                       |
-| `ProgressIndicator` | Fill element styled with `--kb-progress-fill-width`.            |
-| `ProgressLabel`     | Accessible text label associated with the progress bar.         |
-| `ProgressValue`     | Formatted value label generated from progress state.            |
+| Part            | Description                                                     |
+| --------------- | --------------------------------------------------------------- |
+| `Progress`      | Root container that manages progress state and ARIA attributes. |
+| `ProgressLabel` | Accessible text label associated with the progress bar.         |
+| `ProgressValue` | Formatted value label generated from progress state.            |
 
-### Common Props
-
-| Prop            | Type                                                              |
-| --------------- | ----------------------------------------------------------------- |
-| `value`         | `number`                                                          |
-| `minValue`      | `number`                                                          |
-| `maxValue`      | `number`                                                          |
-| `indeterminate` | `boolean`                                                         |
-| `getValueLabel` | `(params: { value: number; min: number; max: number }) => string` |
+`Progress` renders the track and indicator internally.
 
 See the [Kobalte](https://kobalte.dev/docs/core/components/progress) documentation for more information.

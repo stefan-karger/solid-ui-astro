@@ -1,10 +1,4 @@
-import {
-  Progress,
-  ProgressIndicator,
-  ProgressLabel,
-  ProgressTrack,
-  ProgressValue
-} from "~/registry/ui/progress"
+import { Progress, ProgressLabel, ProgressValue } from "~/registry/ui/progress"
 
 export default function ProgressLabelDemo() {
   return (
@@ -13,9 +7,6 @@ export default function ProgressLabelDemo() {
         <ProgressLabel>Uploading assets</ProgressLabel>
         <ProgressValue />
       </div>
-      <ProgressTrack>
-        <ProgressIndicator />
-      </ProgressTrack>
     </Progress>
   )
 }

@@ -38,7 +38,7 @@
 | `navigation-menu` | x         | x        | x    |
 | `pagination`      | x         | x        | x    |
 | `popover`         | x         | x        | x    |
-| `progress`        |           |          |      |
+| `progress`        | x         | x        | x    |
 | `radio-group`     | x         | x        | x    |
 | `resizable`       |           |          |      |
 | `scroll-area`     |           |          |      |
