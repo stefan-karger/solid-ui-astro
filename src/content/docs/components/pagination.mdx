@@ -90,13 +90,13 @@ import {
 
 ### Simple
 
-A compact pagination layout with page links only.
+A simple pagination with only page numbers.
 
 <ComponentPreview name="pagination-simple" />
 
 ### Icons Only
 
-Use icon-only controls when page numbers are managed elsewhere (for example, in table controls).
+Use just the previous and next buttons without page numbers. This is useful for data tables with a rows per page selector.
 
 <ComponentPreview name="pagination-icons-only" />
 
@@ -113,13 +113,6 @@ API Reference
 | `PaginationPrevious` | Preconfigured previous-page action with label and icon.       |
 | `PaginationNext`     | Preconfigured next-page action with label and icon.           |
 | `PaginationEllipsis` | Non-interactive overflow indicator.                           |
-
-### PaginationLink
-
-| Prop       | Type                         | Default  | Description                                |
-| ---------- | ---------------------------- | -------- | ------------------------------------------ |
-| `isActive` | `boolean`                    | `false`  | Applies active state and `aria-current`.   |
-| `size`     | `"default" \| "icon" \| ...` | `"icon"` | Passes through to the underlying `Button`. |
 
 See the [Kobalte](https://kobalte.dev/docs/core/components/pagination) documentation for
 more information.

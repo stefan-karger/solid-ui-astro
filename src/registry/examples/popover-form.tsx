@@ -1,6 +1,6 @@
 import { Button } from "~/registry/ui/button"
+import { Field, FieldGroup, FieldLabel } from "~/registry/ui/field"
 import { Input } from "~/registry/ui/input"
-import { Label } from "~/registry/ui/label"
 import {
   Popover,
   PopoverContent,
@@ -12,28 +12,29 @@ import {
 
 export default function PopoverForm() {
   return (
-    <Popover>
+    <Popover placement="bottom-start">
       <PopoverTrigger as={Button} variant="outline">
         Set dimensions
       </PopoverTrigger>
-      <PopoverContent class="w-80">
+      <PopoverContent class="w-64">
         <PopoverHeader>
           <PopoverTitle>Dimensions</PopoverTitle>
-          <PopoverDescription>Set the dimensions for the selected element.</PopoverDescription>
+          <PopoverDescription>Set the dimensions for the layer.</PopoverDescription>
         </PopoverHeader>
-        <div class="grid gap-3">
-          <div class="grid grid-cols-[80px_1fr] items-center gap-2">
-            <Label for="popover-width">Width</Label>
-            <Input id="popover-width" value="100%" />
-          </div>
-          <div class="grid grid-cols-[80px_1fr] items-center gap-2">
-            <Label for="popover-height">Height</Label>
-            <Input id="popover-height" value="32px" />
-          </div>
-        </div>
-        <div class="flex justify-end">
-          <Button size="sm">Apply</Button>
-        </div>
+        <FieldGroup class="gap-4">
+          <Field orientation="horizontal">
+            <FieldLabel for="width" class="w-1/2">
+              Width
+            </FieldLabel>
+            <Input id="width" value="100%" />
+          </Field>
+          <Field orientation="horizontal">
+            <FieldLabel for="height" class="w-1/2">
+              Height
+            </FieldLabel>
+            <Input id="height" value="25px" />
+          </Field>
+        </FieldGroup>
       </PopoverContent>
     </Popover>
   )

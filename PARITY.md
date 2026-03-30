@@ -36,8 +36,8 @@
 | `menubar`         | x         | x        | x    |
 | `native-select`   | x         | x        | x    |
 | `navigation-menu` | x         | x        | x    |
-| `pagination`      |           |          |      |
-| `popover`         |           |          |      |
+| `pagination`      | x         | x        | x    |
+| `popover`         | x         | x        | x    |
 | `progress`        |           |          |      |
 | `radio-group`     | x         | x        | x    |
 | `resizable`       |           |          |      |

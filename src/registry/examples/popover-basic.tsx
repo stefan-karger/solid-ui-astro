@@ -3,21 +3,22 @@ import {
   Popover,
   PopoverContent,
   PopoverDescription,
+  PopoverHeader,
   PopoverTitle,
   PopoverTrigger
 } from "~/registry/ui/popover"
 
 export default function PopoverBasic() {
   return (
-    <Popover>
-      <PopoverTrigger as={Button} variant="secondary">
-        Product details
+    <Popover placement="bottom-start">
+      <PopoverTrigger as={Button} variant="outline">
+        Open Popover
       </PopoverTrigger>
-      <PopoverContent class="max-w-xs">
-        <PopoverTitle>Desk Lamp</PopoverTitle>
-        <PopoverDescription>
-          Aluminum body, 8W warm light, and a touch dimmer with three brightness presets.
-        </PopoverDescription>
+      <PopoverContent>
+        <PopoverHeader>
+          <PopoverTitle>Dimensions</PopoverTitle>
+          <PopoverDescription>Set the dimensions for the layer.</PopoverDescription>
+        </PopoverHeader>
       </PopoverContent>
     </Popover>
   )

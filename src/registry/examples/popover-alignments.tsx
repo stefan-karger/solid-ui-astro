@@ -17,10 +17,10 @@ const placements = [
 
 export default function PopoverAlignments() {
   return (
-    <div class="flex flex-wrap items-center justify-center gap-2">
+    <div class="flex gap-6">
       <For each={placements}>
         {(item) => (
-          <Popover gutter={8} placement={item.placement}>
+          <Popover placement={item.placement}>
             <PopoverTrigger as={Button} size="sm" variant="outline">
               {item.label}
             </PopoverTrigger>
