@@ -10,12 +10,12 @@ export default function SeparatorMenu() {
       <Separator orientation="vertical" />
       <div class="flex flex-col gap-1">
         <span class="font-medium">Account</span>
-        <span class="text-xs text-muted-foreground">Profile &amp; security</span>
+        <span class="text-xs text-muted-foreground">Profile & security</span>
       </div>
-      <Separator class="hidden md:block" orientation="vertical" />
+      <Separator orientation="vertical" class="hidden md:block" />
       <div class="hidden flex-col gap-1 md:flex">
         <span class="font-medium">Help</span>
-        <span class="text-xs text-muted-foreground">Support &amp; docs</span>
+        <span class="text-xs text-muted-foreground">Support & docs</span>
       </div>
     </div>
   )

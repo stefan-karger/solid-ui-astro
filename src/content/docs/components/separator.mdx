@@ -51,29 +51,8 @@ npm install @kobalte/core
 import { Separator } from "~/components/ui/separator"
 ```
 
-```tsx showLineNumbers
-<div>
-  <div class="space-y-1">
-    <h4 class="text-sm leading-none font-medium">Settings</h4>
-    <p class="text-sm text-muted-foreground">Manage your account preferences.</p>
-  </div>
-  <Separator class="my-4" />
-  <div class="text-sm">Connected services</div>
-</div>
-```
-
-## Vertical Separator
-
-Use `orientation="vertical"` to separate inline items.
-
-```tsx showLineNumbers
-<div class="flex h-5 items-center text-sm">
-  <span>Overview</span>
-  <Separator orientation="vertical" class="mx-3" />
-  <span>Usage</span>
-  <Separator orientation="vertical" class="mx-3" />
-  <span>API</span>
-</div>
+```tsx
+<Separator />
 ```
 
 ## Examples
@@ -101,13 +80,5 @@ Use separators between list rows for visual structure.
 | Part        | Description                                            |
 | ----------- | ------------------------------------------------------ |
 | `Separator` | Divider element that supports horizontal and vertical. |
-
-### Common Props
-
-| Prop          | Type                         |
-| ------------- | ---------------------------- |
-| `orientation` | `"horizontal" \| "vertical"` |
-| `decorative`  | `boolean`                    |
-| `class`       | `string`                     |
 
 See the [Kobalte](https://kobalte.dev/docs/core/components/separator) documentation for more information.

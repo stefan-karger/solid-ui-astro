@@ -42,7 +42,7 @@
 | `radio-group`     | x         | x        | x    |
 | `resizable`       | x         | x        | x    |
 | `select`          | x         | x        | x    |
-| `separator`       |           |          |      |
+| `separator`       | x         | x        | x    |
 | `sheet`           |           |          |      |
 | `sidebar`         |           |          |      |
 | `skeleton`        |           |          |      |
