@@ -35,8 +35,8 @@ export default function TableActions() {
       <TableHeader>
         <TableRow>
           <TableHead>Product</TableHead>
-          <TableHead class="text-right">Price</TableHead>
-          <TableHead class="w-20 text-right">Actions</TableHead>
+          <TableHead>Price</TableHead>
+          <TableHead class="text-right">Actions</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -44,20 +44,14 @@ export default function TableActions() {
           {(product) => (
             <TableRow>
               <TableCell class="font-medium">{product.name}</TableCell>
-              <TableCell class="text-right">{product.price}</TableCell>
+              <TableCell>{product.price}</TableCell>
               <TableCell class="text-right">
-                <DropdownMenu>
-                  <DropdownMenuTrigger
-                    as={Button}
-                    aria-label={`Open actions for ${product.name}`}
-                    class="size-8"
-                    size="icon-sm"
-                    variant="ghost"
-                  >
-                    <EllipsisIcon class="size-4" />
+                <DropdownMenu placement="bottom-end">
+                  <DropdownMenuTrigger as={Button} class="size-8" size="icon" variant="ghost">
+                    <EllipsisIcon />
                     <span class="sr-only">Open menu</span>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent class="w-32">
+                  <DropdownMenuContent>
                     <DropdownMenuItem>Edit</DropdownMenuItem>
                     <DropdownMenuItem>Duplicate</DropdownMenuItem>
                     <DropdownMenuSeparator />

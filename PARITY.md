@@ -48,9 +48,9 @@
 | `skeleton`        | x         | x        | x    |
 | `slider`          | x         | x        | x    |
 | `sonner`          |           |          |      |
-| `spinner`         |           |          |      |
-| `switch`          |           |          |      |
-| `table`           |           |          |      |
+| `spinner`         | x         | x        | x    |
+| `switch`          | x         | x        | x    |
+| `table`           | x         | x        | x    |
 | `tabs`            |           |          |      |
 | `textarea`        | x         | x        | x    |
 | `toggle`          |           |          |      |
