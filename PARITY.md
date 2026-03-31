@@ -51,7 +51,7 @@
 | `spinner`         | x         | x        | x    |
 | `switch`          | x         | x        | x    |
 | `table`           | x         | x        | x    |
-| `tabs`            |           |          |      |
+| `tabs`            | x         | x        | x    |
 | `textarea`        | x         | x        | x    |
 | `toggle`          |           |          |      |
 | `toggle-group`    |           |          |      |

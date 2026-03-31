@@ -49,11 +49,12 @@ type TabsListProps<T extends ValidComponent = "div"> = PolymorphicProps<
 
 const TabsList = <T extends ValidComponent = "div">(props: TabsListProps<T>) => {
   const [local, others] = splitProps(props as TabsListProps, ["variant", "class"])
+  const variant = () => local.variant ?? "default"
   return (
     <TabsPrimitive.List
-      class={cn(tabsListVariants({ variant: local.variant }), local.class)}
+      class={cn(tabsListVariants({ variant: variant() }), local.class)}
       data-slot="tabs-list"
-      data-variant={local.variant}
+      data-variant={variant()}
       {...others}
     />
   )

@@ -47,8 +47,13 @@ npm install @kobalte/core
 
 ## Usage
 
-```tsx
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs"
+```tsx showLineNumbers
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger
+} from "~/components/ui/tabs"
 ```
 
 ```tsx showLineNumbers
@@ -62,56 +67,17 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs"
 </Tabs>
 ```
 
-## Line Variant
-
-Use the `variant="line"` prop on `TabsList` for a line style.
-
-```tsx showLineNumbers
-<Tabs defaultValue="overview">
-  <TabsList variant="line">
-    <TabsTrigger value="overview">Overview</TabsTrigger>
-    <TabsTrigger value="analytics">Analytics</TabsTrigger>
-    <TabsTrigger value="reports">Reports</TabsTrigger>
-  </TabsList>
-</Tabs>
-```
-
-## Vertical
-
-Use `orientation="vertical"` on `Tabs` to render the list vertically.
-
-```tsx showLineNumbers
-<Tabs defaultValue="account" orientation="vertical">
-  <TabsList>
-    <TabsTrigger value="account">Account</TabsTrigger>
-    <TabsTrigger value="password">Password</TabsTrigger>
-    <TabsTrigger value="notifications">Notifications</TabsTrigger>
-  </TabsList>
-</Tabs>
-```
-
-## Disabled
-
-Use the `disabled` prop on `TabsTrigger` to prevent selection.
-
-```tsx showLineNumbers
-<Tabs defaultValue="home">
-  <TabsList>
-    <TabsTrigger value="home">Home</TabsTrigger>
-    <TabsTrigger value="settings" disabled>
-      Disabled
-    </TabsTrigger>
-  </TabsList>
-</Tabs>
-```
-
 ## Examples
 
 ### Line
 
+Use the `variant="line"` prop on `TabsList` for a line style.
+
 <ComponentPreview name="tabs-line" />
 
 ### Vertical
+
+Use `orientation="vertical"` for vertical tabs.
 
 <ComponentPreview name="tabs-vertical" />
 
@@ -133,31 +99,5 @@ Use the `disabled` prop on `TabsTrigger` to prevent selection.
 | `TabsList`    | Wrapper around trigger items.                          |
 | `TabsTrigger` | Interactive tab button that selects a panel.           |
 | `TabsContent` | Panel content associated with a trigger value.         |
-
-### Tabs
-
-| Prop             | Type                         | Default        |
-| ---------------- | ---------------------------- | -------------- |
-| `value`          | `string`                     | -              |
-| `defaultValue`   | `string`                     | -              |
-| `onChange`       | `(value: string) => void`    | -              |
-| `orientation`    | `"horizontal" \| "vertical"` | `"horizontal"` |
-| `activationMode` | `"automatic" \| "manual"`    | `"automatic"`  |
-| `class`          | `string`                     | -              |
-
-### TabsList
-
-| Prop      | Type                | Default     |
-| --------- | ------------------- | ----------- |
-| `variant` | `"default"\|"line"` | `"default"` |
-| `class`   | `string`            | -           |
-
-### TabsTrigger
-
-| Prop       | Type      | Default |
-| ---------- | --------- | ------- |
-| `value`    | `string`  | -       |
-| `disabled` | `boolean` | `false` |
-| `class`    | `string`  | -       |
 
 See the [Kobalte](https://kobalte.dev/docs/core/components/tabs) documentation for more information.
