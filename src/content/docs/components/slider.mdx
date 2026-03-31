@@ -55,74 +55,23 @@ import { Slider } from "~/components/ui/slider"
 <Slider defaultValue={[33]} max={100} step={1} />
 ```
 
-## Range
-
-Use an array with two values for a range slider.
-
-```tsx showLineNumbers
-<Slider defaultValue={[25, 75]} min={0} max={100} step={1} />
-```
-
-## Multiple Thumbs
-
-Use an array with more than two values to render multiple thumbs.
-
-```tsx showLineNumbers
-<Slider defaultValue={[20, 45, 80]} min={0} max={100} step={1} />
-```
-
-## Vertical
-
-Use `orientation="vertical"` for a vertical slider.
-
-```tsx showLineNumbers
-<div class="flex h-52 items-center">
-  <Slider defaultValue={[40]} max={100} orientation="vertical" class="h-full" />
-</div>
-```
-
-## Controlled
-
-Use `value` and `onChange` to control slider values.
-
-```tsx showLineNumbers
-import { createSignal } from "solid-js"
-
-import { Slider } from "~/components/ui/slider"
-
-function ControlledSlider() {
-  const [value, setValue] = createSignal([30, 70])
-
-  return (
-    <>
-      <p>
-        Temperature range: {value()[0]}°C - {value()[1]}°C
-      </p>
-      <Slider value={value()} onChange={setValue} min={0} max={100} step={1} />
-    </>
-  )
-}
-```
-
-## Disabled
-
-Use the `disabled` prop to prevent slider interaction.
-
-```tsx showLineNumbers
-<Slider defaultValue={[35]} max={100} disabled />
-```
-
 ## Examples
 
 ### Range
+
+Use an array with two values for a range slider.
 
 <ComponentPreview name="slider-range" />
 
 ### Multiple
 
+Use an array with multiple values for multiple thumbs.
+
 <ComponentPreview name="slider-multiple" />
 
 ### Vertical
+
+Use `orientation="vertical"` for a vertical slider.
 
 <ComponentPreview name="slider-vertical" />
 
@@ -131,6 +80,8 @@ Use the `disabled` prop to prevent slider interaction.
 <ComponentPreview name="slider-controlled" />
 
 ### Disabled
+
+Use the `disabled` prop to disable the slider.
 
 <ComponentPreview name="slider-disabled" />
 
@@ -141,23 +92,5 @@ Use the `disabled` prop to prevent slider interaction.
 | Part     | Description                                                       |
 | -------- | ----------------------------------------------------------------- |
 | `Slider` | Slider root with built-in track, fill, thumbs, and hidden inputs. |
-
-### Slider
-
-| Prop                    | Type                        |
-| ----------------------- | --------------------------- |
-| `value`                 | `number[]`                  |
-| `defaultValue`          | `number[]`                  |
-| `onChange`              | `(value: number[]) => void` |
-| `onChangeEnd`           | `(value: number[]) => void` |
-| `min`                   | `number`                    |
-| `max`                   | `number`                    |
-| `step`                  | `number`                    |
-| `minStepsBetweenThumbs` | `number`                    |
-| `orientation`           | `"horizontal"\|"vertical"`  |
-| `disabled`              | `boolean`                   |
-| `class`                 | `string`                    |
-
-The component forwards all other supported Kobalte slider root props.
 
 See the [Kobalte](https://kobalte.dev/docs/core/components/slider) documentation for more information.

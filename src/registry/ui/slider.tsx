@@ -51,7 +51,7 @@ const Slider = <T extends ValidComponent = "div">(rawProps: SliderProps<T>) => {
     <SliderPrimitive.Root
       data-slot="slider"
       class={cn(
-        "cn-slider relative flex w-full touch-none items-center select-none data-[orientation=vertical]:h-full data-[orientation=vertical]:w-5 data-[orientation=vertical]:flex-col",
+        "cn-slider relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:w-5 data-[orientation=vertical]:flex-col",
         local.class
       )}
       value={local.value}

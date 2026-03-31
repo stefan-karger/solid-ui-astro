@@ -45,8 +45,8 @@
 | `separator`       | x         | x        | x    |
 | `sheet`           | x         | x        | x    |
 | `sidebar`         |           |          |      |
-| `skeleton`        |           |          |      |
-| `slider`          |           |          |      |
+| `skeleton`        | x         | x        | x    |
+| `slider`          | x         | x        | x    |
 | `sonner`          |           |          |      |
 | `spinner`         |           |          |      |
 | `switch`          |           |          |      |
