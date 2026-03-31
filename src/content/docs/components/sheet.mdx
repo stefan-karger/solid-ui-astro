@@ -63,19 +63,12 @@ import {
 
 ```tsx showLineNumbers
 <Sheet>
-  <SheetTrigger as={Button} variant="outline">
-    Open
-  </SheetTrigger>
+  <SheetTrigger>Open</SheetTrigger>
   <SheetContent>
     <SheetHeader>
       <SheetTitle>Are you absolutely sure?</SheetTitle>
       <SheetDescription>This action cannot be undone.</SheetDescription>
     </SheetHeader>
-    <SheetFooter>
-      <SheetClose as={Button} variant="outline">
-        Close
-      </SheetClose>
-    </SheetFooter>
   </SheetContent>
 </Sheet>
 ```
@@ -86,31 +79,13 @@ import {
 
 Use the `side` prop on `SheetContent` to set where the sheet appears. Available values are `top`, `right`, `bottom`, and `left`.
 
-<ComponentPreview name="sheet-side" align="start" />
+<ComponentPreview name="sheet-side" />
 
 ### No Close Button
 
 Use `showCloseButton={false}` on `SheetContent` to hide the top-right close button.
 
 <ComponentPreview name="sheet-no-close-button" />
-
-Size
-
-Customize width and height by passing classes to `SheetContent`.
-
-```tsx showLineNumbers /class="w-[400px] sm:w-[540px]"/
-<Sheet>
-  <SheetTrigger as={Button} variant="outline">
-    Open
-  </SheetTrigger>
-  <SheetContent class="w-[400px] sm:w-[540px]">
-    <SheetHeader>
-      <SheetTitle>Are you absolutely sure?</SheetTitle>
-      <SheetDescription>This action cannot be undone.</SheetDescription>
-    </SheetHeader>
-  </SheetContent>
-</Sheet>
-```
 
 ## API Reference
 
@@ -126,22 +101,5 @@ Customize width and height by passing classes to `SheetContent`.
 | `SheetDescription` | Supporting text that describes the sheet purpose.            |
 | `SheetFooter`      | Footer container for actions, usually submit/cancel buttons. |
 | `SheetClose`       | Interactive element used to close the sheet.                 |
-
-### Common Root Props
-
-| Prop            | Type                      |
-| --------------- | ------------------------- |
-| `open`          | `boolean`                 |
-| `defaultOpen`   | `boolean`                 |
-| `onOpenChange`  | `(open: boolean) => void` |
-| `modal`         | `boolean`                 |
-| `preventScroll` | `boolean`                 |
-
-### SheetContent
-
-| Prop              | Type                                     | Default   |
-| ----------------- | ---------------------------------------- | --------- |
-| `side`            | `"top" \| "right" \| "bottom" \| "left"` | `"right"` |
-| `showCloseButton` | `boolean`                                | `true`    |
 
 See the [Kobalte](https://kobalte.dev/docs/core/components/dialog) documentation for more information.

@@ -43,7 +43,7 @@
 | `resizable`       | x         | x        | x    |
 | `select`          | x         | x        | x    |
 | `separator`       | x         | x        | x    |
-| `sheet`           |           |          |      |
+| `sheet`           | x         | x        | x    |
 | `sidebar`         |           |          |      |
 | `skeleton`        |           |          |      |
 | `slider`          |           |          |      |
