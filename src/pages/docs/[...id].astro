@@ -56,143 +56,148 @@ const componentNextHref = componentNeighbors.next
 
 <RootLayout title={page.data.title}>
   <DocsLayout sidebar={sidebar} toc={headings} pathname={Astro.url.pathname}>
-    <article class="mx-auto flex w-full max-w-[40rem] min-w-0 flex-col gap-8 pb-12">
-      <header class="flex flex-col gap-2">
-        <div class="flex flex-col gap-2">
-          <div class="flex items-center justify-between md:items-start">
-            <h1 class="scroll-m-24 text-3xl font-semibold tracking-tight sm:text-3xl">
-              {page.data.title}
-            </h1>
+    <div
+      data-slot="docs"
+      class="flex scroll-mt-24 items-stretch pb-8 text-[1.05rem] sm:text-[15px] xl:w-full"
+    >
+      <article class="mx-auto flex w-full max-w-[40rem] min-w-0 flex-1 flex-col gap-8 pb-12">
+        <header class="flex flex-col gap-2">
+          <div class="flex flex-col gap-2">
+            <div class="flex items-center justify-between md:items-start">
+              <h1 class="scroll-m-24 text-3xl font-semibold tracking-tight sm:text-3xl">
+                {page.data.title}
+              </h1>
 
-            <div class="docs-nav flex items-center gap-2">
-              <div class="hidden sm:block">
-                <DocsCopyPage
-                  client:only="solid-js"
-                  content={sourceContent}
-                  markdownHref={markdownHref}
-                />
-              </div>
-              <div class="ml-auto flex gap-2">
-                {
-                  previousHref && (
-                    <a
-                      href={previousHref}
-                      data-slot="button"
-                      class="group/button cn-button cn-button-variant-secondary cn-button-size-icon extend-touch-target inline-flex size-8 shrink-0 items-center justify-center whitespace-nowrap shadow-none transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 md:size-7 [&_svg]:pointer-events-none [&_svg]:shrink-0"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
+              <div class="docs-nav flex items-center gap-2">
+                <div class="hidden sm:block">
+                  <DocsCopyPage
+                    client:only="solid-js"
+                    content={sourceContent}
+                    markdownHref={markdownHref}
+                  />
+                </div>
+                <div class="ml-auto flex gap-2">
+                  {
+                    previousHref && (
+                      <a
+                        href={previousHref}
+                        data-slot="button"
+                        class="group/button cn-button cn-button-variant-secondary cn-button-size-icon extend-touch-target inline-flex size-8 shrink-0 items-center justify-center whitespace-nowrap shadow-none transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 md:size-7 [&_svg]:pointer-events-none [&_svg]:shrink-0"
                       >
-                        <path d="M5 12h14" />
-                        <path d="M5 12l6 6" />
-                        <path d="M5 12l6-6" />
-                      </svg>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                  )
-                }
+                        <svg
+                          aria-hidden="true"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M5 12h14" />
+                          <path d="M5 12l6 6" />
+                          <path d="M5 12l6-6" />
+                        </svg>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                    )
+                  }
 
-                {
-                  nextHref && (
-                    <a
-                      href={nextHref}
-                      data-slot="button"
-                      class="group/button cn-button cn-button-variant-secondary cn-button-size-icon extend-touch-target inline-flex size-8 shrink-0 items-center justify-center whitespace-nowrap shadow-none transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 md:size-7 [&_svg]:pointer-events-none [&_svg]:shrink-0"
-                    >
-                      <span class="sr-only">Next</span>
-                      <svg
-                        aria-hidden="true"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
+                  {
+                    nextHref && (
+                      <a
+                        href={nextHref}
+                        data-slot="button"
+                        class="group/button cn-button cn-button-variant-secondary cn-button-size-icon extend-touch-target inline-flex size-8 shrink-0 items-center justify-center whitespace-nowrap shadow-none transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 md:size-7 [&_svg]:pointer-events-none [&_svg]:shrink-0"
                       >
-                        <path d="M5 12h14" />
-                        <path d="M13 18l6-6" />
-                        <path d="M13 6l6 6" />
-                      </svg>
-                    </a>
-                  )
-                }
+                        <span class="sr-only">Next</span>
+                        <svg
+                          aria-hidden="true"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M5 12h14" />
+                          <path d="M13 18l6-6" />
+                          <path d="M13 6l6 6" />
+                        </svg>
+                      </a>
+                    )
+                  }
+                </div>
               </div>
             </div>
+
+            <p
+              class="text-[1.05rem] text-muted-foreground sm:text-base sm:text-balance md:max-w-[80%]"
+            >
+              {page.data.description}
+            </p>
           </div>
+        </header>
 
-          <p
-            class="text-[1.05rem] text-muted-foreground sm:text-base sm:text-balance md:max-w-[80%]"
-          >
-            {page.data.description}
-          </p>
+        <div class="min-w-0 *:first:mt-0">
+          <Content components={mdxComponents} />
         </div>
-      </header>
 
-      <div class="min-w-0 *:first:mt-0">
-        <Content components={mdxComponents} />
-      </div>
-
-      {
-        page.data.component && (componentPreviousHref || componentNextHref) && (
-          <footer class="flex h-16 w-full items-center gap-2 sm:px-0">
-            {componentPreviousHref && (
-              <a
-                href={componentPreviousHref}
-                data-slot="button"
-                class="group/button cn-button cn-button-variant-secondary inline-flex h-8 shrink-0 items-center justify-center gap-1.5 px-2.5 text-sm whitespace-nowrap shadow-none transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
-              >
-                <svg
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+        {
+          page.data.component && (componentPreviousHref || componentNextHref) && (
+            <footer class="flex h-16 w-full items-center gap-2 sm:px-0">
+              {componentPreviousHref && (
+                <a
+                  href={componentPreviousHref}
+                  data-slot="button"
+                  class="group/button cn-button cn-button-variant-secondary inline-flex h-8 shrink-0 items-center justify-center gap-1.5 px-2.5 text-sm whitespace-nowrap shadow-none transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
                 >
-                  <path d="M5 12h14" />
-                  <path d="M5 12l6 6" />
-                  <path d="M5 12l6-6" />
-                </svg>
-                {componentNeighbors.previous?.data.title}
-              </a>
-            )}
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="M5 12l6 6" />
+                    <path d="M5 12l6-6" />
+                  </svg>
+                  {componentNeighbors.previous?.data.title}
+                </a>
+              )}
 
-            {componentNextHref && (
-              <a
-                href={componentNextHref}
-                data-slot="button"
-                class="group/button cn-button cn-button-variant-secondary ml-auto inline-flex h-8 shrink-0 items-center justify-center gap-1.5 px-2.5 text-sm whitespace-nowrap shadow-none transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
-              >
-                {componentNeighbors.next?.data.title}
-                <svg
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+              {componentNextHref && (
+                <a
+                  href={componentNextHref}
+                  data-slot="button"
+                  class="group/button cn-button cn-button-variant-secondary ml-auto inline-flex h-8 shrink-0 items-center justify-center gap-1.5 px-2.5 text-sm whitespace-nowrap shadow-none transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
                 >
-                  <path d="M5 12h14" />
-                  <path d="M13 18l6-6" />
-                  <path d="M13 6l6 6" />
-                </svg>
-              </a>
-            )}
-          </footer>
-        )
-      }
-    </article>
+                  {componentNeighbors.next?.data.title}
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="M13 18l6-6" />
+                    <path d="M13 6l6 6" />
+                  </svg>
+                </a>
+              )}
+            </footer>
+          )
+        }
+      </article>
+    </div>
   </DocsLayout>
 </RootLayout>

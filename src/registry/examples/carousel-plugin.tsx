@@ -15,7 +15,7 @@ export default function CarouselPlugin() {
 
   return (
     <Carousel
-      class="w-full max-w-xs"
+      class="w-full max-w-[10rem] sm:max-w-xs"
       plugins={[autoplay]}
       onMouseEnter={() => autoplay.stop()}
       onMouseLeave={() => autoplay.reset()}

@@ -15,12 +15,12 @@ export default function CarouselSize() {
       opts={{
         align: "start"
       }}
-      class="w-full max-w-sm"
+      class="w-full max-w-[12rem] sm:max-w-xs md:max-w-sm"
     >
       <CarouselContent>
         <For each={Array.from({ length: 5 })}>
           {(_, index) => (
-            <CarouselItem class="md:basis-1/2 lg:basis-1/3">
+            <CarouselItem class="basis-1/2 lg:basis-1/3">
               <div class="p-1">
                 <Card>
                   <CardContent class="flex aspect-square items-center justify-center p-6">

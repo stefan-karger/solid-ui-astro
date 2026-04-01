@@ -36,13 +36,13 @@ export default function CarouselApiExample() {
   })
 
   return (
-    <div class="mx-auto max-w-xs">
+    <div class="mx-auto max-w-[10rem] sm:max-w-xs">
       <Carousel class="w-full max-w-xs" setApi={setApi}>
         <CarouselContent>
           <For each={Array.from({ length: 5 })}>
             {(_, index) => (
               <CarouselItem>
-                <Card>
+                <Card class="m-px">
                   <CardContent class="flex aspect-square items-center justify-center p-6">
                     <span class="text-4xl font-semibold">{index() + 1}</span>
                   </CardContent>

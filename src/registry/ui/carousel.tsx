@@ -120,19 +120,23 @@ const Carousel = (props: CarouselRootProps) => {
     })
   })
 
+  const contextValue: CarouselContextProps = {
+    carouselRef,
+    api,
+    get opts() {
+      return local.opts
+    },
+    get orientation() {
+      return local.orientation || (local.opts?.axis === "y" ? "vertical" : "horizontal")
+    },
+    scrollPrev,
+    scrollNext,
+    canScrollPrev,
+    canScrollNext
+  }
+
   return (
-    <CarouselContext.Provider
-      value={{
-        carouselRef,
-        api,
-        opts: local.opts,
-        orientation: local.orientation || (local.opts?.axis === "y" ? "vertical" : "horizontal"),
-        scrollPrev,
-        scrollNext,
-        canScrollPrev,
-        canScrollNext
-      }}
-    >
+    <CarouselContext.Provider value={contextValue}>
       <div
         aria-roledescription="carousel"
         class={cn("relative", local.class)}
@@ -150,7 +154,7 @@ const Carousel = (props: CarouselRootProps) => {
 type CarouselContentProps = ComponentProps<"div">
 
 const CarouselContent = (props: CarouselContentProps) => {
-  const [local, others] = splitProps(props, ["class"])
+  const [local, others] = splitProps(props, ["class", "children"])
   const { carouselRef, orientation } = useCarousel()
 
   return (
@@ -158,7 +162,9 @@ const CarouselContent = (props: CarouselContentProps) => {
       <div
         class={cn("flex", orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col", local.class)}
         {...others}
-      />
+      >
+        {local.children}
+      </div>
     </div>
   )
 }
@@ -166,7 +172,7 @@ const CarouselContent = (props: CarouselContentProps) => {
 type CarouselItemProps = ComponentProps<"div">
 
 const CarouselItem = (props: CarouselItemProps) => {
-  const [local, others] = splitProps(props, ["class"])
+  const [local, others] = splitProps(props, ["class", "children"])
   const { orientation } = useCarousel()
 
   return (
@@ -180,7 +186,9 @@ const CarouselItem = (props: CarouselItemProps) => {
       data-slot="carousel-item"
       role="group"
       {...others}
-    />
+    >
+      {local.children}
+    </div>
   )
 }
 

@@ -13,7 +13,7 @@
 | `button-group`    | x         | x        | x    |
 | `calendar`        |           |          |      |
 | `card`            | x         | x        | x    |
-| `carousel`        |           |          |      |
+| `carousel`        | x         | x        | x    |
 | `chart`           |           |          |      |
 | `checkbox`        | x         | x        | x    |
 | `collapsible`     | x         | x        | x    |

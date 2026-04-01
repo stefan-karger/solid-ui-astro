@@ -4,11 +4,11 @@ description: A carousel with motion and swipe built using Embla.
 component: true
 ---
 
-<ComponentPreview name="carousel-demo" />
+<ComponentPreview name="carousel-demo" previewClassName="h-80 sm:h-[32rem]" />
 
 ## About
 
-The `Carousel` component wraps Embla Carousel and provides styled primitives for slides, content, and navigation controls.
+The carousel component is built using the [Embla Carousel](https://www.embla-carousel.com/) library.
 
 ## Installation
 
@@ -77,37 +77,191 @@ import {
 
 ### Size
 
-Set custom slide widths with `basis-*` utilities.
+To set the size of the items, you can use the `basis` utility class on the `<CarouselItem />`.
 
 <ComponentPreview name="carousel-size" />
 
+```tsx showLineNumbers {4-6}
+// 33% of the carousel width.
+<Carousel>
+  <CarouselContent>
+    <CarouselItem class="basis-1/3">...</CarouselItem>
+    <CarouselItem class="basis-1/3">...</CarouselItem>
+    <CarouselItem class="basis-1/3">...</CarouselItem>
+  </CarouselContent>
+</Carousel>
+```
+
+```tsx showLineNumbers {4-6}
+// 50% on small screens and 33% on larger screens.
+<Carousel>
+  <CarouselContent>
+    <CarouselItem class="md:basis-1/2 lg:basis-1/3">...</CarouselItem>
+    <CarouselItem class="md:basis-1/2 lg:basis-1/3">...</CarouselItem>
+    <CarouselItem class="md:basis-1/2 lg:basis-1/3">...</CarouselItem>
+  </CarouselContent>
+</Carousel>
+```
+
 ### Spacing
 
-Use spacing utilities on `CarouselContent` and `CarouselItem`.
+To set the spacing between the items, we use a `pl-[VALUE]` utility on the `<CarouselItem />` and a negative `-ml-[VALUE]` on the `<CarouselContent />`.
 
 <ComponentPreview name="carousel-spacing" />
 
-### Orientation
-
-Use `orientation="vertical"` for vertical carousels.
-
-<ComponentPreview name="carousel-orientation" previewClassName="h-80" />
-
-### API
-
-Use `setApi` to access Embla methods and subscribe to slide changes.
-
-<ComponentPreview name="carousel-api" />
-
-### Plugin
-
-Use the `plugins` prop to add Embla plugins like autoplay.
-
-```bash
-npm install embla-carousel-autoplay
+```tsx showLineNumbers /-ml-4/ /pl-4/
+<Carousel>
+  <CarouselContent class="-ml-4">
+    <CarouselItem class="pl-4">...</CarouselItem>
+    <CarouselItem class="pl-4">...</CarouselItem>
+    <CarouselItem class="pl-4">...</CarouselItem>
+  </CarouselContent>
+</Carousel>
 ```
 
-<ComponentPreview name="carousel-plugin" />
+```tsx showLineNumbers /-ml-2/ /pl-2/ /md:-ml-4/ /md:pl-4/
+<Carousel>
+  <CarouselContent class="-ml-2 md:-ml-4">
+    <CarouselItem class="pl-2 md:pl-4">...</CarouselItem>
+    <CarouselItem class="pl-2 md:pl-4">...</CarouselItem>
+    <CarouselItem class="pl-2 md:pl-4">...</CarouselItem>
+  </CarouselContent>
+</Carousel>
+```
+
+### Orientation
+
+Use the `orientation` prop to set the orientation of the carousel.
+
+<ComponentPreview name="carousel-orientation" previewClassName="h-[32rem]" />
+
+```tsx showLineNumbers /vertical | horizontal/
+<Carousel orientation="vertical | horizontal">
+  <CarouselContent>
+    <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem>
+  </CarouselContent>
+</Carousel>
+```
+
+## Options
+
+You can pass options to the carousel using the opts prop. See the [Embla Carousel docs](https://www.embla-carousel.com/api/options/) for more information.
+
+```tsx showLineNumbers {2-5}
+<Carousel
+  opts={{
+    align: "start",
+    loop: true,
+  }}
+>
+  <CarouselContent>
+    <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem>
+  </CarouselContent>
+</Carousel>
+```
+
+## API
+
+Use a state and the `setApi` prop to get an instance of the carousel API.
+
+<ComponentPreview name="carousel-api" previewClassName="sm:h-[32rem]" />
+
+```tsx showLineNumbers {1,4,23}
+import { type CarouselApi } from "~/components/ui/carousel"
+
+export function Example() {
+  const [api, setApi] = createSignal<CarouselApi>()
+  const [current, setCurrent] = createSignal(0)
+  const [count, setCount] = createSignal(0)
+
+  createEffect(() => {
+    const emblaApi = api()
+    if (!emblaApi) {
+      return
+    }
+
+    setCount(emblaApi.scrollSnapList().length)
+    setCurrent(emblaApi.selectedScrollSnap() + 1)
+
+    emblaApi.on("select", () => {
+      setCurrent(emblaApi.selectedScrollSnap() + 1)
+    })
+  })
+
+  return (
+    <Carousel setApi={setApi}>
+      <CarouselContent>
+        <CarouselItem>...</CarouselItem>
+        <CarouselItem>...</CarouselItem>
+        <CarouselItem>...</CarouselItem>
+      </CarouselContent>
+    </Carousel>
+  )
+}
+```
+
+## Events
+
+You can listen to events using the api instance from `setApi`.
+
+```tsx showLineNumbers {1,4-15,18}
+import { type CarouselApi } from "~/components/ui/carousel"
+
+export function Example() {
+  const [api, setApi] = createSignal<CarouselApi>()
+
+  createEffect(() => {
+    const emblaApi = api()
+    if (!emblaApi) {
+      return
+    }
+
+    emblaApi.on("select", () => {
+      // Do something on select.
+    })
+  })
+
+  return (
+    <Carousel setApi={setApi}>
+      <CarouselContent>
+        <CarouselItem>...</CarouselItem>
+        <CarouselItem>...</CarouselItem>
+        <CarouselItem>...</CarouselItem>
+      </CarouselContent>
+    </Carousel>
+  )
+}
+```
+
+See the [Embla Carousel docs](https://www.embla-carousel.com/api/events/) for more information on using events.
+
+## Plugin
+
+You can use the `plugins` prop to add plugins to the carousel.
+
+```ts showLineNumbers {1,6-10}
+import Autoplay from "embla-carousel-autoplay"
+
+export function Example() {
+  return (
+    <Carousel
+      plugins={[
+        Autoplay({
+          delay: 2000,
+        }),
+      ]}
+    >
+      // ...
+    </Carousel>
+  )
+}
+```
+
+<ComponentPreview name="carousel-plugin" previewClassName="sm:h-[32rem]" />
 
 ## API Reference
 
@@ -121,18 +275,5 @@ npm install embla-carousel-autoplay
 | `CarouselPrevious` | Previous navigation button with built-in disabled behavior.     |
 | `CarouselNext`     | Next navigation button with built-in disabled behavior.         |
 | `useCarousel`      | Hook to access carousel context within carousel child elements. |
-
-### Carousel
-
-| Prop          | Type                                      | Default        |
-| ------------- | ----------------------------------------- | -------------- |
-| `opts`        | `EmblaOptionsType`                        | -              |
-| `plugins`     | `EmblaPluginType[]`                       | `[]`           |
-| `orientation` | `"horizontal" \| "vertical"`              | `"horizontal"` |
-| `setApi`      | `(api: CarouselApi \| undefined) => void` | -              |
-
-### Keyboard Interaction
-
-When the carousel is focused, `ArrowLeft` moves to the previous slide and `ArrowRight` moves to the next slide.
 
 See the [Embla Carousel](https://www.embla-carousel.com/api/options/) documentation for more information.
