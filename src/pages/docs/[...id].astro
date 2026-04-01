@@ -1,5 +1,5 @@
 ---
-import { getCollection, render } from "astro:content"
+import { getCollection, render, type CollectionEntry } from "astro:content"
 
 import DocsCopyPage from "~/components/docs-copy-page"
 import { mdxComponents } from "~/components/mdx-components"
@@ -17,41 +17,37 @@ import { readMdx } from "~/lib/transformers/mdx"
 export async function getStaticPaths() {
   const pages = await getCollection("docs")
 
-  return pages.map((page) => {
-    const routeId = toRouteId(page.id)
-
-    return {
-      params: { id: routeId || undefined },
-      props: { page, routeId }
-    }
-  })
+  return pages.map((page) => ({
+    params: { id: toRouteId(page.id) || undefined },
+    props: { page }
+  }))
 }
 
-const { page, routeId } = Astro.props
-const { Content, headings } = await render(page)
+const toLink = (page: CollectionEntry<"docs"> | null) =>
+  page && {
+    href: toDocsPath(toRouteId(page.id)),
+    title: page.data.title
+  }
 
-const [sidebar, neighbors, componentNeighbors, sourceContent] = await Promise.all([
+const { page } = Astro.props
+const id = toRouteId(page.id)
+const isComponent = page.data.component
+
+const [{ Content, headings }, sidebar, nav, compNav, source] = await Promise.all([
+  render(page),
   getSidebarData(),
-  getNeighbors(routeId),
-  page.data.component
-    ? getComponentNeighbors(routeId)
-    : Promise.resolve({ previous: null, next: null }),
+  getNeighbors(id).then(({ previous, next }) => ({
+    prev: toLink(previous),
+    next: toLink(next)
+  })),
+  isComponent
+    ? getComponentNeighbors(id).then(({ previous, next }) => ({
+        prev: toLink(previous),
+        next: toLink(next)
+      }))
+    : Promise.resolve({ prev: null, next: null }),
   readMdx(page.id)
 ])
-
-const pagePath = toDocsPath(routeId)
-const markdownHref = routeId ? `${pagePath}.md` : "/docs/index.md"
-
-const previousHref = neighbors.previous ? toDocsPath(toRouteId(neighbors.previous.id)) : null
-const nextHref = neighbors.next ? toDocsPath(toRouteId(neighbors.next.id)) : null
-
-const componentPreviousHref = componentNeighbors.previous
-  ? toDocsPath(toRouteId(componentNeighbors.previous.id))
-  : null
-
-const componentNextHref = componentNeighbors.next
-  ? toDocsPath(toRouteId(componentNeighbors.next.id))
-  : null
 ---
 
 <RootLayout title={page.data.title}>
@@ -72,15 +68,15 @@ const componentNextHref = componentNeighbors.next
                 <div class="hidden sm:block">
                   <DocsCopyPage
                     client:only="solid-js"
-                    content={sourceContent}
-                    markdownHref={markdownHref}
+                    content={source}
+                    markdownHref={`/docs/${id || "index"}.md`}
                   />
                 </div>
                 <div class="ml-auto flex gap-2">
                   {
-                    previousHref && (
+                    nav.prev && (
                       <a
-                        href={previousHref}
+                        href={nav.prev.href}
                         data-slot="button"
                         class="group/button cn-button cn-button-variant-secondary cn-button-size-icon extend-touch-target inline-flex size-8 shrink-0 items-center justify-center whitespace-nowrap shadow-none transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 md:size-7 [&_svg]:pointer-events-none [&_svg]:shrink-0"
                       >
@@ -104,9 +100,9 @@ const componentNextHref = componentNeighbors.next
                   }
 
                   {
-                    nextHref && (
+                    nav.next && (
                       <a
-                        href={nextHref}
+                        href={nav.next.href}
                         data-slot="button"
                         class="group/button cn-button cn-button-variant-secondary cn-button-size-icon extend-touch-target inline-flex size-8 shrink-0 items-center justify-center whitespace-nowrap shadow-none transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 md:size-7 [&_svg]:pointer-events-none [&_svg]:shrink-0"
                       >
@@ -145,11 +141,11 @@ const componentNextHref = componentNeighbors.next
         </div>
 
         {
-          page.data.component && (componentPreviousHref || componentNextHref) && (
+          isComponent && (compNav.prev || compNav.next) && (
             <footer class="flex h-16 w-full items-center gap-2 sm:px-0">
-              {componentPreviousHref && (
+              {compNav.prev && (
                 <a
-                  href={componentPreviousHref}
+                  href={compNav.prev.href}
                   data-slot="button"
                   class="group/button cn-button cn-button-variant-secondary inline-flex h-8 shrink-0 items-center justify-center gap-1.5 px-2.5 text-sm whitespace-nowrap shadow-none transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
                 >
@@ -167,17 +163,17 @@ const componentNextHref = componentNeighbors.next
                     <path d="M5 12l6 6" />
                     <path d="M5 12l6-6" />
                   </svg>
-                  {componentNeighbors.previous?.data.title}
+                  {compNav.prev.title}
                 </a>
               )}
 
-              {componentNextHref && (
+              {compNav.next && (
                 <a
-                  href={componentNextHref}
+                  href={compNav.next.href}
                   data-slot="button"
                   class="group/button cn-button cn-button-variant-secondary ml-auto inline-flex h-8 shrink-0 items-center justify-center gap-1.5 px-2.5 text-sm whitespace-nowrap shadow-none transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
                 >
-                  {componentNeighbors.next?.data.title}
+                  {compNav.next.title}
                   <svg
                     aria-hidden="true"
                     fill="none"
