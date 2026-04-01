@@ -1,16 +1,18 @@
+import { Bold, Italic, Underline } from "lucide-solid"
+
 import { ToggleGroup, ToggleGroupItem } from "~/registry/ui/toggle-group"
 
-export default function ToggleGroupDemo() {
+export function ToggleGroupDemo() {
   return (
-    <ToggleGroup multiple variant="outline">
-      <ToggleGroupItem aria-label="Toggle bold" value="bold">
-        <span class="font-bold">B</span>
+    <ToggleGroup variant="outline" multiple>
+      <ToggleGroupItem value="bold" aria-label="Toggle bold">
+        <Bold />
       </ToggleGroupItem>
-      <ToggleGroupItem aria-label="Toggle italic" value="italic">
-        <span class="italic">I</span>
+      <ToggleGroupItem value="italic" aria-label="Toggle italic">
+        <Italic />
       </ToggleGroupItem>
-      <ToggleGroupItem aria-label="Toggle underline" value="underline">
-        <span class="underline">U</span>
+      <ToggleGroupItem value="strikethrough" aria-label="Toggle strikethrough">
+        <Underline />
       </ToggleGroupItem>
     </ToggleGroup>
   )

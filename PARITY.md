@@ -53,6 +53,6 @@
 | `table`           | x         | x        | x    |
 | `tabs`            | x         | x        | x    |
 | `textarea`        | x         | x        | x    |
-| `toggle`          |           |          |      |
-| `toggle-group`    |           |          |      |
+| `toggle`          | x         | x        | x    |
+| `toggle-group`    | x         | x        | x    |
 | `tooltip`         | x         | x        | x    |
