@@ -3,7 +3,7 @@ import CommandMenu from "~/components/command-menu"
 import GitHubLink from "~/components/github-link.astro"
 import { Icons } from "~/components/icons"
 import MobileNav from "~/components/mobile-nav"
-import ModeToggle from "~/components/mode-toggle.astro"
+import ModeToggle from "~/components/mode-toggle"
 import { getSidebarData } from "~/lib/docs"
 import { siteConfig } from "~/lib/site"
 import { Separator } from "~/registry/ui/separator"
@@ -13,9 +13,7 @@ const sidebar = await getSidebarData()
 
 <header class="sticky top-0 z-50 w-full bg-background">
   <div class="container-wrapper px-6">
-    <div
-      class="container flex h-(--header-height) items-center justify-between gap-4 **:data-[slot=separator]:h-4!"
-    >
+    <div class="container flex h-(--header-height) items-center justify-between gap-4">
       <div class="flex min-w-0 items-center gap-5">
         <MobileNav
           client:load
@@ -49,10 +47,13 @@ const sidebar = await getSidebarData()
         <div class="hidden w-full flex-1 md:flex md:w-auto md:flex-none">
           <CommandMenu client:load navItems={siteConfig.navItems} components={sidebar.components} />
         </div>
-        <Separator orientation="vertical" class="ml-2 hidden lg:block" />
+        <Separator
+          orientation="vertical"
+          class="ml-2 hidden h-4 data-[orientation=vertical]:self-center lg:block"
+        />
         <GitHubLink />
-        <Separator orientation="vertical" />
-        <ModeToggle />
+        <Separator orientation="vertical" class="h-4 data-[orientation=vertical]:self-center" />
+        <ModeToggle client:load />
       </div>
     </div>
   </div>

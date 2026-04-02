@@ -47,7 +47,7 @@
 | `sidebar`         |           |          |      |
 | `skeleton`        | x         | x        | x    |
 | `slider`          | x         | x        | x    |
-| `sonner`          |           |          |      |
+| `sonner`          | x         | x        | x    |
 | `spinner`         | x         | x        | x    |
 | `switch`          | x         | x        | x    |
 | `table`           | x         | x        | x    |

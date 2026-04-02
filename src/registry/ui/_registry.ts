@@ -461,6 +461,17 @@ export const ui: Registry["items"] = [
     ]
   },
   {
+    name: "sonner",
+    type: "registry:ui",
+    dependencies: ["@kobalte/core", "solid-sonner"],
+    files: [
+      {
+        path: "ui/sonner.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
     name: "spinner",
     type: "registry:ui",
     files: [

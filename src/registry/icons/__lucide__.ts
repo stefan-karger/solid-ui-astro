@@ -4,13 +4,18 @@ import {
   ChevronDownIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
+  CircleCheckIcon,
   Ellipsis,
+  InfoIcon,
+  Loader2Icon,
   LoaderCircleIcon,
   Minus,
   MinusIcon,
   MoreHorizontalIcon,
+  OctagonXIcon,
   PanelLeftIcon,
   SearchIcon,
+  TriangleAlertIcon,
   XIcon
 } from "lucide-solid"
 
@@ -19,13 +24,18 @@ const icons = {
   ChevronDownIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
+  CircleCheckIcon,
   Ellipsis,
+  InfoIcon,
+  Loader2Icon,
   LoaderCircleIcon,
   Minus,
   MinusIcon,
   MoreHorizontalIcon,
+  OctagonXIcon,
   PanelLeftIcon,
   SearchIcon,
+  TriangleAlertIcon,
   XIcon
 }
 

@@ -592,6 +592,20 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "sonner": {
+    name: "sonner",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/ui/sonner.tsx")),
+    files: [{
+      path: "registry/ui/sonner.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "spinner": {
     name: "spinner",
     description: "",
@@ -4002,6 +4016,62 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/examples/skeleton-table.tsx")),
     files: [{
       path: "registry/examples/skeleton-table.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "sonner-demo": {
+    name: "sonner-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","sonner"],
+    component: lazy(() => import("~/registry/examples/sonner-demo.tsx")),
+    files: [{
+      path: "registry/examples/sonner-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "sonner-description": {
+    name: "sonner-description",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","sonner"],
+    component: lazy(() => import("~/registry/examples/sonner-description.tsx")),
+    files: [{
+      path: "registry/examples/sonner-description.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "sonner-position": {
+    name: "sonner-position",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","sonner"],
+    component: lazy(() => import("~/registry/examples/sonner-position.tsx")),
+    files: [{
+      path: "registry/examples/sonner-position.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "sonner-types": {
+    name: "sonner-types",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","sonner"],
+    component: lazy(() => import("~/registry/examples/sonner-types.tsx")),
+    files: [{
+      path: "registry/examples/sonner-types.tsx",
       type: "registry:example",
       target: ""
     }],
