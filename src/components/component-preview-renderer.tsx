@@ -1,4 +1,4 @@
-import { createMemo, Show, Suspense } from "solid-js"
+import { Suspense } from "solid-js"
 
 import { Index } from "~/registry/__index__"
 
@@ -7,13 +7,7 @@ type ComponentPreviewRendererProps = {
 }
 
 export function ComponentPreviewRenderer(props: ComponentPreviewRendererProps) {
-  const resolvedComponent = createMemo(() => Index[props.name]?.component)
+  const ResolvedComponent = Index[props.name]?.component
 
-  return (
-    <Suspense fallback={null}>
-      <Show when={resolvedComponent()} keyed>
-        {(ResolvedComponent) => <ResolvedComponent />}
-      </Show>
-    </Suspense>
-  )
+  return <Suspense fallback={null}>{ResolvedComponent ? <ResolvedComponent /> : null}</Suspense>
 }
