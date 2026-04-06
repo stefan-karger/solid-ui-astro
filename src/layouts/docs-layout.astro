@@ -1,26 +1,19 @@
 ---
 import DocsSidebar from "~/components/docs-sidebar.astro"
-import DocsToc from "~/components/docs-toc.astro"
 import type { SidebarData } from "~/lib/docs"
-
-type TocItem = {
-  depth: number
-  slug: string
-  text: string
-}
 
 type Props = {
   sidebar: SidebarData
-  toc: TocItem[]
   pathname: string
 }
 
-const { sidebar, toc, pathname } = Astro.props
+const { sidebar, pathname } = Astro.props
 ---
 
-<div class="container-wrapper flex flex-1 px-2">
+<div class="container-wrapper flex flex-1 flex-col px-2">
   <div
-    class="container grid w-full grid-cols-1 gap-x-8 px-0 py-6 lg:grid-cols-[18rem_minmax(0,1fr)] lg:px-0 xl:grid-cols-[18rem_minmax(0,1fr)_220px]"
+    class="min-h-min w-full flex-1 items-start px-0 lg:grid lg:grid-cols-[var(--sidebar-width)_minmax(0,1fr)] lg:[--top-spacing:calc(var(--spacing)*4)] 3xl:fixed:container 3xl:fixed:px-3"
+    style="--sidebar-width: 18rem; --top-spacing: 0;"
   >
     <aside class="hidden lg:block">
       <DocsSidebar
@@ -30,12 +23,8 @@ const { sidebar, toc, pathname } = Astro.props
       />
     </aside>
 
-    <section class="min-w-0">
+    <section class="h-full w-full min-w-0">
       <slot />
     </section>
-
-    <aside class="hidden xl:block">
-      <DocsToc items={toc} />
-    </aside>
   </div>
 </div>

@@ -15,15 +15,11 @@ const toc = items.filter((item) => item.depth >= 2 && item.depth <= 4)
 
 {
   toc.length > 0 && (
-    <nav
-      data-toc-root
-      class="sticky top-[calc(var(--header-height)+1rem)] no-scrollbar max-h-[calc(100svh-var(--header-height)-2rem)] overflow-y-auto pb-8"
-      aria-label="Table of contents"
-    >
-      <p class="mb-3 text-xs font-medium tracking-wide text-muted-foreground uppercase">
+    <nav data-toc-root class="flex flex-col gap-2 p-4 pt-0 text-sm" aria-label="Table of contents">
+      <p class="sticky top-0 h-6 bg-background text-xs font-medium text-muted-foreground">
         On This Page
       </p>
-      <ul class="space-y-1">
+      <ul class="space-y-0.5">
         {toc.map((item) => (
           <li>
             <a
@@ -31,7 +27,7 @@ const toc = items.filter((item) => item.depth >= 2 && item.depth <= 4)
               data-toc-link
               data-slug={item.slug}
               data-depth={item.depth}
-              class="block rounded-md py-1 text-sm text-muted-foreground transition-colors hover:text-foreground data-[active=true]:font-medium data-[active=true]:text-foreground data-[depth=3]:pl-3 data-[depth=4]:pl-6"
+              class="block rounded-md text-[0.8rem] text-muted-foreground no-underline transition-colors hover:text-foreground data-[active=true]:font-medium data-[active=true]:text-foreground data-[depth=3]:pl-4 data-[depth=4]:pl-6"
             >
               {item.text}
             </a>
