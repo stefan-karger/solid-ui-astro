@@ -29,6 +29,8 @@ const {
 } = Astro.props
 
 const item = Index[name]
+const blockPreviewClassName = previewClassName ?? "aspect-[4/2.5] min-h-[24rem]"
+const blockPreviewHref = `/view/${encodeURIComponent(name)}`
 
 const isPreviewableType = item
   ? ["registry:block", "registry:component", "registry:example"].includes(item.type)
@@ -55,37 +57,45 @@ const isPreviewableType = item
   ) : (
     <>
       {type === "block" && (
-        <p class="mt-4 rounded-lg border border-dashed bg-muted/50 px-4 py-3 text-sm text-muted-foreground">
-          Block preview fallback is active. Proper block rendering still needs to be implemented
-          later. Reference:{" "}
-          <code class="rounded bg-muted px-1 py-0.5 font-mono text-xs">
-            .references/shadcn-ui/apps/v4/components/component-preview.tsx
-          </code>
-          .
-        </p>
-      )}
-      <ComponentPreviewTabs
-        class={className}
-        previewClassName={previewClassName}
-        align={align}
-        hideCode={hideCode}
-        chromeLessOnMobile={chromeLessOnMobile}
-        {...props}
-      >
-        <ComponentPreviewRenderer slot="component" name={name} client:only="solid-js" />
-        {!hideCode && (
-          <ComponentSource slot="source" name={name} collapsible={false} styleName={styleName} />
-        )}
-        {!hideCode && (
-          <ComponentSource
-            slot="source-preview"
-            name={name}
-            collapsible={false}
-            styleName={styleName}
-            maxLines={3}
+        <div
+          class:list={[
+            "relative mt-4 w-full overflow-hidden rounded-xl border bg-background",
+            blockPreviewClassName,
+            className
+          ]}
+        >
+          <iframe
+            class="size-full border-0 bg-background"
+            loading="lazy"
+            src={blockPreviewHref}
+            title={`${name} preview`}
           />
-        )}
-      </ComponentPreviewTabs>
+        </div>
+      )}
+      {type !== "block" && (
+        <ComponentPreviewTabs
+          class={className}
+          previewClassName={previewClassName}
+          align={align}
+          hideCode={hideCode}
+          chromeLessOnMobile={chromeLessOnMobile}
+          {...props}
+        >
+          <ComponentPreviewRenderer slot="component" name={name} client:only="solid-js" />
+          {!hideCode && (
+            <ComponentSource slot="source" name={name} collapsible={false} styleName={styleName} />
+          )}
+          {!hideCode && (
+            <ComponentSource
+              slot="source-preview"
+              name={name}
+              collapsible={false}
+              styleName={styleName}
+              maxLines={3}
+            />
+          )}
+        </ComponentPreviewTabs>
+      )}
     </>
   )
 }

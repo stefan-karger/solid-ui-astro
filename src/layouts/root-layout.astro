@@ -10,9 +10,11 @@ import { STYLES } from "~/registry/styles"
 
 type Props = {
   title?: string
+  showHeader?: boolean
+  showToaster?: boolean
 }
 
-const { title = "Astro" } = Astro.props
+const { title = "Astro", showHeader = true, showToaster = true } = Astro.props
 const styleNames = STYLES.map((entry) => entry.name)
 const iconLibraryNames = Object.keys(iconLibraries)
 ---
@@ -94,11 +96,11 @@ const iconLibraryNames = Object.keys(iconLibraries)
   </head>
   <body class="min-h-svh bg-background text-foreground" style="--header-height:3.5rem;">
     <div class="relative flex min-h-svh flex-col">
-      <SiteHeader />
+      {showHeader && <SiteHeader />}
       <main class="flex flex-1 flex-col">
         <slot />
       </main>
     </div>
-    <SiteToaster client:only="solid-js" />
+    {showToaster && <SiteToaster client:only="solid-js" />}
   </body>
 </html>
