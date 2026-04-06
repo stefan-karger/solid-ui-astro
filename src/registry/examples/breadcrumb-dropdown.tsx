@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from "lucide-solid"
+import { ChevronDownIcon, DotIcon } from "lucide-solid"
 
 import {
   Breadcrumb,
@@ -18,14 +18,12 @@ import {
 
 export default function BreadcrumbDropdown() {
   return (
-    <Breadcrumb>
+    <Breadcrumb separator={<DotIcon />}>
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink href="#">Home</BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator>
-          <span class="text-muted-foreground">/</span>
-        </BreadcrumbSeparator>
+        <BreadcrumbSeparator />
         <BreadcrumbItem>
           <DropdownMenu>
             <DropdownMenuTrigger as="button" class="flex items-center gap-1">
@@ -41,9 +39,7 @@ export default function BreadcrumbDropdown() {
             </DropdownMenuContent>
           </DropdownMenu>
         </BreadcrumbItem>
-        <BreadcrumbSeparator>
-          <span class="text-muted-foreground">/</span>
-        </BreadcrumbSeparator>
+        <BreadcrumbSeparator />
         <BreadcrumbItem>
           <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
         </BreadcrumbItem>

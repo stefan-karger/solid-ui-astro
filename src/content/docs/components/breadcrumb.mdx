@@ -86,7 +86,25 @@ A basic breadcrumb with a home link and a components link.
 
 ### Custom separator
 
-Use custom children in `BreadcrumbSeparator` to override the default icon.
+Pass the `separator` prop to `Breadcrumb` to override the separator for the entire trail.
+
+```tsx showLineNumbers
+<Breadcrumb separator={<DotIcon />}>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="#">Home</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbLink href="#">Components</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>
+```
 
 <ComponentPreview name="breadcrumb-separator" />
 
@@ -112,11 +130,12 @@ Render custom routing links by passing a component to the `as` prop on `Breadcru
 
 ### Breadcrumb
 
-Root navigation element that wraps breadcrumb items.
+Root navigation element that wraps breadcrumb items and sets the separator for the entire trail.
 
-| Prop    | Type     | Default |
-| ------- | -------- | ------- |
-| `class` | `string` | -       |
+| Prop        | Type                    | Default      |
+| ----------- | ----------------------- | ------------ |
+| `class`     | `string`                | -            |
+| `separator` | `string \| JSX.Element` | chevron icon |
 
 ### BreadcrumbList
 
@@ -153,12 +172,11 @@ Current page indicator (non-interactive).
 
 ### BreadcrumbSeparator
 
-Separator between breadcrumb items. Provide `children` to render a custom separator.
+Separator between breadcrumb items. It renders the value from the parent `Breadcrumb` `separator` prop, or the default chevron icon when no `separator` prop is provided.
 
-| Prop       | Type          | Default |
-| ---------- | ------------- | ------- |
-| `children` | `JSX.Element` | -       |
-| `class`    | `string`      | -       |
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` | -       |
 
 ### BreadcrumbEllipsis
 

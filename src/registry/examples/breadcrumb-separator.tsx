@@ -1,3 +1,5 @@
+import { DotIcon } from "lucide-solid"
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -9,20 +11,16 @@ import {
 
 export default function BreadcrumbSeparatorDemo() {
   return (
-    <Breadcrumb>
+    <Breadcrumb separator={<DotIcon />}>
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink href="#">Home</BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator>
-          <span class="text-muted-foreground">/</span>
-        </BreadcrumbSeparator>
+        <BreadcrumbSeparator />
         <BreadcrumbItem>
           <BreadcrumbLink href="#">Components</BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator>
-          <span class="text-muted-foreground">/</span>
-        </BreadcrumbSeparator>
+        <BreadcrumbSeparator />
         <BreadcrumbItem>
           <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
         </BreadcrumbItem>

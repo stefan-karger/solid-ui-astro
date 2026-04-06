@@ -7,7 +7,7 @@ import {
   type BreadcrumbsSeparatorProps as BreadcrumbsSeparatorPrimitiveProps
 } from "@kobalte/core/breadcrumbs"
 import type { PolymorphicProps } from "@kobalte/core/polymorphic"
-import { Show, splitProps, type ComponentProps, type ValidComponent } from "solid-js"
+import { splitProps, type ComponentProps, type ValidComponent } from "solid-js"
 
 import { IconPlaceholder } from "~/components/icon-placeholder"
 import { cn } from "~/lib/utils"
@@ -19,13 +19,22 @@ type BreadcrumbProps<T extends ValidComponent = "nav"> = PolymorphicProps<
   Pick<ComponentProps<T>, "class">
 
 const Breadcrumb = <T extends ValidComponent = "nav">(props: BreadcrumbProps<T>) => {
-  const [local, others] = splitProps(props as BreadcrumbProps, ["class"])
+  const [local, others] = splitProps(props as BreadcrumbProps, ["class", "separator"])
 
   return (
     <Root
       aria-label="breadcrumb"
       class={cn("cn-breadcrumb", local.class)}
       data-slot="breadcrumb"
+      separator={
+        local.separator ?? (
+          <IconPlaceholder
+            class="cn-rtl-flip"
+            lucide="ChevronRightIcon"
+            tabler="IconChevronRight"
+          />
+        )
+      }
       {...others}
     />
   )
@@ -94,12 +103,12 @@ type BreadcrumbSeparatorProps<T extends ValidComponent = "span"> = PolymorphicPr
   T,
   BreadcrumbsSeparatorPrimitiveProps<T>
 > &
-  Pick<ComponentProps<T>, "class" | "children">
+  Pick<ComponentProps<T>, "class">
 
 const BreadcrumbSeparator = <T extends ValidComponent = "span">(
   props: BreadcrumbSeparatorProps<T>
 ) => {
-  const [local, others] = splitProps(props as BreadcrumbSeparatorProps, ["class", "children"])
+  const [local, others] = splitProps(props as BreadcrumbSeparatorProps, ["class"])
 
   return (
     <Separator
@@ -108,20 +117,7 @@ const BreadcrumbSeparator = <T extends ValidComponent = "span">(
       data-slot="breadcrumb-separator"
       role="presentation"
       {...others}
-    >
-      <Show
-        when={local.children}
-        fallback={
-          <IconPlaceholder
-            class="cn-rtl-flip"
-            lucide="ChevronRightIcon"
-            tabler="IconChevronRight"
-          />
-        }
-      >
-        {(children) => children()}
-      </Show>
-    </Separator>
+    />
   )
 }
 
