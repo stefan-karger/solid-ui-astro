@@ -44,7 +44,7 @@
 | `select`          | x         | x        | x    |
 | `separator`       | x         | x        | x    |
 | `sheet`           | x         | x        | x    |
-| `sidebar`         |           |          |      |
+| `sidebar`         | x         | x        | x    |
 | `skeleton`        | x         | x        | x    |
 | `slider`          | x         | x        | x    |
 | `sonner`          | x         | x        | x    |

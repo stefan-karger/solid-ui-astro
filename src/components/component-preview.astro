@@ -59,17 +59,25 @@ const isPreviewableType = item
       {type === "block" && (
         <div
           class:list={[
-            "relative mt-4 w-full overflow-hidden rounded-xl border bg-background",
+            "relative mt-4 w-full overflow-hidden rounded-xl border bg-background md:-mx-1",
             blockPreviewClassName,
             className
           ]}
         >
           <iframe
-            class="size-full border-0 bg-background"
+            class="size-full border-0 bg-background md:hidden"
             loading="lazy"
             src={blockPreviewHref}
             title={`${name} preview`}
           />
+          <div class="absolute inset-0 hidden w-[1600px] bg-background md:block">
+            <iframe
+              class="size-full border-0 bg-background"
+              loading="lazy"
+              src={blockPreviewHref}
+              title={`${name} preview`}
+            />
+          </div>
         </div>
       )}
       {type !== "block" && (

@@ -124,6 +124,7 @@ const SidebarProvider = (props: SidebarProviderProps) => {
         data-slot="sidebar-wrapper"
         style={{
           "--sidebar-width": SIDEBAR_WIDTH,
+          "--sidebar-width-mobile": SIDEBAR_WIDTH_MOBILE,
           "--sidebar-width-icon": SIDEBAR_WIDTH_ICON,
           ...(local.style as JSX.CSSProperties)
         }}
@@ -189,7 +190,7 @@ const Sidebar: Component<SidebarProps> = (props) => {
             data-slot="sidebar"
             side={local.side}
             style={{
-              "--sidebar-width": SIDEBAR_WIDTH_MOBILE
+              "--sidebar-width": "var(--sidebar-width-mobile)"
             }}
           >
             <SheetHeader class="sr-only">
