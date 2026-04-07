@@ -30,12 +30,12 @@ export default function ChartLegendExample() {
       <CardHeader>
         <CardTitle>Legend content</CardTitle>
         <CardDescription>
-          Legend entries are driven explicitly from `keys` and `ChartConfig`.
+          Legend entries can be inferred from `ChartConfig` or passed explicitly.
         </CardDescription>
       </CardHeader>
       <CardContent>
         <ChartLegend>
-          <ChartLegendContent config={chartConfig} keys={["revenue", "refunds", "net"]} />
+          <ChartLegendContent config={chartConfig} />
         </ChartLegend>
       </CardContent>
     </Card>

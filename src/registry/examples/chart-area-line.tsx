@@ -45,8 +45,10 @@ export default function ChartAreaLine() {
             <ChartTooltip>
               {({ data }) => (
                 <ChartTooltipContent
+                  class="min-w-40"
                   config={chartConfig}
                   data={data}
+                  indicator="line"
                   keys={["revenue"]}
                   labelKey="month"
                 />

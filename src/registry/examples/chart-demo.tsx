@@ -56,12 +56,7 @@ export default function ChartDemo() {
             <AxisLabel format={(value) => String(value).slice(0, 3)} />
             <ChartTooltip>
               {({ data }) => (
-                <ChartTooltipContent
-                  config={chartConfig}
-                  data={data}
-                  keys={["desktop", "mobile"]}
-                  labelKey="month"
-                />
+                <ChartTooltipContent config={chartConfig} data={data} labelKey="month" />
               )}
             </ChartTooltip>
           </Axis>
@@ -69,7 +64,7 @@ export default function ChartDemo() {
           <Bar dataKey="mobile" fill="var(--color-mobile)" rx="4" ry="4" />
         </ChartContainer>
         <ChartLegend>
-          <ChartLegendContent config={chartConfig} keys={["desktop", "mobile"]} />
+          <ChartLegendContent config={chartConfig} />
         </ChartLegend>
       </CardContent>
     </Card>

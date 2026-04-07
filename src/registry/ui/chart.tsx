@@ -40,6 +40,7 @@ export type ChartConfig = Record<
 type ChartContextProps = {
   config: ChartConfig
   chartId: string
+  data: SolidChartProps["data"]
 }
 
 const ChartContext = createContext<ChartContextProps | null>(null)
@@ -56,8 +57,88 @@ export function useChart() {
 
 const sanitizeId = (value: string) => value.replace(/[^A-Za-z0-9_-]/g, "")
 
+const RESERVED_DATA_KEYS = new Set(["fill", "stroke", "color"])
+
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null
+
+const hasChartColor = (value: ChartConfig[string]) => Boolean(value.color ?? value.theme)
+
+const requireChartConfig = (config: ChartConfig | null | undefined, componentName: string) => {
+  if (!config) {
+    throw new Error(
+      `${componentName} must be used within a <ChartContainer /> or receive a config prop`
+    )
+  }
+
+  return config
+}
+
+const inferConfigKeys = (
+  config: ChartConfig,
+  data: unknown,
+  excludeKeys: readonly (string | undefined)[] = []
+) => {
+  const excludedKeys = new Set(
+    excludeKeys
+      .filter((key): key is string => typeof key === "string")
+      .concat([...RESERVED_DATA_KEYS])
+  )
+
+  if (isRecord(data)) {
+    const configKeys = Object.keys(config).filter(
+      (key) => !excludedKeys.has(key) && data[key] != null
+    )
+
+    if (configKeys.length > 0) {
+      return configKeys
+    }
+
+    return Object.keys(data).filter(
+      (key) => !excludedKeys.has(key) && typeof data[key] === "number"
+    )
+  }
+
+  const [singleKey] = Object.keys(config)
+
+  return singleKey ? [singleKey] : []
+}
+
+const inferLabelValue = (data: unknown, itemKeys: readonly string[]) => {
+  if (!isRecord(data)) {
+    return data
+  }
+
+  const excludedKeys = new Set([...itemKeys, ...RESERVED_DATA_KEYS])
+
+  for (const [key, value] of Object.entries(data)) {
+    if (excludedKeys.has(key) || value == null) {
+      continue
+    }
+
+    if (typeof value === "string" || typeof value === "number") {
+      return value
+    }
+  }
+
+  return null
+}
+
+const getDatumColor = (data: unknown) => {
+  if (!isRecord(data)) {
+    return undefined
+  }
+
+  if (typeof data.fill === "string") {
+    return data.fill
+  }
+
+  if (typeof data.stroke === "string") {
+    return data.stroke
+  }
+
+  return undefined
+}
 
 const getConfigKeyFromData = (config: ChartConfig, data: unknown, key: string) => {
   if (!isRecord(data)) {
@@ -91,9 +172,7 @@ const getDataValue = (data: unknown, key: string) => {
 }
 
 const getColorCss = (attribute: string, id: string, config: ChartConfig) => {
-  const colorEntries = Object.entries(config).filter(
-    ([, itemConfig]) => itemConfig.color ?? itemConfig.theme
-  )
+  const colorEntries = Object.entries(config).filter(([, itemConfig]) => hasChartColor(itemConfig))
 
   if (colorEntries.length === 0) {
     return ""
@@ -115,8 +194,6 @@ const getColorCss = (attribute: string, id: string, config: ChartConfig) => {
     })
     .join("\n")
 }
-
-const getEntryColor = (key: string) => `var(--color-${key})`
 
 const formatValue = (value: unknown) => {
   if (typeof value === "number") {
@@ -159,7 +236,7 @@ export function ChartContainer(props: ChartContainerProps) {
   ])
 
   const uniqueId = createUniqueId()
-  const chartId = createMemo(() => `chart-${sanitizeId(local.id ?? uniqueId)}`)
+  const chartId = () => `chart-${sanitizeId(local.id ?? uniqueId)}`
 
   const contextValue: ChartContextProps = {
     get config() {
@@ -167,6 +244,9 @@ export function ChartContainer(props: ChartContainerProps) {
     },
     get chartId() {
       return chartId()
+    },
+    get data() {
+      return local.data
     }
   }
 
@@ -182,17 +262,15 @@ export function ChartContainer(props: ChartContainerProps) {
         {...others}
       >
         <ChartStyle config={local.config} id={chartId()} />
-        <div class="h-full w-full">
-          <SolidChart
-            barConfig={local.barConfig}
-            data={local.data}
-            height={local.height}
-            inset={local.inset}
-            width={local.width}
-          >
-            {local.children}
-          </SolidChart>
-        </div>
+        <SolidChart
+          barConfig={local.barConfig}
+          data={local.data}
+          height={local.height}
+          inset={local.inset}
+          width={local.width}
+        >
+          {local.children}
+        </SolidChart>
       </div>
     </ChartContext.Provider>
   )
@@ -221,7 +299,7 @@ export type ChartTooltipItem = {
 
 export type ChartTooltipContentProps = ComponentProps<"div"> & {
   data: unknown
-  keys: string[]
+  keys?: string[]
   labelKey?: string
   nameKey?: string
   indicator?: "dot" | "line" | "dashed"
@@ -262,100 +340,84 @@ export function ChartTooltipContent(props: ChartTooltipContentProps) {
     "labelFormatter"
   ])
 
-  const config = createMemo(() => local.config ?? context?.config)
-  const getConfig = () => {
-    const value = config()
+  const config = () => requireChartConfig(local.config ?? context?.config, "ChartTooltipContent")
 
-    if (!value) {
-      throw new Error(
-        "ChartTooltipContent must be used within a <ChartContainer /> or receive a config prop"
-      )
-    }
-
-    return value
-  }
+  const resolvedKeys = createMemo(
+    () => local.keys ?? inferConfigKeys(config(), local.data, [local.labelKey])
+  )
 
   const items = createMemo(() => {
-    const nextItems: ChartTooltipItem[] = []
+    const chartConfig = config()
+    const itemKeys = resolvedKeys()
+    const datumColor = local.color ?? getDatumColor(local.data)
 
-    for (const key of local.keys) {
+    return itemKeys.flatMap((key) => {
       const value = getDataValue(local.data, key)
 
       if (value == null) {
-        continue
+        return []
       }
 
+      const configLookupKey = local.nameKey && itemKeys.length === 1 ? local.nameKey : key
       const { configKey, entry } = getConfigEntry(
-        getConfig(),
-        local.nameKey ? local.data : undefined,
-        local.nameKey ?? key
+        chartConfig,
+        configLookupKey === key ? undefined : local.data,
+        configLookupKey
       )
 
-      const directFill =
-        isRecord(local.data) && typeof local.data.fill === "string" ? local.data.fill : undefined
-      const directStroke =
-        isRecord(local.data) && typeof local.data.stroke === "string"
-          ? local.data.stroke
-          : undefined
-
-      nextItems.push({
-        key,
-        configKey,
-        color: local.color ?? directFill ?? directStroke ?? `var(--color-${configKey})`,
-        icon: entry?.icon,
-        label: entry?.label ?? getConfig()[key]?.label ?? configKey,
-        value
-      })
-    }
-
-    return nextItems
-  })
-
-  const rawLabelValue = createMemo(() => {
-    if (!local.labelKey) {
-      return null
-    }
-
-    return getDataValue(local.data, local.labelKey)
+      return [
+        {
+          key,
+          configKey,
+          color: datumColor ?? `var(--color-${configKey})`,
+          icon: entry?.icon,
+          label: entry?.label ?? chartConfig[key]?.label ?? configKey,
+          value
+        }
+      ]
+    })
   })
 
   const tooltipLabel = createMemo<JSX.Element | null>(() => {
-    if (local.hideLabel) {
+    const itemList = items()
+
+    if (local.hideLabel || itemList.length === 0) {
       return null
     }
 
-    const rawValue = rawLabelValue()
+    const chartConfig = config()
+    const itemKeys = itemList.map((item) => item.key)
+    let value: unknown = inferLabelValue(local.data, itemKeys)
 
-    if (local.labelFormatter && rawValue != null) {
+    if (local.labelKey) {
+      const { entry } = getConfigEntry(chartConfig, local.data, local.labelKey)
+      const rawValue = getDataValue(local.data, local.labelKey)
+
+      value = entry?.label ?? rawValue
+    } else if (typeof value === "string" && value in chartConfig) {
+      value = chartConfig[value]?.label ?? value
+    }
+
+    if (local.labelFormatter && value != null) {
       return (
         <div class={cn("font-medium", local.labelClass)}>
-          {local.labelFormatter(rawValue, local.data)}
+          {local.labelFormatter(value, local.data)}
         </div>
       )
     }
 
-    if (!local.labelKey) {
-      return null
-    }
-
-    const { entry } = getConfigEntry(getConfig(), local.data, local.labelKey)
-
-    if (entry?.label != null) {
-      return <div class={cn("font-medium", local.labelClass)}>{entry.label}</div>
-    }
-
-    if (rawValue == null) {
+    if (value == null) {
       return null
     }
 
     return (
       <div class={cn("font-medium", local.labelClass)}>
-        {typeof rawValue === "string" || typeof rawValue === "number" ? rawValue : String(rawValue)}
+        {typeof value === "string" || typeof value === "number" ? value : (value as JSX.Element)}
       </div>
     )
   })
 
-  const nestLabel = createMemo(() => items().length === 1 && local.indicator !== "dot")
+  const nestLabel = () => items().length === 1 && local.indicator !== "dot"
 
   return (
     <Show when={items().length > 0}>
@@ -444,60 +506,108 @@ export function ChartLegend(props: ChartLegendProps) {
 }
 
 export type ChartLegendContentProps = ComponentProps<"div"> & {
-  keys: string[]
+  keys?: string[]
+  data?: SolidChartProps["data"]
   hideIcon?: boolean
   config?: ChartConfig
+  nameKey?: string
 }
 
 export function ChartLegendContent(props: ChartLegendContentProps) {
   const context = useContext(ChartContext)
 
   const mergedProps = mergeProps({ hideIcon: false }, props)
-  const [local, others] = splitProps(mergedProps, ["class", "keys", "hideIcon", "config"])
+  const [local, others] = splitProps(mergedProps, [
+    "class",
+    "keys",
+    "data",
+    "hideIcon",
+    "config",
+    "nameKey"
+  ])
 
-  const config = createMemo(() => local.config ?? context?.config)
-  const getConfig = () => {
-    const value = config()
+  const config = () => requireChartConfig(local.config ?? context?.config, "ChartLegendContent")
+  const legendData = () => local.data ?? context?.data
 
-    if (!value) {
-      throw new Error(
-        "ChartLegendContent must be used within a <ChartContainer /> or receive a config prop"
-      )
+  const resolvedKeys = createMemo(() => {
+    if (local.keys?.length) {
+      return local.keys
     }
 
-    return value
-  }
+    const chartConfig = config()
+    const data = legendData()
+
+    if (local.nameKey && Array.isArray(data)) {
+      const nameKey = local.nameKey
+      const configKeys = new Set(Object.keys(chartConfig))
+      const inferredKeys = Array.from(
+        new Set(
+          data.flatMap((item) => {
+            if (!isRecord(item)) {
+              return []
+            }
+
+            const value = item[nameKey]
+
+            return typeof value === "string" && configKeys.has(value) ? [value] : []
+          })
+        )
+      )
+
+      if (inferredKeys.length > 0) {
+        return inferredKeys
+      }
+    }
+
+    const configKeys = Object.entries(chartConfig)
+      .filter(([, entry]) => hasChartColor(entry))
+      .map(([key]) => key)
+
+    return configKeys.length > 0 ? configKeys : Object.keys(chartConfig)
+  })
+
+  const items = createMemo(() => {
+    const chartConfig = config()
+
+    return resolvedKeys().map((key) => {
+      const entry = chartConfig[key]
+
+      return {
+        key,
+        icon: entry?.icon,
+        label: entry?.label ?? key
+      }
+    })
+  })
 
   const legendId = `chart-legend-${sanitizeId(createUniqueId())}`
-  const css = createMemo(() => getColorCss("data-chart-legend", legendId, getConfig()))
+  const css = createMemo(() => getColorCss("data-chart-legend", legendId, config()))
 
   return (
-    <div
-      class={cn("cn-chart-legend-content flex items-center justify-center gap-4", local.class)}
-      data-chart-legend={legendId}
-      data-slot="chart-legend-content"
-      {...others}
-    >
-      <Show when={css().length > 0}>{<style>{css()}</style>}</Show>
-      <For each={local.keys}>
-        {(key) => {
-          const entry = getConfig()[key]
-
-          return (
+    <Show when={items().length > 0}>
+      <div
+        class={cn("cn-chart-legend-content flex items-center justify-center gap-4", local.class)}
+        data-chart-legend={legendId}
+        data-slot="chart-legend-content"
+        {...others}
+      >
+        <Show when={css().length > 0}>{<style>{css()}</style>}</Show>
+        <For each={items()}>
+          {(item) => (
             <div class="flex items-center gap-1.5 [&>svg]:size-3 [&>svg]:text-muted-foreground">
-              {entry?.icon && !local.hideIcon ? (
-                <Dynamic component={entry.icon} />
+              {item.icon && !local.hideIcon ? (
+                <Dynamic component={item.icon} />
               ) : (
                 <div
                   class="size-2 shrink-0 rounded-[2px]"
-                  style={{ "background-color": getEntryColor(key) }}
+                  style={{ "background-color": `var(--color-${item.key})` }}
                 />
               )}
-              <span>{entry?.label ?? key}</span>
+              <span>{item.label}</span>
             </div>
-          )
-        }}
-      </For>
-    </div>
+          )}
+        </For>
+      </div>
+    </Show>
   )
 }
