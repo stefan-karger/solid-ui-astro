@@ -827,17 +827,6 @@ export const examples: Registry["items"] = [
     ]
   },
   {
-    name: "chart-area-line",
-    type: "registry:example",
-    registryDependencies: ["card", "chart"],
-    files: [
-      {
-        path: "examples/chart-area-line.tsx",
-        type: "registry:example"
-      }
-    ]
-  },
-  {
     name: "chart-example",
     type: "registry:example",
     registryDependencies: ["chart"],
@@ -904,23 +893,12 @@ export const examples: Registry["items"] = [
     ]
   },
   {
-    name: "chart-legend",
+    name: "chart-tooltip",
     type: "registry:example",
-    registryDependencies: ["card", "chart"],
+    registryDependencies: ["chart"],
     files: [
       {
-        path: "examples/chart-legend.tsx",
-        type: "registry:example"
-      }
-    ]
-  },
-  {
-    name: "chart-line",
-    type: "registry:example",
-    registryDependencies: ["card", "chart"],
-    files: [
-      {
-        path: "examples/chart-line.tsx",
+        path: "examples/chart-tooltip.tsx",
         type: "registry:example"
       }
     ]

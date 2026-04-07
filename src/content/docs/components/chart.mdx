@@ -304,8 +304,9 @@ import { ChartLegend, ChartLegendContent } from "~/components/ui/chart"
 
 Done. You've built your first chart! What's next?
 
-- [Chart Config](#chart-config)
-- [Theming](#theming)
+- [Themes and Colors](#theming)
+- [Tooltip](#tooltip)
+- [Legend](#legend)
 
 ## Chart Config
 
@@ -428,3 +429,122 @@ const chartData = [
 ```tsx title="components/example-chart.tsx"
 <AxisLabel class="fill-(--color-desktop)" />
 ```
+
+## Tooltip
+
+A chart tooltip contains a label, name, indicator and value. You can use a combination of these to customize your tooltip.
+
+<ComponentPreview name="chart-tooltip" hideCode />
+
+You can turn on or off any of these using the `hideLabel` and `hideIndicator` props and customize the indicator style using the `indicator` prop.
+
+Use `labelKey` and `nameKey` to use a custom key for the tooltip label and name.
+
+Chart comes with the `<ChartTooltip>` and `<ChartTooltipContent>` components. In Solid, render `ChartTooltipContent` inside `ChartTooltip` so you can pass it the active datum.
+
+```tsx title="components/example-chart.tsx"
+import { ChartTooltip, ChartTooltipContent } from "~/components/ui/chart"
+```
+
+```tsx title="components/example-chart.tsx"
+<ChartTooltip>{({ data }) => <ChartTooltipContent data={data} />}</ChartTooltip>
+```
+
+### Props
+
+Use the following props to customize the tooltip.
+
+| Prop            | Type                     | Description                                  |
+| :-------------- | :----------------------- | :------------------------------------------- |
+| `labelKey`      | `string`                 | The config or data key to use for the label. |
+| `nameKey`       | `string`                 | The config or data key to use for the name.  |
+| `indicator`     | `dot` `line` or `dashed` | The indicator style for the tooltip.         |
+| `hideLabel`     | `boolean`                | Whether to hide the label.                   |
+| `hideIndicator` | `boolean`                | Whether to hide the indicator.               |
+
+### Colors
+
+Colors are automatically referenced from the chart config.
+
+### Custom
+
+To use a custom key for tooltip labels and names, use the `labelKey` and `nameKey` props.
+
+```tsx showLineNumbers /browser/
+const chartData = [
+  { browser: "chrome", visitors: 187, fill: "var(--color-chrome)" },
+  { browser: "safari", visitors: 200, fill: "var(--color-safari)" }
+]
+
+const chartConfig = {
+  visitors: {
+    label: "Total Visitors"
+  },
+  chrome: {
+    label: "Chrome",
+    color: "var(--chart-1)"
+  },
+  safari: {
+    label: "Safari",
+    color: "var(--chart-2)"
+  }
+} satisfies ChartConfig
+```
+
+```tsx title="components/example-chart.tsx"
+<ChartTooltip>
+  {({ data }) => <ChartTooltipContent data={data} labelKey="visitors" nameKey="browser" />}
+</ChartTooltip>
+```
+
+This will use `Total Visitors` for the tooltip label and `Chrome` and `Safari` for the tooltip names.
+
+## Legend
+
+You can use the custom `<ChartLegend>` and `<ChartLegendContent>` components to add a legend to your chart.
+
+```tsx title="components/example-chart.tsx"
+import { ChartLegend, ChartLegendContent } from "~/components/ui/chart"
+```
+
+```tsx title="components/example-chart.tsx"
+<ChartLegend>
+  <ChartLegendContent config={chartConfig} />
+</ChartLegend>
+```
+
+When `ChartLegendContent` is rendered outside `ChartContainer`, pass `config` explicitly. If you use `nameKey` and need it to infer entries from your dataset, pass `data` too.
+
+### Colors
+
+Colors are automatically referenced from the chart config.
+
+### Custom
+
+To use a custom key for legend names, use the `nameKey` prop.
+
+```tsx showLineNumbers /browser/
+const chartData = [
+  { browser: "chrome", visitors: 187, fill: "var(--color-chrome)" },
+  { browser: "safari", visitors: 200, fill: "var(--color-safari)" }
+]
+
+const chartConfig = {
+  chrome: {
+    label: "Chrome",
+    color: "var(--chart-1)"
+  },
+  safari: {
+    label: "Safari",
+    color: "var(--chart-2)"
+  }
+} satisfies ChartConfig
+```
+
+```tsx title="components/example-chart.tsx"
+<ChartLegend>
+  <ChartLegendContent config={chartConfig} data={chartData} nameKey="browser" />
+</ChartLegend>
+```
+
+This will use `Chrome` and `Safari` for the legend names.
