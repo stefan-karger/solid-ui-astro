@@ -152,7 +152,7 @@ const chartConfig = {
 
 You can now build your chart using `solid-charts` components.
 
-With `solid-charts`, axes are declared explicitly, so we'll start with the chart scales in place and then layer on the rest.
+We'll start with the bars and layer on the rest.
 
 <Callout class="mt-4 bg-amber-50 border-amber-200 dark:bg-amber-950/50 dark:border-amber-950">
 
@@ -182,10 +182,6 @@ import { AxisGrid } from "solid-charts"
 <ChartContainer config={chartConfig} data={chartData} class="min-h-[200px] w-full">
   <Axis axis="y" position="left" tickCount={5}>
     <AxisGrid />
-    <AxisLabel />
-  </Axis>
-  <Axis axis="x" dataKey="month" position="bottom">
-    <AxisLabel />
   </Axis>
   <Bar dataKey="desktop" fill="var(--color-desktop)" rx="4" ry="4" />
   <Bar dataKey="mobile" fill="var(--color-mobile)" rx="4" ry="4" />
@@ -198,26 +194,24 @@ import { AxisGrid } from "solid-charts"
 
 ### Add an Axis
 
-To add a visible baseline to the x-axis, we'll use the `AxisLine` component.
+To add an x-axis to the chart, we'll use the `AxisLabel` component.
 
 <Steps class="mb-0 pt-2">
 
-<Step>Import the `AxisLine` component.</Step>
+<Step>Import the `AxisLabel` component.</Step>
 
-```tsx /AxisLine/
-import { AxisLine } from "solid-charts"
+```tsx /AxisLabel/
+import { AxisLabel } from "solid-charts"
 ```
 
-<Step>Add the `AxisLine` component to your chart.</Step>
+<Step>Add the `AxisLabel` component to your chart.</Step>
 
-```tsx showLineNumbers {7-8}
+```tsx showLineNumbers {7-9}
 <ChartContainer config={chartConfig} data={chartData} class="min-h-[200px] w-full">
   <Axis axis="y" position="left" tickCount={5}>
     <AxisGrid />
-    <AxisLabel />
   </Axis>
   <Axis axis="x" dataKey="month" position="bottom">
-    <AxisLine />
     <AxisLabel format={(value) => String(value).slice(0, 3)} />
   </Axis>
   <Bar dataKey="desktop" fill="var(--color-desktop)" rx="4" ry="4" />
@@ -249,10 +243,8 @@ import { ChartTooltip, ChartTooltipContent } from "~/components/ui/chart"
 <ChartContainer config={chartConfig} data={chartData} class="min-h-[200px] w-full">
   <Axis axis="y" position="left" tickCount={5}>
     <AxisGrid />
-    <AxisLabel />
   </Axis>
   <Axis axis="x" dataKey="month" position="bottom">
-    <AxisLine />
     <AxisLabel format={(value) => String(value).slice(0, 3)} />
     <ChartTooltip>
       {({ data }) => <ChartTooltipContent data={data} labelKey="month" />}
@@ -290,10 +282,8 @@ import { ChartLegend, ChartLegendContent } from "~/components/ui/chart"
   <ChartContainer config={chartConfig} data={chartData} class="min-h-[200px] w-full">
     <Axis axis="y" position="left" tickCount={5}>
       <AxisGrid />
-      <AxisLabel />
     </Axis>
     <Axis axis="x" dataKey="month" position="bottom">
-      <AxisLine />
       <AxisLabel format={(value) => String(value).slice(0, 3)} />
       <ChartTooltip>
         {({ data }) => <ChartTooltipContent data={data} labelKey="month" />}

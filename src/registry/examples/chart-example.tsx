@@ -1,4 +1,4 @@
-import { Axis, AxisLabel, Bar } from "solid-charts"
+import { Bar } from "solid-charts"
 
 import { ChartContainer, type ChartConfig } from "~/registry/ui/chart"
 
@@ -25,12 +25,6 @@ const chartConfig = {
 export default function ChartExample() {
   return (
     <ChartContainer config={chartConfig} data={chartData} class="min-h-[200px] w-full">
-      <Axis axis="y" position="left" tickCount={5}>
-        <AxisLabel />
-      </Axis>
-      <Axis axis="x" dataKey="month" position="bottom">
-        <AxisLabel />
-      </Axis>
       <Bar dataKey="desktop" fill="var(--color-desktop)" rx="4" ry="4" />
       <Bar dataKey="mobile" fill="var(--color-mobile)" rx="4" ry="4" />
     </ChartContainer>

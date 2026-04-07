@@ -1,4 +1,4 @@
-import { Axis, AxisGrid, AxisLabel, AxisLine, Bar } from "solid-charts"
+import { Axis, AxisGrid, AxisLabel, Bar } from "solid-charts"
 
 import {
   ChartContainer,
@@ -35,10 +35,8 @@ export default function ChartExampleLegend() {
       <ChartContainer config={chartConfig} data={chartData} class="min-h-[200px] w-full">
         <Axis axis="y" position="left" tickCount={5}>
           <AxisGrid />
-          <AxisLabel />
         </Axis>
         <Axis axis="x" dataKey="month" position="bottom">
-          <AxisLine />
           <AxisLabel format={(value) => String(value).slice(0, 3)} />
           <ChartTooltip>
             {({ data }) => <ChartTooltipContent data={data} labelKey="month" />}
