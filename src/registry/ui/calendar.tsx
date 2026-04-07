@@ -86,10 +86,46 @@ type CalendarDayProps = {
   weekNumbers: boolean
 }
 
+type CalendarHeaderSelectProps = {
+  contentClass?: string
+  onChange: (option: SelectOption) => void
+  options: SelectOption[]
+  value?: SelectOption
+}
+
+const monthFormatter = new Intl.DateTimeFormat(undefined, { month: "short" })
+
 const MONTHS: SelectOption[] = Array.from({ length: 12 }, (_, value) => ({
-  label: new Date(2025, value, 1).toLocaleString("default", { month: "short" }),
+  label: monthFormatter.format(new Date(2000, value, 1)),
   value
 }))
+
+function CalendarHeaderSelect(props: CalendarHeaderSelectProps) {
+  return (
+    <Select<SelectOption>
+      itemComponent={(props) => (
+        <SelectItem item={props.item}>{props.item.rawValue.label}</SelectItem>
+      )}
+      onChange={(option) => {
+        if (option) {
+          props.onChange(option)
+        }
+      }}
+      optionTextValue="label"
+      optionValue="value"
+      options={props.options}
+      value={props.value}
+    >
+      <SelectTrigger
+        size="sm"
+        class="cn-calendar-dropdown-root cn-calendar-caption-label h-(--cell-size) w-[5.25rem] rounded-(--cell-radius)"
+      >
+        <SelectValue<SelectOption>>{(state) => state.selectedOption()?.label}</SelectValue>
+      </SelectTrigger>
+      <SelectContent class={props.contentClass} />
+    </Select>
+  )
+}
 
 function Calendar(props: CalendarProps) {
   const currentYear = new Date().getFullYear()
@@ -97,7 +133,7 @@ function Calendar(props: CalendarProps) {
   const mergedProps = mergeProps(
     {
       mode: "single" as const,
-      endYear: currentYear + 10,
+      endYear: currentYear,
       fixedWeeks: false,
       monthYearSelection: false,
       numberOfMonths: 1,
@@ -126,11 +162,11 @@ function Calendar(props: CalendarProps) {
     "weekNumbers"
   ])
 
-  const startYear = () => Math.min(local.startYear, local.endYear)
-  const endYear = () => Math.max(local.startYear, local.endYear)
-  const years = () => {
-    const minYear = startYear()
-    const maxYear = endYear()
+  const years = createMemo(() => {
+    const [minYear, maxYear] =
+      local.startYear <= local.endYear
+        ? [local.startYear, local.endYear]
+        : [local.endYear, local.startYear]
 
     return Array.from({ length: maxYear - minYear + 1 }, (_, index) => {
       const year = minYear + index
@@ -140,7 +176,7 @@ function Calendar(props: CalendarProps) {
         value: year
       }
     })
-  }
+  })
 
   const setVisibleMonth = (
     calendar: CalendarPrimitiveChildrenProps,
@@ -167,10 +203,6 @@ function Calendar(props: CalendarProps) {
         <div class="relative flex flex-col gap-4 md:flex-row">
           <Index each={calendar.months}>
             {(monthData, monthIndex) => {
-              const selectedMonth = () => MONTHS[monthData().month.getMonth()]
-              const selectedYear = () =>
-                years().find((year) => year.value === monthData().month.getFullYear())
-
               return (
                 <div data-slot="calendar-month" class="flex w-full flex-col gap-4">
                   <div
@@ -216,17 +248,8 @@ function Calendar(props: CalendarProps) {
                         class="flex h-(--cell-size) items-center justify-center gap-1.5 text-sm font-medium"
                         index={monthIndex}
                       >
-                        <Select<SelectOption>
-                          itemComponent={(itemProps) => (
-                            <SelectItem item={itemProps.item}>
-                              {itemProps.item.rawValue.label}
-                            </SelectItem>
-                          )}
+                        <CalendarHeaderSelect
                           onChange={(option) => {
-                            if (!option) {
-                              return
-                            }
-
                             setVisibleMonth(
                               calendar,
                               monthIndex,
@@ -234,33 +257,13 @@ function Calendar(props: CalendarProps) {
                               option.value
                             )
                           }}
-                          optionTextValue="label"
-                          optionValue="value"
                           options={MONTHS}
-                          value={selectedMonth()}
-                        >
-                          <SelectTrigger
-                            size="sm"
-                            class="cn-calendar-dropdown-root cn-calendar-caption-label h-(--cell-size) w-[5.25rem] rounded-(--cell-radius)"
-                          >
-                            <SelectValue<SelectOption>>
-                              {(state) => state.selectedOption()?.label}
-                            </SelectValue>
-                          </SelectTrigger>
-                          <SelectContent />
-                        </Select>
+                          value={MONTHS[monthData().month.getMonth()]}
+                        />
 
-                        <Select<SelectOption>
-                          itemComponent={(itemProps) => (
-                            <SelectItem item={itemProps.item}>
-                              {itemProps.item.rawValue.label}
-                            </SelectItem>
-                          )}
+                        <CalendarHeaderSelect
+                          contentClass="no-scrollbar max-h-72"
                           onChange={(option) => {
-                            if (!option) {
-                              return
-                            }
-
                             setVisibleMonth(
                               calendar,
                               monthIndex,
@@ -268,21 +271,11 @@ function Calendar(props: CalendarProps) {
                               monthData().month.getMonth()
                             )
                           }}
-                          optionTextValue="label"
-                          optionValue="value"
                           options={years()}
-                          value={selectedYear()}
-                        >
-                          <SelectTrigger
-                            size="sm"
-                            class="cn-calendar-dropdown-root cn-calendar-caption-label h-(--cell-size) w-[5.25rem] rounded-(--cell-radius)"
-                          >
-                            <SelectValue<SelectOption>>
-                              {(state) => state.selectedOption()?.label}
-                            </SelectValue>
-                          </SelectTrigger>
-                          <SelectContent class="no-scrollbar max-h-72" />
-                        </Select>
+                          value={years().find(
+                            (year) => year.value === monthData().month.getFullYear()
+                          )}
+                        />
                       </CalendarPrimitive.Label>
                     </Show>
 
