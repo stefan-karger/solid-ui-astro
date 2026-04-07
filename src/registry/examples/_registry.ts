@@ -728,6 +728,105 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "calendar-basic",
+    type: "registry:example",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "examples/calendar-basic.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "calendar-booked-dates",
+    type: "registry:example",
+    registryDependencies: ["calendar", "card"],
+    files: [
+      {
+        path: "examples/calendar-booked-dates.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "calendar-caption",
+    type: "registry:example",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "examples/calendar-caption.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "calendar-custom-days",
+    type: "registry:example",
+    registryDependencies: ["calendar", "card"],
+    files: [
+      {
+        path: "examples/calendar-custom-days.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "calendar-demo",
+    type: "registry:example",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "examples/calendar-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "calendar-presets",
+    type: "registry:example",
+    registryDependencies: ["button", "calendar", "card"],
+    files: [
+      {
+        path: "examples/calendar-presets.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "calendar-range",
+    type: "registry:example",
+    registryDependencies: ["calendar", "card"],
+    files: [
+      {
+        path: "examples/calendar-range.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "calendar-time",
+    type: "registry:example",
+    registryDependencies: ["calendar", "card", "field", "input-group"],
+    files: [
+      {
+        path: "examples/calendar-time.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "calendar-week-numbers",
+    type: "registry:example",
+    registryDependencies: ["calendar", "card"],
+    files: [
+      {
+        path: "examples/calendar-week-numbers.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "card-demo",
     type: "registry:example",
     registryDependencies: ["button", "card", "input", "label"],

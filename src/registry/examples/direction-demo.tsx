@@ -1,7 +1,6 @@
 import { IconAlertCircle } from "@tabler/icons-solidjs"
 import { createMemo, createSignal } from "solid-js"
 
-import { IconPlaceholder } from "~/components/icon-placeholder"
 import { Button } from "~/registry/ui/button"
 import {
   Card,
@@ -15,14 +14,7 @@ import {
 import { DirectionProvider } from "~/registry/ui/direction"
 import { Input } from "~/registry/ui/input"
 import { Label } from "~/registry/ui/label"
-import {
-  Popover,
-  PopoverContent,
-  PopoverDescription,
-  PopoverHeader,
-  PopoverTitle,
-  PopoverTrigger
-} from "~/registry/ui/popover"
+import { Popover, PopoverContent, PopoverTrigger } from "~/registry/ui/popover"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/registry/ui/tabs"
 
 import { Separator } from "../ui/separator"

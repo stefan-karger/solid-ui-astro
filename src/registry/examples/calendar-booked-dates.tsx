@@ -1,0 +1,27 @@
+import { isSameDay } from "date-fns"
+import { createSignal } from "solid-js"
+
+import { Calendar } from "~/registry/ui/calendar"
+import { Card, CardContent } from "~/registry/ui/card"
+
+export default function CalendarBookedDates() {
+  const [date, setDate] = createSignal<Date | null>(new Date(2025, 1, 3))
+  const bookedDates = Array.from({ length: 15 }, (_, index) => new Date(2025, 1, 12 + index))
+
+  const isBooked = (day: Date) => bookedDates.some((bookedDate) => isSameDay(bookedDate, day))
+
+  return (
+    <Card class="mx-auto w-fit p-0">
+      <CardContent class="p-0">
+        <Calendar
+          class="[&_[data-slot=calendar-day-button][data-disabled]:not([data-outside])]:line-through [&_[data-slot=calendar-day-button][data-disabled]:not([data-outside])]:opacity-100"
+          defaultMonth={date() ?? undefined}
+          disabled={isBooked}
+          mode="single"
+          onValueChange={setDate}
+          value={date()}
+        />
+      </CardContent>
+    </Card>
+  )
+}
