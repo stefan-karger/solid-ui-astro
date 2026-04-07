@@ -7,14 +7,14 @@ import { Field, FieldGroup, FieldLabel } from "~/registry/ui/field"
 import { InputGroup, InputGroupAddon, InputGroupInput } from "~/registry/ui/input-group"
 
 export default function CalendarTime() {
-  const [date, setDate] = createSignal<Date | null>(new Date(2025, 1, 12))
+  const [date, setDate] = createSignal(new Date(2025, 0, 26))
 
   return (
     <Card class="mx-auto w-fit" size="sm">
       <CardContent>
         <Calendar
           class="p-0"
-          defaultMonth={new Date(2025, 1, 1)}
+          defaultMonth={new Date(2025, 0, 26)}
           mode="single"
           onValueChange={setDate}
           value={date()}

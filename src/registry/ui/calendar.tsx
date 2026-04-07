@@ -3,7 +3,16 @@ import CalendarPrimitive, {
   type RootProps as CalendarPrimitiveProps
 } from "@corvu/calendar"
 import { addMonths, getISOWeek } from "date-fns"
-import { Index, mergeProps, Show, splitProps, type ComponentProps, type JSX } from "solid-js"
+import {
+  createSignal,
+  Index,
+  mergeProps,
+  onMount,
+  Show,
+  splitProps,
+  type ComponentProps,
+  type JSX
+} from "solid-js"
 
 import { IconPlaceholder } from "~/components/icon-placeholder"
 import { cn } from "~/lib/utils"
@@ -203,7 +212,11 @@ function Calendar(props: CalendarProps) {
                         </CalendarPrimitive.Label>
                       }
                     >
-                      <div class="flex h-(--cell-size) items-center justify-center gap-1.5 text-sm font-medium">
+                      <CalendarPrimitive.Label
+                        as="div"
+                        class="flex h-(--cell-size) items-center justify-center gap-1.5 text-sm font-medium"
+                        index={monthIndex}
+                      >
                         <Select<MonthOption>
                           itemComponent={(itemProps) => (
                             <SelectItem item={itemProps.item}>
@@ -271,7 +284,7 @@ function Calendar(props: CalendarProps) {
                           </SelectTrigger>
                           <SelectContent class="no-scrollbar max-h-72" />
                         </Select>
-                      </div>
+                      </CalendarPrimitive.Label>
                     </Show>
 
                     <Show
@@ -384,8 +397,14 @@ function Calendar(props: CalendarProps) {
 }
 
 function CalendarDay(props: CalendarDayProps) {
+  const [isMounted, setIsMounted] = createSignal(false)
+
+  onMount(() => {
+    setIsMounted(true)
+  })
+
   const isOutsideMonth = () => props.day.getMonth() !== props.month.getMonth()
-  const isToday = () => isSameDay(props.day, new Date())
+  const isToday = () => isMounted() && isSameDay(props.day, new Date())
   const isDisabled = () => isOutsideMonth() || (props.disabled?.(props.day) ?? false)
 
   const isSelected = () => {
@@ -403,10 +422,15 @@ function CalendarDay(props: CalendarDayProps) {
       return value.some((date) => isSameDay(date, props.day))
     }
 
-    return (
-      (value.from != null && isSameDay(value.from, props.day)) ||
-      (value.to != null && isSameDay(value.to, props.day))
-    )
+    if (value.from == null) {
+      return false
+    }
+
+    if (value.to == null) {
+      return isSameDay(value.from, props.day)
+    }
+
+    return isSameDayOrAfter(props.day, value.from) && isSameDayOrBefore(props.day, value.to)
   }
 
   const rangeValue = () => {
@@ -436,7 +460,12 @@ function CalendarDay(props: CalendarDayProps) {
       return false
     }
 
-    return props.day > value.from && props.day < value.to
+    return (
+      !isSameDay(props.day, value.from) &&
+      !isSameDay(props.day, value.to) &&
+      isSameDayOrAfter(props.day, value.from) &&
+      isSameDayOrBefore(props.day, value.to)
+    )
   }
 
   const isSingleSelected = () => isSelected() && !isRangeStart() && !isRangeEnd() && !isInRange()
@@ -509,6 +538,14 @@ const isSameDay = (left: Date, right: Date) => {
     left.getFullYear() === right.getFullYear() &&
     left.getMonth() === right.getMonth()
   )
+}
+
+const isSameDayOrBefore = (left: Date, right: Date) => {
+  return isSameDay(left, right) || left.getTime() < right.getTime()
+}
+
+const isSameDayOrAfter = (left: Date, right: Date) => {
+  return isSameDay(left, right) || left.getTime() > right.getTime()
 }
 
 export { Calendar }

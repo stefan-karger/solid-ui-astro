@@ -4,7 +4,7 @@ import { Calendar } from "~/registry/ui/calendar"
 import { Card, CardContent } from "~/registry/ui/card"
 
 export default function CalendarWeekNumbers() {
-  const [date, setDate] = createSignal<Date | null>(new Date(2025, 1, 3))
+  const [date, setDate] = createSignal(new Date(2025, 0, 26))
 
   return (
     <Card class="mx-auto w-fit p-0">

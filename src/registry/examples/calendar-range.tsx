@@ -6,8 +6,8 @@ import { Card, CardContent } from "~/registry/ui/card"
 
 export default function CalendarRange() {
   const initialRange = {
-    from: new Date(2025, 0, 12),
-    to: addDays(new Date(2025, 0, 12), 30)
+    from: new Date(2025, 0, 26),
+    to: addDays(new Date(2025, 0, 26), 30)
   }
   const [range, setRange] = createSignal(initialRange)
 

@@ -14,14 +14,12 @@ const PRESETS = [
 ]
 
 const createBaseDate = () => {
-  const today = new Date()
-
-  return new Date(today.getFullYear(), today.getMonth(), today.getDate())
+  return new Date(2025, 0, 26)
 }
 
 export default function CalendarPresets() {
   const baseDate = createBaseDate()
-  const [date, setDate] = createSignal<Date | null>(baseDate)
+  const [date, setDate] = createSignal(baseDate)
   const [month, setMonth] = createSignal(startOfMonth(baseDate))
 
   return (

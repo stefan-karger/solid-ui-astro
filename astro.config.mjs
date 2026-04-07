@@ -25,6 +25,17 @@ export default defineConfig({
     syntaxHighlight: false
   },
   vite: {
+    optimizeDeps: {
+      include: [
+        "@corvu/calendar",
+        "@kobalte/core/combobox",
+        "@kobalte/core/dialog",
+        "@kobalte/core/popover",
+        "@kobalte/core/search",
+        "@kobalte/core/select",
+        "date-fns"
+      ]
+    },
     plugins: [tailwindcss()],
     resolve: {
       alias: {

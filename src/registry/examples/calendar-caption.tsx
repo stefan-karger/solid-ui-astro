@@ -4,7 +4,7 @@ export default function CalendarCaption() {
   return (
     <Calendar
       class="rounded-lg border"
-      defaultMonth={new Date(2025, 1, 1)}
+      defaultMonth={new Date(2025, 0, 26)}
       mode="single"
       monthYearSelection
     />
