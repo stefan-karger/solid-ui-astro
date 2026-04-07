@@ -4,7 +4,7 @@ description: Beautiful charts. Built using solid-charts. Copy and paste into you
 component: true
 ---
 
-<ComponentPreview name="chart-demo" previewClassName="h-[34rem] p-0" />
+<ComponentPreview name="chart-demo" previewClassName="h-auto p-0" hideCode />
 
 Introducing **Charts**. A collection of chart components that you can copy and paste into your apps.
 
@@ -178,7 +178,7 @@ import { AxisGrid } from "solid-charts"
 
 <Step>Add the `AxisGrid` component to your chart.</Step>
 
-```tsx showLineNumbers {4}
+```tsx showLineNumbers {2-4}
 <ChartContainer config={chartConfig} data={chartData} class="min-h-[200px] w-full">
   <Axis axis="y" position="left" tickCount={5}>
     <AxisGrid />
@@ -206,7 +206,7 @@ import { AxisLabel } from "solid-charts"
 
 <Step>Add the `AxisLabel` component to your chart.</Step>
 
-```tsx showLineNumbers {7-9}
+```tsx showLineNumbers {5-7}
 <ChartContainer config={chartConfig} data={chartData} class="min-h-[200px] w-full">
   <Axis axis="y" position="left" tickCount={5}>
     <AxisGrid />
@@ -239,7 +239,7 @@ import { ChartTooltip, ChartTooltipContent } from "~/components/ui/chart"
 
 <Step>Add the components to your chart.</Step>
 
-```tsx showLineNumbers {9-13}
+```tsx showLineNumbers {7-9}
 <ChartContainer config={chartConfig} data={chartData} class="min-h-[200px] w-full">
   <Axis axis="y" position="left" tickCount={5}>
     <AxisGrid />
@@ -277,7 +277,7 @@ import { ChartLegend, ChartLegendContent } from "~/components/ui/chart"
 
 <Step>Add the components to your chart.</Step>
 
-```tsx showLineNumbers {16-18}
+```tsx showLineNumbers {15-17}
 <>
   <ChartContainer config={chartConfig} data={chartData} class="min-h-[200px] w-full">
     <Axis axis="y" position="left" tickCount={5}>
@@ -298,7 +298,7 @@ import { ChartLegend, ChartLegendContent } from "~/components/ui/chart"
 </>
 ```
 
-<ComponentPreview name="chart-example-legend" previewClassName="h-80" />
+<ComponentPreview name="chart-example-legend" previewClassName="h-96" />
 
 </Steps>
 
