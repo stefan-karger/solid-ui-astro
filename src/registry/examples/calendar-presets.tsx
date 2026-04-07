@@ -13,12 +13,8 @@ const PRESETS = [
   { label: "In 2 weeks", value: 14 }
 ]
 
-const createBaseDate = () => {
-  return new Date(2025, 0, 26)
-}
-
 export default function CalendarPresets() {
-  const baseDate = createBaseDate()
+  const baseDate = new Date()
   const [date, setDate] = createSignal(baseDate)
   const [month, setMonth] = createSignal(startOfMonth(baseDate))
 
@@ -41,7 +37,7 @@ export default function CalendarPresets() {
             <Button
               class="flex-1"
               onClick={() => {
-                const nextDate = addDays(createBaseDate(), preset.value)
+                const nextDate = addDays(baseDate, preset.value)
                 setDate(nextDate)
                 setMonth(startOfMonth(nextDate))
               }}

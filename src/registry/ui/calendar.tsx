@@ -4,6 +4,7 @@ import CalendarPrimitive, {
 } from "@corvu/calendar"
 import { addMonths, getISOWeek } from "date-fns"
 import {
+  createMemo,
   createSignal,
   Index,
   mergeProps,
@@ -22,6 +23,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "~
 type CalendarSingleValue = Date | null
 type CalendarMultipleValue = Date[]
 type CalendarRangeValue = { from: Date | null; to: Date | null }
+type CalendarValue = CalendarSingleValue | CalendarMultipleValue | CalendarRangeValue
 
 export type CustomCellProps = {
   date: Date
@@ -30,6 +32,8 @@ export type CustomCellProps = {
   isSelected: boolean
   isToday: boolean
 }
+
+type CustomCellRenderer = (props: CustomCellProps) => JSX.Element
 
 type CalendarBaseProps = Omit<ComponentProps<"div">, "onChange"> & {
   defaultMonth?: Date
@@ -42,7 +46,7 @@ type CalendarBaseProps = Omit<ComponentProps<"div">, "onChange"> & {
   onMonthChange?: (month: Date) => void
   startYear?: number
   weekNumbers?: boolean
-  customCell?: (props: CustomCellProps) => JSX.Element
+  customCell?: CustomCellRenderer
 }
 
 type CalendarSingleProps = CalendarBaseProps & {
@@ -68,26 +72,21 @@ type CalendarRangeProps = CalendarBaseProps & {
 
 export type CalendarProps = CalendarSingleProps | CalendarMultipleProps | CalendarRangeProps
 
-type MonthOption = {
-  label: string
-  value: number
-}
-
-type YearOption = {
+type SelectOption = {
   label: string
   value: number
 }
 
 type CalendarDayProps = {
-  customCell?: (props: CustomCellProps) => JSX.Element
+  customCell?: CustomCellRenderer
   day: Date
   disabled?: (date: Date) => boolean
   month: Date
-  value: CalendarSingleValue | CalendarMultipleValue | CalendarRangeValue
+  value: CalendarValue
   weekNumbers: boolean
 }
 
-const MONTHS: MonthOption[] = Array.from({ length: 12 }, (_, value) => ({
+const MONTHS: SelectOption[] = Array.from({ length: 12 }, (_, value) => ({
   label: new Date(2025, value, 1).toLocaleString("default", { month: "short" }),
   value
 }))
@@ -217,7 +216,7 @@ function Calendar(props: CalendarProps) {
                         class="flex h-(--cell-size) items-center justify-center gap-1.5 text-sm font-medium"
                         index={monthIndex}
                       >
-                        <Select<MonthOption>
+                        <Select<SelectOption>
                           itemComponent={(itemProps) => (
                             <SelectItem item={itemProps.item}>
                               {itemProps.item.rawValue.label}
@@ -244,14 +243,14 @@ function Calendar(props: CalendarProps) {
                             size="sm"
                             class="cn-calendar-dropdown-root cn-calendar-caption-label h-(--cell-size) w-[5.25rem] rounded-(--cell-radius)"
                           >
-                            <SelectValue<MonthOption>>
+                            <SelectValue<SelectOption>>
                               {(state) => state.selectedOption()?.label}
                             </SelectValue>
                           </SelectTrigger>
                           <SelectContent />
                         </Select>
 
-                        <Select<YearOption>
+                        <Select<SelectOption>
                           itemComponent={(itemProps) => (
                             <SelectItem item={itemProps.item}>
                               {itemProps.item.rawValue.label}
@@ -278,7 +277,7 @@ function Calendar(props: CalendarProps) {
                             size="sm"
                             class="cn-calendar-dropdown-root cn-calendar-caption-label h-(--cell-size) w-[5.25rem] rounded-(--cell-radius)"
                           >
-                            <SelectValue<YearOption>>
+                            <SelectValue<SelectOption>>
                               {(state) => state.selectedOption()?.label}
                             </SelectValue>
                           </SelectTrigger>
@@ -380,7 +379,7 @@ function Calendar(props: CalendarProps) {
     <CalendarPrimitive
       {...({
         children: renderCalendar,
-        disabled: (date: Date) => local.disabled?.(date) ?? false,
+        disabled: local.disabled,
         fixedWeeks: local.fixedWeeks,
         initialMonth: local.defaultMonth,
         initialValue: local.defaultValue,
@@ -389,7 +388,6 @@ function Calendar(props: CalendarProps) {
         numberOfMonths: local.numberOfMonths,
         onMonthChange: local.onMonthChange,
         onValueChange: local.onValueChange,
-        startOfWeek: 1,
         value: local.value
       } as CalendarPrimitiveProps)}
     />
@@ -403,72 +401,19 @@ function CalendarDay(props: CalendarDayProps) {
     setIsMounted(true)
   })
 
-  const isOutsideMonth = () => props.day.getMonth() !== props.month.getMonth()
-  const isToday = () => isMounted() && isSameDay(props.day, new Date())
-  const isDisabled = () => isOutsideMonth() || (props.disabled?.(props.day) ?? false)
+  const dayState = createMemo(() => {
+    const isOutsideMonth = props.day.getMonth() !== props.month.getMonth()
+    const isToday = isMounted() && isSameDay(props.day, new Date())
+    const isDisabled = isOutsideMonth || (props.disabled?.(props.day) ?? false)
+    const selectionState = getCalendarDaySelectionState(props.day, props.value)
 
-  const isSelected = () => {
-    const value = props.value
-
-    if (value == null) {
-      return false
+    return {
+      isDisabled,
+      isOutsideMonth,
+      isToday,
+      ...selectionState
     }
-
-    if (value instanceof Date) {
-      return isSameDay(value, props.day)
-    }
-
-    if (Array.isArray(value)) {
-      return value.some((date) => isSameDay(date, props.day))
-    }
-
-    if (value.from == null) {
-      return false
-    }
-
-    if (value.to == null) {
-      return isSameDay(value.from, props.day)
-    }
-
-    return isSameDayOrAfter(props.day, value.from) && isSameDayOrBefore(props.day, value.to)
-  }
-
-  const rangeValue = () => {
-    if (props.value == null || Array.isArray(props.value) || props.value instanceof Date) {
-      return null
-    }
-
-    return props.value
-  }
-
-  const isRangeStart = () => {
-    const value = rangeValue()
-
-    return value?.from != null && isSameDay(value.from, props.day)
-  }
-
-  const isRangeEnd = () => {
-    const value = rangeValue()
-
-    return value?.to != null && isSameDay(value.to, props.day)
-  }
-
-  const isInRange = () => {
-    const value = rangeValue()
-
-    if (value == null || value.from == null || value.to == null) {
-      return false
-    }
-
-    return (
-      !isSameDay(props.day, value.from) &&
-      !isSameDay(props.day, value.to) &&
-      isSameDayOrAfter(props.day, value.from) &&
-      isSameDayOrBefore(props.day, value.to)
-    )
-  }
-
-  const isSingleSelected = () => isSelected() && !isRangeStart() && !isRangeEnd() && !isInRange()
+  })
 
   return (
     <CalendarPrimitive.Cell
@@ -478,14 +423,14 @@ function CalendarDay(props: CalendarDayProps) {
           ? "[&:nth-child(2)[data-selected]_button]:rounded-l-(--cell-radius)"
           : "[&:first-child[data-selected]_button]:rounded-l-(--cell-radius)",
         "[&:last-child[data-selected]_button]:rounded-r-(--cell-radius)",
-        isRangeStart() &&
+        dayState().isRangeStart &&
           "isolate z-0 rounded-l-(--cell-radius) bg-muted after:absolute after:inset-y-0 after:right-0 after:w-4 after:bg-muted",
-        isRangeEnd() &&
+        dayState().isRangeEnd &&
           "isolate z-0 rounded-r-(--cell-radius) bg-muted after:absolute after:inset-y-0 after:left-0 after:w-4 after:bg-muted",
-        isInRange() && "rounded-none"
+        dayState().isInRange && "rounded-none"
       )}
-      data-outside={isOutsideMonth() ? "" : undefined}
-      data-selected={isSelected() ? "" : undefined}
+      data-outside={dayState().isOutsideMonth ? "" : undefined}
+      data-selected={dayState().isSelected ? "" : undefined}
       data-slot="calendar-day"
     >
       <CalendarPrimitive.CellTrigger
@@ -502,15 +447,15 @@ function CalendarDay(props: CalendarDayProps) {
           "data-[today]:data-[range-start]:rounded-(--cell-radius) data-[today]:data-[range-start]:rounded-l-(--cell-radius) data-[today]:data-[range-start]:bg-primary data-[today]:data-[range-start]:text-primary-foreground",
           "data-[today]:data-[range-end]:rounded-(--cell-radius) data-[today]:data-[range-end]:rounded-r-(--cell-radius) data-[today]:data-[range-end]:bg-primary data-[today]:data-[range-end]:text-primary-foreground",
           "data-[today]:data-[range-middle]:rounded-none data-[today]:data-[range-middle]:bg-muted data-[today]:data-[range-middle]:text-foreground",
-          "data-[outside=true]:text-muted-foreground data-[outside=true]:aria-selected:text-muted-foreground",
+          "data-[outside]:text-muted-foreground data-[outside]:aria-selected:text-muted-foreground",
           "data-disabled:text-muted-foreground data-disabled:opacity-50",
           props.customCell && "h-auto min-h-(--cell-size) py-1"
         )}
-        data-range-end={isRangeEnd() ? "" : undefined}
-        data-range-middle={isInRange() ? "" : undefined}
-        data-range-start={isRangeStart() ? "" : undefined}
-        data-outside={isOutsideMonth() ? "" : undefined}
-        data-selected-single={isSingleSelected() ? "" : undefined}
+        data-range-end={dayState().isRangeEnd ? "" : undefined}
+        data-range-middle={dayState().isInRange ? "" : undefined}
+        data-range-start={dayState().isRangeStart ? "" : undefined}
+        data-outside={dayState().isOutsideMonth ? "" : undefined}
+        data-selected-single={dayState().isSingleSelected ? "" : undefined}
         data-slot="calendar-day-button"
         day={props.day}
         month={props.month}
@@ -520,16 +465,71 @@ function CalendarDay(props: CalendarDayProps) {
           {(renderCell) =>
             renderCell()({
               date: props.day,
-              isDisabled: isDisabled(),
-              isOutsideMonth: isOutsideMonth(),
-              isSelected: isSelected(),
-              isToday: isToday()
+              isDisabled: dayState().isDisabled,
+              isOutsideMonth: dayState().isOutsideMonth,
+              isSelected: dayState().isSelected,
+              isToday: dayState().isToday
             })
           }
         </Show>
       </CalendarPrimitive.CellTrigger>
     </CalendarPrimitive.Cell>
   )
+}
+
+const getCalendarDaySelectionState = (day: Date, value: CalendarValue) => {
+  if (value == null) {
+    return {
+      isInRange: false,
+      isRangeEnd: false,
+      isRangeStart: false,
+      isSelected: false,
+      isSingleSelected: false
+    }
+  }
+
+  if (value instanceof Date) {
+    const isSelected = isSameDay(value, day)
+
+    return {
+      isInRange: false,
+      isRangeEnd: false,
+      isRangeStart: false,
+      isSelected,
+      isSingleSelected: isSelected
+    }
+  }
+
+  if (Array.isArray(value)) {
+    const isSelected = value.some((selectedDate) => isSameDay(selectedDate, day))
+
+    return {
+      isInRange: false,
+      isRangeEnd: false,
+      isRangeStart: false,
+      isSelected,
+      isSingleSelected: isSelected
+    }
+  }
+
+  const isRangeStart = value.from != null && isSameDay(value.from, day)
+  const isRangeEnd = value.to != null && isSameDay(value.to, day)
+  const isInRange =
+    value.from != null &&
+    value.to != null &&
+    !isRangeStart &&
+    !isRangeEnd &&
+    isSameDayOrAfter(day, value.from) &&
+    isSameDayOrBefore(day, value.to)
+  const isSelected = isRangeStart || isRangeEnd || isInRange
+
+  return {
+    isInRange,
+    isRangeEnd,
+    isRangeStart,
+    isSelected,
+    isSingleSelected: false
+  }
 }
 
 const isSameDay = (left: Date, right: Date) => {
