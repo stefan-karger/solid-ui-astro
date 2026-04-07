@@ -827,6 +827,50 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "chart-area-line",
+    type: "registry:example",
+    registryDependencies: ["card", "chart"],
+    files: [
+      {
+        path: "examples/chart-area-line.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "chart-demo",
+    type: "registry:example",
+    registryDependencies: ["card", "chart"],
+    files: [
+      {
+        path: "examples/chart-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "chart-legend",
+    type: "registry:example",
+    registryDependencies: ["card", "chart"],
+    files: [
+      {
+        path: "examples/chart-legend.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "chart-line",
+    type: "registry:example",
+    registryDependencies: ["card", "chart"],
+    files: [
+      {
+        path: "examples/chart-line.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "checkbox-demo",
     type: "registry:example",
     registryDependencies: ["checkbox"],

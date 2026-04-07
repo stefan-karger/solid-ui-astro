@@ -1,0 +1,170 @@
+---
+title: Chart
+description: Config-driven chart helpers for solid-charts.
+component: true
+---
+
+<ComponentPreview name="chart-demo" previewClassName="h-[34rem] p-0" />
+
+## About
+
+The `chart` component keeps the same config-driven feel as shadcn/ui while staying close to `solid-charts`.
+
+You still build charts from `solid-charts` primitives such as `Axis`, `Bar`, `Line`, `Area`, and `Point`. The wrapper adds:
+
+- chart-scoped color variables through `ChartConfig`
+- a styled `ChartTooltipContent`
+- a config-driven `ChartLegendContent`
+- sensible default axis, grid, and point styling
+
+<Callout class="mt-4">
+
+Charts need an explicit height or min-height on `ChartContainer` so `solid-charts` can measure the parent.
+
+</Callout>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx solidui-cli@latest add chart
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps class="mb-0 pt-2">
+
+<Step>Install the following dependency:</Step>
+
+```bash
+npm install solid-charts
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="chart" title="components/ui/chart.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { Axis, AxisGrid, AxisLabel, AxisLine, Bar } from "solid-charts"
+
+import {
+  ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
+  ChartTooltip,
+  ChartTooltipContent,
+  type ChartConfig
+} from "~/components/ui/chart"
+```
+
+```tsx showLineNumbers
+const chartConfig = {
+  desktop: {
+    label: "Desktop",
+    color: "var(--chart-1)"
+  },
+  mobile: {
+    label: "Mobile",
+    color: "var(--chart-2)"
+  }
+} satisfies ChartConfig
+
+<ChartContainer class="aspect-auto h-[250px] w-full" config={chartConfig} data={data}>
+  <Axis axis="y" position="left" tickCount={5}>
+    <AxisGrid />
+    <AxisLabel />
+  </Axis>
+
+  <Axis axis="x" dataKey="month" position="bottom">
+    <AxisLine />
+    <AxisLabel format={(value) => String(value).slice(0, 3)} />
+    <ChartTooltip>
+      {({ data }) => (
+        <ChartTooltipContent
+          config={chartConfig}
+          data={data}
+          keys={["desktop", "mobile"]}
+          labelKey="month"
+        />
+      )}
+    </ChartTooltip>
+  </Axis>
+
+  <Bar dataKey="desktop" fill="var(--color-desktop)" />
+  <Bar dataKey="mobile" fill="var(--color-mobile)" />
+</ChartContainer>
+
+<ChartLegend>
+  <ChartLegendContent config={chartConfig} keys={["desktop", "mobile"]} />
+</ChartLegend>
+```
+
+## API Notes
+
+This port intentionally stays thin.
+
+- `ChartTooltip` wraps `solid-charts` `AxisTooltip`, so it must live inside an `Axis`.
+- `ChartTooltipContent` requires `keys`. It does not infer series from the chart.
+- `ChartLegendContent` also requires `keys`. It renders from `ChartConfig`, not from chart internals.
+- `ChartLegend` is regular HTML. Keep it adjacent to the chart and pass `config` when it renders outside `ChartContainer`.
+- `solid-charts` does not ship a combined area-with-line primitive. Compose `Area` and `Line` together.
+
+## Examples
+
+### Line
+
+<ComponentPreview name="chart-line" previewClassName="h-[34rem] p-0" />
+
+### Area + Line
+
+<ComponentPreview name="chart-area-line" previewClassName="h-[34rem] p-0" />
+
+### Legend
+
+<ComponentPreview name="chart-legend" previewClassName="p-0" />
+
+## API Reference
+
+| Export                | Description                                                                         |
+| --------------------- | ----------------------------------------------------------------------------------- |
+| `ChartContainer`      | Wraps `solid-charts` `Chart`, provides config context, and injects color variables. |
+| `ChartTooltip`        | Thin wrapper over `AxisTooltip`.                                                    |
+| `ChartTooltipContent` | Styled HTML tooltip body driven by `data`, `keys`, and `ChartConfig`.               |
+| `ChartLegend`         | Simple legend wrapper for layout.                                                   |
+| `ChartLegendContent`  | Config-driven legend entries with required `keys`.                                  |
+| `ChartStyle`          | Internal style helper that scopes `--color-*` variables to a chart.                 |
+| `useChart`            | Accesses `ChartConfig` and chart id from context.                                   |
+
+| `ChartTooltipContent` prop | Type                          | Notes                                                        |
+| -------------------------- | ----------------------------- | ------------------------------------------------------------ |
+| `data`                     | `unknown`                     | Active datum received from `ChartTooltip`.                   |
+| `keys`                     | `string[]`                    | Required explicit series keys.                               |
+| `labelKey`                 | `string`                      | Optional key used for the tooltip label.                     |
+| `nameKey`                  | `string`                      | Optional key used to resolve item labels from `ChartConfig`. |
+| `indicator`                | `"dot" \| "line" \| "dashed"` | Defaults to `"dot"`.                                         |
+
+| `ChartLegendContent` prop | Type          | Notes                                                                              |
+| ------------------------- | ------------- | ---------------------------------------------------------------------------------- |
+| `keys`                    | `string[]`    | Required explicit legend keys.                                                     |
+| `hideIcon`                | `boolean`     | Hides config icons and shows color swatches instead.                               |
+| `config`                  | `ChartConfig` | Optional when rendered within `ChartContainer`; required when rendered outside it. |

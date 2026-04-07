@@ -11,11 +11,16 @@ import {
   LoaderCircleIcon,
   Minus,
   MinusIcon,
+  MonitorIcon,
   MoreHorizontalIcon,
   OctagonXIcon,
   PanelLeftIcon,
   SearchIcon,
+  SmartphoneIcon,
+  TrendingDownIcon,
+  TrendingUpIcon,
   TriangleAlertIcon,
+  WalletIcon,
   XIcon
 } from "lucide-solid"
 
@@ -31,11 +36,16 @@ const icons = {
   LoaderCircleIcon,
   Minus,
   MinusIcon,
+  MonitorIcon,
   MoreHorizontalIcon,
   OctagonXIcon,
   PanelLeftIcon,
   SearchIcon,
+  SmartphoneIcon,
+  TrendingDownIcon,
+  TrendingUpIcon,
   TriangleAlertIcon,
+  WalletIcon,
   XIcon
 }
 

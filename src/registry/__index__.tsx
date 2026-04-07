@@ -172,6 +172,20 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "chart": {
+    name: "chart",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/ui/chart.tsx")),
+    files: [{
+      path: "registry/ui/chart.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "checkbox": {
     name: "checkbox",
     description: "",
@@ -1790,6 +1804,62 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/examples/carousel-plugin.tsx")),
     files: [{
       path: "registry/examples/carousel-plugin.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "chart-area-line": {
+    name: "chart-area-line",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["card","chart"],
+    component: lazy(() => import("~/registry/examples/chart-area-line.tsx")),
+    files: [{
+      path: "registry/examples/chart-area-line.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "chart-demo": {
+    name: "chart-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["card","chart"],
+    component: lazy(() => import("~/registry/examples/chart-demo.tsx")),
+    files: [{
+      path: "registry/examples/chart-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "chart-legend": {
+    name: "chart-legend",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["card","chart"],
+    component: lazy(() => import("~/registry/examples/chart-legend.tsx")),
+    files: [{
+      path: "registry/examples/chart-legend.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "chart-line": {
+    name: "chart-line",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["card","chart"],
+    component: lazy(() => import("~/registry/examples/chart-line.tsx")),
+    files: [{
+      path: "registry/examples/chart-line.tsx",
       type: "registry:example",
       target: ""
     }],
