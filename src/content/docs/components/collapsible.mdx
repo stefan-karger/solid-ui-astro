@@ -48,11 +48,7 @@ npm install @kobalte/core
 ## Usage
 
 ```tsx
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger
-} from "~/components/ui/collapsible"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "~/components/ui/collapsible"
 ```
 
 ```tsx showLineNumbers
@@ -62,6 +58,16 @@ import {
     Yes. Free to use for personal and commercial projects. No attribution required.
   </CollapsibleContent>
 </Collapsible>
+```
+
+## Composition
+
+Use the following composition to build a `Collapsible`:
+
+```text
+Collapsible
+├── CollapsibleTrigger
+└── CollapsibleContent
 ```
 
 ## Controlled State

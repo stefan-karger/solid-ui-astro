@@ -81,6 +81,28 @@ import {
 </Menubar>
 ```
 
+## Composition
+
+Use the following composition to build a `Menubar`:
+
+```text
+Menubar
+└── MenubarMenu
+    ├── MenubarTrigger
+    └── MenubarContent
+        ├── MenubarGroup
+        │   ├── MenubarLabel
+        │   └── MenubarItem
+        ├── MenubarCheckboxItem
+        ├── MenubarRadioGroup
+        │   └── MenubarRadioItem
+        ├── MenubarSeparator
+        └── MenubarSub
+            ├── MenubarSubTrigger
+            └── MenubarSubContent
+                └── MenubarItem
+```
+
 ## Examples
 
 ### Checkbox

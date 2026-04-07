@@ -82,6 +82,23 @@ import { Button } from "~/components/ui/button"
 </AlertDialog>
 ```
 
+## Composition
+
+Use the following composition to build an `AlertDialog`:
+
+```text
+AlertDialog
+├── AlertDialogTrigger
+└── AlertDialogContent
+    ├── AlertDialogHeader
+    │   ├── AlertDialogTitle
+    │   ├── AlertDialogDescription
+    │   └── AlertDialogMedia
+    └── AlertDialogFooter
+        ├── AlertDialogCancel
+        └── AlertDialogAction
+```
+
 ## Examples
 
 ### Basic

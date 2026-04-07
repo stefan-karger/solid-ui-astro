@@ -53,12 +53,7 @@ npm install @corvu/otp-field
 ## Usage
 
 ```tsx showLineNumbers
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSeparator,
-  InputOTPSlot
-} from "~/components/ui/input-otp"
+import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "~/components/ui/input-otp"
 ```
 
 ```tsx showLineNumbers
@@ -75,6 +70,23 @@ import {
     <InputOTPSlot index={5} />
   </InputOTPGroup>
 </InputOTP>
+```
+
+## Composition
+
+Use the following composition to build an `InputOTP`:
+
+```text
+InputOTP
+├── InputOTPGroup
+│   ├── InputOTPSlot
+│   ├── InputOTPSlot
+│   └── InputOTPSlot
+├── InputOTPSeparator
+└── InputOTPGroup
+    ├── InputOTPSlot
+    ├── InputOTPSlot
+    └── InputOTPSlot
 ```
 
 ## Pattern

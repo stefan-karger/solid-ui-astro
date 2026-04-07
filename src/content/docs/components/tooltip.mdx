@@ -48,11 +48,7 @@ npm install @kobalte/core
 ## Usage
 
 ```tsx
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger
-} from "~/components/ui/tooltip"
+import { Tooltip, TooltipContent, TooltipTrigger } from "~/components/ui/tooltip"
 ```
 
 ```tsx showLineNumbers
@@ -62,6 +58,16 @@ import {
     <p>Add to library</p>
   </TooltipContent>
 </Tooltip>
+```
+
+## Composition
+
+Use the following composition to build a `Tooltip`:
+
+```text
+Tooltip
+├── TooltipTrigger
+└── TooltipContent
 ```
 
 ## Examples

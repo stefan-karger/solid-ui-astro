@@ -48,11 +48,7 @@ npm install @kobalte/core
 ## Usage
 
 ```tsx
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger
-} from "~/components/ui/hover-card"
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "~/components/ui/hover-card"
 ```
 
 ```tsx showLineNumbers
@@ -60,8 +56,20 @@ import {
   <HoverCardTrigger as="a" href="/docs/components/hover-card" class="underline underline-offset-4">
     Hover
   </HoverCardTrigger>
-  <HoverCardContent>SolidJS - Simple and performant reactivity for building user interfaces.</HoverCardContent>
+  <HoverCardContent>
+    SolidJS - Simple and performant reactivity for building user interfaces.
+  </HoverCardContent>
 </HoverCard>
+```
+
+## Composition
+
+Use the following composition to build a `HoverCard`:
+
+```text
+HoverCard
+├── HoverCardTrigger
+└── HoverCardContent
 ```
 
 ## Trigger Delays

@@ -42,7 +42,8 @@ npx solidui-cli@latest add alert
 ## Usage
 
 ```tsx
-import { Alert, AlertDescription, AlertTitle } from "~/components/ui/alert"
+import { Alert, AlertAction, AlertDescription, AlertTitle } from "~/components/ui/alert"
+import { Button } from "~/components/ui/button"
 ```
 
 ```tsx showLineNumbers
@@ -56,6 +57,18 @@ import { Alert, AlertDescription, AlertTitle } from "~/components/ui/alert"
     <Button variant="outline">Enable</Button>
   </AlertAction>
 </Alert>
+```
+
+## Composition
+
+Use the following composition to build an `Alert`:
+
+```text
+Alert
+├── Icon or custom media
+├── AlertTitle
+├── AlertDescription
+└── AlertAction
 ```
 
 ## Examples
@@ -98,22 +111,22 @@ The `Alert` component displays a callout for user attention.
 
 The `AlertTitle` component displays the title of the alert.
 
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `className` | `string` | -       |
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` | -       |
 
 ### AlertDescription
 
 The `AlertDescription` component displays the description or content of the alert.
 
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `className` | `string` | -       |
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` | -       |
 
 ### AlertAction
 
 The `AlertAction` component displays an action element (like a button) positioned absolutely in the top-right corner of the alert.
 
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `className` | `string` | -       |
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `class` | `string` | -       |

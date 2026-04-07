@@ -73,6 +73,20 @@ import {
 </Carousel>
 ```
 
+## Composition
+
+Use the following composition to build a `Carousel`:
+
+```text
+Carousel
+├── CarouselContent
+│   ├── CarouselItem
+│   ├── CarouselItem
+│   └── CarouselItem
+├── CarouselPrevious
+└── CarouselNext
+```
+
 ## Examples
 
 ### Size
@@ -153,7 +167,7 @@ You can pass options to the carousel using the opts prop. See the [Embla Carouse
 <Carousel
   opts={{
     align: "start",
-    loop: true,
+    loop: true
   }}
 >
   <CarouselContent>

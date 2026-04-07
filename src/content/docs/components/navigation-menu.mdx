@@ -77,6 +77,24 @@ import {
 </NavigationMenu>
 ```
 
+## Composition
+
+Use the following composition to build a `NavigationMenu`:
+
+```text
+NavigationMenu
+├── NavigationMenuList
+│   ├── NavigationMenuItem
+│   │   ├── NavigationMenuTrigger
+│   │   └── NavigationMenuContent
+│   │       ├── NavigationMenuLink
+│   │       └── NavigationMenuLink
+│   └── NavigationMenuTrigger as="a"
+└── NavigationMenuIndicator
+```
+
+Top-level links are rendered directly with `NavigationMenuTrigger as="a"`. Use `NavigationMenuLink` for focusable links inside `NavigationMenuContent` panels.
+
 ## Link
 
 Use `NavigationMenuTrigger` with `as="a"` as a direct top-level item for links so keyboard navigation remains fully integrated.

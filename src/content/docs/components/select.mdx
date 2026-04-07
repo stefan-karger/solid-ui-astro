@@ -85,6 +85,22 @@ const fruits: Fruit[] = [
 </Select>
 ```
 
+## Composition
+
+Use the following composition to build a `Select`:
+
+```text
+Select
+├── SelectTrigger
+│   └── SelectValue
+└── SelectContent
+    ├── SelectItem
+    ├── SelectSeparator
+    └── SelectGroup
+        ├── SelectLabel
+        └── SelectItem
+```
+
 ## Examples
 
 ### Groups

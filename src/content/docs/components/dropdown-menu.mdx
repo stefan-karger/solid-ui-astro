@@ -80,6 +80,27 @@ import {
 </DropdownMenu>
 ```
 
+## Composition
+
+Use the following composition to build a `DropdownMenu`:
+
+```text
+DropdownMenu
+├── DropdownMenuTrigger
+└── DropdownMenuContent
+    ├── DropdownMenuGroup
+    │   ├── DropdownMenuLabel
+    │   └── DropdownMenuItem
+    ├── DropdownMenuCheckboxItem
+    ├── DropdownMenuRadioGroup
+    │   └── DropdownMenuRadioItem
+    ├── DropdownMenuSeparator
+    └── DropdownMenuSub
+        ├── DropdownMenuSubTrigger
+        └── DropdownMenuSubContent
+            └── DropdownMenuItem
+```
+
 ## Examples
 
 ### Basic

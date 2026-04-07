@@ -52,11 +52,7 @@ npm install @corvu/resizable
 ## Usage
 
 ```tsx
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup
-} from "~/components/ui/resizable"
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "~/components/ui/resizable"
 ```
 
 ```tsx showLineNumbers
@@ -65,6 +61,17 @@ import {
   <ResizableHandle />
   <ResizablePanel initialSize={0.7}>Two</ResizablePanel>
 </ResizablePanelGroup>
+```
+
+## Composition
+
+Use the following composition to build a `ResizablePanelGroup`:
+
+```text
+ResizablePanelGroup
+├── ResizablePanel
+├── ResizableHandle
+└── ResizablePanel
 ```
 
 ## Examples

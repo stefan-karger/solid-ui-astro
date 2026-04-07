@@ -86,6 +86,25 @@ import {
 </Pagination>
 ```
 
+## Composition
+
+Use the following composition to build a `Pagination`:
+
+```text
+Pagination
+└── PaginationContent
+    ├── PaginationItem
+    │   └── PaginationPrevious
+    ├── PaginationItem
+    │   └── PaginationLink
+    ├── PaginationItem
+    │   └── PaginationLink
+    ├── PaginationItem
+    │   └── PaginationEllipsis
+    └── PaginationItem
+        └── PaginationNext
+```
+
 ## Examples
 
 ### Simple
@@ -100,7 +119,7 @@ Use just the previous and next buttons without page numbers. This is useful for 
 
 <ComponentPreview name="pagination-icons-only" />
 
-API Reference
+## API Reference
 
 ### Core Parts
 

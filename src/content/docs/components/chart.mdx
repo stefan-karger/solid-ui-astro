@@ -10,11 +10,20 @@ Introducing **Charts**. A collection of chart components that you can copy and p
 
 Charts are designed to look great out of the box. They work well with the other components and are fully customizable to fit your project.
 
-## Component
+## Composition
 
 We use [solid-charts](https://solidcharts.dev/) under the hood.
 
 We designed the `chart` component with composition in mind. **You build your charts using `solid-charts` primitives and only bring in custom components, such as `ChartTooltip`, when and where you need them**.
+
+```text
+ChartContainer
+├── Axis
+│   ├── AxisLabel
+│   └── ChartTooltip
+│       └── ChartTooltipContent
+└── Bar / Line / Area / other solid-charts primitives
+```
 
 ```tsx showLineNumbers /ChartContainer/ /ChartTooltipContent/
 import { Axis, AxisLabel, Bar } from "solid-charts"

@@ -86,6 +86,24 @@ import {
 </Command>
 ```
 
+## Composition
+
+Use the following composition to build a `Command`:
+
+```text
+Command
+├── CommandInput
+├── CommandList
+│   ├── CommandGroup
+│   │   ├── CommandGroupLabel
+│   │   ├── CommandItem
+│   │   └── CommandItem
+│   ├── CommandSeparator
+│   └── CommandGroup
+│       └── CommandItem
+└── CommandEmpty
+```
+
 ## Dialog Usage
 
 Use `CommandDialog` when you want a command palette rendered in a dialog.

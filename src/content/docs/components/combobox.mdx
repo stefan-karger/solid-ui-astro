@@ -101,6 +101,56 @@ const frameworks: Framework[] = [
 
 Use `autoHighlight` to focus the first matching option when the list opens or the filtered results change. This is the recommended way to get first-item highlighting without relying on `triggerMode="focus"`.
 
+## Composition
+
+The local combobox API keeps the control shell explicit. Use `ComboboxControl` to wrap the input area, then compose grouped, chip-based, or popup content from the exported building blocks.
+
+### Simple
+
+```text
+Combobox
+├── ComboboxControl
+│   ├── ComboboxInput
+│   └── InputGroupAddon
+│       ├── ComboboxClear
+│       └── ComboboxTrigger
+└── ComboboxContent
+    ├── ComboboxList
+    └── ComboboxEmpty
+```
+
+### With chips
+
+```text
+Combobox
+├── ComboboxControl variant="chips"
+│   ├── ComboboxChip
+│   │   └── ComboboxChipRemove
+│   └── ComboboxChipInput
+└── ComboboxContent
+    ├── ComboboxList
+    └── ComboboxEmpty
+```
+
+### With grouped options
+
+```text
+Combobox
+├── ComboboxControl
+│   ├── ComboboxInput
+│   └── InputGroupAddon
+│       └── ComboboxTrigger
+└── ComboboxContent
+    ├── ComboboxList
+    ├── ComboboxSection
+    │   ├── ComboboxSectionLabel
+    │   └── ComboboxItem
+    ├── ComboboxSeparator
+    └── ComboboxSection
+        ├── ComboboxSectionLabel
+        └── ComboboxItem
+```
+
 ## Custom Items
 
 Use `optionValue`, `optionLabel`, and `optionTextValue` when options are objects.

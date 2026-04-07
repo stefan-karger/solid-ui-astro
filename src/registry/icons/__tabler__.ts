@@ -7,17 +7,12 @@ import {
   IconChevronLeft,
   IconChevronRight,
   IconCircleCheck,
-  IconDeviceDesktop,
-  IconDeviceMobile,
   IconDots,
   IconInfoCircle,
   IconLayoutSidebar,
   IconLoader,
   IconMinus,
   IconSearch,
-  IconTrendingDown,
-  IconTrendingUp,
-  IconWallet,
   IconX
 } from "@tabler/icons-solidjs"
 
@@ -29,17 +24,12 @@ const icons = {
   IconChevronLeft,
   IconChevronRight,
   IconCircleCheck,
-  IconDeviceDesktop,
-  IconDeviceMobile,
   IconDots,
   IconInfoCircle,
   IconLayoutSidebar,
   IconLoader,
   IconMinus,
   IconSearch,
-  IconTrendingDown,
-  IconTrendingUp,
-  IconWallet,
   IconX
 }
 
