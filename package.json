@@ -38,6 +38,7 @@
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^5.18.0",
     "chokidar": "^5.0.0",
+    "chrono-node": "^2.9.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",

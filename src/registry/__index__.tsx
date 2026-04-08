@@ -2553,6 +2553,104 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "date-picker-demo": {
+    name: "date-picker-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","calendar","popover"],
+    component: lazy(() => import("~/registry/examples/date-picker-demo.tsx")),
+    files: [{
+      path: "registry/examples/date-picker-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "date-picker-basic": {
+    name: "date-picker-basic",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","calendar","field","popover"],
+    component: lazy(() => import("~/registry/examples/date-picker-basic.tsx")),
+    files: [{
+      path: "registry/examples/date-picker-basic.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "date-picker-range": {
+    name: "date-picker-range",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","calendar","field","popover"],
+    component: lazy(() => import("~/registry/examples/date-picker-range.tsx")),
+    files: [{
+      path: "registry/examples/date-picker-range.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "date-picker-dob": {
+    name: "date-picker-dob",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","calendar","field","popover"],
+    component: lazy(() => import("~/registry/examples/date-picker-dob.tsx")),
+    files: [{
+      path: "registry/examples/date-picker-dob.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "date-picker-input": {
+    name: "date-picker-input",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["calendar","field","input-group","popover"],
+    component: lazy(() => import("~/registry/examples/date-picker-input.tsx")),
+    files: [{
+      path: "registry/examples/date-picker-input.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "date-picker-time": {
+    name: "date-picker-time",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","calendar","field","input","popover"],
+    component: lazy(() => import("~/registry/examples/date-picker-time.tsx")),
+    files: [{
+      path: "registry/examples/date-picker-time.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "date-picker-natural-language": {
+    name: "date-picker-natural-language",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["calendar","field","input-group","popover"],
+    component: lazy(() => import("~/registry/examples/date-picker-natural-language.tsx")),
+    files: [{
+      path: "registry/examples/date-picker-natural-language.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "dialog-demo": {
     name: "dialog-demo",
     description: "",

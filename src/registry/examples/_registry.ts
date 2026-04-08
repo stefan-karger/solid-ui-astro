@@ -1399,6 +1399,83 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "date-picker-demo",
+    type: "registry:example",
+    registryDependencies: ["button", "calendar", "popover"],
+    files: [
+      {
+        path: "examples/date-picker-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "date-picker-basic",
+    type: "registry:example",
+    registryDependencies: ["button", "calendar", "field", "popover"],
+    files: [
+      {
+        path: "examples/date-picker-basic.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "date-picker-range",
+    type: "registry:example",
+    registryDependencies: ["button", "calendar", "field", "popover"],
+    files: [
+      {
+        path: "examples/date-picker-range.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "date-picker-dob",
+    type: "registry:example",
+    registryDependencies: ["button", "calendar", "field", "popover"],
+    files: [
+      {
+        path: "examples/date-picker-dob.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "date-picker-input",
+    type: "registry:example",
+    registryDependencies: ["calendar", "field", "input-group", "popover"],
+    files: [
+      {
+        path: "examples/date-picker-input.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "date-picker-time",
+    type: "registry:example",
+    registryDependencies: ["button", "calendar", "field", "input", "popover"],
+    files: [
+      {
+        path: "examples/date-picker-time.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "date-picker-natural-language",
+    type: "registry:example",
+    registryDependencies: ["calendar", "field", "input-group", "popover"],
+    files: [
+      {
+        path: "examples/date-picker-natural-language.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "dialog-demo",
     type: "registry:example",
     registryDependencies: ["button", "dialog", "input", "label"],
