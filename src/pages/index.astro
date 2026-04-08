@@ -1,9 +1,6 @@
 ---
 import RootComponents from "~/components/home/root-components"
 import RootLayout from "~/layouts/root-layout.astro"
-
-import dashboardDark from "../../.references/shadcn-ui/apps/v4/public/r/styles/new-york-v4/dashboard-01-dark.png"
-import dashboardLight from "../../.references/shadcn-ui/apps/v4/public/r/styles/new-york-v4/dashboard-01-light.png"
 ---
 
 <RootLayout title="The Foundation for your Design System">
@@ -39,8 +36,8 @@ import dashboardLight from "../../.references/shadcn-ui/apps/v4/public/r/styles/
     <div class="container-wrapper flex-1 pb-6">
       <div class="container overflow-hidden">
         <section class="-mx-4 w-[160vw] overflow-hidden rounded-lg border border-border/50 md:hidden md:w-[150vw]">
-          <img alt="Dashboard" class="block dark:hidden" loading="eager" src={dashboardLight.src} />
-          <img alt="Dashboard" class="hidden dark:block" loading="eager" src={dashboardDark.src} />
+          <img alt="Dashboard" class="block dark:hidden" loading="eager" src="/images/dashboard-01-light.png" />
+          <img alt="Dashboard" class="hidden dark:block" loading="eager" src="/images/dashboard-01-dark.png" />
         </section>
         <section class="hidden theme-container md:block">
           <RootComponents client:only="solid-js" />
