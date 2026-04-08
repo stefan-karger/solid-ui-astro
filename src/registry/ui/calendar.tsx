@@ -45,7 +45,7 @@ type CalendarBaseProps = Omit<ComponentProps<"div">, "onChange"> & {
   numberOfMonths?: number
   onMonthChange?: (month: Date) => void
   startYear?: number
-  weekNumbers?: boolean
+  showWeekNumber?: boolean
   customCell?: CustomCellRenderer
 }
 
@@ -83,7 +83,7 @@ type CalendarDayProps = {
   disabled?: (date: Date) => boolean
   month: Date
   value: CalendarValue
-  weekNumbers: boolean
+  showWeekNumber: boolean
 }
 
 type CalendarHeaderSelectProps = {
@@ -138,7 +138,7 @@ function Calendar(props: CalendarProps) {
       monthYearSelection: false,
       numberOfMonths: 1,
       startYear: currentYear - 100,
-      weekNumbers: false
+      showWeekNumber: false
     },
     props
   )
@@ -159,7 +159,7 @@ function Calendar(props: CalendarProps) {
     "onValueChange",
     "startYear",
     "value",
-    "weekNumbers"
+    "showWeekNumber"
   ])
 
   const years = createMemo(() => {
@@ -306,13 +306,11 @@ function Calendar(props: CalendarProps) {
                   <CalendarPrimitive.Table class="w-full border-collapse" index={monthIndex}>
                     <thead data-slot="calendar-weekdays">
                       <tr class="flex">
-                        <Show when={local.weekNumbers}>
+                        <Show when={local.showWeekNumber}>
                           <th
                             data-slot="calendar-week-number-header"
-                            class="w-(--cell-size) text-[0.8rem] font-normal text-muted-foreground select-none"
-                          >
-                            Wk
-                          </th>
+                            class="w-(--cell-size) select-none"
+                          />
                         </Show>
                         <Index each={calendar.weekdays}>
                           {(weekday) => (
@@ -333,12 +331,14 @@ function Calendar(props: CalendarProps) {
                       <Index each={monthData().weeks}>
                         {(week) => (
                           <tr class="mt-2 flex w-full" data-slot="calendar-week">
-                            <Show when={local.weekNumbers}>
+                            <Show when={local.showWeekNumber}>
                               <td
                                 data-slot="calendar-week-number"
-                                class="flex w-(--cell-size) items-center justify-center text-center text-[0.8rem] text-muted-foreground"
+                                class="text-[0.8rem] text-muted-foreground select-none"
                               >
-                                {getISOWeek(week()[0])}
+                                <div class="flex size-(--cell-size) items-center justify-center text-center">
+                                  {getISOWeek(week()[0])}
+                                </div>
                               </td>
                             </Show>
 
@@ -350,7 +350,7 @@ function Calendar(props: CalendarProps) {
                                   disabled={local.disabled}
                                   month={monthData().month}
                                   value={calendar.value}
-                                  weekNumbers={local.weekNumbers}
+                                  showWeekNumber={local.showWeekNumber}
                                 />
                               )}
                             </Index>
@@ -411,8 +411,8 @@ function CalendarDay(props: CalendarDayProps) {
   return (
     <CalendarPrimitive.Cell
       class={cn(
-        "group/day relative aspect-square h-full flex-1 rounded-(--cell-radius) p-0 text-center select-none",
-        props.weekNumbers
+        "group/day relative aspect-square h-full w-full rounded-(--cell-radius) p-0 text-center select-none",
+        props.showWeekNumber
           ? "[&:nth-child(2)[data-selected]_button]:rounded-l-(--cell-radius)"
           : "[&:first-child[data-selected]_button]:rounded-l-(--cell-radius)",
         "[&:last-child[data-selected]_button]:rounded-r-(--cell-radius)",
@@ -429,8 +429,8 @@ function CalendarDay(props: CalendarDayProps) {
       <CalendarPrimitive.CellTrigger
         class={cn(
           buttonVariants({ size: "icon", variant: "ghost" }),
-          "relative isolate z-10 flex aspect-square size-auto w-full min-w-(--cell-size) flex-col gap-0.5 border-0 leading-none font-normal",
-          "focus:z-10 focus:border-ring focus:ring-[3px] focus:ring-ring/50 focus-visible:z-10",
+          "cn-calendar-day-button relative isolate z-10 flex aspect-square size-auto w-full min-w-(--cell-size) flex-col gap-1 border-0 leading-none font-normal",
+          "group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10 group-data-[focused=true]/day:border-ring group-data-[focused=true]/day:ring-[3px] group-data-[focused=true]/day:ring-ring/50",
           "data-[today]:rounded-(--cell-radius) data-[today]:bg-muted data-[today]:text-foreground",
           "data-[selected-single]:rounded-(--cell-radius) data-[selected-single]:bg-primary data-[selected-single]:text-primary-foreground",
           "data-[range-start]:rounded-(--cell-radius) data-[range-start]:rounded-l-(--cell-radius) data-[range-start]:bg-primary data-[range-start]:text-primary-foreground",
@@ -440,6 +440,7 @@ function CalendarDay(props: CalendarDayProps) {
           "data-[today]:data-[range-start]:rounded-(--cell-radius) data-[today]:data-[range-start]:rounded-l-(--cell-radius) data-[today]:data-[range-start]:bg-primary data-[today]:data-[range-start]:text-primary-foreground",
           "data-[today]:data-[range-end]:rounded-(--cell-radius) data-[today]:data-[range-end]:rounded-r-(--cell-radius) data-[today]:data-[range-end]:bg-primary data-[today]:data-[range-end]:text-primary-foreground",
           "data-[today]:data-[range-middle]:rounded-none data-[today]:data-[range-middle]:bg-muted data-[today]:data-[range-middle]:text-foreground",
+          "dark:hover:text-foreground",
           "data-[outside]:text-muted-foreground data-[outside]:aria-selected:text-muted-foreground",
           "data-disabled:text-muted-foreground data-disabled:opacity-50",
           props.customCell && "h-auto min-h-(--cell-size) py-1"

@@ -7,12 +7,12 @@ export default function CalendarDemo() {
 
   return (
     <Calendar
-      class="rounded-lg border"
-      defaultMonth={new Date(2025, 0, 26)}
       mode="single"
       monthYearSelection
-      onValueChange={setDate}
       value={date()}
+      onValueChange={setDate}
+      defaultMonth={new Date(2025, 0, 26)}
+      class="rounded-lg border"
     />
   )
 }

@@ -10,11 +10,11 @@ export default function CalendarWeekNumbers() {
     <Card class="mx-auto w-fit p-0">
       <CardContent class="p-0">
         <Calendar
-          defaultMonth={date() ?? undefined}
           mode="single"
-          onValueChange={setDate}
+          showWeekNumber
           value={date()}
-          weekNumbers
+          onValueChange={setDate}
+          defaultMonth={date()}
         />
       </CardContent>
     </Card>

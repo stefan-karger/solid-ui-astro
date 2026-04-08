@@ -63,11 +63,11 @@ import { Calendar } from "~/components/ui/calendar"
 const [date, setDate] = createSignal(new Date(2025, 0, 26))
 
 <Calendar
-  class="rounded-lg border"
-  defaultMonth={new Date(2025, 0, 26)}
   mode="single"
-  onValueChange={setDate}
   value={date()}
+  onValueChange={setDate}
+  defaultMonth={new Date(2025, 0, 26)}
+  class="rounded-lg border"
 />
 ```
 
@@ -79,7 +79,7 @@ Corvu defaults `initialMonth` and `initialFocusedDay` from `new Date()`. When re
 
 ### Basic
 
-A basic calendar component.
+A basic calendar component. We used `class="rounded-lg border"` to style the calendar.
 
 <ComponentPreview name="calendar-basic" previewClassName="h-96" />
 
@@ -115,25 +115,31 @@ Use `customCell` to render additional content inside each day and adjust `--cell
 
 <ComponentPreview name="calendar-custom-days" previewClassName="h-[560px]" />
 
-```tsx showLineNumbers
+You can customize the size of calendar cells using the --cell-size CSS variable. You can also make it responsive by using breakpoint-specific values:
+
+```tsx
 <Calendar
-  class="[--cell-size:--spacing(10)] md:[--cell-size:--spacing(12)]"
-  customCell={({ date, isOutsideMonth }) => {
-    if (isOutsideMonth) {
-      return null
-    }
+  mode="single"
+  selected={date}
+  onSelect={setDate}
+  className="rounded-lg border [--cell-size:--spacing(11)] md:[--cell-size:--spacing(12)]"
+/>
+```
 
-    const isWeekend = date.getDay() === 0 || date.getDay() === 6
+Or use fixed values:
 
-    return <span class="text-xs opacity-70">{isWeekend ? "$120" : "$100"}</span>
-  }}
-  mode="range"
+```tsx
+<Calendar
+  mode="single"
+  selected={date}
+  onSelect={setDate}
+  className="rounded-lg border [--cell-size:2.75rem] md:[--cell-size:3rem]"
 />
 ```
 
 ### Week Numbers
 
-Use `weekNumbers` to display ISO week numbers alongside the calendar.
+Use `showWeekNumber` to display ISO week numbers alongside the calendar.
 
 <ComponentPreview name="calendar-week-numbers" previewClassName="h-96" />
 

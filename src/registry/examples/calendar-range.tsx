@@ -15,11 +15,11 @@ export default function CalendarRange() {
     <Card class="mx-auto w-fit p-0">
       <CardContent class="p-0">
         <Calendar
-          defaultMonth={range().from ?? undefined}
           mode="range"
           numberOfMonths={2}
-          onValueChange={setRange}
           value={range()}
+          onValueChange={setRange}
+          defaultMonth={range().from ?? undefined}
         />
       </CardContent>
     </Card>

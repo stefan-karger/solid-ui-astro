@@ -1,6 +1,6 @@
+import { Clock2Icon } from "lucide-solid"
 import { createSignal } from "solid-js"
 
-import { IconPlaceholder } from "~/components/icon-placeholder"
 import { Calendar } from "~/registry/ui/calendar"
 import { Card, CardContent, CardFooter } from "~/registry/ui/card"
 import { Field, FieldGroup, FieldLabel } from "~/registry/ui/field"
@@ -13,50 +13,42 @@ export default function CalendarTime() {
     <Card class="mx-auto w-fit" size="sm">
       <CardContent>
         <Calendar
-          class="p-0"
-          defaultMonth={new Date(2025, 0, 26)}
           mode="single"
-          onValueChange={setDate}
           value={date()}
+          onValueChange={setDate}
+          defaultMonth={new Date(2025, 0, 26)}
+          class="p-0"
         />
       </CardContent>
       <CardFooter class="border-t bg-card">
         <FieldGroup>
           <Field>
-            <FieldLabel for="calendar-start-time">Start Time</FieldLabel>
+            <FieldLabel for="time-from">Start Time</FieldLabel>
             <InputGroup>
               <InputGroupInput
                 class="appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
-                id="calendar-start-time"
+                id="time-from"
                 step="1"
                 type="time"
                 value="10:30:00"
               />
-              <InputGroupAddon align="inline-end">
-                <IconPlaceholder
-                  class="size-4 text-muted-foreground"
-                  lucide="Clock2Icon"
-                  tabler="IconClock"
-                />
+              <InputGroupAddon>
+                <Clock2Icon class="text-muted-foreground" />
               </InputGroupAddon>
             </InputGroup>
           </Field>
           <Field>
-            <FieldLabel for="calendar-end-time">End Time</FieldLabel>
+            <FieldLabel for="time-to">End Time</FieldLabel>
             <InputGroup>
               <InputGroupInput
                 class="appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
-                id="calendar-end-time"
+                id="time-to"
                 step="1"
                 type="time"
                 value="12:30:00"
               />
-              <InputGroupAddon align="inline-end">
-                <IconPlaceholder
-                  class="size-4 text-muted-foreground"
-                  lucide="Clock2Icon"
-                  tabler="IconClock"
-                />
+              <InputGroupAddon>
+                <Clock2Icon class="text-muted-foreground" />
               </InputGroupAddon>
             </InputGroup>
           </Field>

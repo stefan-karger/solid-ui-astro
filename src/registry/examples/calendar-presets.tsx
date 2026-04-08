@@ -22,13 +22,13 @@ export default function CalendarPresets() {
     <Card class="mx-auto w-fit max-w-[300px]" size="sm">
       <CardContent>
         <Calendar
-          class="p-0 [--cell-size:--spacing(9.5)]"
-          fixedWeeks
           mode="single"
+          fixedWeeks
+          value={date()}
+          onValueChange={setDate}
           month={month()}
           onMonthChange={setMonth}
-          onValueChange={setDate}
-          value={date()}
+          class="p-0 [--cell-size:--spacing(9.5)]"
         />
       </CardContent>
       <CardFooter class="flex flex-wrap gap-2 border-t">

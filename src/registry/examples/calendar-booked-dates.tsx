@@ -14,12 +14,12 @@ export default function CalendarBookedDates() {
     <Card class="mx-auto w-fit p-0">
       <CardContent class="p-0">
         <Calendar
-          class="[&_[data-slot=calendar-day-button][data-disabled]:not([data-outside])]:line-through [&_[data-slot=calendar-day-button][data-disabled]:not([data-outside])]:opacity-100"
-          defaultMonth={date() ?? undefined}
-          disabled={isBooked}
           mode="single"
-          onValueChange={setDate}
           value={date()}
+          onValueChange={setDate}
+          defaultMonth={date()}
+          disabled={isBooked}
+          class="[&_[data-slot=calendar-day-button][data-disabled]:not([data-outside])]:line-through"
         />
       </CardContent>
     </Card>
