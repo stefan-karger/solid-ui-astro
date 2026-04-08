@@ -44,7 +44,7 @@ const inputGroupAddonVariants = cva(
 type InputGroupAddonProps = ComponentProps<"div"> & VariantProps<typeof inputGroupAddonVariants>
 
 const InputGroupAddon = (props: InputGroupAddonProps) => {
-  const [local, others] = splitProps(props, ["class", "align", "onClick"])
+  const [local, others] = splitProps(props, ["class", "align"])
   const align = () => local.align ?? "inline-start"
 
   const handleClick: JSX.EventHandler<HTMLDivElement, MouseEvent> = (e) => {
@@ -53,9 +53,6 @@ const InputGroupAddon = (props: InputGroupAddonProps) => {
     }
 
     e.currentTarget.parentElement?.querySelector("input")?.focus()
-    if (typeof local.onClick === "function") {
-      local.onClick(e)
-    }
   }
 
   return (

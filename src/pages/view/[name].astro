@@ -24,7 +24,7 @@ if (!name || !item || !isPreviewableType) {
 }
 ---
 
-<RootLayout showHeader={false} showToaster={false} title={`${name} Preview`}>
+<RootLayout showHeader={false} showFooter={false} showToaster={false} title={`${name} Preview`}>
   <div class="min-h-svh bg-background *:data-[slot=card]:has-[[data-slot=chart]]:shadow-none">
     <ComponentPreviewRenderer client:only="solid-js" name={name} />
   </div>

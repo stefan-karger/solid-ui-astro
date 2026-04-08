@@ -1,6 +1,7 @@
 ---
 import "~/styles/globals.css"
 
+import SiteFooter from "~/components/site-footer.astro"
 import SiteHeader from "~/components/site-header.astro"
 import SiteToaster from "~/components/site-toaster"
 import { DARK_THEME, LIGHT_THEME, STORAGE_KEYS, THEME_DARK_CLASS } from "~/hooks/use-design-system"
@@ -11,10 +12,11 @@ import { STYLES } from "~/registry/styles"
 type Props = {
   title?: string
   showHeader?: boolean
+  showFooter?: boolean
   showToaster?: boolean
 }
 
-const { title = "Astro", showHeader = true, showToaster = true } = Astro.props
+const { title = "Astro", showHeader = true, showFooter = true, showToaster = true } = Astro.props
 const styleNames = STYLES.map((entry) => entry.name)
 const iconLibraryNames = Object.keys(iconLibraries)
 ---
@@ -94,12 +96,16 @@ const iconLibraryNames = Object.keys(iconLibraries)
       })()
     </script>
   </head>
-  <body class="min-h-svh bg-background text-foreground" style="--header-height:3.5rem;">
+  <body
+    class="group/body min-h-svh bg-background text-foreground [--footer-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]"
+    style="--header-height:3.5rem;"
+  >
     <div class="relative flex min-h-svh flex-col">
       {showHeader && <SiteHeader />}
       <main class="flex flex-1 flex-col">
         <slot />
       </main>
+      {showFooter && <SiteFooter />}
     </div>
     {showToaster && <SiteToaster client:only="solid-js" />}
   </body>

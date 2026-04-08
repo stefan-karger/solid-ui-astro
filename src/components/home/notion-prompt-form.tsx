@@ -166,12 +166,12 @@ export default function NotionPromptForm() {
       .map((item) => ({ ...item, label: item.title, value: item.title }))
   })
 
-  const addMention = (title: string | null) => {
-    if (!title) {
+  const addMention = (option: MentionOption | null) => {
+    if (!option) {
       return
     }
 
-    setMentions((current) => [...current, title])
+    setMentions((current) => [...current, option.title])
     setMentionPopoverOpen(false)
     setSearchQuery("")
   }
@@ -189,11 +189,15 @@ export default function NotionPromptForm() {
         <InputGroup class="rounded-xl">
           <InputGroupTextarea id="notion-prompt" placeholder="Ask, search, or make anything..." />
           <InputGroupAddon align="block-start" class="pt-3">
-            <Popover onOpenChange={setMentionPopoverOpen} open={mentionPopoverOpen()}>
+            <Popover
+              onOpenChange={setMentionPopoverOpen}
+              open={mentionPopoverOpen()}
+              placement="bottom-start"
+            >
               <Tooltip>
                 <TooltipTrigger
                   as={PopoverTrigger}
-                  onFocusCapture={(event) => event.stopPropagation()}
+                  onFocusCapture={(event: FocusEvent) => event.stopPropagation()}
                 >
                   <InputGroupButton
                     class="transition-transform"
@@ -206,7 +210,7 @@ export default function NotionPromptForm() {
                 </TooltipTrigger>
                 <TooltipContent>Mention a person, page, or date</TooltipContent>
               </Tooltip>
-              <PopoverContent align="start" class="w-80 p-0">
+              <PopoverContent class="w-80 p-0">
                 <Command<MentionOption, MentionGroup>
                   onChange={addMention}
                   onInputChange={setSearchQuery}
@@ -274,7 +278,11 @@ export default function NotionPromptForm() {
               <TooltipContent>Attach file</TooltipContent>
             </Tooltip>
 
-            <DropdownMenu onOpenChange={setModelMenuOpen} open={modelMenuOpen()}>
+            <DropdownMenu
+              onOpenChange={setModelMenuOpen}
+              open={modelMenuOpen()}
+              placement="top-start"
+            >
               <Tooltip>
                 <TooltipTrigger as={DropdownMenuTrigger}>
                   <InputGroupButton class="rounded-full" size="sm">
@@ -283,7 +291,7 @@ export default function NotionPromptForm() {
                 </TooltipTrigger>
                 <TooltipContent>Select AI model</TooltipContent>
               </Tooltip>
-              <DropdownMenuContent align="start" class="min-w-48" side="top">
+              <DropdownMenuContent class="min-w-48">
                 <DropdownMenuGroup>
                   <DropdownMenuLabel class="text-xs text-muted-foreground">
                     Select Agent Mode
@@ -317,43 +325,53 @@ export default function NotionPromptForm() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            <DropdownMenu onOpenChange={setScopeMenuOpen} open={scopeMenuOpen()}>
+            <DropdownMenu
+              onOpenChange={setScopeMenuOpen}
+              open={scopeMenuOpen()}
+              placement="top-end"
+            >
               <DropdownMenuTrigger as={InputGroupButton} class="rounded-full" size="sm">
                 <IconWorld class="size-4" />
                 All Sources
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" class="w-72" side="top">
+              <DropdownMenuContent class="w-72">
                 <DropdownMenuGroup>
                   <DropdownMenuItem
-                    as="label"
-                    for="web-search"
-                    onSelect={(event) => event.preventDefault()}
+                    closeOnSelect={false}
+                    onSelect={() => setWebSearchEnabled((value) => !value)}
                   >
                     <IconWorld class="size-4" />
                     Web Search
-                    <UiSwitch
+                    <div
                       class="ml-auto"
-                      id="web-search"
-                      checked={webSearchEnabled()}
-                      onChange={setWebSearchEnabled}
-                    />
+                      onClick={(event) => event.stopPropagation()}
+                      onPointerDown={(event) => event.stopPropagation()}
+                      onPointerUp={(event) => event.stopPropagation()}
+                    >
+                      <UiSwitch
+                        id="web-search"
+                        checked={webSearchEnabled()}
+                        onChange={setWebSearchEnabled}
+                      />
+                    </div>
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                   <DropdownMenuItem
-                    as="label"
-                    for="apps"
-                    onSelect={(event) => event.preventDefault()}
+                    closeOnSelect={false}
+                    onSelect={() => setAppsEnabled((value) => !value)}
                   >
                     <IconApps class="size-4" />
                     Apps and Integrations
-                    <UiSwitch
+                    <div
                       class="ml-auto"
-                      id="apps"
-                      checked={appsEnabled()}
-                      onChange={setAppsEnabled}
-                    />
+                      onClick={(event) => event.stopPropagation()}
+                      onPointerDown={(event) => event.stopPropagation()}
+                      onPointerUp={(event) => event.stopPropagation()}
+                    >
+                      <UiSwitch id="apps" checked={appsEnabled()} onChange={setAppsEnabled} />
+                    </div>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
                     <IconCircleDashedPlus class="size-4" />
@@ -374,6 +392,7 @@ export default function NotionPromptForm() {
                         optionTextValue="label"
                         optionValue="value"
                         options={filteredScopeUsers()}
+                        placeholder="Find or use knowledge in..."
                         itemComponent={(props) => (
                           <CommandItem class="rounded-lg" item={props.item}>
                             <Avatar class="size-4">
@@ -387,8 +406,8 @@ export default function NotionPromptForm() {
                           </CommandItem>
                         )}
                       >
-                        <CommandInput placeholder="Find or use knowledge in..." />
-                        <CommandList />
+                        <CommandInput />
+                        <CommandList class="pt-1" />
                         <CommandEmpty>No knowledge found</CommandEmpty>
                       </Command>
                     </DropdownMenuSubContent>

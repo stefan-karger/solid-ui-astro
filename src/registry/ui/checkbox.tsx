@@ -14,14 +14,17 @@ type CheckboxProps<T extends ValidComponent = "div"> = PolymorphicProps<
   }
 
 const Checkbox = <T extends ValidComponent = "div">(props: CheckboxProps<T>) => {
-  const [local, others] = splitProps(props as CheckboxProps, ["class", "aria-invalid"])
+  const [local, others] = splitProps(props as CheckboxProps, ["class", "aria-invalid", "id"])
 
   return (
     <CheckboxPrimitive.Root data-slot="checkbox-root" {...others}>
-      <CheckboxPrimitive.Input data-slot="checkbox-input" />
+      <CheckboxPrimitive.Input data-slot="checkbox-input" id={local.id} />
       <CheckboxPrimitive.Control
         aria-invalid={local["aria-invalid"]}
-        class={cn("cn-checkbox", local.class)}
+        class={cn(
+          "cn-checkbox peer relative shrink-0 outline-none after:absolute after:-inset-x-3 after:-inset-y-2 data-disabled:cursor-not-allowed data-disabled:opacity-50",
+          local.class
+        )}
         data-slot="checkbox"
       >
         <Switch>

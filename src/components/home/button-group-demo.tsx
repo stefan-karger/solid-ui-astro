@@ -49,16 +49,16 @@ export default function ButtonGroupDemo() {
         <Button size="sm" variant="outline">
           Snooze
         </Button>
-        <DropdownMenu>
+        <DropdownMenu placement="bottom-end">
           <DropdownMenuTrigger
-            as={Button}
+            as={Button<"button">}
             aria-label="More Options"
             size="icon-sm"
             variant="outline"
           >
             <EllipsisIcon class="size-4" />
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" class="w-48">
+          <DropdownMenuContent class="w-48">
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <MailCheckIcon class="size-4" />

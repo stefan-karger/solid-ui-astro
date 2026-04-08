@@ -1,29 +1,28 @@
-import { ArrowLeftIcon, ArrowRightIcon } from "lucide-solid"
+import { AudioLinesIcon, PlusIcon } from "lucide-solid"
 
 import { Button } from "~/registry/ui/button"
 import { ButtonGroup } from "~/registry/ui/button-group"
+import { InputGroup, InputGroupAddon, InputGroupInput } from "~/registry/ui/input-group"
+import { Tooltip, TooltipContent, TooltipTrigger } from "~/registry/ui/tooltip"
 
 export default function ButtonGroupNested() {
   return (
     <ButtonGroup>
       <ButtonGroup>
-        <Button size="sm" variant="outline">
-          1
-        </Button>
-        <Button size="sm" variant="outline">
-          2
-        </Button>
-        <Button size="sm" variant="outline">
-          3
+        <Button variant="outline" size="icon">
+          <PlusIcon />
         </Button>
       </ButtonGroup>
       <ButtonGroup>
-        <Button aria-label="Previous" size="icon-sm" variant="outline">
-          <ArrowLeftIcon class="size-4" />
-        </Button>
-        <Button aria-label="Next" size="icon-sm" variant="outline">
-          <ArrowRightIcon class="size-4" />
-        </Button>
+        <InputGroup>
+          <InputGroupInput placeholder="Send a message..." />
+          <Tooltip>
+            <TooltipTrigger as={InputGroupAddon} align="inline-end">
+              <AudioLinesIcon />
+            </TooltipTrigger>
+            <TooltipContent>Voice Mode</TooltipContent>
+          </Tooltip>
+        </InputGroup>
       </ButtonGroup>
     </ButtonGroup>
   )
