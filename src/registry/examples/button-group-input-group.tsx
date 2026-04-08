@@ -17,12 +17,11 @@ export default function ButtonGroupInputGroup() {
   return (
     <ButtonGroup class="[--radius:9999rem]">
       <ButtonGroup>
-        <Button size="icon" variant="outline">
+        <Button aria-label="Add" size="icon" variant="outline">
           <PlusIcon class="size-4" />
         </Button>
       </ButtonGroup>
-
-      <ButtonGroup>
+      <ButtonGroup class="flex-1">
         <InputGroup>
           <InputGroupInput
             disabled={voiceEnabled()}
@@ -31,9 +30,10 @@ export default function ButtonGroupInputGroup() {
           <InputGroupAddon align="inline-end">
             <Tooltip>
               <TooltipTrigger
+                aria-label="Voice Mode"
                 aria-pressed={voiceEnabled()}
                 as={InputGroupButton}
-                class="data-[active=true]:bg-orange-100 data-[active=true]:text-orange-700 dark:data-[active=true]:bg-orange-800 dark:data-[active=true]:text-orange-100"
+                class="data-[active=true]:bg-primary data-[active=true]:text-primary-foreground"
                 data-active={voiceEnabled()}
                 onClick={() => setVoiceEnabled((value) => !value)}
                 size="icon-xs"

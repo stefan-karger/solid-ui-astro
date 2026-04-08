@@ -44,23 +44,29 @@ const years: Option[] = [
 
 export default function FieldDemo() {
   return (
-    <div class="w-full max-w-md">
+    <div class="w-full max-w-md rounded-xl border p-6">
       <form>
         <FieldGroup>
           <FieldSet>
             <FieldLegend>Payment Method</FieldLegend>
-            <FieldDescription>All transactions are secure and encrypted.</FieldDescription>
+            <FieldDescription>All transactions are secure and encrypted</FieldDescription>
             <FieldGroup>
               <Field>
                 <FieldLabel for="checkout-card-name">Name on Card</FieldLabel>
-                <Input id="checkout-card-name" placeholder="Evil Rabbit" required />
-              </Field>
-              <Field>
-                <FieldLabel for="checkout-card-number">Card Number</FieldLabel>
-                <Input id="checkout-card-number" placeholder="1234 5678 9012 3456" required />
-                <FieldDescription>Enter your 16-digit card number.</FieldDescription>
+                <Input id="checkout-card-name" placeholder="John Doe" required />
               </Field>
               <div class="grid grid-cols-3 gap-4">
+                <Field class="col-span-2">
+                  <FieldLabel for="checkout-card-number">Card Number</FieldLabel>
+                  <Input id="checkout-card-number" placeholder="1234 5678 9012 3456" required />
+                  <FieldDescription>Enter your 16-digit number.</FieldDescription>
+                </Field>
+                <Field class="col-span-1">
+                  <FieldLabel for="checkout-cvv">CVV</FieldLabel>
+                  <Input id="checkout-cvv" placeholder="123" required />
+                </Field>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
                 <Field>
                   <FieldLabel for="checkout-exp-month">Month</FieldLabel>
                   <Select<Option>
@@ -95,19 +101,15 @@ export default function FieldDemo() {
                     <SelectContent />
                   </Select>
                 </Field>
-                <Field>
-                  <FieldLabel for="checkout-cvv">CVV</FieldLabel>
-                  <Input id="checkout-cvv" placeholder="123" required />
-                </Field>
               </div>
             </FieldGroup>
           </FieldSet>
-
           <FieldSeparator />
-
           <FieldSet>
             <FieldLegend>Billing Address</FieldLegend>
-            <FieldDescription>The address associated with your payment method.</FieldDescription>
+            <FieldDescription>
+              The billing address associated with your payment method
+            </FieldDescription>
             <FieldGroup>
               <Field orientation="horizontal">
                 <Checkbox id="checkout-same-as-shipping" defaultChecked />
@@ -118,15 +120,13 @@ export default function FieldDemo() {
             </FieldGroup>
           </FieldSet>
 
+          <FieldSeparator />
+
           <FieldSet>
             <FieldGroup>
               <Field>
                 <FieldLabel for="checkout-comments">Comments</FieldLabel>
-                <Textarea
-                  class="resize-none"
-                  id="checkout-comments"
-                  placeholder="Add any additional comments"
-                />
+                <Textarea id="checkout-comments" placeholder="Add any additional comments" />
               </Field>
             </FieldGroup>
           </FieldSet>

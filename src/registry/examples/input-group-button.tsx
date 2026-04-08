@@ -1,4 +1,4 @@
-import { CheckIcon, CopyIcon, InfoIcon, StarIcon } from "lucide-solid"
+import { IconInfoCircle, IconStar } from "@tabler/icons-solidjs"
 import { createSignal } from "solid-js"
 
 import {
@@ -7,78 +7,44 @@ import {
   InputGroupButton,
   InputGroupInput
 } from "~/registry/ui/input-group"
-import {
-  Popover,
-  PopoverContent,
-  PopoverDescription,
-  PopoverTitle,
-  PopoverTrigger
-} from "~/registry/ui/popover"
+import { Label } from "~/registry/ui/label"
+import { Popover, PopoverContent, PopoverTrigger } from "~/registry/ui/popover"
 
 export default function InputGroupButtonExample() {
-  const [isCopied, setIsCopied] = createSignal(false)
   const [isFavorite, setIsFavorite] = createSignal(false)
-  let resetCopyTimeout: ReturnType<typeof setTimeout> | undefined
-
-  const handleCopy = async () => {
-    await navigator.clipboard?.writeText("https://x.com/shadcn")
-    setIsCopied(true)
-
-    if (resetCopyTimeout) {
-      clearTimeout(resetCopyTimeout)
-    }
-
-    resetCopyTimeout = setTimeout(() => {
-      setIsCopied(false)
-    }, 1200)
-  }
 
   return (
     <div class="grid w-full max-w-sm gap-6">
-      <InputGroup>
-        <InputGroupInput placeholder="https://x.com/shadcn" readOnly />
-        <InputGroupAddon align="inline-end">
-          <InputGroupButton aria-label="Copy" onClick={handleCopy} size="icon-xs" title="Copy">
-            {isCopied() ? <CheckIcon class="size-4" /> : <CopyIcon class="size-4" />}
-          </InputGroupButton>
-        </InputGroupAddon>
-      </InputGroup>
-
+      <Label class="sr-only" for="input-secure-19">
+        Input Secure
+      </Label>
       <InputGroup class="[--radius:9999px]">
-        <InputGroupAddon>
-          <Popover>
-            <PopoverTrigger as={InputGroupButton} size="icon-xs" variant="secondary">
-              <InfoIcon class="size-4" />
-            </PopoverTrigger>
-            <PopoverContent class="rounded-xl text-sm">
-              <PopoverTitle class="text-sm">Your connection is not secure.</PopoverTitle>
-              <PopoverDescription>
-                You should not enter any sensitive information on this site.
-              </PopoverDescription>
-            </PopoverContent>
-          </Popover>
-        </InputGroupAddon>
-        <InputGroupAddon class="pl-1.5 text-muted-foreground">https://</InputGroupAddon>
-        <InputGroupInput />
+        <InputGroupInput class="pl-0.5!" id="input-secure-19" />
+        <Popover placement="bottom-start">
+          <PopoverTrigger as={InputGroupAddon}>
+            <InputGroupButton aria-label="Info" size="icon-xs" variant="secondary">
+              <IconInfoCircle class="size-4" />
+            </InputGroupButton>
+          </PopoverTrigger>
+          <PopoverContent class="flex flex-col gap-1 rounded-xl text-sm">
+            <p class="font-medium">Your connection is not secure.</p>
+            <p>You should not enter any sensitive information on this site.</p>
+          </PopoverContent>
+        </Popover>
+        <InputGroupAddon class="pl-1! text-muted-foreground">https://</InputGroupAddon>
         <InputGroupAddon align="inline-end">
           <InputGroupButton
             onClick={() => {
               setIsFavorite((value) => !value)
             }}
+            aria-label="Favorite"
             size="icon-xs"
           >
-            <StarIcon
-              class="size-4"
-              style={isFavorite() ? { color: "var(--color-primary)" } : undefined}
+            <IconStar
+              class="size-4 data-[favorite=true]:fill-primary data-[favorite=true]:stroke-primary"
+              data-favorite={isFavorite()}
             />
           </InputGroupButton>
-        </InputGroupAddon>
-      </InputGroup>
-
-      <InputGroup>
-        <InputGroupInput placeholder="Type to search..." />
-        <InputGroupAddon align="inline-end">
-          <InputGroupButton variant="secondary">Search</InputGroupButton>
         </InputGroupAddon>
       </InputGroup>
     </div>

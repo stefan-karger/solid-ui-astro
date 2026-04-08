@@ -9,16 +9,15 @@ import { Textarea } from "~/registry/ui/textarea"
 export default function ButtonGroupPopover() {
   return (
     <ButtonGroup>
-      <Button variant="outline">
+      <Button size="sm" variant="outline">
         <BotIcon class="size-4" />
         Copilot
       </Button>
-
-      <Popover>
-        <PopoverTrigger as={Button} aria-label="Open popover" size="icon" variant="outline">
+      <Popover placement="bottom-end">
+        <PopoverTrigger as={Button} aria-label="Open Popover" size="icon-sm" variant="outline">
           <ChevronDownIcon class="size-4" />
         </PopoverTrigger>
-        <PopoverContent class="w-80 rounded-xl p-0 text-sm">
+        <PopoverContent class="gap-0 rounded-xl p-0 text-sm">
           <div class="px-4 py-3">
             <div class="text-sm font-medium">Agent Tasks</div>
           </div>

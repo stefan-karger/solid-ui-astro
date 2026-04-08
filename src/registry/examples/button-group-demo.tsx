@@ -33,34 +33,36 @@ export default function ButtonGroupDemo() {
   return (
     <ButtonGroup>
       <ButtonGroup class="hidden sm:flex">
-        <Button aria-label="Go back" size="icon" variant="outline">
+        <Button aria-label="Go Back" size="icon-sm" variant="outline">
           <ArrowLeftIcon class="size-4" />
         </Button>
       </ButtonGroup>
-
       <ButtonGroup>
-        <Button variant="outline">Archive</Button>
-        <Button variant="outline">Report</Button>
+        <Button size="sm" variant="outline">
+          Archive
+        </Button>
+        <Button size="sm" variant="outline">
+          Report
+        </Button>
       </ButtonGroup>
-
       <ButtonGroup>
-        <Button variant="outline">Snooze</Button>
+        <Button size="sm" variant="outline">
+          Snooze
+        </Button>
         <DropdownMenu>
           <DropdownMenuTrigger
             as={Button}
-            aria-label="More options"
-            class="shrink-0"
-            size="icon"
+            aria-label="More Options"
+            size="icon-sm"
             variant="outline"
           >
             <EllipsisIcon class="size-4" />
-            <span class="sr-only">Open menu</span>
           </DropdownMenuTrigger>
-          <DropdownMenuContent class="w-40">
+          <DropdownMenuContent align="end" class="w-48">
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <MailCheckIcon class="size-4" />
-                Mark as read
+                Mark as Read
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <ArchiveIcon class="size-4" />
@@ -75,16 +77,16 @@ export default function ButtonGroupDemo() {
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <CalendarPlusIcon class="size-4" />
-                Add to calendar
+                Add to Calendar
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <ListFilterIcon class="size-4" />
-                Add to list
+                Add to List
               </DropdownMenuItem>
               <DropdownMenuSub>
                 <DropdownMenuSubTrigger>
                   <TagIcon class="size-4" />
-                  Label as...
+                  Label As...
                 </DropdownMenuSubTrigger>
                 <DropdownMenuSubContent>
                   <DropdownMenuRadioGroup onChange={setLabel} value={label()}>

@@ -35,15 +35,17 @@ export default function FieldHear() {
                   {(option) => (
                     <FieldLabel class="w-fit!" for={option.value}>
                       <Field
-                        class="gap-1.5 overflow-hidden px-3! py-1.5! transition-all duration-100 ease-linear group-has-data-[state=checked]/field-label:px-2!"
+                        class="gap-1.5 overflow-hidden px-3! py-1.5! transition-all duration-100 ease-linear has-data-checked:px-2!"
                         orientation="horizontal"
                       >
-                        <Checkbox
-                          class="-ml-6 -translate-x-1 rounded-full transition-all duration-100 ease-linear data-[state=checked]:ml-0 data-[state=checked]:translate-x-0"
-                          defaultChecked={option.value === "social-media"}
-                          id={option.value}
-                          value={option.value}
-                        />
+                        <div class="-ml-6 -translate-x-1 transition-all duration-100 ease-linear has-data-checked:ml-0 has-data-checked:translate-x-0">
+                          <Checkbox
+                            class="rounded-full"
+                            defaultChecked={option.value === "social-media"}
+                            id={option.value}
+                            value={option.value}
+                          />
+                        </div>
                         <FieldTitle>{option.label}</FieldTitle>
                       </Field>
                     </FieldLabel>

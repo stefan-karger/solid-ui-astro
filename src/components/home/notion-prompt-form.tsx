@@ -76,20 +76,20 @@ const mentionable: MentionableItem[] = [
   { type: "page", title: "Analytics Report", image: "📈" },
   {
     type: "user",
-    title: "shadcn",
-    image: "https://github.com/shadcn.png",
+    title: "stefan-karger",
+    image: "https://github.com/stefan-karger.png",
     workspace: "Workspace"
   },
   {
     type: "user",
-    title: "maxleiter",
-    image: "https://github.com/maxleiter.png",
+    title: "carere",
+    image: "https://github.com/carere.png",
     workspace: "Workspace"
   },
   {
     type: "user",
-    title: "evilrabbit",
-    image: "https://github.com/evilrabbit.png",
+    title: "ryansolid",
+    image: "https://github.com/ryansolid.png",
     workspace: "Workspace"
   }
 ]
@@ -119,6 +119,7 @@ export default function NotionPromptForm() {
   const [scopeMenuOpen, setScopeMenuOpen] = createSignal(false)
   const [selectedModel, setSelectedModel] = createSignal(models[0])
   const [searchQuery, setSearchQuery] = createSignal("")
+  const [scopeSearchQuery, setScopeSearchQuery] = createSignal("")
   const [webSearchEnabled, setWebSearchEnabled] = createSignal(true)
   const [appsEnabled, setAppsEnabled] = createSignal(true)
 
@@ -156,6 +157,15 @@ export default function NotionPromptForm() {
 
   const hasMentions = createMemo(() => mentions().length > 0)
 
+  const filteredScopeUsers = createMemo<MentionOption[]>(() => {
+    const trimmedQuery = scopeSearchQuery().trim().toLowerCase()
+
+    return mentionable
+      .filter((item) => item.type === "user")
+      .filter((item) => !trimmedQuery || item.title.toLowerCase().includes(trimmedQuery))
+      .map((item) => ({ ...item, label: item.title, value: item.title }))
+  })
+
   const addMention = (title: string | null) => {
     if (!title) {
       return
@@ -181,7 +191,10 @@ export default function NotionPromptForm() {
           <InputGroupAddon align="block-start" class="pt-3">
             <Popover onOpenChange={setMentionPopoverOpen} open={mentionPopoverOpen()}>
               <Tooltip>
-                <TooltipTrigger as={PopoverTrigger}>
+                <TooltipTrigger
+                  as={PopoverTrigger}
+                  onFocusCapture={(event) => event.stopPropagation()}
+                >
                   <InputGroupButton
                     class="transition-transform"
                     size={hasMentions() ? "icon-sm" : "sm"}
@@ -349,26 +362,35 @@ export default function NotionPromptForm() {
                   <DropdownMenuSub>
                     <DropdownMenuSubTrigger>
                       <Avatar class="size-4">
-                        <AvatarImage src="https://github.com/shadcn.png" />
-                        <AvatarFallback>CN</AvatarFallback>
+                        <AvatarImage src="https://github.com/stefan-karger.png" />
+                        <AvatarFallback>SK</AvatarFallback>
                       </Avatar>
-                      shadcn
+                      stefan-karger
                     </DropdownMenuSubTrigger>
                     <DropdownMenuSubContent class="w-72 p-0 [--radius:1rem]">
-                      <div class="max-h-72 overflow-y-auto p-1">
-                        <For each={mentionable.filter((item) => item.type === "user")}>
-                          {(user) => (
-                            <DropdownMenuItem>
-                              <Avatar class="size-4">
-                                <AvatarImage src={user.image} />
-                                <AvatarFallback>{user.title[0]}</AvatarFallback>
-                              </Avatar>
-                              {user.title}
-                              <span class="text-muted-foreground">- {user.workspace}</span>
-                            </DropdownMenuItem>
-                          )}
-                        </For>
-                      </div>
+                      <Command<MentionOption>
+                        onInputChange={setScopeSearchQuery}
+                        optionLabel="label"
+                        optionTextValue="label"
+                        optionValue="value"
+                        options={filteredScopeUsers()}
+                        itemComponent={(props) => (
+                          <CommandItem class="rounded-lg" item={props.item}>
+                            <Avatar class="size-4">
+                              <AvatarImage src={props.item.rawValue.image} />
+                              <AvatarFallback>{props.item.rawValue.title[0]}</AvatarFallback>
+                            </Avatar>
+                            {props.item.rawValue.title}
+                            <span class="text-muted-foreground">
+                              - {props.item.rawValue.workspace}
+                            </span>
+                          </CommandItem>
+                        )}
+                      >
+                        <CommandInput placeholder="Find or use knowledge in..." />
+                        <CommandList />
+                        <CommandEmpty>No knowledge found</CommandEmpty>
+                      </Command>
                     </DropdownMenuSubContent>
                   </DropdownMenuSub>
                   <DropdownMenuItem>

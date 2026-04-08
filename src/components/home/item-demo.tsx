@@ -24,8 +24,9 @@ export default function ItemDemo() {
           <Button size="sm">Enable</Button>
         </ItemActions>
       </Item>
+
       <Item as="a" href="#" size="sm" variant="outline">
-        <ItemMedia>
+        <ItemMedia variant="icon">
           <BadgeCheckIcon class="size-5" />
         </ItemMedia>
         <ItemContent>

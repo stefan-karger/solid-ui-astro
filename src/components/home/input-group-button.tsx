@@ -10,7 +10,7 @@ import {
 import { Label } from "~/registry/ui/label"
 import { Popover, PopoverContent, PopoverTrigger } from "~/registry/ui/popover"
 
-export default function InputGroupButtonTile() {
+export default function InputGroupButtonDemo() {
   const [isFavorite, setIsFavorite] = createSignal(false)
 
   return (
@@ -20,13 +20,13 @@ export default function InputGroupButtonTile() {
       </Label>
       <InputGroup class="[--radius:9999px]">
         <InputGroupInput class="pl-0.5!" id="input-secure-19" />
-        <Popover>
+        <Popover placement="bottom-start">
           <PopoverTrigger as={InputGroupAddon}>
             <InputGroupButton aria-label="Info" size="icon-xs" variant="secondary">
               <IconInfoCircle class="size-4" />
             </InputGroupButton>
           </PopoverTrigger>
-          <PopoverContent align="start" class="flex flex-col gap-1 rounded-xl text-sm">
+          <PopoverContent class="flex flex-col gap-1 rounded-xl text-sm">
             <p class="font-medium">Your connection is not secure.</p>
             <p>You should not enter any sensitive information on this site.</p>
           </PopoverContent>
@@ -34,15 +34,15 @@ export default function InputGroupButtonTile() {
         <InputGroupAddon class="pl-1! text-muted-foreground">https://</InputGroupAddon>
         <InputGroupAddon align="inline-end">
           <InputGroupButton
+            onClick={() => {
+              setIsFavorite((value) => !value)
+            }}
             aria-label="Favorite"
-            onClick={() => setIsFavorite((value) => !value)}
             size="icon-xs"
           >
             <IconStar
-              class="size-4"
-              style={
-                isFavorite() ? { fill: "currentColor", color: "var(--color-primary)" } : undefined
-              }
+              class="size-4 data-[favorite=true]:fill-primary data-[favorite=true]:stroke-primary"
+              data-favorite={isFavorite()}
             />
           </InputGroupButton>
         </InputGroupAddon>
