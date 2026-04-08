@@ -22,7 +22,7 @@ export default function DatePickerDemo() {
         </Show>
         <ChevronDownIcon class="size-4" />
       </PopoverTrigger>
-      <PopoverContent class="w-auto p-0">
+      <PopoverContent onOpenAutoFocus={(event) => event.preventDefault()} class="w-auto p-0">
         <Calendar
           mode="single"
           value={date()}

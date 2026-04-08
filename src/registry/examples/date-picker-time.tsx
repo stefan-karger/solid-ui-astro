@@ -26,7 +26,10 @@ export default function DatePickerTime() {
             {date() ? format(date()!, "PPP") : "Select date"}
             <ChevronDownIcon class="size-4" />
           </PopoverTrigger>
-          <PopoverContent class="w-auto overflow-hidden p-0">
+          <PopoverContent
+            onOpenAutoFocus={(event) => event.preventDefault()}
+            class="w-auto overflow-hidden p-0"
+          >
             <Calendar
               mode="single"
               value={date()}

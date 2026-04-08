@@ -21,7 +21,10 @@ export default function DatePickerDob() {
         >
           {date() ? date()!.toLocaleDateString() : "Select date"}
         </PopoverTrigger>
-        <PopoverContent class="w-auto overflow-hidden p-0">
+        <PopoverContent
+          onOpenAutoFocus={(event) => event.preventDefault()}
+          class="w-auto overflow-hidden p-0"
+        >
           <Calendar
             mode="single"
             value={date()}

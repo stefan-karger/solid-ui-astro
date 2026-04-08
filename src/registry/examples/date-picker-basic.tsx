@@ -23,7 +23,7 @@ export default function DatePickerBasic() {
             {(value) => format(value, "PPP")}
           </Show>
         </PopoverTrigger>
-        <PopoverContent class="w-auto p-0">
+        <PopoverContent onOpenAutoFocus={(event) => event.preventDefault()} class="w-auto p-0">
           <Calendar
             mode="single"
             value={date()}

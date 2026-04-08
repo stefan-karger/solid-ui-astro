@@ -41,7 +41,7 @@ export default function DatePickerRange() {
             )}
           </Show>
         </PopoverTrigger>
-        <PopoverContent class="w-auto p-0">
+        <PopoverContent onOpenAutoFocus={(event) => event.preventDefault()} class="w-auto p-0">
           <Calendar
             mode="range"
             defaultMonth={date().from ?? undefined}

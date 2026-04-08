@@ -58,7 +58,10 @@ export default function DatePickerNaturalLanguage() {
               <CalendarIcon class="size-4" />
               <span class="sr-only">Select date</span>
             </PopoverTrigger>
-            <PopoverContent class="w-auto overflow-hidden p-0">
+            <PopoverContent
+              onOpenAutoFocus={(event) => event.preventDefault()}
+              class="w-auto overflow-hidden p-0"
+            >
               <Calendar
                 mode="single"
                 value={date()}
