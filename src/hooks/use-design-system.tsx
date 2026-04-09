@@ -36,6 +36,7 @@ import { iconLibraries, type IconLibraryName } from "~/registry/icon-libraries"
 export const LIGHT_THEME = "light"
 export const DARK_THEME = "dark"
 export const THEME_DARK_CLASS = "dark"
+export const DOCS_COLOR_MODE_CHANGE_EVENT = "docs-color-mode-change"
 export type ThemeMode = typeof LIGHT_THEME | typeof DARK_THEME
 
 export const STORAGE_KEYS = {
@@ -243,6 +244,16 @@ function createDesignSystemController(options: ControllerOptions = {}): DesignSy
       document.documentElement.classList.toggle(THEME_DARK_CLASS, value === DARK_THEME)
       persistStorage(STORAGE_KEYS.theme, value)
     }
+  }
+
+  if (scope === "document" && canUseDom()) {
+    window.addEventListener(DOCS_COLOR_MODE_CHANGE_EVENT, (event) => {
+      const nextTheme = (event as CustomEvent<ThemeMode>).detail
+
+      if (nextTheme === LIGHT_THEME || nextTheme === DARK_THEME) {
+        rawSetTheme(nextTheme)
+      }
+    })
   }
 
   const setState = (value: Partial<DesignSystemWritableState>) => {

@@ -2,11 +2,15 @@ import { ColorModeProvider, useColorMode, type ColorModeStorageManager } from "@
 import { createEffect, onCleanup, onMount, type ParentProps } from "solid-js"
 import { isServer } from "solid-js/web"
 
-import { DARK_THEME, LIGHT_THEME, STORAGE_KEYS, THEME_DARK_CLASS } from "~/hooks/use-design-system"
+import {
+  DARK_THEME,
+  DOCS_COLOR_MODE_CHANGE_EVENT,
+  LIGHT_THEME,
+  STORAGE_KEYS,
+  THEME_DARK_CLASS
+} from "~/hooks/use-design-system"
 
 export type DocsColorMode = typeof LIGHT_THEME | typeof DARK_THEME
-
-const DOCS_COLOR_MODE_CHANGE_EVENT = "docs-color-mode-change"
 
 function isDocsColorMode(value: string | null | undefined): value is DocsColorMode {
   return value === LIGHT_THEME || value === DARK_THEME

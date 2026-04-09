@@ -1,4 +1,13 @@
-import { createEffect, createMemo, createSignal, For, onCleanup, onMount, Show } from "solid-js"
+import {
+  createEffect,
+  createMemo,
+  createSignal,
+  For,
+  onCleanup,
+  onMount,
+  Show,
+  type JSX
+} from "solid-js"
 
 import { ComponentPreviewRenderer } from "~/components/component-preview-renderer"
 import { copyToClipboardWithMeta } from "~/components/copy-button"
@@ -26,17 +35,11 @@ import {
 import { parseCreateSearchParams, serializeCreateSearchParams } from "~/lib/create/url-state"
 import { cn } from "~/lib/utils"
 import { Index } from "~/registry/__index__"
+import { useIsMobile } from "~/registry/hooks/use-mobile"
 import { STYLES } from "~/registry/styles"
 import { Alert, AlertDescription, AlertTitle } from "~/registry/ui/alert"
 import { Button } from "~/registry/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle
-} from "~/registry/ui/card"
+import { Card, CardContent, CardFooter } from "~/registry/ui/card"
 import {
   Dialog,
   DialogContent,
@@ -45,10 +48,19 @@ import {
   DialogHeader,
   DialogTitle
 } from "~/registry/ui/dialog"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from "~/registry/ui/dropdown-menu"
+import { FieldGroup, FieldSeparator } from "~/registry/ui/field"
 import { Input } from "~/registry/ui/input"
-import { NativeSelect, NativeSelectOption } from "~/registry/ui/native-select"
 
-const WELCOME_DIALOG_KEY = "solidui:create:welcome-dialog"
 const LEGACY_OPTION_LABELS = {
   gray: "Gray (Legacy)",
   hugeicons: "Hugeicons (Unsupported)",
@@ -80,7 +92,8 @@ const PRESET_PREVIEW_ITEMS = [
   { label: "02", value: "preview" }
 ] as const
 
-const PRESET_PREVIEW_ITEM_VALUES = new Set(PRESET_PREVIEW_ITEMS.map((item) => item.value))
+const PRESET_PREVIEW_ITEM_VALUES = new Set<string>(PRESET_PREVIEW_ITEMS.map((item) => item.value))
+const BASE_COLOR_NAME_SET = new Set<string>(BASE_COLORS.map((baseColor) => baseColor.name))
 
 function formatItemTitle(value: string) {
   return value
@@ -117,20 +130,121 @@ function shouldIgnoreKeydownTarget(target: EventTarget | null) {
   )
 }
 
+type PickerOption = {
+  value: string
+  label: string
+  indicator?: JSX.Element
+  style?: JSX.CSSProperties
+}
+
+type PickerGroupDefinition = {
+  label?: string
+  options: PickerOption[]
+}
+
+function capitalizeLabel(value: string) {
+  return value.charAt(0).toUpperCase() + value.slice(1)
+}
+
+function getOptionLabel(
+  options: readonly { value: string; label: string }[],
+  value: string,
+  fallback?: string
+) {
+  return (
+    options.find((option) => option.value === value)?.label ?? fallback ?? formatItemTitle(value)
+  )
+}
+
+function groupFontOptions(options: readonly PickerOption[]) {
+  const groups = new Map<string, PickerOption[]>()
+
+  for (const option of options) {
+    const type =
+      option.value === "inherit"
+        ? "inherit"
+        : FONTS.find((font) => font.value === option.value)?.type
+
+    if (!type || type === "inherit") {
+      continue
+    }
+
+    const existing = groups.get(type)
+    if (existing) {
+      existing.push(option)
+      continue
+    }
+
+    groups.set(type, [option])
+  }
+
+  return Array.from(groups.entries()).map(([type, items]) => ({
+    label: capitalizeLabel(type),
+    options: items
+  }))
+}
+
+function createThemeGroups(options: readonly PickerOption[]) {
+  const baseThemes = options.filter((option) => BASE_COLOR_NAME_SET.has(option.value))
+  const accentThemes = options.filter((option) => !BASE_COLOR_NAME_SET.has(option.value))
+
+  return [{ options: baseThemes }, { options: accentThemes }].filter(
+    (group) => group.options.length > 0
+  )
+}
+
+function getBaseColorSwatch(baseColor: { cssVars: { dark: Record<string, string> } } | undefined) {
+  return baseColor?.cssVars.dark["muted-foreground"]
+}
+
+function getThemeSwatch(
+  theme: { name: string; cssVars: { dark: Record<string, string> } } | undefined
+) {
+  if (!theme) {
+    return undefined
+  }
+
+  return theme.cssVars.dark[BASE_COLOR_NAME_SET.has(theme.name) ? "muted-foreground" : "primary"]
+}
+
+function LockGlyph(props: { locked: boolean }) {
+  return (
+    <svg
+      aria-hidden="true"
+      class="size-4"
+      fill="none"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+    >
+      <rect x="5" y="10" width="14" height="10" rx="2" />
+      <Show when={props.locked} fallback={<path d="M9 10V8a4 4 0 0 1 6.8-2.8M16 10V8" />}>
+        <path d="M9 10V8a3 3 0 1 1 6 0v2" />
+      </Show>
+    </svg>
+  )
+}
+
 function LockButton(props: {
   field: LockableField
   isLocked: (field: LockableField) => boolean
   onToggle: (field: LockableField) => void
 }) {
+  const locked = () => props.isLocked(props.field)
+
   return (
-    <Button
-      variant="ghost"
-      size="xs"
-      class="h-auto px-2 py-1 text-xs"
+    <button
+      type="button"
+      title={locked() ? "Unlock" : "Lock"}
+      aria-label={locked() ? "Unlock" : "Lock"}
+      data-locked={locked()}
+      class="absolute top-1/2 right-8 z-10 flex size-4 -translate-y-1/2 cursor-pointer items-center justify-center rounded text-foreground opacity-0 ring-foreground/60 transition-opacity outline-none group-focus-within/picker:opacity-100 group-hover/picker:opacity-100 focus:opacity-100 focus-visible:ring-1 data-[locked=true]:opacity-100 pointer-coarse:hidden"
       onClick={() => props.onToggle(props.field)}
     >
-      {props.isLocked(props.field) ? "Unlock" : "Lock"}
-    </Button>
+      <LockGlyph locked={locked()} />
+    </button>
   )
 }
 
@@ -213,7 +327,7 @@ function CreatePreviewSurface() {
   })
 
   return (
-    <div class="space-y-4">
+    <div class="flex min-h-[240px] flex-1 flex-col gap-4 md:min-h-0">
       <Show when={design.hasUnsupportedIconLibrary()}>
         <Alert>
           <AlertTitle>Unsupported Icon Library</AlertTitle>
@@ -233,14 +347,15 @@ function CreatePreviewSurface() {
       </Show>
       <div
         class={cn(
-          "relative overflow-hidden rounded-2xl border bg-surface p-2 sm:p-4",
+          "relative flex min-h-0 flex-1 flex-col justify-center overflow-hidden rounded-2xl ring ring-foreground/10 md:ring-muted dark:ring-foreground/10",
           documentDesign.theme() === DARK_THEME && "dark"
         )}
       >
+        <div class="absolute inset-0 bg-muted dark:bg-muted/30" />
         <div
           ref={previewRef}
           class={cn(
-            "min-h-[420px] rounded-xl border bg-background shadow-sm",
+            "relative z-10 min-h-[420px] flex-1 rounded-2xl border bg-background shadow-sm",
             isPresetPreview() ? "overflow-auto p-0" : "p-6 sm:p-10",
             `style-${design.style()}`,
             documentDesign.theme() === DARK_THEME && "dark"
@@ -283,13 +398,13 @@ function CreatePreviewSurface() {
 function CreatePageContent() {
   const design = useDesignSystem()
   const documentDesign = useDocumentDesignSystem()
+  const isMobile = useIsMobile()
   const [locks, setLocks] = createSignal<Set<LockableField>>(new Set())
   const [historyEntries, setHistoryEntries] = createSignal<string[]>([])
   const [historyIndex, setHistoryIndex] = createSignal(-1)
   const [urlSearch, setUrlSearch] = createSignal("")
   const [itemSearch, setItemSearch] = createSignal("")
   const [showResetDialog, setShowResetDialog] = createSignal(false)
-  const [showWelcomeDialog, setShowWelcomeDialog] = createSignal(false)
   const [showExplorer, setShowExplorer] = createSignal(false)
 
   const filteredItems = createMemo(() => {
@@ -321,12 +436,6 @@ function CreatePageContent() {
     })
   )
 
-  const shareUrl = createMemo(() => `${window.location.origin}/create?${shareSearch()}`)
-
-  const canGoBack = createMemo(() => historyIndex() > 0)
-  const canGoForward = createMemo(
-    () => historyIndex() >= 0 && historyIndex() < historyEntries().length - 1
-  )
   const baseColorOptions = createMemo(() =>
     withCurrentOption(
       BASE_COLORS.map((color) => ({ value: color.name, label: color.title })),
@@ -364,6 +473,94 @@ function CreatePageContent() {
       LEGACY_OPTION_LABELS[design.iconLibrary() as keyof typeof LEGACY_OPTION_LABELS]
     )
   )
+  const styleOptions = createMemo<PickerOption[]>(() =>
+    STYLES.map((style) => ({
+      value: style.name,
+      label: style.title,
+      indicator: <div class="*:[svg]:size-4 *:[svg]:text-foreground!">{style.icon}</div>
+    }))
+  )
+  const currentStyle = createMemo(() => STYLES.find((style) => style.name === design.style()))
+  const currentBaseColor = createMemo(() =>
+    BASE_COLORS.find((baseColor) => baseColor.name === design.baseColor())
+  )
+  const currentTheme = createMemo(() =>
+    getThemesForBaseColor(design.baseColor()).find((theme) => theme.name === design.themeName())
+  )
+  const currentChartColor = createMemo(() =>
+    getThemesForBaseColor(design.baseColor()).find((theme) => theme.name === design.chartColor())
+  )
+  const currentFont = createMemo(() => FONTS.find((font) => font.value === design.font()))
+  const currentHeadingFont = createMemo(() => {
+    const fontHeading = design.fontHeading()
+
+    if (fontHeading === "inherit") {
+      return currentFont()
+    }
+
+    return FONTS.find((font) => font.value === fontHeading)
+  })
+  const styleGroups = createMemo<PickerGroupDefinition[]>(() => [{ options: styleOptions() }])
+  const baseColorGroups = createMemo<PickerGroupDefinition[]>(() => [
+    {
+      options: baseColorOptions().map((option) => ({ value: option.value, label: option.label }))
+    }
+  ])
+  const themeGroups = createMemo<PickerGroupDefinition[]>(() =>
+    createThemeGroups(
+      themeOptions().map((option) => ({ value: option.value, label: option.label }))
+    )
+  )
+  const chartColorGroups = createMemo<PickerGroupDefinition[]>(() =>
+    createThemeGroups(
+      chartColorOptions().map((option) => ({ value: option.value, label: option.label }))
+    )
+  )
+  const fontGroups = createMemo<PickerGroupDefinition[]>(() =>
+    groupFontOptions(
+      FONTS.map((font) => ({
+        value: font.value,
+        label: font.title,
+        style: { "font-family": font.family }
+      }))
+    )
+  )
+  const headingFontGroups = createMemo<PickerGroupDefinition[]>(() => {
+    const inheritLabel = currentFont()?.title ?? "Body Font"
+
+    return [
+      {
+        options: [
+          {
+            value: "inherit",
+            label: inheritLabel,
+            style: currentFont()?.family ? { "font-family": currentFont()?.family } : undefined
+          }
+        ]
+      },
+      ...groupFontOptions(
+        FONTS.map((font) => ({
+          value: font.value,
+          label: font.title,
+          style: { "font-family": font.family }
+        }))
+      )
+    ]
+  })
+  const radiusGroups = createMemo<PickerGroupDefinition[]>(() => [
+    { options: RADII.map((radius) => ({ value: radius.name, label: radius.label })) }
+  ])
+  const menuAccentGroups = createMemo<PickerGroupDefinition[]>(() => [
+    { options: MENU_ACCENTS.map((accent) => ({ value: accent.value, label: accent.label })) }
+  ])
+  const menuColorGroups = createMemo<PickerGroupDefinition[]>(() => [
+    { options: MENU_COLORS.map((color) => ({ value: color.value, label: color.label })) }
+  ])
+  const iconLibraryGroups = createMemo<PickerGroupDefinition[]>(() => [
+    {
+      options: iconLibraryOptions().map((option) => ({ value: option.value, label: option.label }))
+    }
+  ])
 
   const isLocked = (field: LockableField) => locks().has(field)
 
@@ -382,14 +579,14 @@ function CreatePageContent() {
   }
 
   const trackHistoryEntry = (value: string) => {
+    const existingIndex = historyEntries().indexOf(value)
+
+    if (existingIndex >= 0) {
+      setHistoryIndex(existingIndex)
+      return
+    }
+
     setHistoryEntries((current) => {
-      const existingIndex = current.indexOf(value)
-
-      if (existingIndex >= 0) {
-        setHistoryIndex(existingIndex)
-        return current
-      }
-
       const next = [...current, value]
       setHistoryIndex(next.length - 1)
       return next
@@ -527,15 +724,6 @@ function CreatePageContent() {
     syncFromLocation("replace")
     design.setTheme(documentDesign.theme())
 
-    try {
-      const hasDismissedWelcome = window.localStorage.getItem(WELCOME_DIALOG_KEY)
-      if (!hasDismissedWelcome) {
-        setShowWelcomeDialog(true)
-      }
-    } catch {
-      // ignore storage access issues
-    }
-
     const onPopState = () => {
       const parsed = parseCreateSearchParams(new URLSearchParams(window.location.search))
       design.setState({
@@ -645,237 +833,289 @@ function CreatePageContent() {
 
   return (
     <>
-      <div class="mx-auto flex w-full max-w-[1500px] flex-col gap-6 px-4 py-6 lg:px-8 xl:flex-row">
-        <section class="min-w-0 flex-1 xl:sticky xl:top-20 xl:self-start">
-          <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <h1 class="font-heading text-2xl font-semibold tracking-tight sm:text-3xl">
-                Build your own SolidUI
-              </h1>
-              <p class="mt-1 text-sm text-muted-foreground sm:text-base">
-                Customize styles, themes, fonts, radius, menu treatment, and icons with the same
-                preset hash format as shadcn create.
-              </p>
-            </div>
-            <div class="flex flex-wrap items-center gap-2">
-              <Button
-                variant="outline"
-                onClick={() => window.history.back()}
-                disabled={!canGoBack()}
-              >
-                Undo
-              </Button>
-              <Button
-                variant="outline"
-                onClick={() => window.history.forward()}
-                disabled={!canGoForward()}
-              >
-                Redo
-              </Button>
-              <Button variant="outline" onClick={documentDesign.toggleTheme}>
-                {documentDesign.theme() === DARK_THEME ? "Light" : "Dark"}
-              </Button>
-              <Button variant="outline" onClick={randomize}>
-                Shuffle
-              </Button>
-            </div>
-          </div>
+      <div class="relative z-10 flex min-h-0 flex-1 flex-col overflow-hidden section-soft [--customizer-width:--spacing(48)] [--gap:--spacing(4)] md:[--gap:--spacing(6)] 2xl:[--customizer-width:--spacing(56)]">
+        <div
+          data-slot="designer"
+          class="flex min-h-0 flex-1 flex-col gap-(--gap) p-(--gap) pt-[calc(var(--gap)*0.25)] md:flex-row-reverse"
+        >
           <CreatePreviewSurface />
-        </section>
 
-        <aside class="w-full xl:max-w-[420px]">
-          <Card>
-            <CardHeader>
-              <CardTitle>Customizer</CardTitle>
-              <CardDescription>
-                Every change updates the preview without iframes and keeps the preset shareable.
-              </CardDescription>
-            </CardHeader>
-            <CardContent class="space-y-5">
-              <ControlField
-                field="item"
-                title="Preview Item"
-                description="Pick the component example to preview."
-              >
-                <div class="flex gap-2">
-                  <Input value={formatItemTitle(design.item())} readOnly class="flex-1" />
-                  <Button variant="outline" onClick={() => setShowExplorer(true)}>
-                    Browse
-                  </Button>
-                </div>
-              </ControlField>
-
-              <SelectField
-                title="Style"
-                description="Controls the full component styling language."
-                field="style"
-                value={design.style()}
-                onChange={(value) =>
-                  design.setStyle(value as typeof design.style extends () => infer T ? T : never)
-                }
-                isLocked={isLocked}
-                onToggleLock={toggleLock}
-                options={STYLES.map((style) => ({ value: style.name, label: style.title }))}
-              />
-
-              <SelectField
-                title="Base Color"
-                description="Sets the neutral palette used for surfaces and borders."
-                field="baseColor"
-                value={design.baseColor()}
-                onChange={(value) =>
-                  design.setBaseColor(
-                    value as typeof design.baseColor extends () => infer T ? T : never
-                  )
-                }
-                isLocked={isLocked}
-                onToggleLock={toggleLock}
-                options={baseColorOptions()}
-              />
-
-              <SelectField
-                title="Theme"
-                description="Controls the accent color applied on top of the base palette."
-                field="themeName"
-                value={design.themeName()}
-                onChange={(value) =>
-                  design.setThemeName(
-                    value as typeof design.themeName extends () => infer T ? T : never
-                  )
-                }
-                isLocked={isLocked}
-                onToggleLock={toggleLock}
-                options={themeOptions()}
-              />
-
-              <SelectField
-                title="Chart Color"
-                description="Overrides the chart palette independently from the main accent color."
-                field="chartColor"
-                value={design.chartColor()}
-                onChange={(value) =>
-                  design.setChartColor(
-                    value as typeof design.chartColor extends () => infer T ? T : never
-                  )
-                }
-                isLocked={isLocked}
-                onToggleLock={toggleLock}
-                options={chartColorOptions()}
-              />
-
-              <SelectField
-                title="Font"
-                description="Applied to the preview body text through `--font-sans`."
-                field="font"
-                value={design.font()}
-                onChange={(value) =>
-                  design.setFont(value as typeof design.font extends () => infer T ? T : never)
-                }
-                isLocked={isLocked}
-                onToggleLock={toggleLock}
-                options={FONTS.map((font) => ({ value: font.value, label: font.title }))}
-              />
-
-              <SelectField
-                title="Heading Font"
-                description="Controls `--font-heading` and can inherit from the body font."
-                field="fontHeading"
-                value={design.fontHeading()}
-                onChange={(value) =>
-                  design.setFontHeading(
-                    value as typeof design.fontHeading extends () => infer T ? T : never
-                  )
-                }
-                isLocked={isLocked}
-                onToggleLock={toggleLock}
-                options={[
-                  { value: "inherit", label: "Body Font" },
-                  ...FONTS.map((font) => ({ value: font.value, label: font.title }))
-                ]}
-              />
-
-              <SelectField
-                title="Radius"
-                description="Changes the shared radius token. Lyra forces square corners."
-                field="radius"
-                value={design.effectiveRadius()}
-                onChange={(value) =>
-                  design.setRadius(value as typeof design.radius extends () => infer T ? T : never)
-                }
-                isLocked={isLocked}
-                onToggleLock={toggleLock}
-                disabled={design.style() === "lyra"}
-                options={RADII.map((radius) => ({ value: radius.name, label: radius.label }))}
-              />
-
-              <SelectField
-                title="Menu Accent"
-                description="Adjusts how menu surfaces inherit the main accent color."
-                field="menuAccent"
-                value={design.menuAccent()}
-                onChange={(value) =>
-                  design.setMenuAccent(
-                    value as typeof design.menuAccent extends () => infer T ? T : never
-                  )
-                }
-                isLocked={isLocked}
-                onToggleLock={toggleLock}
-                disabled={isTranslucentMenuColor(design.menuColor())}
-                options={MENU_ACCENTS.map((accent) => ({
-                  value: accent.value,
-                  label: accent.label
-                }))}
-              />
-
-              <SelectField
-                title="Menu Color"
-                description="Adds inverted or translucent menu treatments for supported examples."
-                field="menuColor"
-                value={design.menuColor()}
-                onChange={(value) =>
-                  design.setMenuColor(
-                    value as typeof design.menuColor extends () => infer T ? T : never
-                  )
-                }
-                isLocked={isLocked}
-                onToggleLock={toggleLock}
-                options={MENU_COLORS.map((color) => ({ value: color.value, label: color.label }))}
-              />
-
-              <SelectField
-                title="Icon Library"
-                description="Only Solid-ready icon libraries are selectable locally."
-                field="iconLibrary"
-                value={design.iconLibrary()}
-                onChange={(value) =>
-                  design.setIconLibrary(
-                    value as typeof design.iconLibrary extends () => infer T ? T : never
-                  )
-                }
-                isLocked={isLocked}
-                onToggleLock={toggleLock}
-                options={iconLibraryOptions()}
-              />
-            </CardContent>
-            <CardFooter class="flex flex-wrap gap-2">
-              <Button
-                variant="outline"
-                onClick={() => copyToClipboardWithMeta(`--preset ${design.preset()}`)}
-              >
-                {`--preset ${design.preset()}`}
-              </Button>
-              <Button variant="outline" onClick={() => copyToClipboardWithMeta(shareUrl())}>
-                Share
-              </Button>
-              <Button variant="outline" onClick={() => setShowResetDialog(true)}>
-                Reset
-              </Button>
-              <Button disabled title="Create Project is still a placeholder in v1.">
-                Create Project
-              </Button>
-            </CardFooter>
-          </Card>
-        </aside>
+          <aside class="w-full md:w-(--customizer-width)">
+            <Card class="dark isolate z-10 max-h-full min-h-0 w-full self-start rounded-2xl border-0 bg-card/90 shadow-xl ring-1 ring-white/10 backdrop-blur-xl">
+              <CardContent class="no-scrollbar min-h-0 flex-1 overflow-x-auto overflow-y-hidden px-3 py-3 md:overflow-y-auto md:px-4 md:py-4">
+                <FieldGroup class="flex-row gap-2.5 py-px **:data-[slot=field-separator]:-mx-4 **:data-[slot=field-separator]:w-auto md:flex-col md:gap-3.25">
+                  <PickerField
+                    label="Style"
+                    field="style"
+                    value={design.style()}
+                    valueLabel={currentStyle()?.title ?? formatItemTitle(design.style())}
+                    groups={styleGroups()}
+                    isMobile={isMobile()}
+                    indicator={
+                      <div class="*:[svg]:size-4 *:[svg]:text-foreground!">
+                        {currentStyle()?.icon}
+                      </div>
+                    }
+                    isLocked={isLocked}
+                    onToggleLock={toggleLock}
+                    onChange={(value) =>
+                      design.setStyle(
+                        value as typeof design.style extends () => infer T ? T : never
+                      )
+                    }
+                  />
+                  <FieldSeparator class="hidden md:block" />
+                  <PickerField
+                    label="Base Color"
+                    field="baseColor"
+                    value={design.baseColor()}
+                    valueLabel={getOptionLabel(
+                      baseColorGroups()[0]?.options ?? [],
+                      design.baseColor()
+                    )}
+                    groups={baseColorGroups()}
+                    isMobile={isMobile()}
+                    indicator={
+                      <Show when={currentBaseColor()}>
+                        {(baseColor) => (
+                          <div
+                            class="size-4 rounded-full"
+                            style={{ "background-color": getBaseColorSwatch(baseColor()) }}
+                          />
+                        )}
+                      </Show>
+                    }
+                    isLocked={isLocked}
+                    onToggleLock={toggleLock}
+                    onChange={(value) =>
+                      design.setBaseColor(
+                        value as typeof design.baseColor extends () => infer T ? T : never
+                      )
+                    }
+                  />
+                  <PickerField
+                    label="Theme"
+                    field="themeName"
+                    value={design.themeName()}
+                    valueLabel={getOptionLabel(
+                      themeOptions(),
+                      design.themeName(),
+                      LEGACY_OPTION_LABELS.gray
+                    )}
+                    groups={themeGroups()}
+                    isMobile={isMobile()}
+                    indicator={
+                      <Show when={currentTheme()}>
+                        {(theme) => (
+                          <div
+                            class="size-4 rounded-full"
+                            style={{ "background-color": getThemeSwatch(theme()) }}
+                          />
+                        )}
+                      </Show>
+                    }
+                    isLocked={isLocked}
+                    onToggleLock={toggleLock}
+                    onChange={(value) =>
+                      design.setThemeName(
+                        value as typeof design.themeName extends () => infer T ? T : never
+                      )
+                    }
+                  />
+                  <PickerField
+                    label="Chart Color"
+                    field="chartColor"
+                    value={design.chartColor()}
+                    valueLabel={getOptionLabel(
+                      chartColorOptions(),
+                      design.chartColor(),
+                      LEGACY_OPTION_LABELS.gray
+                    )}
+                    groups={chartColorGroups()}
+                    isMobile={isMobile()}
+                    indicator={
+                      <Show when={currentChartColor()}>
+                        {(theme) => (
+                          <div
+                            class="size-4 rounded-full"
+                            style={{ "background-color": getThemeSwatch(theme()) }}
+                          />
+                        )}
+                      </Show>
+                    }
+                    isLocked={isLocked}
+                    onToggleLock={toggleLock}
+                    onChange={(value) =>
+                      design.setChartColor(
+                        value as typeof design.chartColor extends () => infer T ? T : never
+                      )
+                    }
+                  />
+                  <FieldSeparator class="hidden md:block" />
+                  <PickerField
+                    label="Heading"
+                    field="fontHeading"
+                    value={design.fontHeading()}
+                    valueLabel={
+                      design.fontHeading() === "inherit"
+                        ? (currentFont()?.title ?? "Body Font")
+                        : (currentHeadingFont()?.title ?? "Body Font")
+                    }
+                    groups={headingFontGroups()}
+                    isMobile={isMobile()}
+                    indicator={
+                      <div
+                        class="text-base font-medium"
+                        style={{
+                          "font-family": currentHeadingFont()?.family ?? currentFont()?.family
+                        }}
+                      >
+                        Aa
+                      </div>
+                    }
+                    isLocked={isLocked}
+                    onToggleLock={toggleLock}
+                    onChange={(value) =>
+                      design.setFontHeading(
+                        value as typeof design.fontHeading extends () => infer T ? T : never
+                      )
+                    }
+                  />
+                  <PickerField
+                    label="Font"
+                    field="font"
+                    value={design.font()}
+                    valueLabel={currentFont()?.title ?? formatItemTitle(design.font())}
+                    groups={fontGroups()}
+                    isMobile={isMobile()}
+                    indicator={
+                      <div
+                        class="text-base font-medium"
+                        style={{ "font-family": currentFont()?.family }}
+                      >
+                        Aa
+                      </div>
+                    }
+                    isLocked={isLocked}
+                    onToggleLock={toggleLock}
+                    onChange={(value) =>
+                      design.setFont(value as typeof design.font extends () => infer T ? T : never)
+                    }
+                  />
+                  <FieldSeparator class="hidden md:block" />
+                  <PickerField
+                    label="Icon Library"
+                    field="iconLibrary"
+                    value={design.iconLibrary()}
+                    valueLabel={getOptionLabel(
+                      iconLibraryGroups()[0]?.options ?? [],
+                      design.iconLibrary(),
+                      LEGACY_OPTION_LABELS[
+                        design.iconLibrary() as keyof typeof LEGACY_OPTION_LABELS
+                      ]
+                    )}
+                    groups={iconLibraryGroups()}
+                    isMobile={isMobile()}
+                    isLocked={isLocked}
+                    onToggleLock={toggleLock}
+                    onChange={(value) =>
+                      design.setIconLibrary(
+                        value as typeof design.iconLibrary extends () => infer T ? T : never
+                      )
+                    }
+                  />
+                  <PickerField
+                    label="Radius"
+                    field="radius"
+                    value={design.effectiveRadius()}
+                    valueLabel={getOptionLabel(
+                      radiusGroups()[0]?.options ?? [],
+                      design.effectiveRadius()
+                    )}
+                    groups={radiusGroups()}
+                    isMobile={isMobile()}
+                    disabled={design.style() === "lyra"}
+                    isLocked={isLocked}
+                    onToggleLock={toggleLock}
+                    onChange={(value) =>
+                      design.setRadius(
+                        value as typeof design.radius extends () => infer T ? T : never
+                      )
+                    }
+                  />
+                  <FieldSeparator class="hidden md:block" />
+                  <PickerField
+                    label="Menu Color"
+                    field="menuColor"
+                    value={design.menuColor()}
+                    valueLabel={getOptionLabel(
+                      menuColorGroups()[0]?.options ?? [],
+                      design.menuColor()
+                    )}
+                    groups={menuColorGroups()}
+                    isMobile={isMobile()}
+                    isLocked={isLocked}
+                    onToggleLock={toggleLock}
+                    onChange={(value) =>
+                      design.setMenuColor(
+                        value as typeof design.menuColor extends () => infer T ? T : never
+                      )
+                    }
+                  />
+                  <PickerField
+                    label="Menu Accent"
+                    field="menuAccent"
+                    value={design.menuAccent()}
+                    valueLabel={getOptionLabel(
+                      menuAccentGroups()[0]?.options ?? [],
+                      design.menuAccent()
+                    )}
+                    groups={menuAccentGroups()}
+                    isMobile={isMobile()}
+                    disabled={isTranslucentMenuColor(design.menuColor())}
+                    isLocked={isLocked}
+                    onToggleLock={toggleLock}
+                    onChange={(value) =>
+                      design.setMenuAccent(
+                        value as typeof design.menuAccent extends () => infer T ? T : never
+                      )
+                    }
+                  />
+                </FieldGroup>
+              </CardContent>
+              <CardFooter class="grid min-w-0 grid-cols-2 gap-2 px-3 pb-3 md:grid-cols-1 md:px-4 md:pb-4">
+                <Button
+                  variant="outline"
+                  class="touch-manipulation bg-transparent! px-2! py-0! text-sm! transition-none select-none hover:bg-muted! pointer-coarse:h-10!"
+                  onClick={() => copyToClipboardWithMeta(`--preset ${design.preset()}`)}
+                >
+                  <span class="w-full truncate text-center font-medium">{`--preset ${design.preset()}`}</span>
+                </Button>
+                <Button
+                  variant="outline"
+                  class="touch-manipulation bg-transparent! px-2! py-0! text-sm! transition-none select-none hover:bg-muted! pointer-coarse:h-10!"
+                  onClick={() => setShowExplorer(true)}
+                >
+                  <span class="w-full text-center font-medium">Open</span>
+                </Button>
+                <Button
+                  variant="outline"
+                  class="touch-manipulation bg-transparent! px-2! py-0! text-sm! transition-none select-none hover:bg-muted! pointer-coarse:h-10!"
+                  onClick={randomize}
+                >
+                  <span class="w-full text-center font-medium">Shuffle</span>
+                </Button>
+                <Button
+                  variant="outline"
+                  class="touch-manipulation bg-transparent! px-2! py-0! text-sm! transition-none select-none hover:bg-muted! pointer-coarse:h-10!"
+                  onClick={() => setShowResetDialog(true)}
+                >
+                  <span class="w-full text-center font-medium">Reset</span>
+                </Button>
+              </CardFooter>
+            </Card>
+          </aside>
+        </div>
       </div>
 
       <Dialog open={showExplorer()} onOpenChange={setShowExplorer}>
@@ -927,84 +1167,79 @@ function CreatePageContent() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-
-      <Dialog
-        open={showWelcomeDialog()}
-        onOpenChange={(open) => {
-          setShowWelcomeDialog(open)
-          if (!open) {
-            try {
-              window.localStorage.setItem(WELCOME_DIALOG_KEY, "true")
-            } catch {
-              // ignore storage write failures
-            }
-          }
-        }}
-      >
-        <DialogContent class="max-w-lg gap-4">
-          <DialogHeader>
-            <DialogTitle>Build your own SolidUI</DialogTitle>
-            <DialogDescription>
-              This is the Solid port of shadcn create. It uses the same preset hash format, previews
-              components inline without iframes, and is tailored to the local Kobalte registry.
-            </DialogDescription>
-          </DialogHeader>
-          <DialogFooter>
-            <Button onClick={() => setShowWelcomeDialog(false)}>Get Started</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
     </>
   )
 }
 
-function ControlField(props: {
-  title: string
-  description: string
-  field: string
-  children: import("solid-js").JSX.Element
-}) {
-  return (
-    <div class="space-y-2">
-      <div>
-        <div class="text-sm font-medium">{props.title}</div>
-        <div class="text-xs text-muted-foreground">{props.description}</div>
-      </div>
-      {props.children}
-    </div>
-  )
-}
-
-function SelectField(props: {
-  title: string
-  description: string
+function PickerField(props: {
+  label: string
   field: LockableField
   value: string
+  valueLabel: string
   disabled?: boolean
-  options: { value: string; label: string }[]
+  indicator?: JSX.Element
+  groups: readonly PickerGroupDefinition[]
+  isMobile: boolean
   onChange: (value: string) => void
   isLocked: (field: LockableField) => boolean
   onToggleLock: (field: LockableField) => void
 }) {
   return (
-    <div class="space-y-2">
-      <div class="flex items-start justify-between gap-2">
-        <div>
-          <div class="text-sm font-medium">{props.title}</div>
-          <div class="text-xs text-muted-foreground">{props.description}</div>
-        </div>
-        <LockButton field={props.field} isLocked={props.isLocked} onToggle={props.onToggleLock} />
-      </div>
-      <NativeSelect
-        class="w-full"
-        value={props.value}
-        disabled={props.disabled}
-        onChange={(event) => props.onChange(event.currentTarget.value)}
-      >
-        <For each={props.options}>
-          {(option) => <NativeSelectOption value={option.value}>{option.label}</NativeSelectOption>}
-        </For>
-      </NativeSelect>
+    <div class="group/picker relative">
+      <DropdownMenu placement={props.isMobile ? "top-start" : "right-start"} gutter={20}>
+        <DropdownMenuTrigger
+          disabled={props.disabled}
+          class={cn(
+            "relative w-36 shrink-0 touch-manipulation rounded-xl p-3 text-left ring-1 ring-foreground/10 select-none hover:bg-muted focus-visible:ring-foreground/50 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 data-expanded:bg-muted md:w-full md:rounded-lg md:px-2.5 md:py-2",
+            props.indicator && "pr-12 md:pr-10"
+          )}
+        >
+          <div class="flex min-w-0 flex-col justify-start text-left">
+            <div class="text-xs text-muted-foreground">{props.label}</div>
+            <div class="line-clamp-1 truncate text-sm font-medium text-foreground">
+              {props.valueLabel}
+            </div>
+          </div>
+          <Show when={props.indicator}>
+            <div class="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-foreground select-none md:right-2.5">
+              {props.indicator}
+            </div>
+          </Show>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent class="dark w-[calc(min(100vw-2rem,13rem))] min-w-32 rounded-xl border-0 bg-neutral-950/85 p-1.5 text-neutral-100 shadow-2xl ring-1 ring-neutral-900/80 backdrop-blur-xl outline-none md:w-52">
+          <DropdownMenuRadioGroup value={props.value} onChange={props.onChange}>
+            <For each={props.groups}>
+              {(group, index) => (
+                <>
+                  <Show when={index() > 0}>
+                    <DropdownMenuSeparator class="-mx-1.5 my-1.5 bg-neutral-700/70" />
+                  </Show>
+                  <Show when={group.label}>
+                    <DropdownMenuLabel class="px-2 py-1.5 text-xs font-medium text-neutral-400">
+                      {group.label}
+                    </DropdownMenuLabel>
+                  </Show>
+                  <DropdownMenuGroup>
+                    <For each={group.options}>
+                      {(option) => (
+                        <DropdownMenuRadioItem
+                          class="gap-2 rounded-lg px-2 py-1.5 pr-8 text-sm font-medium text-neutral-100 outline-none focus:bg-neutral-700/80 focus:text-neutral-100 pointer-coarse:gap-3 pointer-coarse:py-2.5 pointer-coarse:text-base"
+                          value={option.value}
+                        >
+                          <span class="truncate" style={option.style}>
+                            {option.label}
+                          </span>
+                        </DropdownMenuRadioItem>
+                      )}
+                    </For>
+                  </DropdownMenuGroup>
+                </>
+              )}
+            </For>
+          </DropdownMenuRadioGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
+      <LockButton field={props.field} isLocked={props.isLocked} onToggle={props.onToggleLock} />
     </div>
   )
 }
