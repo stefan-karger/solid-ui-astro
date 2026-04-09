@@ -4023,6 +4023,34 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "preview": {
+    name: "preview",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["badge","button","calendar","card","chart","empty","input","pagination","progress","separator","table","tabs"],
+    component: lazy(() => import("~/registry/examples/preview.tsx")),
+    files: [{
+      path: "registry/examples/preview.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "preview-02": {
+    name: "preview-02",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["badge","button","calendar","card","chart","empty","input","pagination","progress","separator","table"],
+    component: lazy(() => import("~/registry/examples/preview-02.tsx")),
+    files: [{
+      path: "registry/examples/preview-02.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "radio-group-demo": {
     name: "radio-group-demo",
     description: "",

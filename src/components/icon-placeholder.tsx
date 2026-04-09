@@ -38,17 +38,17 @@ type IconPlaceholderProps = {
 
 export function IconPlaceholder(props: IconPlaceholderProps) {
   const [local, others] = splitProps(props, ["lucide", "tabler"])
-  const { iconLibrary } = useDesignSystem()
+  const { previewIconLibrary } = useDesignSystem()
 
   return (
     <Suspense fallback={<SquarePlaceholder {...others} />}>
-      <Show when={local[iconLibrary()]}>
+      <Show when={local[previewIconLibrary()]}>
         {(iconName) => (
           <Switch>
-            <Match when={iconLibrary() === "lucide"}>
+            <Match when={previewIconLibrary() === "lucide"}>
               <IconLucide name={iconName()} {...others} />
             </Match>
-            <Match when={iconLibrary() === "tabler"}>
+            <Match when={previewIconLibrary() === "tabler"}>
               <IconTabler name={iconName()} {...others} />
             </Match>
           </Switch>

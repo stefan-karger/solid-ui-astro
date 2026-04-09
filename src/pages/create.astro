@@ -1,10 +1,8 @@
 ---
-import CreateInConstruction from "~/components/create-in-construction"
+import CreatePage from "~/components/create-page"
 import RootLayout from "~/layouts/root-layout.astro"
 ---
 
-<RootLayout title="New Project">
-  <main class="mx-auto flex min-h-[70svh] w-full max-w-5xl items-center justify-center px-6 py-16">
-    <CreateInConstruction />
-  </main>
+<RootLayout title="New Project" showFooter={false}>
+  <CreatePage client:only="solid-js" />
 </RootLayout>
