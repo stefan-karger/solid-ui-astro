@@ -72,7 +72,7 @@ export default function AppearanceSettings() {
           </FieldContent>
           <ButtonGroup>
             <Input
-              class="h-7 w-14 font-mono"
+              class="h-7 w-14! font-mono"
               id="number-of-gpus-f6l"
               maxLength={3}
               onInput={handleGpuInput}

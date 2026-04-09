@@ -20,7 +20,7 @@ export default function InputGroupButtonDemo() {
       </Label>
       <InputGroup class="[--radius:9999px]">
         <InputGroupInput class="pl-0.5!" id="input-secure-19" />
-        <Popover placement="bottom-start">
+        <Popover gutter={10} placement="bottom-start">
           <PopoverTrigger as={InputGroupAddon}>
             <InputGroupButton aria-label="Info" size="icon-xs" variant="secondary">
               <IconInfoCircle class="size-4" />
