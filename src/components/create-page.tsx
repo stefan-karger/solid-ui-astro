@@ -11,6 +11,7 @@ import {
 
 import { ComponentPreviewRenderer } from "~/components/component-preview-renderer"
 import { copyToClipboardWithMeta } from "~/components/copy-button"
+import { IconPlaceholder } from "~/components/icon-placeholder"
 import {
   DARK_THEME,
   DesignSystemProvider,
@@ -133,14 +134,21 @@ function shouldIgnoreKeydownTarget(target: EventTarget | null) {
 type PickerOption = {
   value: string
   label: string
+  disabled?: boolean
   indicator?: JSX.Element
   style?: JSX.CSSProperties
 }
 
 type PickerGroupDefinition = {
   label?: string
+  onChange?: (value: string) => void
   options: PickerOption[]
+  separatorBefore?: boolean
+  value?: string
 }
+
+type MenuColorChoice = "default" | "inverted"
+type MenuSurfaceChoice = "solid" | "translucent"
 
 function capitalizeLabel(value: string) {
   return value.charAt(0).toUpperCase() + value.slice(1)
@@ -188,9 +196,53 @@ function createThemeGroups(options: readonly PickerOption[]) {
   const baseThemes = options.filter((option) => BASE_COLOR_NAME_SET.has(option.value))
   const accentThemes = options.filter((option) => !BASE_COLOR_NAME_SET.has(option.value))
 
-  return [{ options: baseThemes }, { options: accentThemes }].filter(
-    (group) => group.options.length > 0
-  )
+  const groups: PickerGroupDefinition[] = []
+
+  if (baseThemes.length > 0) {
+    groups.push({ options: baseThemes })
+  }
+
+  if (accentThemes.length > 0) {
+    groups.push({ options: accentThemes, separatorBefore: groups.length > 0 })
+  }
+
+  return groups
+}
+
+function getMenuColorChoice(menuColor: string): MenuColorChoice {
+  return menuColor === "inverted" || menuColor === "inverted-translucent" ? "inverted" : "default"
+}
+
+function getMenuSurfaceChoice(menuColor: string): MenuSurfaceChoice {
+  return menuColor === "default-translucent" || menuColor === "inverted-translucent"
+    ? "translucent"
+    : "solid"
+}
+
+function getMenuColorValue(
+  colorChoice: MenuColorChoice,
+  surfaceChoice: MenuSurfaceChoice
+): "default" | "default-translucent" | "inverted" | "inverted-translucent" {
+  if (colorChoice === "default") {
+    return surfaceChoice === "translucent" ? "default-translucent" : "default"
+  }
+
+  return surfaceChoice === "translucent" ? "inverted-translucent" : "inverted"
+}
+
+function getMenuColorDisplayLabel(menuColor: string) {
+  switch (menuColor) {
+    case "default":
+      return "Default / Solid"
+    case "default-translucent":
+      return "Default / Translucent"
+    case "inverted":
+      return "Inverted / Solid"
+    case "inverted-translucent":
+      return "Inverted / Translucent"
+    default:
+      return formatItemTitle(menuColor)
+  }
 }
 
 function getBaseColorSwatch(baseColor: { cssVars: { dark: Record<string, string> } } | undefined) {
@@ -223,6 +275,127 @@ function LockGlyph(props: { locked: boolean }) {
       <Show when={props.locked} fallback={<path d="M9 10V8a4 4 0 0 1 6.8-2.8M16 10V8" />}>
         <path d="M9 10V8a3 3 0 1 1 6 0v2" />
       </Show>
+    </svg>
+  )
+}
+
+function getIconLibraryLogo(name: string) {
+  switch (name) {
+    case "lucide":
+      return (
+        <svg
+          aria-hidden="true"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M14 12a4 4 0 0 0-8 0 8 8 0 1 0 16 0 11.97 11.97 0 0 0-4-8.944" />
+          <path d="M10 12a4 4 0 0 0 8 0 8 8 0 1 0-16 0 11.97 11.97 0 0 0 4.063 9" />
+        </svg>
+      )
+    case "tabler":
+      return (
+        <svg aria-hidden="true" fill="none" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M31.288 7.107A8.83 8.83 0 0 0 24.893.712a55.9 55.9 0 0 0-17.786 0A8.83 8.83 0 0 0 .712 7.107a55.9 55.9 0 0 0 0 17.786 8.83 8.83 0 0 0 6.395 6.395c5.895.95 11.89.95 17.786 0a8.83 8.83 0 0 0 6.395-6.395c.95-5.895.95-11.89 0-17.786"
+            fill="currentColor"
+          />
+          <path
+            d="m17.884 9.076 1.5-2.488 6.97 6.977-2.492 1.494zm-7.96 3.127 7.814-.909 3.91 3.66-.974 7.287-9.582 2.159a3.06 3.06 0 0 1-2.17-.329l5.244-4.897c.91.407 2.003.142 2.587-.626.584-.77.488-1.818-.226-2.484s-1.84-.755-2.664-.21c-.823.543-1.107 1.562-.67 2.412l-5.245 4.89a2.53 2.53 0 0 1-.339-2.017z"
+            fill="white"
+          />
+        </svg>
+      )
+    case "hugeicons":
+      return (
+        <svg
+          aria-hidden="true"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M2 9.5H22" />
+          <path d="M20.5 9.5H3.5L4.23353 15.3682C4.59849 18.2879 4.78097 19.7477 5.77343 20.6239C6.76589 21.5 8.23708 21.5 11.1795 21.5H12.8205C15.7629 21.5 17.2341 21.5 18.2266 20.6239C19.219 19.7477 19.4015 18.2879 19.7665 15.3682L20.5 9.5Z" />
+          <path d="M5 9C5 5.41015 8.13401 2.5 12 2.5C15.866 2.5 19 5.41015 19 9" />
+        </svg>
+      )
+    case "phosphor":
+      return (
+        <svg aria-hidden="true" fill="none" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M9 5h9v16H9zm9 16v9a9 9 0 0 1-9-9M9 5l9 16m0 0h1a8 8 0 0 0 0-16h-1"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+        </svg>
+      )
+    case "remixicon":
+      return (
+        <svg
+          aria-hidden="true"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M12 2C17.5228 2 22 6.47715 22 12C22 15.3137 19.3137 18 16 18C12.6863 18 10 15.3137 10 12C10 11.4477 9.55228 11 9 11C8.44772 11 8 11.4477 8 12C8 16.4183 11.5817 20 16 20C16.8708 20 17.7084 19.8588 18.4932 19.6016C16.7458 21.0956 14.4792 22 12 22C6.6689 22 2.3127 17.8283 2.0166 12.5713C2.23647 9.45772 4.83048 7 8 7C11.3137 7 14 9.68629 14 13C14 13.5523 14.4477 14 15 14C15.5523 14 16 13.5523 16 13C16 8.58172 12.4183 5 8 5C6.50513 5 5.1062 5.41032 3.90918 6.12402C5.72712 3.62515 8.67334 2 12 2Z" />
+        </svg>
+      )
+    default:
+      return null
+  }
+}
+
+function RadiusGlyph() {
+  return (
+    <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M4 20v-5C4 8.925 8.925 4 15 4h5"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+      />
+    </svg>
+  )
+}
+
+function MenuAccentGlyph(props: { accent: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      class="size-4 text-foreground"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        class="fill-muted-foreground/30 data-[accent=bold]:fill-foreground"
+        d="M19 12.1294L12.9388 18.207C11.1557 19.9949 10.2641 20.8889 9.16993 20.9877C8.98904 21.0041 8.80705 21.0041 8.62616 20.9877C7.53195 20.8889 6.64039 19.9949 4.85726 18.207L2.83687 16.1811C1.72104 15.0622 1.72104 13.2482 2.83687 12.1294M19 12.1294L10.9184 4.02587M19 12.1294H2.83687M10.9184 4.02587L2.83687 12.1294M10.9184 4.02587L8.89805 2"
+        data-accent={props.accent}
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+      />
+      <path
+        class="fill-muted-foreground/30 data-[accent=bold]:fill-foreground"
+        d="M22 20C22 21.1046 21.1046 22 20 22C18.8954 22 18 21.1046 18 20C18 18.8954 20 17 20 17C20 17 22 18.8954 22 20Z"
+        data-accent={props.accent}
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+      />
     </svg>
   )
 }
@@ -327,7 +500,7 @@ function CreatePreviewSurface() {
   })
 
   return (
-    <div class="flex min-h-[240px] flex-1 flex-col gap-4 md:min-h-0">
+    <div class="flex min-h-[240px] flex-1 flex-col gap-4 overflow-hidden md:min-h-0">
       <Show when={design.hasUnsupportedIconLibrary()}>
         <Alert>
           <AlertTitle>Unsupported Icon Library</AlertTitle>
@@ -347,7 +520,7 @@ function CreatePreviewSurface() {
       </Show>
       <div
         class={cn(
-          "relative flex min-h-0 flex-1 flex-col justify-center overflow-hidden rounded-2xl ring ring-foreground/10 md:ring-muted dark:ring-foreground/10",
+          "relative flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl ring ring-foreground/10 md:ring-muted dark:ring-foreground/10",
           documentDesign.theme() === DARK_THEME && "dark"
         )}
       >
@@ -355,7 +528,7 @@ function CreatePreviewSurface() {
         <div
           ref={previewRef}
           class={cn(
-            "relative z-10 min-h-[420px] flex-1 rounded-2xl border bg-background shadow-sm",
+            "relative z-10 h-full max-h-full min-h-0 flex-1 rounded-2xl border bg-background shadow-sm",
             isPresetPreview() ? "overflow-auto p-0" : "p-6 sm:p-10",
             `style-${design.style()}`,
             documentDesign.theme() === DARK_THEME && "dark"
@@ -365,8 +538,8 @@ function CreatePreviewSurface() {
           <div
             class={cn(
               isPresetPreview()
-                ? "min-h-[560px] w-full"
-                : "mx-auto flex min-h-[320px] max-w-3xl items-center justify-center"
+                ? "w-full"
+                : "mx-auto flex h-full min-h-0 max-w-3xl items-center justify-center"
             )}
           >
             <ComponentPreviewRenderer name={design.item()} />
@@ -406,6 +579,7 @@ function CreatePageContent() {
   const [itemSearch, setItemSearch] = createSignal("")
   const [showResetDialog, setShowResetDialog] = createSignal(false)
   const [showExplorer, setShowExplorer] = createSignal(false)
+  let lastSolidMenuAccent = design.menuAccent()
 
   const filteredItems = createMemo(() => {
     const query = itemSearch().trim().toLowerCase()
@@ -500,6 +674,10 @@ function CreatePageContent() {
 
     return FONTS.find((font) => font.value === fontHeading)
   })
+  const menuColorChoice = createMemo<MenuColorChoice>(() => getMenuColorChoice(design.menuColor()))
+  const menuSurfaceChoice = createMemo<MenuSurfaceChoice>(() =>
+    getMenuSurfaceChoice(design.menuColor())
+  )
   const styleGroups = createMemo<PickerGroupDefinition[]>(() => [{ options: styleOptions() }])
   const baseColorGroups = createMemo<PickerGroupDefinition[]>(() => [
     {
@@ -544,17 +722,71 @@ function CreatePageContent() {
           label: font.title,
           style: { "font-family": font.family }
         }))
-      )
+      ).map((group, index) => ({
+        ...group,
+        separatorBefore: index === 0
+      }))
     ]
   })
-  const radiusGroups = createMemo<PickerGroupDefinition[]>(() => [
-    { options: RADII.map((radius) => ({ value: radius.name, label: radius.label })) }
-  ])
+  const radiusGroups = createMemo<PickerGroupDefinition[]>(() => {
+    const defaultRadius = RADII.find((radius) => radius.name === "default")
+    const otherRadii = RADII.filter((radius) => radius.name !== "default")
+
+    return [
+      {
+        options: defaultRadius ? [{ value: defaultRadius.name, label: defaultRadius.label }] : []
+      },
+      {
+        separatorBefore: true,
+        options: otherRadii.map((radius) => ({ value: radius.name, label: radius.label }))
+      }
+    ].filter((group) => group.options.length > 0)
+  })
   const menuAccentGroups = createMemo<PickerGroupDefinition[]>(() => [
-    { options: MENU_ACCENTS.map((accent) => ({ value: accent.value, label: accent.label })) }
+    {
+      options: MENU_ACCENTS.map((accent) => ({
+        value: accent.value,
+        label: accent.label,
+        disabled: accent.value === "bold" && isTranslucentMenuColor(design.menuColor())
+      }))
+    }
   ])
   const menuColorGroups = createMemo<PickerGroupDefinition[]>(() => [
-    { options: MENU_COLORS.map((color) => ({ value: color.value, label: color.label })) }
+    {
+      label: "Color",
+      onChange: (value) => {
+        const nextMenuColor = getMenuColorValue(value as MenuColorChoice, menuSurfaceChoice())
+
+        design.setMenuColor(nextMenuColor)
+        if (isTranslucentMenuColor(nextMenuColor)) {
+          design.setMenuAccent("subtle")
+        }
+      },
+      options: [
+        { value: "default", label: "Default" },
+        {
+          value: "inverted",
+          label: "Inverted",
+          disabled: documentDesign.theme() === DARK_THEME
+        }
+      ],
+      value: menuColorChoice()
+    },
+    {
+      label: "Appearance",
+      onChange: (value) => {
+        const nextMenuColor = getMenuColorValue(menuColorChoice(), value as MenuSurfaceChoice)
+
+        design.setMenuColor(nextMenuColor)
+        design.setMenuAccent(value === "translucent" ? "subtle" : lastSolidMenuAccent)
+      },
+      options: [
+        { value: "solid", label: "Solid" },
+        { value: "translucent", label: "Translucent" }
+      ],
+      separatorBefore: true,
+      value: menuSurfaceChoice()
+    }
   ])
   const iconLibraryGroups = createMemo<PickerGroupDefinition[]>(() => [
     {
@@ -577,6 +809,12 @@ function CreatePageContent() {
       return next
     })
   }
+
+  createEffect(() => {
+    if (!isTranslucentMenuColor(design.menuColor())) {
+      lastSolidMenuAccent = design.menuAccent()
+    }
+  })
 
   const trackHistoryEntry = (value: string) => {
     const existingIndex = historyEntries().indexOf(value)
@@ -840,8 +1078,8 @@ function CreatePageContent() {
         >
           <CreatePreviewSurface />
 
-          <aside class="w-full md:w-(--customizer-width)">
-            <Card class="dark isolate z-10 max-h-full min-h-0 w-full self-start rounded-2xl border-0 bg-card/90 shadow-xl ring-1 ring-white/10 backdrop-blur-xl">
+          <aside class="min-h-0 w-full md:w-(--customizer-width)">
+            <Card class="dark isolate z-10 max-h-full min-h-0 w-full self-start rounded-2xl border-0 bg-card/90 shadow-xl ring-1 ring-white/10 backdrop-blur-xl md:h-full">
               <CardContent class="no-scrollbar min-h-0 flex-1 overflow-x-auto overflow-y-hidden px-3 py-3 md:overflow-y-auto md:px-4 md:py-4">
                 <FieldGroup class="flex-row gap-2.5 py-px **:data-[slot=field-separator]:-mx-4 **:data-[slot=field-separator]:w-auto md:flex-col md:gap-3.25">
                   <PickerField
@@ -915,6 +1153,7 @@ function CreatePageContent() {
                       </Show>
                     }
                     isLocked={isLocked}
+                    contentClass="max-h-92"
                     onToggleLock={toggleLock}
                     onChange={(value) =>
                       design.setThemeName(
@@ -944,6 +1183,7 @@ function CreatePageContent() {
                       </Show>
                     }
                     isLocked={isLocked}
+                    contentClass="max-h-92"
                     onToggleLock={toggleLock}
                     onChange={(value) =>
                       design.setChartColor(
@@ -974,6 +1214,7 @@ function CreatePageContent() {
                       </div>
                     }
                     isLocked={isLocked}
+                    contentClass="max-h-96"
                     onToggleLock={toggleLock}
                     onChange={(value) =>
                       design.setFontHeading(
@@ -997,6 +1238,7 @@ function CreatePageContent() {
                       </div>
                     }
                     isLocked={isLocked}
+                    contentClass="max-h-96"
                     onToggleLock={toggleLock}
                     onChange={(value) =>
                       design.setFont(value as typeof design.font extends () => infer T ? T : never)
@@ -1015,6 +1257,11 @@ function CreatePageContent() {
                       ]
                     )}
                     groups={iconLibraryGroups()}
+                    indicator={
+                      <div class="*:[svg]:size-4 *:[svg]:text-foreground!">
+                        {getIconLibraryLogo(design.iconLibrary())}
+                      </div>
+                    }
                     isMobile={isMobile()}
                     isLocked={isLocked}
                     onToggleLock={toggleLock}
@@ -1029,10 +1276,15 @@ function CreatePageContent() {
                     field="radius"
                     value={design.effectiveRadius()}
                     valueLabel={getOptionLabel(
-                      radiusGroups()[0]?.options ?? [],
+                      RADII.map((radius) => ({ value: radius.name, label: radius.label })),
                       design.effectiveRadius()
                     )}
                     groups={radiusGroups()}
+                    indicator={
+                      <div class="rotate-90 *:[svg]:size-4 *:[svg]:text-foreground!">
+                        <RadiusGlyph />
+                      </div>
+                    }
                     isMobile={isMobile()}
                     disabled={design.style() === "lyra"}
                     isLocked={isLocked}
@@ -1045,14 +1297,14 @@ function CreatePageContent() {
                   />
                   <FieldSeparator class="hidden md:block" />
                   <PickerField
-                    label="Menu Color"
+                    label="Menu"
                     field="menuColor"
                     value={design.menuColor()}
-                    valueLabel={getOptionLabel(
-                      menuColorGroups()[0]?.options ?? [],
-                      design.menuColor()
-                    )}
+                    valueLabel={getMenuColorDisplayLabel(design.menuColor())}
                     groups={menuColorGroups()}
+                    indicator={
+                      <IconPlaceholder lucide="MenuIcon" tabler="IconMenu2" class="size-4" />
+                    }
                     isMobile={isMobile()}
                     isLocked={isLocked}
                     onToggleLock={toggleLock}
@@ -1071,9 +1323,10 @@ function CreatePageContent() {
                       design.menuAccent()
                     )}
                     groups={menuAccentGroups()}
+                    indicator={<MenuAccentGlyph accent={design.menuAccent()} />}
                     isMobile={isMobile()}
-                    disabled={isTranslucentMenuColor(design.menuColor())}
                     isLocked={isLocked}
+                    wrapperClass="pr-3 md:pr-0"
                     onToggleLock={toggleLock}
                     onChange={(value) =>
                       design.setMenuAccent(
@@ -1176,6 +1429,7 @@ function PickerField(props: {
   field: LockableField
   value: string
   valueLabel: string
+  contentClass?: string
   disabled?: boolean
   indicator?: JSX.Element
   groups: readonly PickerGroupDefinition[]
@@ -1183,10 +1437,51 @@ function PickerField(props: {
   onChange: (value: string) => void
   isLocked: (field: LockableField) => boolean
   onToggleLock: (field: LockableField) => void
+  wrapperClass?: string
 }) {
+  const hasCustomGroupState = () =>
+    props.groups.some((group) => group.value !== undefined || group.onChange !== undefined)
+
+  const renderOptions = (options: readonly PickerOption[]) => (
+    <DropdownMenuGroup>
+      <For each={options}>
+        {(option) => (
+          <DropdownMenuRadioItem
+            class="gap-2 rounded-lg py-1.5 pr-8 pl-2 text-sm font-medium text-neutral-100 outline-none focus:bg-neutral-700/80 focus:text-neutral-100 focus:**:text-neutral-100 pointer-coarse:gap-3 pointer-coarse:py-2.5 pointer-coarse:pl-3 pointer-coarse:text-base"
+            disabled={option.disabled}
+            value={option.value}
+          >
+            <Show when={option.indicator}>
+              <div class="flex size-4 items-center justify-center text-foreground *:[svg]:size-4 *:[svg]:text-foreground!">
+                {option.indicator}
+              </div>
+            </Show>
+            <span class="truncate" style={option.style}>
+              {option.label}
+            </span>
+          </DropdownMenuRadioItem>
+        )}
+      </For>
+    </DropdownMenuGroup>
+  )
+
+  const renderGroup = (group: PickerGroupDefinition) => (
+    <>
+      <Show when={group.separatorBefore}>
+        <DropdownMenuSeparator class="-mx-1.5 my-1.5 bg-neutral-700/70" />
+      </Show>
+      <Show when={group.label}>
+        <DropdownMenuLabel class="px-2 py-1.5 text-xs font-medium text-neutral-400">
+          {group.label}
+        </DropdownMenuLabel>
+      </Show>
+      {renderOptions(group.options)}
+    </>
+  )
+
   return (
-    <div class="group/picker relative">
-      <DropdownMenu placement={props.isMobile ? "top-start" : "right-start"} gutter={20}>
+    <div class={cn("group/picker relative", props.wrapperClass)}>
+      <DropdownMenu placement={props.isMobile ? "top" : "right-start"} gutter={20}>
         <DropdownMenuTrigger
           disabled={props.disabled}
           class={cn(
@@ -1206,12 +1501,24 @@ function PickerField(props: {
             </div>
           </Show>
         </DropdownMenuTrigger>
-        <DropdownMenuContent class="dark w-[calc(min(100vw-2rem,13rem))] min-w-32 rounded-xl border-0 bg-neutral-950/85 p-1.5 text-neutral-100 shadow-2xl ring-1 ring-neutral-900/80 backdrop-blur-xl outline-none md:w-52">
-          <DropdownMenuRadioGroup value={props.value} onChange={props.onChange}>
+        <DropdownMenuContent
+          class={cn(
+            "dark no-scrollbar w-[calc(min(100vw-2rem,13rem))] min-w-32 rounded-xl border-0 bg-neutral-950/85 p-1.5 text-neutral-100 shadow-2xl ring-1 ring-neutral-900/80 backdrop-blur-xl outline-none md:w-52",
+            props.contentClass
+          )}
+        >
+          <Show
+            when={hasCustomGroupState()}
+            fallback={
+              <DropdownMenuRadioGroup value={props.value} onChange={props.onChange}>
+                <For each={props.groups}>{renderGroup}</For>
+              </DropdownMenuRadioGroup>
+            }
+          >
             <For each={props.groups}>
-              {(group, index) => (
+              {(group) => (
                 <>
-                  <Show when={index() > 0}>
+                  <Show when={group.separatorBefore}>
                     <DropdownMenuSeparator class="-mx-1.5 my-1.5 bg-neutral-700/70" />
                   </Show>
                   <Show when={group.label}>
@@ -1219,24 +1526,16 @@ function PickerField(props: {
                       {group.label}
                     </DropdownMenuLabel>
                   </Show>
-                  <DropdownMenuGroup>
-                    <For each={group.options}>
-                      {(option) => (
-                        <DropdownMenuRadioItem
-                          class="gap-2 rounded-lg px-2 py-1.5 pr-8 text-sm font-medium text-neutral-100 outline-none focus:bg-neutral-700/80 focus:text-neutral-100 pointer-coarse:gap-3 pointer-coarse:py-2.5 pointer-coarse:text-base"
-                          value={option.value}
-                        >
-                          <span class="truncate" style={option.style}>
-                            {option.label}
-                          </span>
-                        </DropdownMenuRadioItem>
-                      )}
-                    </For>
-                  </DropdownMenuGroup>
+                  <DropdownMenuRadioGroup
+                    value={group.value ?? props.value}
+                    onChange={group.onChange ?? props.onChange}
+                  >
+                    {renderOptions(group.options)}
+                  </DropdownMenuRadioGroup>
                 </>
               )}
             </For>
-          </DropdownMenuRadioGroup>
+          </Show>
         </DropdownMenuContent>
       </DropdownMenu>
       <LockButton field={props.field} isLocked={props.isLocked} onToggle={props.onToggleLock} />

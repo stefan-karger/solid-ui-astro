@@ -100,9 +100,11 @@ const iconLibraryNames = Object.keys(iconLibraries)
     class="group/body min-h-svh bg-background text-foreground [--footer-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]"
     style="--header-height:3.5rem;"
   >
-    <div class="relative flex min-h-svh flex-col">
+    <div
+      class="relative flex min-h-svh flex-col has-[[data-slot=designer]]:h-svh has-[[data-slot=designer]]:overflow-hidden"
+    >
       {showHeader && <SiteHeader />}
-      <main class="flex flex-1 flex-col">
+      <main class="flex min-h-0 flex-1 flex-col">
         <slot />
       </main>
       {showFooter && <SiteFooter />}
