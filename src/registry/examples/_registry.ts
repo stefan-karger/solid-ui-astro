@@ -2554,53 +2554,6 @@ export const examples: Registry["items"] = [
     ]
   },
   {
-    name: "preview",
-    type: "registry:example",
-    registryDependencies: [
-      "badge",
-      "button",
-      "calendar",
-      "card",
-      "chart",
-      "empty",
-      "input",
-      "pagination",
-      "progress",
-      "separator",
-      "table",
-      "tabs"
-    ],
-    files: [
-      {
-        path: "examples/preview.tsx",
-        type: "registry:example"
-      }
-    ]
-  },
-  {
-    name: "preview-02",
-    type: "registry:example",
-    registryDependencies: [
-      "badge",
-      "button",
-      "calendar",
-      "card",
-      "chart",
-      "empty",
-      "input",
-      "pagination",
-      "progress",
-      "separator",
-      "table"
-    ],
-    files: [
-      {
-        path: "examples/preview-02.tsx",
-        type: "registry:example"
-      }
-    ]
-  },
-  {
     name: "radio-group-demo",
     type: "registry:example",
     registryDependencies: ["label", "radio-group"],
