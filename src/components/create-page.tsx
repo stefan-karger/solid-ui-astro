@@ -1314,7 +1314,6 @@ function CreatePageContent() {
                   <span class="w-full text-center font-medium">Shuffle</span>
                 </Button>
               </CardFooter>
-              <div class="mx-3 h-px bg-white/10 md:mx-4" />
               <CardFooter class="px-3 pt-3 pb-3 md:px-4 md:pt-3 md:pb-4">
                 <Button class="w-full bg-white text-black hover:bg-white/90 dark:bg-white dark:text-black dark:hover:bg-white/90">
                   Create Project

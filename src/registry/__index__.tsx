@@ -779,7 +779,7 @@ export const Index: Record<string, any> = {
     name: "preview",
     description: "",
     type: "registry:block",
-    registryDependencies: ["badge","button","calendar","card","chart","empty","input","pagination","progress","separator","table","tabs"],
+    registryDependencies: ["alert-dialog","avatar","badge","button","button-group","card","checkbox","combobox","dropdown-menu","empty","field","input","input-group","item","label","popover","radio-group","select","separator","sheet","slider","spinner","switch","textarea","tooltip","example"],
     component: lazy(() => import("~/registry/blocks/preview/index.tsx")),
     files: [{
       path: "registry/blocks/preview/index.tsx",
@@ -793,7 +793,7 @@ export const Index: Record<string, any> = {
     name: "preview-02",
     description: "",
     type: "registry:block",
-    registryDependencies: ["badge","button","calendar","card","chart","empty","input","pagination","progress","separator","table"],
+    registryDependencies: ["accordion","badge","breadcrumb","button","calendar","card","chart","checkbox","combobox","dropdown-menu","empty","field","input","input-group","item","label","native-select","progress","radio-group","select","separator","sidebar","skeleton","slider","spinner","switch","table","tabs","textarea","toggle-group"],
     component: lazy(() => import("~/registry/blocks/preview-02/index.tsx")),
     files: [{
       path: "registry/blocks/preview-02/index.tsx",
