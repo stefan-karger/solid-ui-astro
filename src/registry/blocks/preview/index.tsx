@@ -1,36 +1,34 @@
-import {
-  ActivateAgentDialog,
-  AnalyticsCard,
-  AnomalyAlert,
-  BarChartCard,
-  BookAppointment,
-  CodespacesCard,
-  ContributionsActivity,
-  Contributors,
-  EnvironmentVariables,
-  FeedbackForm,
-  FileUpload,
-  GithubProfile,
-  IconPreviewGrid,
-  InviteTeam,
-  Invoice,
-  LiveWaveformCard,
-  NoTeamMembers,
-  NotFound,
-  ObservabilityCard,
-  PieChartCard,
-  ReportBug,
-  ShippingAddress,
-  Shortcuts,
-  SkeletonLoading,
-  SleepReport,
-  StyleOverview,
-  TypographySpecimen,
-  UIElements,
-  UsageCard,
-  Visitors,
-  WeeklyFitnessSummary
-} from "~/registry/blocks/preview/cards"
+import { ActivateAgentDialog } from "~/registry/blocks/preview/cards/activate-agent-dialog"
+import { AnalyticsCard } from "~/registry/blocks/preview/cards/analytics-card"
+import { AnomalyAlert } from "~/registry/blocks/preview/cards/anomaly-alert"
+import { BarChartCard } from "~/registry/blocks/preview/cards/bar-chart-card"
+import { BookAppointment } from "~/registry/blocks/preview/cards/book-appointment"
+import { CodespacesCard } from "~/registry/blocks/preview/cards/codespaces-card"
+import { ContributionsActivity } from "~/registry/blocks/preview/cards/contributions-activity"
+import { Contributors } from "~/registry/blocks/preview/cards/contributors"
+import { EnvironmentVariables } from "~/registry/blocks/preview/cards/environment-variables"
+import { FeedbackForm } from "~/registry/blocks/preview/cards/feedback-form"
+import { FileUpload } from "~/registry/blocks/preview/cards/file-upload"
+import { GithubProfile } from "~/registry/blocks/preview/cards/github-profile"
+import { IconPreviewGrid } from "~/registry/blocks/preview/cards/icon-preview-grid"
+import { InviteTeam } from "~/registry/blocks/preview/cards/invite-team"
+import { Invoice } from "~/registry/blocks/preview/cards/invoice"
+import { LiveWaveformCard } from "~/registry/blocks/preview/cards/live-waveform"
+import { NoTeamMembers } from "~/registry/blocks/preview/cards/no-team-members"
+import { NotFound } from "~/registry/blocks/preview/cards/not-found"
+import { ObservabilityCard } from "~/registry/blocks/preview/cards/observability-card"
+import { PieChartCard } from "~/registry/blocks/preview/cards/pie-chart-card"
+import { ReportBug } from "~/registry/blocks/preview/cards/report-bug"
+import { ShippingAddress } from "~/registry/blocks/preview/cards/shipping-address"
+import { Shortcuts } from "~/registry/blocks/preview/cards/shortcuts"
+import { SkeletonLoading } from "~/registry/blocks/preview/cards/skeleton-loading"
+import { SleepReport } from "~/registry/blocks/preview/cards/sleep-report"
+import { StyleOverview } from "~/registry/blocks/preview/cards/style-overview"
+import { TypographySpecimen } from "~/registry/blocks/preview/cards/typography-specimen"
+import { UIElements } from "~/registry/blocks/preview/cards/ui-elements"
+import { UsageCard } from "~/registry/blocks/preview/cards/usage-card"
+import { Visitors } from "~/registry/blocks/preview/cards/visitors"
+import { WeeklyFitnessSummary } from "~/registry/blocks/preview/cards/weekly-fitness-summary"
 
 export default function PreviewBlock() {
   return (

@@ -1,38 +1,36 @@
-import {
-  AccountAccess,
-  CardOverview,
-  ClaimableBalance,
-  ContributionHistory,
-  CoverArt,
-  DividendIncome,
-  EmptyConnectBank,
-  EmptyDistributeTrack,
-  EmptyExploreCatalog,
-  Faq,
-  FrontDoor,
-  IndexInvesting,
-  KitchenIsland,
-  LoadingCard,
-  NewMilestone,
-  NotificationSettings,
-  Payments,
-  PayoutThreshold,
-  PowerUsage,
-  Preferences,
-  QrConnect,
-  ReceivingMethod,
-  RecentTransactions,
-  ReleaseCatalog,
-  RollerShades,
-  SavingsProgress,
-  SavingsTargets,
-  SidebarNav,
-  SocialLinks,
-  StockPerformance,
-  SyncingState,
-  TransferFunds,
-  UpcomingPayments
-} from "~/registry/blocks/preview-02/cards"
+import { AccountAccess } from "~/registry/blocks/preview-02/cards/account-access"
+import { CardOverview } from "~/registry/blocks/preview-02/cards/card-overview"
+import { ClaimableBalance } from "~/registry/blocks/preview-02/cards/claimable-balance"
+import { ContributionHistory } from "~/registry/blocks/preview-02/cards/contribution-history"
+import { CoverArt } from "~/registry/blocks/preview-02/cards/cover-art"
+import { DividendIncome } from "~/registry/blocks/preview-02/cards/dividend-income"
+import { EmptyConnectBank } from "~/registry/blocks/preview-02/cards/empty-connect-bank"
+import { EmptyDistributeTrack } from "~/registry/blocks/preview-02/cards/empty-distribute-track"
+import { EmptyExploreCatalog } from "~/registry/blocks/preview-02/cards/empty-explore-catalog"
+import { Faq } from "~/registry/blocks/preview-02/cards/faq"
+import { FrontDoor } from "~/registry/blocks/preview-02/cards/front-door"
+import { IndexInvesting } from "~/registry/blocks/preview-02/cards/index-investing"
+import { KitchenIsland } from "~/registry/blocks/preview-02/cards/kitchen-island"
+import { LoadingCard } from "~/registry/blocks/preview-02/cards/loading-card"
+import { NewMilestone } from "~/registry/blocks/preview-02/cards/new-milestone"
+import { NotificationSettings } from "~/registry/blocks/preview-02/cards/notification-settings"
+import { Payments } from "~/registry/blocks/preview-02/cards/payments"
+import { PayoutThreshold } from "~/registry/blocks/preview-02/cards/payout-threshold"
+import { PowerUsage } from "~/registry/blocks/preview-02/cards/power-usage"
+import { Preferences } from "~/registry/blocks/preview-02/cards/preferences"
+import { QrConnect } from "~/registry/blocks/preview-02/cards/qr-connect"
+import { ReceivingMethod } from "~/registry/blocks/preview-02/cards/receiving-method"
+import { RecentTransactions } from "~/registry/blocks/preview-02/cards/recent-transactions"
+import { ReleaseCatalog } from "~/registry/blocks/preview-02/cards/release-catalog"
+import { RollerShades } from "~/registry/blocks/preview-02/cards/roller-shades"
+import { SavingsProgress } from "~/registry/blocks/preview-02/cards/savings-progress"
+import { SavingsTargets } from "~/registry/blocks/preview-02/cards/savings-targets"
+import { SidebarNav } from "~/registry/blocks/preview-02/cards/sidebar-nav"
+import { SocialLinks } from "~/registry/blocks/preview-02/cards/social-links"
+import { StockPerformance } from "~/registry/blocks/preview-02/cards/stock-performance"
+import { SyncingState } from "~/registry/blocks/preview-02/cards/syncing-state"
+import { TransferFunds } from "~/registry/blocks/preview-02/cards/transfer-funds"
+import { UpcomingPayments } from "~/registry/blocks/preview-02/cards/upcoming-payments"
 
 export default function Preview02Block() {
   return (
