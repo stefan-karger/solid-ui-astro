@@ -21,7 +21,6 @@ import {
 import {
   BASE_COLORS,
   buildPreviewTheme,
-  DEFAULT_CREATE_CONFIG,
   DEFAULT_CREATE_ITEM,
   FONTS,
   getAvailableIconLibraryOptions,
@@ -33,9 +32,9 @@ import {
   RADII,
   SUPPORTED_ICON_LIBRARY_NAMES
 } from "~/lib/create/config"
+import { isPresetCode } from "~/lib/create/preset"
 import { parseCreateSearchParams, serializeCreateSearchParams } from "~/lib/create/url-state"
 import { cn } from "~/lib/utils"
-import { Index } from "~/registry/__index__"
 import { useIsMobile } from "~/registry/hooks/use-mobile"
 import { STYLES } from "~/registry/styles"
 import { Alert, AlertDescription, AlertTitle } from "~/registry/ui/alert"
@@ -80,13 +79,6 @@ type LockableField =
   | "radius"
   | "menuAccent"
   | "menuColor"
-
-const PREVIEW_ITEMS = Object.values(Index)
-  .filter((item) => item?.type === "registry:example")
-  .map((item) => ({
-    name: item.name as string,
-    title: formatItemTitle(item.name as string)
-  }))
 
 const PRESET_PREVIEW_ITEMS = [
   { label: "01", value: "preview-02" },
@@ -576,22 +568,10 @@ function CreatePageContent() {
   const [historyEntries, setHistoryEntries] = createSignal<string[]>([])
   const [historyIndex, setHistoryIndex] = createSignal(-1)
   const [urlSearch, setUrlSearch] = createSignal("")
-  const [itemSearch, setItemSearch] = createSignal("")
-  const [showResetDialog, setShowResetDialog] = createSignal(false)
-  const [showExplorer, setShowExplorer] = createSignal(false)
+  const [showPresetDialog, setShowPresetDialog] = createSignal(false)
+  const [presetInput, setPresetInput] = createSignal("")
+  const [presetError, setPresetError] = createSignal("")
   let lastSolidMenuAccent = design.menuAccent()
-
-  const filteredItems = createMemo(() => {
-    const query = itemSearch().trim().toLowerCase()
-
-    if (!query) {
-      return PREVIEW_ITEMS
-    }
-
-    return PREVIEW_ITEMS.filter((item) =>
-      `${item.name} ${item.title}`.toLowerCase().includes(query)
-    )
-  })
 
   const shareSearch = createMemo(() =>
     serializeCreateSearchParams({
@@ -618,24 +598,16 @@ function CreatePageContent() {
     )
   )
   const themeOptions = createMemo(() =>
-    withCurrentOption(
-      getThemesForBaseColor(design.baseColor()).map((theme) => ({
-        value: theme.name,
-        label: theme.title
-      })),
-      design.themeName(),
-      LEGACY_OPTION_LABELS.gray
-    )
+    getThemesForBaseColor(design.baseColor()).map((theme) => ({
+      value: theme.name,
+      label: theme.title
+    }))
   )
   const chartColorOptions = createMemo(() =>
-    withCurrentOption(
-      getThemesForBaseColor(design.baseColor()).map((theme) => ({
-        value: theme.name,
-        label: theme.title
-      })),
-      design.chartColor(),
-      LEGACY_OPTION_LABELS.gray
-    )
+    getThemesForBaseColor(design.baseColor()).map((theme) => ({
+      value: theme.name,
+      label: theme.title
+    }))
   )
   const iconLibraryOptions = createMemo(() =>
     withCurrentOption(
@@ -650,8 +622,7 @@ function CreatePageContent() {
   const styleOptions = createMemo<PickerOption[]>(() =>
     STYLES.map((style) => ({
       value: style.name,
-      label: style.title,
-      indicator: <div class="*:[svg]:size-4 *:[svg]:text-foreground!">{style.icon}</div>
+      label: style.title
     }))
   )
   const currentStyle = createMemo(() => STYLES.find((style) => style.name === design.style()))
@@ -751,43 +722,6 @@ function CreatePageContent() {
       }))
     }
   ])
-  const menuColorGroups = createMemo<PickerGroupDefinition[]>(() => [
-    {
-      label: "Color",
-      onChange: (value) => {
-        const nextMenuColor = getMenuColorValue(value as MenuColorChoice, menuSurfaceChoice())
-
-        design.setMenuColor(nextMenuColor)
-        if (isTranslucentMenuColor(nextMenuColor)) {
-          design.setMenuAccent("subtle")
-        }
-      },
-      options: [
-        { value: "default", label: "Default" },
-        {
-          value: "inverted",
-          label: "Inverted",
-          disabled: documentDesign.theme() === DARK_THEME
-        }
-      ],
-      value: menuColorChoice()
-    },
-    {
-      label: "Appearance",
-      onChange: (value) => {
-        const nextMenuColor = getMenuColorValue(menuColorChoice(), value as MenuSurfaceChoice)
-
-        design.setMenuColor(nextMenuColor)
-        design.setMenuAccent(value === "translucent" ? "subtle" : lastSolidMenuAccent)
-      },
-      options: [
-        { value: "solid", label: "Solid" },
-        { value: "translucent", label: "Translucent" }
-      ],
-      separatorBefore: true,
-      value: menuSurfaceChoice()
-    }
-  ])
   const iconLibraryGroups = createMemo<PickerGroupDefinition[]>(() => [
     {
       options: iconLibraryOptions().map((option) => ({ value: option.value, label: option.label }))
@@ -829,6 +763,33 @@ function CreatePageContent() {
       setHistoryIndex(next.length - 1)
       return next
     })
+  }
+
+  const openPresetDialog = () => {
+    setPresetInput(design.preset())
+    setPresetError("")
+    setShowPresetDialog(true)
+  }
+
+  const applyPreset = () => {
+    const value = presetInput().trim()
+
+    if (!isPresetCode(value)) {
+      setPresetError("Enter a valid preset hash.")
+      return
+    }
+
+    const searchParams = new URLSearchParams()
+    searchParams.set("preset", value)
+    searchParams.set("item", design.item())
+
+    const parsed = parseCreateSearchParams(searchParams)
+    design.setState({
+      ...parsed.state,
+      item: design.item()
+    })
+    setPresetError("")
+    setShowPresetDialog(false)
   }
 
   const applySearchState = (value: string, mode: "replace" | "push") => {
@@ -884,29 +845,6 @@ function CreatePageContent() {
       setHistoryIndex(next.length - 1)
       return next
     })
-  }
-
-  const reset = () => {
-    const nextState = {
-      style: design.style(),
-      baseColor: isLocked("baseColor") ? design.baseColor() : DEFAULT_CREATE_CONFIG.baseColor,
-      themeName: isLocked("themeName") ? design.themeName() : DEFAULT_CREATE_CONFIG.theme,
-      chartColor: isLocked("chartColor") ? design.chartColor() : DEFAULT_CREATE_CONFIG.chartColor,
-      iconLibrary: isLocked("iconLibrary")
-        ? design.iconLibrary()
-        : DEFAULT_CREATE_CONFIG.iconLibrary,
-      font: isLocked("font") ? design.font() : DEFAULT_CREATE_CONFIG.font,
-      fontHeading: isLocked("fontHeading")
-        ? design.fontHeading()
-        : DEFAULT_CREATE_CONFIG.fontHeading,
-      radius: isLocked("radius") ? design.radius() : DEFAULT_CREATE_CONFIG.radius,
-      menuAccent: isLocked("menuAccent") ? design.menuAccent() : DEFAULT_CREATE_CONFIG.menuAccent,
-      menuColor: isLocked("menuColor") ? design.menuColor() : DEFAULT_CREATE_CONFIG.menuColor,
-      item: design.item()
-    } as const
-
-    design.setState(nextState)
-    setShowResetDialog(false)
   }
 
   const randomize = () => {
@@ -989,9 +927,9 @@ function CreatePageContent() {
 
       const key = event.key.toLowerCase()
 
-      if ((event.metaKey || event.ctrlKey) && key === "p") {
+      if (!event.metaKey && !event.ctrlKey && key === "o") {
         event.preventDefault()
-        setShowExplorer(true)
+        openPresetDialog()
         return
       }
 
@@ -1014,16 +952,6 @@ function CreatePageContent() {
       if (!event.metaKey && !event.ctrlKey && key === "d") {
         event.preventDefault()
         documentDesign.toggleTheme()
-        return
-      }
-
-      if (!event.metaKey && !event.ctrlKey && key === "r" && event.shiftKey) {
-        event.preventDefault()
-        if (showResetDialog()) {
-          reset()
-        } else {
-          setShowResetDialog(true)
-        }
         return
       }
 
@@ -1056,7 +984,24 @@ function CreatePageContent() {
   })
 
   createEffect(() => {
-    if (!design.item() || !PREVIEW_ITEMS.some((item) => item.name === design.item())) {
+    const availableThemes = getThemesForBaseColor(design.baseColor())
+    const fallbackTheme = availableThemes[0]?.name
+
+    if (!fallbackTheme) {
+      return
+    }
+
+    if (!availableThemes.some((theme) => theme.name === design.themeName())) {
+      design.setThemeName(fallbackTheme)
+    }
+
+    if (!availableThemes.some((theme) => theme.name === design.chartColor())) {
+      design.setChartColor(fallbackTheme)
+    }
+  })
+
+  createEffect(() => {
+    if (!design.item() || !PRESET_PREVIEW_ITEM_VALUES.has(design.item())) {
       design.setItem(DEFAULT_CREATE_ITEM)
     }
   })
@@ -1135,11 +1080,11 @@ function CreatePageContent() {
                     label="Theme"
                     field="themeName"
                     value={design.themeName()}
-                    valueLabel={getOptionLabel(
-                      themeOptions(),
-                      design.themeName(),
-                      LEGACY_OPTION_LABELS.gray
-                    )}
+                    valueLabel={
+                      currentTheme()?.title ??
+                      themeOptions()[0]?.label ??
+                      formatItemTitle(design.themeName())
+                    }
                     groups={themeGroups()}
                     isMobile={isMobile()}
                     indicator={
@@ -1165,11 +1110,11 @@ function CreatePageContent() {
                     label="Chart Color"
                     field="chartColor"
                     value={design.chartColor()}
-                    valueLabel={getOptionLabel(
-                      chartColorOptions(),
-                      design.chartColor(),
-                      LEGACY_OPTION_LABELS.gray
-                    )}
+                    valueLabel={
+                      currentChartColor()?.title ??
+                      chartColorOptions()[0]?.label ??
+                      formatItemTitle(design.chartColor())
+                    }
                     groups={chartColorGroups()}
                     isMobile={isMobile()}
                     indicator={
@@ -1296,23 +1241,33 @@ function CreatePageContent() {
                     }
                   />
                   <FieldSeparator class="hidden md:block" />
-                  <PickerField
+                  <MenuPickerField
                     label="Menu"
                     field="menuColor"
-                    value={design.menuColor()}
                     valueLabel={getMenuColorDisplayLabel(design.menuColor())}
-                    groups={menuColorGroups()}
                     indicator={
                       <IconPlaceholder lucide="MenuIcon" tabler="IconMenu2" class="size-4" />
                     }
                     isMobile={isMobile()}
                     isLocked={isLocked}
                     onToggleLock={toggleLock}
-                    onChange={(value) =>
-                      design.setMenuColor(
-                        value as typeof design.menuColor extends () => infer T ? T : never
-                      )
-                    }
+                    colorChoice={menuColorChoice()}
+                    surfaceChoice={menuSurfaceChoice()}
+                    isDark={documentDesign.theme() === DARK_THEME}
+                    onChangeColor={(value) => {
+                      const nextMenuColor = getMenuColorValue(value, menuSurfaceChoice())
+
+                      design.setMenuColor(nextMenuColor)
+                      if (isTranslucentMenuColor(nextMenuColor)) {
+                        design.setMenuAccent("subtle")
+                      }
+                    }}
+                    onChangeSurface={(value) => {
+                      const nextMenuColor = getMenuColorValue(menuColorChoice(), value)
+
+                      design.setMenuColor(nextMenuColor)
+                      design.setMenuAccent(value === "translucent" ? "subtle" : lastSolidMenuAccent)
+                    }}
                   />
                   <PickerField
                     label="Menu Accent"
@@ -1336,7 +1291,7 @@ function CreatePageContent() {
                   />
                 </FieldGroup>
               </CardContent>
-              <CardFooter class="grid min-w-0 grid-cols-2 gap-2 px-3 pb-3 md:grid-cols-1 md:px-4 md:pb-4">
+              <CardFooter class="grid min-w-0 grid-cols-3 gap-2 px-3 pb-3 md:grid-cols-1 md:px-4 md:pb-4">
                 <Button
                   variant="outline"
                   class="touch-manipulation bg-transparent! px-2! py-0! text-sm! transition-none select-none hover:bg-muted! pointer-coarse:h-10!"
@@ -1347,9 +1302,9 @@ function CreatePageContent() {
                 <Button
                   variant="outline"
                   class="touch-manipulation bg-transparent! px-2! py-0! text-sm! transition-none select-none hover:bg-muted! pointer-coarse:h-10!"
-                  onClick={() => setShowExplorer(true)}
+                  onClick={openPresetDialog}
                 >
-                  <span class="w-full text-center font-medium">Open</span>
+                  <span class="w-full text-center font-medium">Open Preset</span>
                 </Button>
                 <Button
                   variant="outline"
@@ -1358,12 +1313,11 @@ function CreatePageContent() {
                 >
                   <span class="w-full text-center font-medium">Shuffle</span>
                 </Button>
-                <Button
-                  variant="outline"
-                  class="touch-manipulation bg-transparent! px-2! py-0! text-sm! transition-none select-none hover:bg-muted! pointer-coarse:h-10!"
-                  onClick={() => setShowResetDialog(true)}
-                >
-                  <span class="w-full text-center font-medium">Reset</span>
+              </CardFooter>
+              <div class="mx-3 h-px bg-white/10 md:mx-4" />
+              <CardFooter class="px-3 pt-3 pb-3 md:px-4 md:pt-3 md:pb-4">
+                <Button class="w-full bg-white text-black hover:bg-white/90 dark:bg-white dark:text-black dark:hover:bg-white/90">
+                  Create Project
                 </Button>
               </CardFooter>
             </Card>
@@ -1371,56 +1325,139 @@ function CreatePageContent() {
         </div>
       </div>
 
-      <Dialog open={showExplorer()} onOpenChange={setShowExplorer}>
-        <DialogContent class="max-w-2xl gap-4">
+      <Dialog
+        open={showPresetDialog()}
+        onOpenChange={(open) => {
+          setShowPresetDialog(open)
+          if (!open) {
+            setPresetError("")
+          }
+        }}
+      >
+        <DialogContent class="max-w-md gap-4">
           <DialogHeader>
-            <DialogTitle>Navigate previews</DialogTitle>
-            <DialogDescription>Search through the available component examples.</DialogDescription>
-          </DialogHeader>
-          <Input
-            value={itemSearch()}
-            onInput={(event) => setItemSearch(event.currentTarget.value)}
-            placeholder="Search examples"
-          />
-          <div class="max-h-[60svh] overflow-y-auto rounded-xl border p-2">
-            <div class="grid gap-2 sm:grid-cols-2">
-              <For each={filteredItems()}>
-                {(item) => (
-                  <Button
-                    variant={design.item() === item.name ? "default" : "ghost"}
-                    class="justify-start"
-                    onClick={() => {
-                      design.setItem(item.name)
-                      setShowExplorer(false)
-                    }}
-                  >
-                    {item.title}
-                  </Button>
-                )}
-              </For>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
-
-      <Dialog open={showResetDialog()} onOpenChange={setShowResetDialog}>
-        <DialogContent class="max-w-md">
-          <DialogHeader>
-            <DialogTitle>Reset current customization?</DialogTitle>
+            <DialogTitle>Open Preset</DialogTitle>
             <DialogDescription>
-              This keeps the selected style and preview item, then restores the rest of the design
-              system options to their defaults.
+              Paste a preset hash to apply it to the current preview.
             </DialogDescription>
           </DialogHeader>
+          <Input
+            value={presetInput()}
+            onInput={(event) => {
+              setPresetInput(event.currentTarget.value)
+              if (presetError()) {
+                setPresetError("")
+              }
+            }}
+            onKeyDown={(event) => {
+              if (event.key === "Enter") {
+                event.preventDefault()
+                applyPreset()
+              }
+            }}
+            placeholder="b0"
+          />
+          <Show when={presetError()}>
+            {(message) => <p class="text-sm text-destructive">{message()}</p>}
+          </Show>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setShowResetDialog(false)}>
+            <Button variant="outline" onClick={() => setShowPresetDialog(false)}>
               Cancel
             </Button>
-            <Button onClick={reset}>Reset</Button>
+            <Button onClick={applyPreset}>Apply</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
     </>
+  )
+}
+
+function MenuPickerField(props: {
+  label: string
+  field: LockableField
+  valueLabel: string
+  indicator?: JSX.Element
+  isMobile: boolean
+  colorChoice: MenuColorChoice
+  surfaceChoice: MenuSurfaceChoice
+  isDark: boolean
+  isLocked: (field: LockableField) => boolean
+  onToggleLock: (field: LockableField) => void
+  onChangeColor: (value: MenuColorChoice) => void
+  onChangeSurface: (value: MenuSurfaceChoice) => void
+}) {
+  return (
+    <div class="group/picker relative">
+      <DropdownMenu placement={props.isMobile ? "top" : "right-start"} gutter={20}>
+        <DropdownMenuTrigger
+          class={cn(
+            "relative w-36 shrink-0 touch-manipulation rounded-xl p-3 text-left ring-1 ring-foreground/10 select-none hover:bg-muted focus-visible:ring-foreground/50 focus-visible:outline-none data-expanded:bg-muted md:w-full md:rounded-lg md:px-2.5 md:py-2",
+            props.indicator && "pr-12 md:pr-10"
+          )}
+        >
+          <div class="flex min-w-0 flex-col justify-start text-left">
+            <div class="text-xs text-muted-foreground">{props.label}</div>
+            <div class="line-clamp-1 truncate text-sm font-medium text-foreground">
+              {props.valueLabel}
+            </div>
+          </div>
+          <Show when={props.indicator}>
+            <div class="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-foreground select-none md:right-2.5">
+              {props.indicator}
+            </div>
+          </Show>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent class="dark no-scrollbar w-[calc(min(100vw-2rem,13rem))] min-w-32 rounded-xl border-0 bg-neutral-950/85 p-1.5 text-neutral-100 shadow-2xl ring-1 ring-neutral-900/80 backdrop-blur-xl outline-none md:w-52">
+          <DropdownMenuGroup>
+            <DropdownMenuLabel class="px-2 py-1.5 text-xs font-medium text-neutral-400">
+              Color
+            </DropdownMenuLabel>
+            <DropdownMenuRadioGroup
+              value={props.colorChoice}
+              onChange={(value) => props.onChangeColor(value as MenuColorChoice)}
+            >
+              <DropdownMenuRadioItem
+                class="gap-2 rounded-lg py-1.5 pr-8 pl-2 text-sm font-medium text-neutral-100 outline-none focus:bg-neutral-700/80 focus:text-neutral-100 focus:**:text-neutral-100 pointer-coarse:gap-3 pointer-coarse:py-2.5 pointer-coarse:pl-3 pointer-coarse:text-base"
+                value="default"
+              >
+                Default
+              </DropdownMenuRadioItem>
+              <DropdownMenuRadioItem
+                class="gap-2 rounded-lg py-1.5 pr-8 pl-2 text-sm font-medium text-neutral-100 outline-none focus:bg-neutral-700/80 focus:text-neutral-100 focus:**:text-neutral-100 pointer-coarse:gap-3 pointer-coarse:py-2.5 pointer-coarse:pl-3 pointer-coarse:text-base"
+                value="inverted"
+                disabled={props.isDark}
+              >
+                Inverted
+              </DropdownMenuRadioItem>
+            </DropdownMenuRadioGroup>
+          </DropdownMenuGroup>
+          <DropdownMenuSeparator class="-mx-1.5 my-1.5 bg-neutral-700/70" />
+          <DropdownMenuGroup>
+            <DropdownMenuLabel class="px-2 py-1.5 text-xs font-medium text-neutral-400">
+              Appearance
+            </DropdownMenuLabel>
+            <DropdownMenuRadioGroup
+              value={props.surfaceChoice}
+              onChange={(value) => props.onChangeSurface(value as MenuSurfaceChoice)}
+            >
+              <DropdownMenuRadioItem
+                class="gap-2 rounded-lg py-1.5 pr-8 pl-2 text-sm font-medium text-neutral-100 outline-none focus:bg-neutral-700/80 focus:text-neutral-100 focus:**:text-neutral-100 pointer-coarse:gap-3 pointer-coarse:py-2.5 pointer-coarse:pl-3 pointer-coarse:text-base"
+                value="solid"
+              >
+                Solid
+              </DropdownMenuRadioItem>
+              <DropdownMenuRadioItem
+                class="gap-2 rounded-lg py-1.5 pr-8 pl-2 text-sm font-medium text-neutral-100 outline-none focus:bg-neutral-700/80 focus:text-neutral-100 focus:**:text-neutral-100 pointer-coarse:gap-3 pointer-coarse:py-2.5 pointer-coarse:pl-3 pointer-coarse:text-base"
+                value="translucent"
+              >
+                Translucent
+              </DropdownMenuRadioItem>
+            </DropdownMenuRadioGroup>
+          </DropdownMenuGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
+      <LockButton field={props.field} isLocked={props.isLocked} onToggle={props.onToggleLock} />
+    </div>
   )
 }
 

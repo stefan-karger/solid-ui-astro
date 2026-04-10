@@ -1,4 +1,8 @@
-import { DEFAULT_CREATE_CONFIG } from "~/lib/create/config"
+import {
+  DEFAULT_CREATE_CONFIG,
+  DEFAULT_CREATE_ITEM,
+  getThemesForBaseColor
+} from "~/lib/create/config"
 import { decodePreset, encodePreset, generateRandomPreset, isPresetCode } from "~/lib/create/preset"
 import { resolvePresetOverrides } from "~/lib/create/preset-query"
 import type {
@@ -202,6 +206,19 @@ export function parseCreateSearchParams(searchParams: URLSearchParams) {
     item: searchParams.get("item") || resolved.item
   }
 
+  const availableThemes = getThemesForBaseColor(resolved.baseColor)
+  const fallbackTheme = availableThemes[0]?.name
+
+  if (fallbackTheme) {
+    if (!availableThemes.some((theme) => theme.name === resolved.themeName)) {
+      resolved.themeName = fallbackTheme
+    }
+
+    if (!availableThemes.some((theme) => theme.name === resolved.chartColor)) {
+      resolved.chartColor = fallbackTheme
+    }
+  }
+
   const encodedPreset = encodePreset({
     style: resolved.style,
     baseColor: resolved.baseColor,
@@ -242,7 +259,7 @@ export function serializeCreateSearchParams(state: CreateUrlState) {
     })
   )
 
-  if (state.item) {
+  if (state.item && state.item !== DEFAULT_CREATE_ITEM) {
     searchParams.set("item", state.item)
   }
 
