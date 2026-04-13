@@ -1476,6 +1476,28 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "delta-bar-demo",
+    type: "registry:example",
+    registryDependencies: ["delta-bar"],
+    files: [
+      {
+        path: "examples/delta-bar-demo.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "delta-bar-inverted",
+    type: "registry:example",
+    registryDependencies: ["delta-bar"],
+    files: [
+      {
+        path: "examples/delta-bar-inverted.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "dialog-demo",
     type: "registry:example",
     registryDependencies: ["button", "dialog", "input", "label"],

@@ -271,6 +271,20 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "delta-bar": {
+    name: "delta-bar",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    component: lazy(() => import("~/registry/ui/delta-bar.tsx")),
+    files: [{
+      path: "registry/ui/delta-bar.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "dialog": {
     name: "dialog",
     description: "",
@@ -2929,6 +2943,34 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/examples/date-picker-natural-language.tsx")),
     files: [{
       path: "registry/examples/date-picker-natural-language.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "delta-bar-demo": {
+    name: "delta-bar-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["delta-bar"],
+    component: lazy(() => import("~/registry/examples/delta-bar-demo.tsx")),
+    files: [{
+      path: "registry/examples/delta-bar-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "delta-bar-inverted": {
+    name: "delta-bar-inverted",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["delta-bar"],
+    component: lazy(() => import("~/registry/examples/delta-bar-inverted.tsx")),
+    files: [{
+      path: "registry/examples/delta-bar-inverted.tsx",
       type: "registry:example",
       target: ""
     }],

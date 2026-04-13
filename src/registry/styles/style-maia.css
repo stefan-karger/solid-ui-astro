@@ -891,6 +891,23 @@
     @apply text-muted-foreground;
   }
 
+  /* MARK: Delta Bar */
+  .cn-delta-bar {
+    @apply h-3 rounded-4xl bg-muted;
+  }
+
+  .cn-delta-bar-indicator-decrease {
+    @apply rounded-l-4xl;
+  }
+
+  .cn-delta-bar-indicator-increase {
+    @apply rounded-r-4xl;
+  }
+
+  .cn-delta-bar-marker {
+    @apply h-5 w-1.5 shrink-0 rounded-full ring-2 ring-background;
+  }
+
   /* MARK: Progress */
   .cn-progress {
     @apply h-3 rounded-4xl bg-muted;

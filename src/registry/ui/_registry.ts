@@ -203,6 +203,16 @@ export const ui: Registry["items"] = [
     ]
   },
   {
+    name: "delta-bar",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/delta-bar.tsx",
+        type: "registry:ui"
+      }
+    ]
+  },
+  {
     name: "dialog",
     type: "registry:ui",
     dependencies: ["@kobalte/core"],
