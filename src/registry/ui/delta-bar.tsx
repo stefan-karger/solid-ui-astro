@@ -7,13 +7,11 @@ type DeltaBarProps = ComponentProps<"div"> & {
   isIncreasePositive?: boolean
 }
 
-const clampValue = (value: number) => Math.max(-100, Math.min(100, value))
-
 const DeltaBar = (rawProps: DeltaBarProps) => {
   const props = mergeProps({ isIncreasePositive: true }, rawProps)
   const [local, others] = splitProps(props, ["class", "isIncreasePositive", "value"])
 
-  const value = () => clampValue(local.value)
+  const value = () => Math.max(-100, Math.min(100, local.value))
   const width = () => `${Math.abs(value())}%`
 
   const tone = () => {
