@@ -16,10 +16,16 @@ const DeltaBar = (rawProps: DeltaBarProps) => {
   const value = () => clampValue(local.value)
   const width = () => `${Math.abs(value())}%`
 
+  const tone = () => {
+    if (value() === 0) return undefined
+    
+    return (value() > 0 && local.isIncreasePositive) || (value() < 0 && !local.isIncreasePositive)
+      ? "positive"
+      : "negative"
+  }
+
   const indicatorToneClass = () =>
-    (value() > 0 && local.isIncreasePositive) || (value() < 0 && !local.isIncreasePositive)
-      ? "bg-green-500 dark:bg-green-400"
-      : "bg-red-500 dark:bg-red-400"
+    tone() === "positive" ? "bg-green-500 dark:bg-green-400" : "bg-red-500 dark:bg-red-400"
 
   return (
     <div
@@ -34,6 +40,7 @@ const DeltaBar = (rawProps: DeltaBarProps) => {
             class={cn("cn-delta-bar-indicator-decrease h-full", indicatorToneClass())}
             data-side="decrease"
             data-slot="delta-bar-indicator"
+            data-tone={tone()}
             style={{ width: width() }}
           />
         </Show>
@@ -41,6 +48,7 @@ const DeltaBar = (rawProps: DeltaBarProps) => {
       <div
         class={cn("cn-delta-bar-marker z-10", value() === 0 ? "bg-muted" : indicatorToneClass())}
         data-slot="delta-bar-marker"
+        data-tone={tone()}
       />
       <div class="flex h-full w-1/2 justify-start" data-slot="delta-bar-increase">
         <Show when={value() > 0}>
@@ -48,6 +56,7 @@ const DeltaBar = (rawProps: DeltaBarProps) => {
             class={cn("cn-delta-bar-indicator-increase h-full", indicatorToneClass())}
             data-side="increase"
             data-slot="delta-bar-indicator"
+            data-tone={tone()}
             style={{ width: width() }}
           />
         </Show>

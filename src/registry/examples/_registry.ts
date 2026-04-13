@@ -1498,6 +1498,17 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "delta-bar-custom-colors",
+    type: "registry:example",
+    registryDependencies: ["delta-bar"],
+    files: [
+      {
+        path: "examples/delta-bar-custom-colors.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "dialog-demo",
     type: "registry:example",
     registryDependencies: ["button", "dialog", "input", "label"],

@@ -2977,6 +2977,20 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "delta-bar-custom-colors": {
+    name: "delta-bar-custom-colors",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["delta-bar"],
+    component: lazy(() => import("~/registry/examples/delta-bar-custom-colors.tsx")),
+    files: [{
+      path: "registry/examples/delta-bar-custom-colors.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "dialog-demo": {
     name: "dialog-demo",
     description: "",
