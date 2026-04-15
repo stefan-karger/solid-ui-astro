@@ -2169,6 +2169,17 @@ export const examples: Registry["items"] = [
     ]
   },
   {
+    name: "item-example",
+    type: "registry:example",
+    registryDependencies: ["button", "item"],
+    files: [
+      {
+        path: "examples/item-example.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
     name: "item-demo",
     type: "registry:example",
     registryDependencies: ["button", "item"],
@@ -2362,6 +2373,29 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/field-checkbox.tsx",
+        type: "registry:example"
+      }
+    ]
+  },
+  {
+    name: "field-example",
+    type: "registry:example",
+    registryDependencies: [
+      "badge",
+      "checkbox",
+      "field",
+      "input",
+      "input-otp",
+      "native-select",
+      "radio-group",
+      "select",
+      "slider",
+      "switch",
+      "textarea"
+    ],
+    files: [
+      {
+        path: "examples/field-example.tsx",
         type: "registry:example"
       }
     ]

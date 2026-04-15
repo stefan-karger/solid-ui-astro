@@ -3831,6 +3831,20 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "item-example": {
+    name: "item-example",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","item"],
+    component: lazy(() => import("~/registry/examples/item-example.tsx")),
+    files: [{
+      path: "registry/examples/item-example.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
   "item-demo": {
     name: "item-demo",
     description: "",
@@ -4077,6 +4091,20 @@ export const Index: Record<string, any> = {
     component: lazy(() => import("~/registry/examples/field-checkbox.tsx")),
     files: [{
       path: "registry/examples/field-checkbox.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    categories: undefined,
+    meta: undefined,
+  },
+  "field-example": {
+    name: "field-example",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["badge","checkbox","field","input","input-otp","native-select","radio-group","select","slider","switch","textarea"],
+    component: lazy(() => import("~/registry/examples/field-example.tsx")),
+    files: [{
+      path: "registry/examples/field-example.tsx",
       type: "registry:example",
       target: ""
     }],

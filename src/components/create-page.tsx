@@ -21,6 +21,7 @@ import {
 import {
   BASE_COLORS,
   buildPreviewTheme,
+  DEFAULT_CREATE_CONFIG,
   DEFAULT_CREATE_ITEM,
   FONTS,
   getAvailableIconLibraryOptions,
@@ -32,14 +33,34 @@ import {
   RADII,
   SUPPORTED_ICON_LIBRARY_NAMES
 } from "~/lib/create/config"
+import type { CreateNavigationItem } from "~/lib/create/navigation"
 import { isPresetCode } from "~/lib/create/preset"
 import { parseCreateSearchParams, serializeCreateSearchParams } from "~/lib/create/url-state"
 import { cn } from "~/lib/utils"
+import { Index } from "~/registry/__index__"
 import { useIsMobile } from "~/registry/hooks/use-mobile"
 import { STYLES } from "~/registry/styles"
 import { Alert, AlertDescription, AlertTitle } from "~/registry/ui/alert"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle
+} from "~/registry/ui/alert-dialog"
 import { Button } from "~/registry/ui/button"
-import { Card, CardContent, CardFooter } from "~/registry/ui/card"
+import { Card, CardContent, CardFooter, CardHeader } from "~/registry/ui/card"
+import {
+  Command,
+  CommandDialog,
+  CommandEmpty,
+  CommandInput,
+  CommandItem,
+  CommandList
+} from "~/registry/ui/command"
 import {
   Dialog,
   DialogContent,
@@ -52,10 +73,12 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
+  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
+  DropdownMenuShortcut,
   DropdownMenuTrigger
 } from "~/registry/ui/dropdown-menu"
 import { FieldGroup, FieldSeparator } from "~/registry/ui/field"
@@ -86,7 +109,9 @@ const PRESET_PREVIEW_ITEMS = [
 ] as const
 
 const PRESET_PREVIEW_ITEM_VALUES = new Set<string>(PRESET_PREVIEW_ITEMS.map((item) => item.value))
+const CREATE_CANVAS_ITEM_VALUES = new Set<string>(["field-example", "item-example"])
 const BASE_COLOR_NAME_SET = new Set<string>(BASE_COLORS.map((baseColor) => baseColor.name))
+const MAC_OS_PATTERN = /Mac|iPhone|iPad|iPod/
 
 function formatItemTitle(value: string) {
   return value
@@ -413,11 +438,17 @@ function LockButton(props: {
   )
 }
 
-function CreatePreviewSurface() {
+function CreatePreviewSurface(props: { onSelectItem: (item: string) => void }) {
   const design = useDesignSystem()
   const documentDesign = useDocumentDesignSystem()
   let previewRef: HTMLDivElement | undefined
   const isPresetPreview = createMemo(() => PRESET_PREVIEW_ITEM_VALUES.has(design.item()))
+  const previewItem = createMemo(() => Index[design.item()])
+  const isBlockPreview = createMemo(() => previewItem()?.type === "registry:block")
+  const isCreateCanvasPreview = createMemo(() => CREATE_CANVAS_ITEM_VALUES.has(design.item()))
+  const useExpandedPreviewLayout = createMemo(
+    () => isPresetPreview() || isBlockPreview() || isCreateCanvasPreview()
+  )
 
   const selectedFont = createMemo(() => FONTS.find((font) => font.value === design.font()))
   const selectedHeadingFont = createMemo(() => {
@@ -521,7 +552,7 @@ function CreatePreviewSurface() {
           ref={previewRef}
           class={cn(
             "relative z-10 h-full max-h-full min-h-0 flex-1 rounded-2xl border bg-background shadow-sm",
-            isPresetPreview() ? "overflow-auto p-0" : "p-6 sm:p-10",
+            useExpandedPreviewLayout() ? "overflow-auto p-0" : "p-6 sm:p-10",
             `style-${design.style()}`,
             documentDesign.theme() === DARK_THEME && "dark"
           )}
@@ -529,7 +560,7 @@ function CreatePreviewSurface() {
         >
           <div
             class={cn(
-              isPresetPreview()
+              useExpandedPreviewLayout()
                 ? "w-full"
                 : "mx-auto flex h-full min-h-0 max-w-3xl items-center justify-center"
             )}
@@ -547,7 +578,7 @@ function CreatePreviewSurface() {
                   size="sm"
                   data-active={design.item() === item.value}
                   class="h-7 min-w-8 rounded-lg px-2.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-[active=true]:bg-accent data-[active=true]:text-accent-foreground"
-                  onClick={() => design.setItem(item.value)}
+                  onClick={() => props.onSelectItem(item.value)}
                 >
                   {item.label}
                 </Button>
@@ -560,18 +591,34 @@ function CreatePreviewSurface() {
   )
 }
 
-function CreatePageContent() {
+function CreatePageContent(props: { navigationItems: CreateNavigationItem[] }) {
   const design = useDesignSystem()
   const documentDesign = useDocumentDesignSystem()
   const isMobile = useIsMobile()
+  const isMacPlatform = () => MAC_OS_PATTERN.test(navigator.userAgent)
   const [locks, setLocks] = createSignal<Set<LockableField>>(new Set())
   const [historyEntries, setHistoryEntries] = createSignal<string[]>([])
   const [historyIndex, setHistoryIndex] = createSignal(-1)
   const [urlSearch, setUrlSearch] = createSignal("")
+  const [showActionMenu, setShowActionMenu] = createSignal(false)
+  const [actionMenuQuery, setActionMenuQuery] = createSignal("")
+  const [showResetDialog, setShowResetDialog] = createSignal(false)
   const [showPresetDialog, setShowPresetDialog] = createSignal(false)
   const [presetInput, setPresetInput] = createSignal("")
   const [presetError, setPresetError] = createSignal("")
   let lastSolidMenuAccent = design.menuAccent()
+
+  const filteredNavigationItems = createMemo<CreateNavigationItem[]>(() => {
+    const query = actionMenuQuery().trim().toLowerCase()
+
+    if (!query) {
+      return props.navigationItems
+    }
+
+    return props.navigationItems.filter(
+      (item) => item.label.toLowerCase().includes(query) || item.value.toLowerCase().includes(query)
+    )
+  })
 
   const shareSearch = createMemo(() =>
     serializeCreateSearchParams({
@@ -771,6 +818,24 @@ function CreatePageContent() {
     setShowPresetDialog(true)
   }
 
+  const handleActionMenuOpenChange = (open: boolean) => {
+    setShowActionMenu(open)
+
+    if (!open) {
+      setActionMenuQuery("")
+    }
+  }
+
+  const openActionMenu = () => {
+    setActionMenuQuery("")
+    setShowActionMenu(true)
+  }
+
+  const navigateToItem = (item: string) => {
+    setCurrentItem(item)
+    handleActionMenuOpenChange(false)
+  }
+
   const applyPreset = () => {
     const value = presetInput().trim()
 
@@ -792,6 +857,37 @@ function CreatePageContent() {
     setShowPresetDialog(false)
   }
 
+  const undo = () => {
+    window.history.back()
+  }
+
+  const redo = () => {
+    window.history.forward()
+  }
+
+  const toggleColorMode = () => {
+    documentDesign.toggleTheme()
+  }
+
+  const resetDesign = () => {
+    design.setState({
+      style: DEFAULT_CREATE_CONFIG.style,
+      baseColor: DEFAULT_CREATE_CONFIG.baseColor,
+      themeName: DEFAULT_CREATE_CONFIG.theme,
+      chartColor: DEFAULT_CREATE_CONFIG.chartColor,
+      iconLibrary: DEFAULT_CREATE_CONFIG.iconLibrary,
+      font: DEFAULT_CREATE_CONFIG.font,
+      fontHeading: DEFAULT_CREATE_CONFIG.fontHeading,
+      radius: DEFAULT_CREATE_CONFIG.radius,
+      menuAccent: DEFAULT_CREATE_CONFIG.menuAccent,
+      menuColor: DEFAULT_CREATE_CONFIG.menuColor,
+      item: design.item(),
+      preset: ""
+    })
+    setLocks(new Set<LockableField>())
+    setShowResetDialog(false)
+  }
+
   const applySearchState = (value: string, mode: "replace" | "push") => {
     const nextUrl = value ? `${window.location.pathname}?${value}` : window.location.pathname
     if (mode === "replace") {
@@ -799,6 +895,35 @@ function CreatePageContent() {
     } else {
       window.history.pushState({ createSearch: value }, "", nextUrl)
     }
+  }
+
+  const syncSearchValue = (nextSearch: string, mode: "replace" | "push") => {
+    if (nextSearch === urlSearch()) {
+      return
+    }
+
+    const currentIndex = historyIndex()
+
+    applySearchState(nextSearch, mode)
+    setUrlSearch(nextSearch)
+    setHistoryEntries((current) => {
+      if (mode === "replace") {
+        if (currentIndex >= 0 && current[currentIndex] !== undefined) {
+          const next = [...current]
+          next[currentIndex] = nextSearch
+          return next
+        }
+
+        setHistoryIndex(0)
+        return [nextSearch]
+      }
+
+      const sliced = currentIndex >= 0 ? current.slice(0, currentIndex + 1) : []
+      const next = [...sliced, nextSearch]
+
+      setHistoryIndex(next.length - 1)
+      return next
+    })
   }
 
   const syncFromLocation = (mode: "replace" | "push") => {
@@ -830,21 +955,32 @@ function CreatePageContent() {
     const nextSearch = shareSearch()
     design.setPreset(new URLSearchParams(nextSearch).get("preset") ?? "")
 
-    if (nextSearch === urlSearch()) {
+    syncSearchValue(nextSearch, historyIndex() === -1 ? "replace" : "push")
+  }
+
+  const setCurrentItem = (item: string) => {
+    if (!Index[item]) {
       return
     }
 
-    const currentIndex = historyIndex()
+    design.setItem(item)
 
-    applySearchState(nextSearch, historyIndex() === -1 ? "replace" : "push")
-    setUrlSearch(nextSearch)
-    setHistoryEntries((current) => {
-      const sliced = currentIndex >= 0 ? current.slice(0, currentIndex + 1) : []
-      const next = [...sliced, nextSearch]
-
-      setHistoryIndex(next.length - 1)
-      return next
+    const nextSearch = serializeCreateSearchParams({
+      style: design.style(),
+      baseColor: design.baseColor(),
+      themeName: design.themeName(),
+      chartColor: design.chartColor(),
+      iconLibrary: design.iconLibrary(),
+      font: design.font(),
+      fontHeading: design.fontHeading(),
+      radius: design.radius(),
+      menuAccent: design.menuAccent(),
+      menuColor: design.menuColor(),
+      item,
+      preset: design.preset()
     })
+
+    syncSearchValue(nextSearch, historyIndex() === -1 ? "replace" : "push")
   }
 
   const randomize = () => {
@@ -927,6 +1063,12 @@ function CreatePageContent() {
 
       const key = event.key.toLowerCase()
 
+      if ((event.metaKey || event.ctrlKey) && key === "p") {
+        event.preventDefault()
+        openActionMenu()
+        return
+      }
+
       if (!event.metaKey && !event.ctrlKey && key === "o") {
         event.preventDefault()
         openPresetDialog()
@@ -936,26 +1078,38 @@ function CreatePageContent() {
       if ((event.metaKey || event.ctrlKey) && key === "z") {
         event.preventDefault()
         if (event.shiftKey) {
-          window.history.forward()
+          redo()
         } else {
-          window.history.back()
+          undo()
         }
         return
       }
 
       if (event.ctrlKey && key === "y") {
         event.preventDefault()
-        window.history.forward()
+        redo()
+        return
+      }
+
+      if (!event.metaKey && !event.ctrlKey && event.shiftKey && key === "r") {
+        event.preventDefault()
+
+        if (showResetDialog()) {
+          resetDesign()
+        } else {
+          setShowResetDialog(true)
+        }
+
         return
       }
 
       if (!event.metaKey && !event.ctrlKey && key === "d") {
         event.preventDefault()
-        documentDesign.toggleTheme()
+        toggleColorMode()
         return
       }
 
-      if (!event.metaKey && !event.ctrlKey && key === "r") {
+      if (!event.metaKey && !event.ctrlKey && !event.shiftKey && key === "r") {
         event.preventDefault()
         randomize()
       }
@@ -1001,7 +1155,7 @@ function CreatePageContent() {
   })
 
   createEffect(() => {
-    if (!design.item() || !PRESET_PREVIEW_ITEM_VALUES.has(design.item())) {
+    if (!design.item() || !Index[design.item()]) {
       design.setItem(DEFAULT_CREATE_ITEM)
     }
   })
@@ -1014,6 +1168,12 @@ function CreatePageContent() {
     pushCurrentState()
   })
 
+  const modifierKeyLabel = () => (isMacPlatform() ? "Cmd" : "Ctrl")
+  const navigateShortcutLabel = () => `${modifierKeyLabel()}+P`
+  const undoShortcutLabel = () => `${modifierKeyLabel()}+Z`
+  const redoShortcutLabel = () =>
+    isMacPlatform() ? `Shift+${modifierKeyLabel()}+Z` : `${modifierKeyLabel()}+Shift+Z`
+
   return (
     <>
       <div class="relative z-10 flex min-h-0 flex-1 flex-col overflow-hidden section-soft [--customizer-width:--spacing(48)] [--gap:--spacing(4)] md:[--gap:--spacing(6)] 2xl:[--customizer-width:--spacing(56)]">
@@ -1021,10 +1181,102 @@ function CreatePageContent() {
           data-slot="designer"
           class="flex min-h-0 flex-1 flex-col gap-(--gap) p-(--gap) pt-[calc(var(--gap)*0.25)] md:flex-row-reverse"
         >
-          <CreatePreviewSurface />
+          <CreatePreviewSurface onSelectItem={setCurrentItem} />
 
           <aside class="min-h-0 w-full md:w-(--customizer-width)">
             <Card class="dark isolate z-10 max-h-full min-h-0 w-full self-start rounded-2xl border-0 bg-card/90 shadow-xl ring-1 ring-white/10 backdrop-blur-xl md:h-full">
+              <CardHeader class="hidden items-center justify-between gap-2 border-b px-3 py-3 md:flex md:px-4">
+                <DropdownMenu placement="right-start" gutter={8}>
+                  <DropdownMenuTrigger
+                    as={Button}
+                    class="h-9 w-full justify-between rounded-lg bg-transparent px-2.5 text-sm font-medium shadow-none ring-1 ring-white/10 hover:bg-white/5 focus-visible:ring-1"
+                    size="sm"
+                    variant="ghost"
+                  >
+                    <span class="font-medium text-white">Menu</span>
+                    <IconPlaceholder
+                      class="size-5 text-white"
+                      lucide="EllipsisVerticalIcon"
+                      tabler="IconDotsVertical"
+                    />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent class="dark w-64 rounded-xl border-0 bg-neutral-950/85 p-1.5 text-neutral-100 shadow-2xl ring-1 ring-neutral-900/80 backdrop-blur-xl outline-none">
+                    <DropdownMenuGroup>
+                      <DropdownMenuLabel class="px-2 py-1.5 text-xs font-medium text-neutral-400">
+                        Actions
+                      </DropdownMenuLabel>
+                      <DropdownMenuItem
+                        class="gap-2 rounded-lg py-1.5 pr-2 pl-2 text-sm font-medium text-neutral-100 outline-none focus:bg-neutral-700/80 focus:text-neutral-100 pointer-coarse:py-2.5 pointer-coarse:text-base"
+                        onSelect={openActionMenu}
+                      >
+                        <IconPlaceholder class="size-4" lucide="SearchIcon" tabler="IconSearch" />
+                        Navigate...
+                        <DropdownMenuShortcut>{navigateShortcutLabel()}</DropdownMenuShortcut>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem
+                        class="gap-2 rounded-lg py-1.5 pr-2 pl-2 text-sm font-medium text-neutral-100 outline-none focus:bg-neutral-700/80 focus:text-neutral-100 pointer-coarse:py-2.5 pointer-coarse:text-base"
+                        onSelect={randomize}
+                      >
+                        <IconPlaceholder
+                          class="size-4"
+                          lucide="ShuffleIcon"
+                          tabler="IconArrowsShuffle"
+                        />
+                        Shuffle
+                        <DropdownMenuShortcut>R</DropdownMenuShortcut>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem
+                        class="gap-2 rounded-lg py-1.5 pr-2 pl-2 text-sm font-medium text-neutral-100 outline-none focus:bg-neutral-700/80 focus:text-neutral-100 pointer-coarse:py-2.5 pointer-coarse:text-base"
+                        onSelect={toggleColorMode}
+                      >
+                        <IconPlaceholder class="size-4" lucide="MoonIcon" tabler="IconMoon" />
+                        Light / Dark
+                        <DropdownMenuShortcut>D</DropdownMenuShortcut>
+                      </DropdownMenuItem>
+                    </DropdownMenuGroup>
+                    <DropdownMenuSeparator class="-mx-1.5 my-1.5 bg-neutral-700/70" />
+                    <DropdownMenuGroup>
+                      <DropdownMenuItem
+                        class="gap-2 rounded-lg py-1.5 pr-2 pl-2 text-sm font-medium text-neutral-100 outline-none focus:bg-neutral-700/80 focus:text-neutral-100 pointer-coarse:py-2.5 pointer-coarse:text-base"
+                        onSelect={undo}
+                      >
+                        <IconPlaceholder
+                          class="size-4"
+                          lucide="Undo2Icon"
+                          tabler="IconArrowBackUp"
+                        />
+                        Undo
+                        <DropdownMenuShortcut>{undoShortcutLabel()}</DropdownMenuShortcut>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem
+                        class="gap-2 rounded-lg py-1.5 pr-2 pl-2 text-sm font-medium text-neutral-100 outline-none focus:bg-neutral-700/80 focus:text-neutral-100 pointer-coarse:py-2.5 pointer-coarse:text-base"
+                        onSelect={redo}
+                      >
+                        <IconPlaceholder
+                          class="size-4"
+                          lucide="Redo2Icon"
+                          tabler="IconArrowForwardUp"
+                        />
+                        Redo
+                        <DropdownMenuShortcut>{redoShortcutLabel()}</DropdownMenuShortcut>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator class="-mx-1.5 my-1.5 bg-neutral-700/70" />
+                      <DropdownMenuItem
+                        class="gap-2 rounded-lg py-1.5 pr-2 pl-2 text-sm font-medium text-neutral-100 outline-none focus:bg-neutral-700/80 focus:text-neutral-100 pointer-coarse:py-2.5 pointer-coarse:text-base"
+                        onSelect={() => setShowResetDialog(true)}
+                      >
+                        <IconPlaceholder
+                          class="size-4"
+                          lucide="RotateCcwIcon"
+                          tabler="IconRotate"
+                        />
+                        Reset
+                        <DropdownMenuShortcut>Shift+R</DropdownMenuShortcut>
+                      </DropdownMenuItem>
+                    </DropdownMenuGroup>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </CardHeader>
               <CardContent class="no-scrollbar min-h-0 flex-1 overflow-x-auto overflow-y-hidden px-3 py-3 md:overflow-y-auto md:px-4 md:py-4">
                 <FieldGroup class="flex-row gap-2.5 py-px **:data-[slot=field-separator]:-mx-4 **:data-[slot=field-separator]:w-auto md:flex-col md:gap-3.25">
                   <PickerField
@@ -1291,7 +1543,7 @@ function CreatePageContent() {
                   />
                 </FieldGroup>
               </CardContent>
-              <CardFooter class="grid min-w-0 grid-cols-3 gap-2 px-3 pb-3 md:grid-cols-1 md:px-4 md:pb-4">
+              <CardFooter class="grid min-w-0 grid-cols-3 gap-2 px-3 pb-3 md:grid-cols-1 md:rounded-b-none md:px-4 md:pb-0">
                 <Button
                   variant="outline"
                   class="touch-manipulation bg-transparent! px-2! py-0! text-sm! transition-none select-none hover:bg-muted! pointer-coarse:h-10!"
@@ -1314,7 +1566,7 @@ function CreatePageContent() {
                   <span class="w-full text-center font-medium">Shuffle</span>
                 </Button>
               </CardFooter>
-              <CardFooter class="px-3 pt-3 pb-3 md:px-4 md:pt-3 md:pb-4">
+              <CardFooter class="-mt-3 px-3 pt-3 pb-3 md:px-4 md:pb-4">
                 <Button class="w-full bg-white text-black hover:bg-white/90 dark:bg-white dark:text-black dark:hover:bg-white/90">
                   Create Project
                 </Button>
@@ -1323,6 +1575,62 @@ function CreatePageContent() {
           </aside>
         </div>
       </div>
+
+      <CommandDialog onOpenChange={handleActionMenuOpenChange} open={showActionMenu()}>
+        <Command<CreateNavigationItem>
+          onChange={(item) => {
+            if (!item) {
+              return
+            }
+
+            navigateToItem(item.value)
+          }}
+          onInputChange={setActionMenuQuery}
+          options={filteredNavigationItems()}
+          optionLabel="label"
+          optionTextValue="label"
+          optionValue="value"
+          placeholder="Search components and previews..."
+          itemComponent={(commandProps) => (
+            <CommandItem item={commandProps.item} showIndicator={false}>
+              <IconPlaceholder
+                class="size-4"
+                lucide={
+                  commandProps.item.rawValue.group === "Previews"
+                    ? "LayoutGridIcon"
+                    : "ComponentIcon"
+                }
+                tabler={
+                  commandProps.item.rawValue.group === "Previews"
+                    ? "IconLayoutGrid"
+                    : "IconComponents"
+                }
+              />
+              <span>{commandProps.item.rawValue.label}</span>
+            </CommandItem>
+          )}
+        >
+          <CommandInput />
+          <CommandList />
+          <CommandEmpty>No components found.</CommandEmpty>
+        </Command>
+      </CommandDialog>
+
+      <AlertDialog onOpenChange={setShowResetDialog} open={showResetDialog()}>
+        <AlertDialogContent size="sm">
+          <AlertDialogHeader>
+            <AlertDialogTitle>Reset to defaults?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This will reset all customization options to their default values and clear all field
+              locks.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={resetDesign}>Reset</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
 
       <Dialog
         open={showPresetDialog()}
@@ -1579,7 +1887,7 @@ function PickerField(props: {
   )
 }
 
-export default function CreatePage() {
+export default function CreatePage(props: { navigationItems: CreateNavigationItem[] }) {
   const parsed = parseCreateSearchParams(new URLSearchParams(window.location.search))
 
   return (
@@ -1600,7 +1908,7 @@ export default function CreatePage() {
       }}
       scope="memory"
     >
-      <CreatePageContent />
+      <CreatePageContent navigationItems={props.navigationItems} />
     </DesignSystemProvider>
   )
 }

@@ -4,6 +4,7 @@ import * as CommandPrimitive from "@kobalte/core/search"
 import {
   createEffect,
   mergeProps,
+  Show,
   splitProps,
   type ComponentProps,
   type ValidComponent
@@ -204,10 +205,17 @@ type CommandItemProps<T extends ValidComponent = "li"> = PolymorphicProps<
   T,
   CommandPrimitive.SearchItemProps<T>
 > &
-  Pick<ComponentProps<T>, "class" | "children">
+  Pick<ComponentProps<T>, "class" | "children"> & {
+    showIndicator?: boolean
+  }
 
 const CommandItem = <T extends ValidComponent = "li">(props: CommandItemProps<T>) => {
-  const [local, others] = splitProps(props as CommandItemProps, ["class", "children"])
+  const mergedProps = mergeProps({ showIndicator: true }, props)
+  const [local, others] = splitProps(mergedProps as CommandItemProps, [
+    "class",
+    "children",
+    "showIndicator"
+  ])
 
   return (
     <CommandPrimitive.Item
@@ -219,11 +227,13 @@ const CommandItem = <T extends ValidComponent = "li">(props: CommandItemProps<T>
       {...others}
     >
       {local.children}
-      <IconPlaceholder
-        class="cn-command-item-indicator ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-selected/command-item:opacity-100"
-        lucide="CheckIcon"
-        tabler="IconCheck"
-      />
+      <Show when={local.showIndicator}>
+        <IconPlaceholder
+          class="cn-command-item-indicator ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-selected/command-item:opacity-100"
+          lucide="CheckIcon"
+          tabler="IconCheck"
+        />
+      </Show>
     </CommandPrimitive.Item>
   )
 }
